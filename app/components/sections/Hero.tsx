@@ -38,7 +38,9 @@ export default function Hero() {
             Contact Me
           </a>
         </div>
-
+<video autoPlay muted loop playsInline>
+  <source src="/videos/Programmer.mp4" type="video/mp4" />
+</video>
         {/* Stats */}
         <div className="mt-20 flex flex-wrap items-center justify-center gap-12 border-t border-zinc-200 pt-10">
           <div>
