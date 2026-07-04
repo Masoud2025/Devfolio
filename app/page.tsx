@@ -1,3 +1,4 @@
+import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import AboutMe from "./components/sections/Aboutme";
 import Projects from "./components/sections/FeaturedProjects";
@@ -14,6 +15,7 @@ export default function Home() {
       </div>
       <Projects />
       <AboutMe/>
+      <Footer/>
     </section>
   );
 }
