@@ -5,6 +5,7 @@ import ContactMe from "./components/sections/ContactMe";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
 import TechStack from "./components/sections/TechStack";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutMe/>
       <ContactMe/>
       <Footer/>
+      <ScrollToTop/>
     </section>
   );
 }
