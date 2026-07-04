@@ -5,6 +5,7 @@ import ContactMe from "./components/sections/ContactMe";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
 import TechStack from "./components/sections/TechStack";
+import Testimonials from "./components/sections/Testimonials";
 import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       </div>
       <Projects />
       <AboutMe/>
+      <Testimonials/>
       <ContactMe/>
       <Footer/>
       <ScrollToTop/>
