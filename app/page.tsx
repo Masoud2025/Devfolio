@@ -1,4 +1,5 @@
 import Navbar from "./components/layout/Navbar";
+import AboutMe from "./components/sections/Aboutme";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
 import TechStack from "./components/sections/TechStack";
@@ -12,6 +13,7 @@ export default function Home() {
         <TechStack />
       </div>
       <Projects />
+      <AboutMe/>
     </section>
   );
 }
