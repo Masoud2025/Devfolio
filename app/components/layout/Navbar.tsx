@@ -10,43 +10,51 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Menu Button */}
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="
-          fixed top-5 right-5 z-[60]
-          flex h-16 w-16 items-center justify-center
-          rounded-2xl
-          bg-black
-          border border-zinc-800
-          shadow-xl
-          transition-all duration-300
-          hover:scale-105
-          active:scale-95
-        "
-      >
-        <Menu
-          size={30}
-          className={`absolute text-white transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
-          ${
-            isOpen
-              ? "rotate-180 scale-0 opacity-0"
-              : "rotate-0 scale-100 opacity-100"
-          }`}
-        />
+      {/* Top Bar (Logo + Menu Button) */}
+      <div className="fixed top-5 left-5 right-5 z-[60] flex items-center justify-between">
 
-        <X
-          size={30}
-          className={`absolute text-white transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
-          ${
-            isOpen
-              ? "rotate-0 scale-100 opacity-100"
-              : "-rotate-180 scale-0 opacity-0"
-          }`}
-        />
-      </button>
+        {/* Logo (NEW) */}
+        <div className="text-white mix-blend-difference text-xl font-bold border border-white px-3 py-1 rounded-lg">
+          M.
+        </div>
 
-      {/* Fullscreen Menu */}
+        {/* Menu Button (UNCHANGED) */}
+        <button
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="
+            flex h-16 w-16 items-center justify-center
+            rounded-2xl
+            bg-black
+            border border-zinc-800
+            shadow-xl
+            transition-all duration-300
+            hover:scale-105
+            active:scale-95
+          "
+        >
+          <Menu
+            size={30}
+            className={`absolute text-white transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
+            ${
+              isOpen
+                ? "rotate-180 scale-0 opacity-0"
+                : "rotate-0 scale-100 opacity-100"
+            }`}
+          />
+
+          <X
+            size={30}
+            className={`absolute text-white transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
+            ${
+              isOpen
+                ? "rotate-0 scale-100 opacity-100"
+                : "-rotate-180 scale-0 opacity-0"
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Fullscreen Menu (UNCHANGED EXACTLY) */}
       <div
         className={`fixed inset-0 z-50 bg-black transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
         ${
@@ -56,6 +64,7 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl flex-col justify-between px-6 py-24 sm:px-10">
+          
           {/* Navigation */}
           <nav className="flex flex-col gap-6 md:gap-8">
             {["Home", "About", "Projects", "Tech Stack", "Contact"].map(
@@ -79,14 +88,15 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* Bottom */}
+          {/* Bottom (UNCHANGED) */}
           <div className="border-t border-zinc-800 pt-8">
-            {/* Controls */}
+
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              
               {/* Theme */}
               <button
                 onClick={() => setDarkMode((prev) => !prev)}
-              className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 px-5 py-4 text-white transition-all duration-300 hover:border-white md:min-w-[220px]"
+                className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 px-5 py-4 text-white transition-all duration-300 hover:border-white md:min-w-[220px]"
               >
                 <div className="flex items-center gap-3">
                   <div className="relative h-5 w-5">
@@ -126,7 +136,6 @@ export default function Navbar() {
               >
                 <div className="flex items-center gap-3">
                   <Globe size={20} />
-
                   <span className="font-medium">{language}</span>
                 </div>
 
@@ -149,6 +158,7 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </>
