@@ -8,7 +8,7 @@ export default function Hero() {
         </span>
 
         {/* Title */}
-        <h1 className="mt-8 text-5xl font-black leading-tight tracking-tight text-black sm:text-6xl lg:text-8xl">
+        <h1 className="mt-8 text-5xl font-black leading-tight tracking-tight text-black sm:text-6xl lg:text-4xl">
           Building
           <br />
           Modern Web
@@ -38,9 +38,9 @@ export default function Hero() {
             Contact Me
           </a>
         </div>
-<video autoPlay muted loop playsInline>
-  <source src="/videos/Programmer.mp4" type="video/mp4" />
-</video>
+        <video autoPlay muted loop playsInline className="w-full max-w-[20rem] mx-auto">
+          <source src="/videos/Programmer.mp4" type="video/mp4" />
+        </video>
         {/* Stats */}
         <div className="mt-20 flex flex-wrap items-center justify-center gap-12 border-t border-zinc-200 pt-10">
           <div>
