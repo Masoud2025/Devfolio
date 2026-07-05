@@ -2,30 +2,31 @@
 
 import { useState } from "react";
 import { Globe, Menu, Moon, Sun, X } from "lucide-react";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
-  const [language, setLanguage] = useState<"EN" | "FA">("EN");
+
+  const { locale, setLocale } = useLanguage();
 
   return (
     <>
       {/* Top Bar (Logo + Menu Button) */}
       <div className="fixed top-5 left-5 right-5 z-[60] flex items-center justify-between">
-
-        {/* Logo (NEW) */}
-        <div className="text-white mix-blend-difference text-xl font-bold border border-white px-3 py-1 rounded-lg">
+        {/* Logo */}
+        <div className="rounded-lg border border-white px-3 py-1 text-xl font-bold text-white mix-blend-difference">
           M.
         </div>
 
-        {/* Menu Button (UNCHANGED) */}
+        {/* Menu Button */}
         <button
           onClick={() => setIsOpen((prev) => !prev)}
           className="
             flex h-16 w-16 items-center justify-center
             rounded-2xl
-            bg-black
             border border-zinc-800
+            bg-black
             shadow-xl
             transition-all duration-300
             hover:scale-105
@@ -54,7 +55,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Fullscreen Menu (UNCHANGED EXACTLY) */}
+      {/* Fullscreen Menu */}
       <div
         className={`fixed inset-0 z-50 bg-black transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
         ${
@@ -64,7 +65,6 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-full max-w-7xl flex-col justify-between px-6 py-24 sm:px-10">
-          
           {/* Navigation */}
           <nav className="flex flex-col gap-6 md:gap-8">
             {["Home", "About", "Projects", "Tech Stack", "Contact"].map(
@@ -88,11 +88,9 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* Bottom (UNCHANGED) */}
+          {/* Bottom */}
           <div className="border-t border-zinc-800 pt-8">
-
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              
               {/* Theme */}
               <button
                 onClick={() => setDarkMode((prev) => !prev)}
@@ -130,17 +128,19 @@ export default function Navbar() {
               {/* Language */}
               <button
                 onClick={() =>
-                  setLanguage((prev) => (prev === "EN" ? "FA" : "EN"))
+                  setLocale(locale === "en" ? "fa" : "en")
                 }
                 className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 px-5 py-4 text-white transition-all duration-300 hover:border-white md:min-w-[220px]"
               >
                 <div className="flex items-center gap-3">
                   <Globe size={20} />
-                  <span className="font-medium">{language}</span>
+                  <span className="font-medium">
+                    {locale.toUpperCase()}
+                  </span>
                 </div>
 
                 <span className="text-sm text-zinc-400">
-                  {language === "EN" ? "English" : "فارسی"}
+                  {locale === "en" ? "English" : "فارسی"}
                 </span>
               </button>
             </div>
@@ -158,7 +158,6 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </>

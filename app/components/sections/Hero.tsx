@@ -1,10 +1,16 @@
+'use client'
+import {useLanguage} from "../../context/LanguageContext";
 export default function Hero() {
+  const { t } = useLanguage();
+
+<h1>{t.hero.title}</h1>
   return (
     <section className="flex min-h-screen items-center justify-center px-6">
       <div className="mx-auto max-w-5xl text-center">
         {/* Badge */}
         <span className="inline-flex items-center rounded-full border border-zinc-300 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-zinc-600">
-          Available for Freelance
+          {/* Available for Freelance */}
+          {t.hero.title}
         </span>
 
         {/* Title */}
@@ -38,7 +44,13 @@ export default function Hero() {
             Contact Me
           </a>
         </div>
-        <video autoPlay muted loop playsInline className="w-full max-w-[20rem] mx-auto">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full max-w-[20rem] mx-auto"
+        >
           <source src="/videos/Programmer.mp4" type="video/mp4" />
         </video>
         {/* Stats */}
