@@ -9,6 +9,7 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(true);
 
   const { locale, setLocale } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <>
@@ -67,7 +68,7 @@ export default function Navbar() {
         <div className="mx-auto flex h-full max-w-7xl flex-col justify-between px-6 py-24 sm:px-10">
           {/* Navigation */}
           <nav className="flex flex-col gap-6 md:gap-8">
-            {["Home", "About", "Projects", "Tech Stack", "Contact"].map(
+            {[t.navbar.Home, t.navbar.About, t.navbar.Projects, t.navbar.tech, t.navbar.contact].map(
               (item, index) => (
                 <a
                   key={item}

@@ -2,5 +2,22 @@
 html,
 body {
   overflow-x: hidden;
+  font-family: "Morabba";
+
+}
+
+html[lang="fa"] {
+  font-family: "Morabba";
+}
+
+html[lang="en"] {
+  font-family: "Geist";
+}
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/ttf/Morabba-Bold.ttf") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 

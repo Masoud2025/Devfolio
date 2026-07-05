@@ -1,7 +1,8 @@
 export const en = {
   navbar: {
-    projects: "Projects",
-    experience: "Experience",
+    Home: "Home",
+    About: "About",
+    Projects: "Projects",
     tech: "Tech Stack",
     contact: "Contact",
   },

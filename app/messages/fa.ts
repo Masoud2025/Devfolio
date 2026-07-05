@@ -1,9 +1,10 @@
 export const fa = {
   navbar: {
-    projects: "پروژه‌ها",
-    experience: "سوابق",
-    tech: "تکنولوژی‌ها",
-    contact: "ارتباط",
+     Home: "خانه",
+    About: "درباره من",
+    Projects: "پروژه ها",
+    tech: "تکنولوژی هایی که استفاده میکنم ",
+    contact: "ارتباط با من",
   },
 
   hero: {
