@@ -1,3 +1,4 @@
+'use client'
 import {
   Code2,
   Database,
@@ -6,6 +7,7 @@ import {
   Globe,
   Server,
 } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 const technologies = [
   {
@@ -51,6 +53,7 @@ const technologies = [
 ];
 
 export default function TechStack() {
+  const { t } = useLanguage();
   return (
     <section
       id="tech"
@@ -58,16 +61,15 @@ export default function TechStack() {
     >
       <div className="text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500">
-          Tech Stack
+          {t.TechStack.Header}
         </span>
 
         <h2 className="mt-4 text-4xl font-black text-black md:text-5xl">
-          Technologies I Work With
+          {t.TechStack.Header1}
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-zinc-600">
-          I build fast, scalable and modern web applications using
-          today&apos;s best technologies.
+        {t.TechStack.Subtitle}
         </p>
       </div>
 

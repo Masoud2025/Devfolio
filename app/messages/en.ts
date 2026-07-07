@@ -1,3 +1,5 @@
+import { Subtitles } from "lucide-react";
+
 export const en = {
   navbar: {
     Home: "Home",
@@ -25,5 +27,12 @@ export const en = {
     ProjectsLength:"Projects",
     Technologies:"Technologies",
     Responsive:"Responsive"
+  },
+  TechStack : {
+Header : "Tech Stack",
+Header1 : "Technologies I work With",
+Subtitle:"I build fast , scalable and modern web applications using today's best technologies",
+
+
   },
 };

@@ -1,7 +1,7 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
 export default function Hero() {
-  const { locale, setLocale } = useLanguage();
+  // const { locale, setLocale } = useLanguage();
   const { t } = useLanguage();
 
   <h1>{t.hero.title}</h1>;
