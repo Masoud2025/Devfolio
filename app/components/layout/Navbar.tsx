@@ -121,7 +121,7 @@ export default function Navbar() {
                   </div>
 
                   <span className="font-medium text-white">
-                    {darkMode ? "Dark Mode" : "Light Mode"}
+                    {darkMode ? t.navbar.Dark : t.navbar.Light}
                   </span>
                 </div>
               </button>
@@ -148,7 +148,7 @@ export default function Navbar() {
 
             {/* Social */}
             <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm font-medium uppercase tracking-[0.3em] text-zinc-400">
-              {["GitHub", "LinkedIn", "Telegram", "Email"].map((item) => (
+              {[t.navbar.Github, t.navbar.Linkedin, t.navbar.Telegram, t.navbar.Email].map((item) => (
                 <a
                   key={item}
                   href="#"
