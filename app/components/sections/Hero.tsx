@@ -1,9 +1,10 @@
-'use client'
-import {useLanguage} from "../../context/LanguageContext";
+"use client";
+import { useLanguage } from "../../context/LanguageContext";
 export default function Hero() {
+  const { locale, setLocale } = useLanguage();
   const { t } = useLanguage();
 
-<h1>{t.hero.title}</h1>
+  <h1>{t.hero.title}</h1>;
   return (
     <section className="flex min-h-screen items-center justify-center px-6">
       <div className="mx-auto max-w-5xl text-center">
@@ -15,17 +16,16 @@ export default function Hero() {
 
         {/* Title */}
         <h1 className="mt-8 text-5xl font-black leading-tight tracking-tight text-black sm:text-6xl lg:text-4xl">
-          Building
+          {t.hero.head1}
           <br />
-          Modern Web
+          {t.hero.head2}
           <br />
-          Experiences.
+          {t.hero.head3}
         </h1>
 
         {/* Description */}
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-600">
-          Frontend Developer focused on creating fast, scalable and beautiful
-          web applications using React, Next.js, TypeScript and Tailwind CSS.
+          {t.hero.Description}
         </p>
 
         {/* CTA */}
@@ -34,14 +34,14 @@ export default function Hero() {
             href="#projects"
             className="rounded-full bg-black px-8 py-4 font-semibold text-white transition hover:scale-105 hover:bg-zinc-900"
           >
-            View Projects →
+            {t.hero.Projects}
           </a>
 
           <a
             href="#contact"
             className="rounded-full border border-zinc-300 px-8 py-4 font-semibold text-black transition hover:border-black"
           >
-            Contact Me
+            {t.hero.Contact}
           </a>
         </div>
         <video
@@ -57,17 +57,19 @@ export default function Hero() {
         <div className="mt-20 flex flex-wrap items-center justify-center gap-12 border-t border-zinc-200 pt-10">
           <div>
             <h3 className="text-3xl font-bold text-black">10+</h3>
-            <p className="mt-1 text-sm text-zinc-500">Projects</p>
+            <p className="mt-1 text-sm text-zinc-500">
+              {t.hero.ProjectsLength}
+            </p>
           </div>
 
           <div>
             <h3 className="text-3xl font-bold text-black">4+</h3>
-            <p className="mt-1 text-sm text-zinc-500">Technologies</p>
+            <p className="mt-1 text-sm text-zinc-500">{t.hero.Technologies}</p>
           </div>
 
           <div>
             <h3 className="text-3xl font-bold text-black">100%</h3>
-            <p className="mt-1 text-sm text-zinc-500">Responsive</p>
+            <p className="mt-1 text-sm text-zinc-500">{t.hero.Responsive}</p>
           </div>
         </div>
       </div>
