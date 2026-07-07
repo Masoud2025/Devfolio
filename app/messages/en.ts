@@ -50,4 +50,15 @@ export const en = {
     project_3_description:
       "Mange Tasks efficiently with authentications and real tim updates",
   },
+  About: {
+    Title: "AboutMe",
+    description:"I’m a passionate Full-Stack Developer focused on building fast,scalable and clean web applications with modern technologies. Ienjoy turning complex problems into simple, elegant solutions.",
+    button1:"DownloadCV",
+    button2:"ContactMe",
+    Years:"Years Experience",
+    ProjectCount :"ProjectBuilt",
+    Technologies:"Technologies",
+    Commitment:"Commitment",
+    Descriptiontow:"My goal is to become a high-level engineer and entrepreneur who builds impactful products.",
+  },
 };
