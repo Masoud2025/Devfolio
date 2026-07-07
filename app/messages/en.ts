@@ -1,5 +1,3 @@
-import { Subtitles } from "lucide-react";
-
 export const en = {
   navbar: {
     Home: "Home",
@@ -11,28 +9,45 @@ export const en = {
     Linkedin: "LINKEDIN",
     Telegram: " TELEGRAM",
     Email: " EMAIL",
-    Dark:"Dark Mode",
-    Light:"Light Mode"
+    Dark: "Dark Mode",
+    Light: "Light Mode",
   },
 
   hero: {
     title: "Open to Work",
     subtitle: "Building fast, clean and modern web experiences.",
-    head1 : "Masoud Jafari",
-    head2:"Programmer",
-    head3:"Front-end Developer",
-    Description:"Frontend  Developer focused on creating fast, scalable and beautifulweb applications using React, Next.js, TypeScript and Tailwind CSS.",
-    Projects:"View Projects →",
-    Contact : "Contact Me",
-    ProjectsLength:"Projects",
-    Technologies:"Technologies",
-    Responsive:"Responsive"
+    head1: "Masoud Jafari",
+    head2: "Programmer",
+    head3: "Front-end Developer",
+    Description:
+      "Frontend  Developer focused on creating fast, scalable and beautifulweb applications using React, Next.js, TypeScript and Tailwind CSS.",
+    Projects: "View Projects →",
+    Contact: "Contact Me",
+    ProjectsLength: "Projects",
+    Technologies: "Technologies",
+    Responsive: "Responsive",
   },
-  TechStack : {
-Header : "Tech Stack",
-Header1 : "Technologies I work With",
-Subtitle:"I build fast , scalable and modern web applications using today's best technologies",
-
-
+  TechStack: {
+    Header: "Tech Stack",
+    Header1: "Technologies I work With",
+    Subtitle:
+      "I build fast , scalable and modern web applications using today's best technologies",
+  },
+  Projects: {
+    title: "Featured Projects",
+    header: "Selected Work",
+    subtitle:
+      "A collection of projects focused on performance, scalability and modern user experience.",
+    button1: "Live Demo",
+    button2: "GitHub",
+    project_1_Name: "E-commerce website",
+    project_1_description:
+      "A modern online shopping platform built with Next.js and TypeScript.",
+    project_2_Name: "Portfolio Website",
+    project_2_description:
+      "personal portfolio focused on performance responsive design and clean UI",
+    project_3_Name: "Task Manager",
+    project_3_description:
+      "Mange Tasks efficiently with authentications and real tim updates",
   },
 };

@@ -1,43 +1,40 @@
+"use client";
+import { useLanguage } from "../../context/LanguageContext";
+
 export default function Projects() {
+  const { t } = useLanguage();
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description:
-        "A modern online shopping platform built with Next.js and TypeScript.",
+      title: t.Projects.project_1_Name,
+      description:t.Projects.project_1_description,
       tech: ["Next.js", "TypeScript", "Tailwind"],
     },
     {
-      title: "Portfolio Website",
-      description:
-        "Personal portfolio focused on performance, responsive design and clean UI.",
+      title: t.Projects.project_2_Name,
+      description:t.Projects.project_2_description,
       tech: ["React", "Tailwind", "Framer Motion"],
     },
     {
-      title: "Task Manager",
-      description:
-        "Manage tasks efficiently with authentication and real-time updates.",
+      title: t.Projects.project_3_Name,
+      description:t.Projects.project_3_description,
       tech: ["Next.js", "Prisma", "PostgreSQL"],
     },
   ];
 
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-7xl px-6 py-32"
-    >
+    <section id="projects" className="mx-auto max-w-7xl px-6 py-32">
       {/* Header */}
       <div className="mb-16 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500">
-          Featured Projects
+          {t.Projects.title}
         </span>
 
         <h2 className="mt-4 text-4xl font-black text-black md:text-6xl">
-          Selected Work
+          {t.Projects.header}
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-zinc-600">
-          A collection of projects focused on performance,
-          scalability and modern user experience.
+          {t.Projects.subtitle}
         </p>
       </div>
 
@@ -55,9 +52,7 @@ export default function Projects() {
 
             {/* Content */}
             <div className="p-7">
-              <h3 className="text-2xl font-bold text-black">
-                {project.title}
-              </h3>
+              <h3 className="text-2xl font-bold text-black">{project.title}</h3>
 
               <p className="mt-4 leading-7 text-zinc-600">
                 {project.description}
@@ -78,11 +73,11 @@ export default function Projects() {
               {/* Buttons */}
               <div className="mt-8 flex gap-3">
                 <button className="rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800">
-                  Live Demo
+                  {t.Projects.button1}
                 </button>
 
                 <button className="rounded-full border border-zinc-300 px-5 py-3 text-sm font-semibold transition hover:border-black">
-                  GitHub
+                  {t.Projects.button2}
                 </button>
               </div>
             </div>
