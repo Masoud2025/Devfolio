@@ -1,19 +1,23 @@
+'use client'
+import { useLanguage } from "../../context/LanguageContext";
+
 export default function Testimonials() {
+  const { t } = useLanguage();
   const testimonials = [
     {
-      name: "John Doe",
-      role: "Frontend Developer",
-      text: "Working with Masoud was an amazing experience. The quality of code and UI design was outstanding.",
+      name: t.Testimonials.customer_1_name,
+      role: t.Testimonials.Role1,
+      text: t.Testimonials.Comment1,
     },
     {
-      name: "Sarah Smith",
-      role: "UI/UX Designer",
-      text: "Very clean and modern implementations. He understands both design and development deeply.",
+      name: t.Testimonials.customer_2_name,
+      role: t.Testimonials.Role2,
+      text: t.Testimonials.Comment2,
     },
     {
-      name: "Ali Reza",
-      role: "Project Manager",
-      text: "Fast delivery, clean architecture, and great communication throughout the project.",
+      name: t.Testimonials.customer_3_name,
+      role: t.Testimonials.Role3,
+      text: t.Testimonials.Comment3,
     },
   ];
 
@@ -23,7 +27,7 @@ export default function Testimonials() {
 
         {/* Title */}
         <h2 className="text-3xl md:text-5xl font-bold mb-12">
-          Testimonials
+          {t.Testimonials.Header}
         </h2>
 
         {/* Cards */}

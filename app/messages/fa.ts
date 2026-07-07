@@ -48,16 +48,30 @@ export const fa = {
     project_3_description:
       "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان  قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
   },
-    About: {
+  About: {
     Title: "درباره من",
-    description:"برنامه نویس فول است",
-    button1:"دانلود رزومه",
-    button2:"ارتباط با من",
-    Years:"تجربه کاری ",
-    ProjectCount :"پروژه های ساخته شده",
-    Technologies:"تکنولوژی ها",
-    Commitment:"متعهد",
-    Descriptiontow:"هدف از ت",
-
+    description: "برنامه نویس فول است",
+    button1: "دانلود رزومه",
+    button2: "ارتباط با من",
+    Years: "تجربه کاری ",
+    ProjectCount: "پروژه های ساخته شده",
+    Technologies: "تکنولوژی ها",
+    Commitment: "متعهد",
+    Descriptiontow: "هدف از ت",
+  },
+  Testimonials: {
+    Header: "نظرات مشتریان",
+    customer_1_name: " داوود همایون",
+    Role1: "توسعه دهنده",
+    Comment1:
+      "شما بسیار عالی هستی داداش مسعود",
+    customer_2_name: "رضا پروانه ",
+    Role2: "بازیگر",
+    Comment2:
+      "مسعود از خوبای این دنیاست.",
+    customer_3_name: "علی لهراسبی ",
+    Role3: "بیکار",
+    Comment3:
+      "اگه مسعود نبود ما خیلی مشکلات داشتیم با وجود اون همچی اسونه",
   },
 };
