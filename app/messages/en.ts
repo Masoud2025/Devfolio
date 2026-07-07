@@ -75,4 +75,27 @@ export const en = {
     Role3:"unemployed",
     Comment3:"Working with Masoud was an amazing experience. The quality of code and UI design was outstanding.",
   },
+  ContactMe:{
+    Header:"ContactMe",
+    Name:"Name",
+    Subject:"Subject",
+    Button:"SendMessage",
+    namePlaceholder:"Enter you name",
+    subjectPlaceholder:"Enter subject"
+  },
+Footer:{
+title:"Masoud Jafari",
+paragraph:"Full-Stack Developer focused on building modern, fast and scalable web applications.",
+quickLinks:"QuickLinks",
+Home:"Home",
+About:"About",
+Project:"Project",
+Contact:"Contact",
+Email:"Email",
+Location:"Location",
+Github:"Github",
+Linkedin:"Linkedin",
+Twitter:"Twitter",
+bottomText:" Masoud Jafari. All rights reserved."
+},
 };
