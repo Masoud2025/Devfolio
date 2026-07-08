@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Globe, Menu, Moon, Sun, X } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
 
   const { locale, setLocale } = useLanguage();
   const { t } = useLanguage();
@@ -92,39 +91,7 @@ export default function Navbar() {
           {/* Bottom */}
           <div className="border-t border-zinc-800 pt-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              {/* Theme */}
-              <button
-                onClick={() => setDarkMode((prev) => !prev)}
-                className="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 px-5 py-4 text-white transition-all duration-300 hover:border-white md:min-w-[220px]"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="relative h-5 w-5">
-                    <Sun
-                      size={20}
-                      className={`absolute transition-all duration-300
-                      ${
-                        darkMode
-                          ? "scale-0 rotate-180 opacity-0"
-                          : "scale-100 rotate-0 opacity-100"
-                      }`}
-                    />
-
-                    <Moon
-                      size={20}
-                      className={`absolute transition-all duration-300
-                      ${
-                        darkMode
-                          ? "scale-100 rotate-0 opacity-100"
-                          : "scale-0 -rotate-180 opacity-0"
-                      }`}
-                    />
-                  </div>
-
-                  <span className="font-medium text-white">
-                    {darkMode ? t.navbar.Dark : t.navbar.Light}
-                  </span>
-                </div>
-              </button>
+            
 
               {/* Language */}
               <button
