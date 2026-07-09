@@ -10,18 +10,27 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
-    <section className="flex  flex-col ">
-      <Navbar />
-      <div className="flex flex-col md:flex-row md:justify-center md:items-center">
-        <HeroCTA />
-        <TechStack />
+    <div>
+      {/* Mobile */}
+      <div className="block lg:hidden">
+        <section className="flex  flex-col ">
+          <Navbar />
+          <div className="flex flex-col md:flex-row md:justify-center md:items-center">
+            <HeroCTA />
+            <TechStack />
+          </div>
+          <Projects />
+          <AboutMe />
+          <Testimonials />
+          <ContactMe />
+          <Footer />
+          <ScrollToTop />
+        </section>
       </div>
-      <Projects />
-      <AboutMe/>
-      <Testimonials/>
-      <ContactMe/>
-      <Footer/>
-      <ScrollToTop/>
-    </section>
+      {/* Desktop */}
+      <div className="hidden lg:block">
+        
+      </div>
+    </div>
   );
 }
