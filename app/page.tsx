@@ -8,20 +8,26 @@ import TechStack from "./components/sections/TechStack";
 import Testimonials from "./components/sections/Testimonials";
 import ScrollToTop from "./components/ui/ScrollToTop";
 
+const sections = [Projects, AboutMe, Testimonials, ContactMe];
+
 export default function Home() {
   return (
-        <section className="flex  flex-col ">
-          <Navbar />
-          <div className="flex flex-col md:flex-row md:justify-center md:items-center">
-            <HeroCTA />
-            <TechStack />
-          </div>
-          <Projects />
-          <AboutMe />
-          <Testimonials />
-          <ContactMe />
-          <Footer />
-          <ScrollToTop />
-        </section>
+    <main className="min-h-screen overflow-x-hidden">
+      <Navbar />
+
+      <section className="flex flex-col items-center justify-center gap-8 md:flex-row">
+        <HeroCTA />
+        <TechStack />
+      </section>
+
+      <Projects />
+      <AboutMe />
+      <Testimonials />
+      <ContactMe />
+
+      <Footer />
+
+      <ScrollToTop />
+    </main>
   );
 }

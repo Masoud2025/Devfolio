@@ -2,6 +2,8 @@
 html,
 body {
   overflow-x: hidden;
+    font-size: clamp(14px, 1vw, 16px);
+
   /* font-family: "Morabba"; */
 }
 ::selection {
