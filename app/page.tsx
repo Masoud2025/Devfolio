@@ -10,9 +10,6 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
-    <div>
-      {/* Mobile */}
-      <div className="block lg:hidden">
         <section className="flex  flex-col ">
           <Navbar />
           <div className="flex flex-col md:flex-row md:justify-center md:items-center">
@@ -26,11 +23,5 @@ export default function Home() {
           <Footer />
           <ScrollToTop />
         </section>
-      </div>
-      {/* Desktop */}
-      <div className="hidden lg:block">
-        
-      </div>
-    </div>
   );
 }
