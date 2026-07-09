@@ -25,7 +25,7 @@ export function LanguageProvider({
 }: {
   children: ReactNode;
 }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale>("fa");
 
   const value = useMemo(
     () => ({

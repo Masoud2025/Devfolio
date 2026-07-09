@@ -6,7 +6,7 @@ export default function Hero() {
 
   <h1>{t.hero.title}</h1>;
   return (
-    <section className="flex min-h-screen items-center justify-center px-6">
+    <section className="flex min-h-screen items-center justify-center px-25">
       <div className="mx-auto max-w-5xl text-center">
         {/* Badge */}
         <span className="inline-flex items-center rounded-full border border-zinc-300 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-zinc-600">
@@ -20,7 +20,20 @@ export default function Hero() {
           <br />
           {t.hero.head2}
           <br />
-          {t.hero.head3}
+      <span
+  className="
+    inline-block
+    bg-gradient-to-r
+    from-blue-500
+    via-cyan-400
+    to-purple-500
+    bg-clip-text
+    text-transparent
+    animate-pulse
+  "
+>
+  {t.hero.head3}
+</span>
         </h1>
 
         {/* Description */}

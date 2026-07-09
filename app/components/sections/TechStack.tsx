@@ -57,7 +57,7 @@ export default function TechStack() {
   return (
     <section
       id="tech"
-      className="mx-auto max-w-7xl px-6 py-28 md:-mt-40"
+      className="mx-auto max-w-7xl px-1 py-29 md:-mt-40 md:mr-23"
     >
       <div className="text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500">
