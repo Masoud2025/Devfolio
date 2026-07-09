@@ -30,7 +30,7 @@ export default function Projects() {
         </span>
 
         <h2 className="mt-4 text-4xl font-black text-black md:text-6xl">
-          {t.Projects.header}
+          {/* {t.Projects.header} */}
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-zinc-600">

@@ -35,7 +35,7 @@ export const en = {
   },
   Projects: {
     title: "Featured Projects",
-    header: "Selected Work",
+    header: "My Works",
     subtitle:
       "A collection of projects focused on performance, scalability and modern user experience.",
     button1: "Live Demo",
