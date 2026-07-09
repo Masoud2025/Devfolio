@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -26,6 +27,11 @@ export function LanguageProvider({
   children: ReactNode;
 }) {
   const [locale, setLocale] = useState<Locale>("fa");
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.documentElement.dir = locale === "fa" ? "rtl" : "ltr";
+  }, [locale]);
 
   const value = useMemo(
     () => ({

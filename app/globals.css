@@ -2,7 +2,7 @@
 html,
 body {
   overflow-x: hidden;
-  font-family: "Morabba";
+  /* font-family: "Morabba"; */
 }
 ::selection {
   background: #000;
@@ -15,10 +15,13 @@ body {
 }
 html[lang="fa"] {
   font-family: "Morabba";
+  text-align: right;
 }
 
 html[lang="en"] {
-  font-family: "Geist";
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: right;
+
 }
 @font-face {
   font-family: "Morabba";
