@@ -8,7 +8,6 @@ import TechStack from "./components/sections/TechStack";
 import Testimonials from "./components/sections/Testimonials";
 import ScrollToTop from "./components/ui/ScrollToTop";
 
-const sections = [Projects, AboutMe, Testimonials, ContactMe];
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
 
       <section className="flex flex-col items-center justify-center gap-8 md:flex-row">
         <HeroCTA />
-        <TechStack />
+        {/* <TechStack /> */}
       </section>
 
       <Projects />
