@@ -52,6 +52,22 @@ export const en = {
   mobile: "Mobile",
   noProjects: "No projects found in this category"
 },
+Education: {
+  title: "Education",
+  subtitle: "My educational background",
+  degree1: "Bachelor of Computer Science",
+  institution1: "University of Technology",
+  degree2: "Full-Stack Web Development",
+  institution2: "Online Bootcamp",
+  clickToZoom: "Click on image to zoom",
+},
+
+ImageModal: {
+  close: "Close",
+  zoomIn: "Zoom in",
+  zoomOut: "Zoom out",
+  reset: "Reset",
+},
   About: {
     Title: "AboutMe",
     description:
