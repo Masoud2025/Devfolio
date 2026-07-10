@@ -105,6 +105,19 @@ ImageModal: {
   zoomOut: "Zoom out",
   reset: "Reset",
 },
+Skills: {
+  title: "My Skills",
+  subtitle: "Technologies and tools I work with",
+  frontend: "Frontend",
+  backend: "Backend",
+  database: "Database",
+  tools: "Tools & DevOps",
+  design: "Design",
+  totalSkills: "Total Skills",
+  categories: "Categories",
+  average: "Average",
+  expert: "Expert Level",
+},
   About: {
     Title: "AboutMe",
     description:

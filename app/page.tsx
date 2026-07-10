@@ -6,6 +6,7 @@ import Education from "./components/sections/Education";
 import Experience from "./components/sections/Experince";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
+import Skills from "./components/sections/Skills";
 import TechStack from "./components/sections/TechStack";
 import Testimonials from "./components/sections/Testimonials";
 import ScrollToTop from "./components/ui/ScrollToTop";
@@ -24,6 +25,7 @@ export default function Home() {
       <Projects />
       <Experience/>
       <Education/>
+      <Skills/>
       <AboutMe />
       <Testimonials />
       <ContactMe />
