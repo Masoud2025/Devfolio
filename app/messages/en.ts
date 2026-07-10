@@ -52,6 +52,43 @@ export const en = {
   mobile: "Mobile",
   noProjects: "No projects found in this category"
 },
+Experience: {
+  title: "Experience",
+  subtitle: "My professional journey",
+  
+  // Internship
+  internshipTitle: "IT Intern",
+  internshipCompany: "Kaveh Negar Company",
+  internshipDesc1: "Network configuration and maintenance",
+  internshipDesc2: "Hardware troubleshooting and repair",
+  internshipDesc3: "Deep Freeze installation and management",
+  internshipDesc4: "Printer setup and driver installation",
+  internshipDesc5: "System optimization and user support",
+  
+  // Freelance
+  freelanceTitle: "Freelance Projects",
+  freelanceCompany: "Self-Employed",
+  freelanceDesc1: "Developed 3 full-stack web applications",
+  freelanceDesc2: "Built responsive websites with Next.js and Tailwind",
+  freelanceDesc3: "Implemented RESTful APIs and database integration",
+  freelanceDesc4: "Delivered projects on time with client satisfaction",
+  
+  // School
+  schoolTitle: "IT Department Head",
+  schoolCompany: "Technical High School",
+  schoolLocation: "Iran",
+  schoolDesc1: "Managed school's IT infrastructure",
+  schoolDesc2: "Network setup and maintenance",
+  schoolDesc3: "Installed and configured Deep Freeze",
+  schoolDesc4: "Hardware and software troubleshooting",
+  schoolDesc5: "Assisted teachers and students with technical issues",
+  schoolDesc6: "Printer and peripheral device management",
+  
+  // Badges
+  internship: "Internship",
+  freelance: "Freelance",
+  education: "Education",
+},
 Education: {
   title: "Education",
   subtitle: "My educational background",

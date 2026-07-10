@@ -51,6 +51,43 @@ export const fa = {
   mobile: "موبایل",
   noProjects: "هیچ پروژه‌ای در این دسته‌بندی یافت نشد"
 },
+Experience: {
+  title: "سابقه کاری",
+  subtitle: "مسیر حرفه‌ای من",
+  
+  // Internship
+  internshipTitle: "کارآموز IT",
+  internshipCompany: "شرکت کاوه نگار",
+  internshipDesc1: "پیکربندی و نگهداری شبکه",
+  internshipDesc2: "عیب‌یابی و تعمیر سخت‌افزار",
+  internshipDesc3: "نصب و مدیریت دیپ‌فریز",
+  internshipDesc4: "راه‌اندازی پرینتر و نصب درایور",
+  internshipDesc5: "بهینه‌سازی سیستم و پشتیبانی کاربران",
+  
+  // Freelance
+  freelanceTitle: "پروژه‌های فریلنسری",
+  freelanceCompany: "خوداشتغال",
+  freelanceDesc1: "توسعه ۳ اپلیکیشن وب فول‌استک",
+  freelanceDesc2: "ساخت وب‌سایت‌های واکنش‌گرا با Next.js و Tailwind",
+  freelanceDesc3: "پیاده‌سازی APIهای RESTful و دیتابیس",
+  freelanceDesc4: "تحویل پروژه‌ها با کیفیت و در زمان مقرر",
+  
+  // School
+  schoolTitle: "رئیس بخش IT",
+  schoolCompany: "هنرستان",
+  schoolLocation: "ایران",
+  schoolDesc1: "مدیریت زیرساخت IT هنرستان",
+  schoolDesc2: "راه‌اندازی و نگهداری شبکه",
+  schoolDesc3: "نصب و پیکربندی دیپ‌فریز",
+  schoolDesc4: "عیب‌یابی سخت‌افزار و نرم‌افزار",
+  schoolDesc5: "کمک به معلمان و دانش‌آموزان در مشکلات فنی",
+  schoolDesc6: "مدیریت پرینتر و دستگاه‌های جانبی",
+  
+  // Badges
+  internship: "کارآموزی",
+  freelance: "فریلنسر",
+  education: "آموزشی",
+},
 Education: {
   title: "تحصیلات",
   subtitle: "سوابق تحصیلی من",

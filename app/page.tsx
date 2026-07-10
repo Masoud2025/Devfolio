@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import AboutMe from "./components/sections/Aboutme";
 import ContactMe from "./components/sections/ContactMe";
 import Education from "./components/sections/Education";
+import Experience from "./components/sections/Experince";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
 import TechStack from "./components/sections/TechStack";
@@ -21,6 +22,7 @@ export default function Home() {
       </section>
 
       <Projects />
+      <Experience/>
       <Education/>
       <AboutMe />
       <Testimonials />
