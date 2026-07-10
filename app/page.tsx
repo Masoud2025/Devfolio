@@ -6,6 +6,7 @@ import Education from "./components/sections/Education";
 import Experience from "./components/sections/Experince";
 import Projects from "./components/sections/FeaturedProjects";
 import HeroCTA from "./components/sections/Hero";
+import Services from "./components/sections/Services";
 import Skills from "./components/sections/Skills";
 import TechStack from "./components/sections/TechStack";
 import Testimonials from "./components/sections/Testimonials";
@@ -26,6 +27,7 @@ export default function Home() {
       <Experience/>
       <Education/>
       <Skills/>
+      <Services/>
       <AboutMe />
       <Testimonials />
       <ContactMe />

@@ -95,7 +95,7 @@ Education: {
   institution1: "دانشگاه صنعتی",
   degree2: "توسعه وب فول‌استک",
   institution2: "دوره آنلاین",
-  clickToZoom: "برای بزرگنمایی کلیک کنید",
+  clickToZoom: "برای بزرگنمایی  رو عکس کلیک کنید",
 },
 
 ImageModal: {
@@ -116,6 +116,21 @@ Skills: {
   categories: "دسته‌بندی‌ها",
   average: "میانگین",
   expert: "مهارت حرفه‌ای",
+},
+Services: {
+  title: "خدمات",
+  webDev: "توسعه وب",
+  webDevDesc: "ساخت اپلیکیشن‌های وب مدرن و واکنش‌گرا",
+  uiUx: "طراحی UI/UX",
+  uiUxDesc: "ایجاد رابط‌های کاربری زیبا و شهودی",
+  backend: "توسعه بک‌اند",
+  backendDesc: "توسعه راه‌حل‌های مقیاس‌پذیر سمت سرور",
+  mobile: "توسعه موبایل",
+  mobileDesc: "اپلیکیشن‌های موبایل چندسکویی",
+  maintenance: "نگهداری و پشتیبانی",
+  maintenanceDesc: "پشتیبانی و نگهداری مداوم",
+  deployment: "استقرار و دواپس",
+  deploymentDesc: "CI/CD، هاستینگ و خدمات ابری",
 },
   About: {
     Title: "درباره من",

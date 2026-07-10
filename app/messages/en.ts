@@ -118,6 +118,21 @@ Skills: {
   average: "Average",
   expert: "Expert Level",
 },
+Services: {
+  title: "Services",
+  webDev: "Web Development",
+  webDevDesc: "Building modern, responsive web applications",
+  uiUx: "UI/UX Design",
+  uiUxDesc: "Creating beautiful and intuitive interfaces",
+  backend: "Backend Development",
+  backendDesc: "Developing scalable server-side solutions",
+  mobile: "Mobile Development",
+  mobileDesc: "Cross-platform mobile applications",
+  maintenance: "Maintenance & Support",
+  maintenanceDesc: "Ongoing support and maintenance",
+  deployment: "Deployment & DevOps",
+  deploymentDesc: "CI/CD, hosting, and cloud services",
+},
   About: {
     Title: "AboutMe",
     description:
