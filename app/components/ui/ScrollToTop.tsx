@@ -53,7 +53,7 @@ export default function ScrollToTop() {
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="black"
+          stroke="yellow"
           strokeWidth={stroke}
           fill="none"
           strokeDasharray={circumference}
@@ -63,7 +63,7 @@ export default function ScrollToTop() {
       </svg>
 
       {/* Center Button */}
-      <div className="absolute w-10 h-10 bg-black text-white rounded-full flex items-center justify-center text-sm">
+      <div className="absolute w-10 h-10 bg-black text-white  rounded-full flex items-center justify-center text-sm">
         ↑
       </div>
     </button>

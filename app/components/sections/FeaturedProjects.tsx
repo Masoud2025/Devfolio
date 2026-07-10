@@ -85,7 +85,7 @@ export default function Projects() {
               rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300
               ${
                 activeTab === category.id
-                  ? " text-white shadow-lg scale-105 border border-zinc-200 "
+                  ? " shadow-lg scale-105 border border-zinc-200 "
                   : "  hover:border-zinc-400 hover:text-black"
               }
             `}

@@ -17,7 +17,7 @@ export default function Hero() {
       </video>
       <div className="mx-auto max-w-5xl text-center mt-8">
         {/* Title */}
-        <h1 className="md:text-5xl font-black leading-tight tracking-tight text-black sm:text-6xl lg:text-4xl">
+        <h1 className="md:text-5xl font-black leading-tight tracking-tight  sm:text-6xl lg:text-4xl">
           {t.hero.head1}
           <br />
           {t.hero.head2}
