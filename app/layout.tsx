@@ -1,5 +1,6 @@
 import { LanguageProvider } from "@/app/context/LanguageContext";
 import type { Metadata, Viewport } from "next";
+import { ThemeProvider } from "./context/ThemeContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -121,7 +122,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={"h-full antialiased"}>
       <body className="min-h-full flex flex-col">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

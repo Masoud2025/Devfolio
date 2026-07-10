@@ -32,3 +32,37 @@ html[lang="en"] {
   font-style: normal;
   font-display: swap;
 }
+/* Theme */
+
+
+@layer base {
+  /* Light theme (default) */
+  :root {
+    --background: 255, 255, 255;
+    --foreground: 0, 0, 0;
+    --card: 255, 255, 255;
+    --card-foreground: 0, 0, 0;
+    --border: 229, 231, 235;
+  }
+
+  /* Dark theme */
+  .dark {
+    --background: 0, 0, 0;
+    --foreground: 255, 255, 255;
+    --card: 24, 24, 27;
+    --card-foreground: 255, 255, 255;
+    --border: 39, 39, 42;
+  }
+
+  /* Smooth transition for theme changes */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+  }
+}
+
+

@@ -11,7 +11,7 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden ">
       <Navbar />
 
       <section className="flex flex-col items-center justify-center gap-8 md:flex-row">
