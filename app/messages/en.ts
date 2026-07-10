@@ -34,22 +34,24 @@ export const en = {
       "I build fast , scalable and modern web applications using today's best technologies",
   },
   Projects: {
-    title: "Featured Projects",
-    header: "My Works",
-    subtitle:
-      "A collection of projects focused on performance, scalability and modern user experience.",
-    button1: "Live Demo",
-    button2: "GitHub",
-    project_1_Name: "E-commerce website",
-    project_1_description:
-      "A modern online shopping platform built with Next.js and TypeScript.",
-    project_2_Name: "Portfolio Website",
-    project_2_description:
-      "personal portfolio focused on performance responsive design and clean UI",
-    project_3_Name: "Task Manager",
-    project_3_description:
-      "Mange Tasks efficiently with authentications and real tim updates",
-  },
+  title: "Featured Projects",
+  header: "My Works",
+  subtitle: "A collection of projects focused on performance, scalability and modern user experience.",
+  button1: "Live Demo",
+  button2: "GitHub",
+  project_1_Name: "E-commerce website",
+  project_1_description: "A modern online shopping platform built with Next.js and TypeScript.",
+  project_2_Name: "Portfolio Website",
+  project_2_description: "personal portfolio focused on performance responsive design and clean UI",
+  project_3_Name: "Task Manager",
+  project_3_description: "Mange Tasks efficiently with authentications and real tim updates",
+  // اضافه کردن این مقادیر جدید:
+  all: "All",
+  web: "Web",
+  backend: "Backend",
+  mobile: "Mobile",
+  noProjects: "No projects found in this category"
+},
   About: {
     Title: "AboutMe",
     description:
