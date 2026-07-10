@@ -70,7 +70,7 @@ export default function Projects() {
           {/* {t.Projects.header} */}
         </h2>
 
-        <p className="mx-auto mt-6 max-w-2xl text-zinc-600">
+        <p className="mx-auto mt-6 max-w-2xl ">
           {t.Projects?.subtitle || "Here are some of my recent projects"}
         </p>
       </div>
@@ -85,8 +85,8 @@ export default function Projects() {
               rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300
               ${
                 activeTab === category.id
-                  ? "bg-black text-white shadow-lg scale-105"
-                  : "border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-400 hover:text-black"
+                  ? " text-white shadow-lg scale-105 border border-zinc-200 "
+                  : "  hover:border-zinc-400 hover:text-black"
               }
             `}
           >
@@ -100,7 +100,7 @@ export default function Projects() {
         {filteredProjects.map((project: Project) => (
           <article
             key={project.id}
-            className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-2 hover:border-black"
+            className="group overflow-hidden rounded-3xl border border-zinc-200  transition-all duration-300 hover:-translate-y-2 hover:border-black"
           >
             {/* Project Image Placeholder */}
             <div className="flex aspect-video items-center justify-center bg-zinc-100">
@@ -111,7 +111,7 @@ export default function Projects() {
             <div className="p-7">
               <h3 className="text-2xl font-bold text-black">{project.title}</h3>
 
-              <p className="mt-4 leading-7 text-zinc-600">
+              <p className="mt-4 leading-7 ">
                 {project.description}
               </p>
 
@@ -120,7 +120,7 @@ export default function Projects() {
                 {project.tech.map((item: string) => (
                   <span
                     key={item}
-                    className="rounded-full border border-zinc-300 px-3 py-1 text-sm text-zinc-700"
+                    className="rounded-full border border-zinc-300 px-3 py-1 text-sm "
                   >
                     {item}
                   </span>
@@ -129,7 +129,7 @@ export default function Projects() {
 
               {/* Action Buttons */}
               <div className="mt-8 flex gap-3">
-                <button className="rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800">
+                <button className="rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800 border">
                   {t.Projects?.button1 || "Live Demo"}
                 </button>
 

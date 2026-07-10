@@ -5,7 +5,7 @@ export default function AboutMe() {
   const { t } = useLanguage();
 
   return (
-    <section className="w-full bg-white text-black py-20 px-6 md:px-20">
+    <section className="w-full   py-20 px-6 md:px-20">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-start">
         {/* Left Side */}
         <div className="flex-1">

@@ -13,7 +13,7 @@ export default function Navbar() {
       {/* Top Bar (Logo + Language Button + Theme Button) */}
       <div className="fixed top-5 left-5 right-5 z-[60] flex items-center justify-between">
         {/* Logo */}
-        <div className="rounded-lg border border-white px-3 py-1 text-xl font-bold text-white mix-blend-difference">
+        <div className="rounded-lg border border px-3 py-1 text-xl font-bold  mix-blend-difference">
           M.
         </div>
 

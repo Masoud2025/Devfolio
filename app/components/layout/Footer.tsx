@@ -5,7 +5,7 @@ export default function Footer() {
     const { t } = useLanguage();
   
   return (
-    <footer className="w-full bg-white text-black border-t border-black/10 mt-20">
+    <footer className="w-full   border-t border-black/10 mt-20">
       <div className="max-w-6xl mx-auto px-6 md:px-20 py-12">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
