@@ -8,6 +8,10 @@ export default function Navbar() {
   const { locale, setLocale } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
+  const cycleLocale = () => {
+    setLocale(locale === "en" ? "fa" : locale === "fa" ? "de" : "en");
+  };
+
   return (
     <>
       {/* Top Bar (Logo + Language Button + Theme Button) */}
@@ -46,7 +50,7 @@ export default function Navbar() {
 
           {/* Language Button */}
           <button
-            onClick={() => setLocale(locale === "en" ? "fa" : "en")}
+            onClick={cycleLocale}
             className="
               flex items-center gap-2
               rounded-full
@@ -68,6 +72,10 @@ export default function Navbar() {
             <span className="text-zinc-600">/</span>
             <span className={locale === "fa" ? "text-white" : "text-zinc-500"}>
               FA
+            </span>
+            <span className="text-zinc-600">/</span>
+            <span className={locale === "de" ? "text-white" : "text-zinc-500"}>
+              DE
             </span>
           </button>
         </div>
