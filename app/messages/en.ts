@@ -3,6 +3,7 @@ export const en = {
     Home: "Home",
     About: "About",
     Projects: "Projects",
+    Skills: "Skills",
     tech: "Tech Stack",
     contact: "Contact",
     Github: "GITHUB",

@@ -61,7 +61,7 @@ export default function Skills() {
   }, {} as Record<string, Skill[]>);
 
   return (
-    <section id="skills" className="w-full py-8 px-4">
+    <section id="skills" className="w-full py-8 px-4 scroll-mt-28">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <h2 className="text-xl md:text-2xl font-bold text-center text-black dark:text-white mb-6">

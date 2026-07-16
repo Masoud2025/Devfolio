@@ -59,7 +59,7 @@ export default function Projects() {
     : projects.filter((p: Project) => p.category === activeTab);
 
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-6 py-32">
+    <section id="projects" className="mx-auto max-w-7xl px-6 py-32 scroll-mt-28">
       {/* Header Section */}
       <div className="mb-16 text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500">

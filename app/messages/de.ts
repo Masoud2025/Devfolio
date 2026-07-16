@@ -3,6 +3,7 @@ export const de = {
     Home: "Startseite",
     About: "Über mich",
     Projects: "Projekte",
+    Skills: "Fähigkeiten",
     tech: "Tech Stack",
     contact: "Kontakt",
     Github: "GITHUB",

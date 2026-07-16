@@ -5,7 +5,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="flex flex-col items-center mt-32">
+    <section id="home" className="flex flex-col items-center mt-32 scroll-mt-28">
        <div className="mx-auto max-w-5xl text-center mt-8">
         {/* Title */}
         <h1 className=" text-4xl md:text-5xl font-black leading-tight tracking-tight  sm:text-6xl lg:text-4xl">

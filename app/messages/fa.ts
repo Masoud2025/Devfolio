@@ -3,6 +3,7 @@ export const fa = {
     Home: "خانه",
     About: "درباره من",
     Projects: "پروژه ها",
+    Skills: "مهارت‌ها",
     tech: " مهارت ها   ",
     contact: "ارتباط با من",
     Github: "گیتهاب",
