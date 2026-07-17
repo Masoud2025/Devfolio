@@ -181,8 +181,8 @@ export default function Experience() {
                   w-10 h-10 md:w-12 md:h-12 rounded-full 
                   ${getTypeBg(item.type)}
                   flex items-center justify-center
-                  text-white
-                  border-4 border-white dark:border-zinc-900
+               
+                  border-4 
                   shadow-lg shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/30
                   ring-4 ring-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/20
                 `}>
@@ -202,10 +202,10 @@ export default function Experience() {
                 <div className={`
                   p-5 md:p-6 
                   border-l-4 ${getTypeColor(item.type)}
-                  border border-zinc-200 dark:border-zinc-800 
+                  border border-zinc-200 
                   rounded-2xl
-                  bg-white/80 dark:bg-zinc-900/80
-                  backdrop-blur-sm
+                  
+              
                   hover:shadow-xl hover:shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/10
                   hover:scale-[1.02]
                   transition-all duration-300
@@ -218,11 +218,11 @@ export default function Experience() {
                       <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
                         {item.title}
                       </h3>
-                      <p className="text-zinc-600 dark:text-zinc-400 font-medium text-sm md:text-base">
+                      <p className="font-medium text-sm md:text-base">
                         {item.company}
                       </p>
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full">
+                    <div className="flex items-center gap-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap  px-3 py-1 rounded-full">
                       <Calendar size={14} />
                       <span>{item.date}</span>
                     </div>
