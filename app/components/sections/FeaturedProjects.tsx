@@ -19,14 +19,6 @@ interface Project {
   link?: string;
   github?: string;
   details?: {
-    colorPalette?: string;
-    architecture?: string;
-    fonts?: string;
-    headerSize?: string;
-    typography?: string;
-    animations?: string;
-    performance?: string;
-    responsive?: string;
     features?: string[];
   };
 }
@@ -52,17 +44,9 @@ export default function Projects() {
       tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
       category: "web",
       image: demo1,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "Purple & Blue gradient with dark mode",
-        architecture: "Microservices with API Gateway",
-        fonts: "Inter, DM Sans",
-        headerSize: "H1: 48px, H2: 36px",
-        typography: "Sans-serif with 1.6 line-height",
-        animations: "Framer Motion, Lottie",
-        performance: "98/100 Lighthouse score",
-        responsive: "Fully responsive (Mobile-first)",
         features: ["Payment Gateway", "Admin Panel", "Product Management", "Order Tracking"]
       }
     },
@@ -73,17 +57,9 @@ export default function Projects() {
       tech: ["React", "Tailwind", "Framer Motion"],
       category: "web",
       image: demo2,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "Minimalist with accent gradients",
-        architecture: "Component-based with Context API",
-        fonts: "Plus Jakarta Sans, Inter",
-        headerSize: "H1: 64px, H2: 48px",
-        typography: "1.5 line-height, 24px body",
-        animations: "Scroll-triggered, Parallax",
-        performance: "95/100 Lighthouse score",
-        responsive: "Mobile-first approach",
         features: ["Dark/Light Mode", "Animation", "SEO Optimized"]
       }
     },
@@ -94,17 +70,9 @@ export default function Projects() {
       tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
       category: "backend",
       image: demo3,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "N/A (Backend API)",
-        architecture: "RESTful API with Middleware",
-        fonts: "N/A",
-        headerSize: "N/A",
-        typography: "N/A",
-        animations: "N/A",
-        performance: "500+ requests/second",
-        responsive: "N/A",
         features: ["JWT Auth", "CRUD Operations", "WebSocket", "Redis Cache"]
       }
     },
@@ -115,17 +83,9 @@ export default function Projects() {
       tech: ["React Native", "TypeScript", "Tailwind"],
       category: "mobile",
       image: demo1,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "Modern with dark/light themes",
-        architecture: "Atomic Design Pattern",
-        fonts: "SF Pro, Inter",
-        headerSize: "H1: 32px, Body: 16px",
-        typography: "Mobile-optimized",
-        animations: "React Native Reanimated",
-        performance: "60 FPS smooth",
-        responsive: "iOS & Android",
         features: ["Components Library", "Theme System", "Form Builder"]
       }
     },
@@ -136,17 +96,9 @@ export default function Projects() {
       tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
       category: "web",
       image: demo2,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "Clean with accent colors",
-        architecture: "Event-driven with Socket.io",
-        fonts: "Inter, Space Grotesk",
-        headerSize: "H1: 40px, H2: 32px",
-        typography: "1.6 line-height",
-        animations: "CSS Transitions",
-        performance: "Real-time with <100ms latency",
-        responsive: "Full responsive",
         features: ["Real-time Chat", "Typing Indicator", "Read Receipts", "File Sharing"]
       }
     },
@@ -157,17 +109,9 @@ export default function Projects() {
       tech: ["React", "D3.js", "Tailwind", "Recharts"],
       category: "web",
       image: demo3,
-      link: "#",
-      github: "#",
+      link: "https://example.com",
+      github: "https://github.com",
       details: {
-        colorPalette: "Data-centric with gradients",
-        architecture: "Component-based with HOCs",
-        fonts: "Inter, Roboto Mono",
-        headerSize: "H1: 36px, H2: 28px",
-        typography: "Consistent with data visualization",
-        animations: "D3 transitions",
-        performance: "Optimized for big data",
-        responsive: "Responsive charts",
         features: ["Interactive Charts", "Data Export", "Filter System", "Real-time Updates"]
       }
     },
@@ -346,20 +290,20 @@ export default function Projects() {
                 variants={itemVariants}
                 className="group relative overflow-hidden rounded-3xl border border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col"
               >
+                {/* Gradient overlay with pointer-events-none so it doesn't block clicks */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
                   initial={false}
                   animate={{ opacity: hoveredId === project.id ? 1 : 0 }}
                 />
 
-                {/* Project Image - FULL SCROLL TO BOTTOM */}
+                {/* Project Image */}
                 <div 
                   className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-950 dark:to-blue-950 cursor-pointer flex-shrink-0"
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <div className="relative w-full h-full overflow-hidden">
-                    {/* Image with 500% height and 80% translate for full scroll */}
                     <div 
                       className="absolute top-0 left-0 w-full transition-all duration-[3000ms] ease-in-out"
                       style={{ 
@@ -395,7 +339,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col flex-1">
+                <div className="p-5 flex flex-col flex-1 relative z-10">
                   <motion.h3 className="text-lg font-bold text-foreground">
                     {project.title}
                   </motion.h3>
@@ -420,45 +364,36 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <div className="mt-4 flex items-center gap-2">
-                    <motion.a
-                      href={project.link || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.95 }}
+                  {/* Action Buttons - with proper z-index and pointer events */}
+                  <div className="mt-4 flex items-center gap-2 relative z-30">
+                    <button
+                      onClick={() => window.open(project.link || '#', '_blank')}
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Eye size={14} />
-                      {t.Projects?.button1 || "Preview"}
-                    </motion.a>
+                      Preview
+                    </button>
                     
-                    <motion.button
+                    <button
                       onClick={() => handleOpenDetails(project)}
-                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border border-border text-foreground text-xs font-semibold hover:bg-accent transition-all duration-300"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border border-border text-foreground text-xs font-semibold hover:bg-accent transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                     >
                       <Info size={14} />
                       Details
-                    </motion.button>
+                    </button>
 
-                    <motion.a
-                      href={project.github || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center p-2 rounded-full border border-border text-foreground hover:bg-accent transition-all duration-300"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.95 }}
+                    <button
+                      onClick={() => window.open(project.github || '#', '_blank')}
+                      className="flex items-center justify-center p-2 rounded-full border border-border text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                       aria-label="GitHub"
                     >
                       <SquareCode size={16} />
-                    </motion.a>
+                    </button>
                   </div>
                 </div>
 
                 <motion.div
-                  className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-2xl"
+                  className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full blur-2xl pointer-events-none"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredId === project.id ? 1 : 0 }}
                   transition={{ duration: 0.4 }}
@@ -504,6 +439,7 @@ export default function Projects() {
         </motion.div>
       </motion.section>
 
+      {/* Project Details Modal - Simplified */}
       <AnimatePresence>
         {isDetailOpen && selectedProject && (
           <motion.div
@@ -513,16 +449,13 @@ export default function Projects() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.div
+            <div
               className="absolute inset-0 bg-black/60 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
               onClick={handleCloseDetails}
             />
 
             <motion.div
-              className="relative w-full h-full max-w-full bg-gradient-to-br from-purple-900/95 via-blue-900/95 to-black/95 overflow-y-auto"
+              className="relative w-full max-w-4xl max-h-[90vh] bg-gradient-to-br from-purple-900/95 via-blue-900/95 to-black/95 rounded-2xl overflow-hidden mx-4"
               variants={modalVariants}
               initial="hidden"
               animate="visible"
@@ -530,107 +463,63 @@ export default function Projects() {
             >
               <button
                 onClick={handleCloseDetails}
-                className="fixed top-6 right-6 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110 text-white"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110 text-white"
                 aria-label="Close details"
               >
-                <X size={28} />
+                <X size={24} />
               </button>
 
-              <div className="max-w-6xl mx-auto p-8 md:p-12 pt-24">
+              <div className="overflow-y-auto max-h-[90vh] p-6 md:p-8 pt-12">
                 <motion.h2 
-                  className="text-4xl md:text-6xl font-bold text-white mb-4"
+                  className="text-3xl md:text-4xl font-bold text-white mb-3"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.1 }}
                 >
                   {selectedProject.title}
                 </motion.h2>
 
                 <motion.p 
-                  className="text-white/80 text-xl mb-10 max-w-3xl"
+                  className="text-white/80 text-base md:text-lg mb-6"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.2 }}
                 >
                   {selectedProject.description}
                 </motion.p>
 
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"
+                  className="mb-6"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.3 }}
                 >
-                  {selectedProject.details?.colorPalette && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Color Palette</h4>
-                      <p className="text-white/90">{selectedProject.details.colorPalette}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.architecture && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Architecture</h4>
-                      <p className="text-white/90">{selectedProject.details.architecture}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.fonts && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Fonts</h4>
-                      <p className="text-white/90">{selectedProject.details.fonts}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.headerSize && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Header Sizes</h4>
-                      <p className="text-white/90">{selectedProject.details.headerSize}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.typography && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Typography</h4>
-                      <p className="text-white/90">{selectedProject.details.typography}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.animations && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Animations</h4>
-                      <p className="text-white/90">{selectedProject.details.animations}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.performance && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Performance</h4>
-                      <p className="text-white/90">{selectedProject.details.performance}</p>
-                    </div>
-                  )}
-                  
-                  {selectedProject.details?.responsive && (
-                    <div className="space-y-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                      <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">Responsive</h4>
-                      <p className="text-white/90">{selectedProject.details.responsive}</p>
-                    </div>
-                  )}
+                  <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-3">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-mono"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
 
                 {selectedProject.details?.features && (
                   <motion.div 
-                    className="mb-10"
+                    className="mb-6"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.4 }}
                   >
-                    <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4">Key Features</h4>
-                    <div className="flex flex-wrap gap-3">
+                    <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-3">Key Features</h4>
+                    <div className="flex flex-wrap gap-2">
                       {selectedProject.details.features.map((feature, index) => (
                         <span
                           key={index}
-                          className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm"
+                          className="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-white/80 text-sm"
                         >
                           {feature}
                         </span>
@@ -640,53 +529,26 @@ export default function Projects() {
                 )}
 
                 <motion.div 
-                  className="mb-10"
+                  className="flex flex-wrap gap-3"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
+                  transition={{ delay: 0.5 }}
                 >
-                  <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-4">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {selectedProject.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-mono"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="flex flex-wrap gap-4"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <motion.a
-                    href={selectedProject.link || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
+                    onClick={() => window.open(selectedProject.link || '#', '_blank')}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={18} />
                     View Live Demo
-                  </motion.a>
+                  </button>
                   
-                  <motion.a
-                    href={selectedProject.github || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
+                    onClick={() => window.open(selectedProject.github || '#', '_blank')}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                   >
-                    <SquareCode size={20} />
+                    <SquareCode size={18} />
                     View Source Code
-                  </motion.a>
+                  </button>
                 </motion.div>
               </div>
             </motion.div>
