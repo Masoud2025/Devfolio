@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback, memo } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { ExternalLink, Code2, Sparkles, ArrowRight, X, SquareCode, Eye, Info } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
@@ -28,7 +28,7 @@ interface Category {
   label: string;
 }
 
-export default function Projects() {
+function Projects() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>("all");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -134,19 +134,23 @@ export default function Projects() {
     { id: "mobile", label: t.Projects?.mobile || "Mobile" },
   ];
 
-  const filteredProjects: Project[] = activeTab === "all"
-    ? projects
-    : projects.filter((p: Project) => p.category === activeTab);
+  const filteredProjects: Project[] = useMemo(
+    () =>
+      activeTab === "all"
+        ? projects
+        : projects.filter((p: Project) => p.category === activeTab),
+    [activeTab]
+  );
 
-  const handleOpenDetails = (project: Project) => {
+  const handleOpenDetails = useCallback((project: Project) => {
     setSelectedProject(project);
     setIsDetailOpen(true);
-  };
+  }, []);
 
-  const handleCloseDetails = () => {
+  const handleCloseDetails = useCallback(() => {
     setIsDetailOpen(false);
     setTimeout(() => setSelectedProject(null), 300);
-  };
+  }, []);
 
   useEffect(() => {
     if (isDetailOpen) {
@@ -254,6 +258,7 @@ export default function Projects() {
                     className="absolute top-0 left-0 w-full transition-all duration-[3000ms] ease-in-out"
                     style={{
                       height: '500%',
+                      willChange: 'transform',
                       transform: `translateY(${hoveredId === project.id ? '-80%' : '0%'})`,
                     }}
                   >
@@ -266,6 +271,7 @@ export default function Projects() {
                           className="object-cover object-top"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           priority={project.id <= 3}
+                          loading={project.id <= 3 ? undefined : "lazy"}
                         />
                       </div>
                     ) : (
@@ -465,3 +471,5 @@ export default function Projects() {
     </>
   );
 }
+
+export default memo(Projects);

@@ -1,6 +1,7 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
 import { Code, Palette, Server, Smartphone, Wrench, Cloud } from "lucide-react";
+import { useMemo, memo } from "react";
 
 interface Service {
   id: number;
@@ -9,10 +10,10 @@ interface Service {
   description: string;
 }
 
-export default function Services() {
+function Services() {
   const { t } = useLanguage();
 
-  const services: Service[] = [
+  const services: Service[] = useMemo(() => [
     {
       id: 1,
       icon: <Code size={22} />,
@@ -49,7 +50,7 @@ export default function Services() {
       title: t.Services?.deployment || "Deployment & DevOps",
       description: t.Services?.deploymentDesc || "CI/CD, hosting, and cloud services",
     },
-  ];
+  ], [t]);
 
   return (
     <section id="services" className="w-full py-12 px-4">
@@ -105,3 +106,5 @@ export default function Services() {
     </section>
   );
 }
+
+export default memo(Services);

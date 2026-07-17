@@ -1,7 +1,8 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
+import { memo } from "react";
 
-export default function AboutMe() {
+function AboutMe() {
   const { t } = useLanguage();
 
   return (
@@ -56,3 +57,5 @@ export default function AboutMe() {
     </section>
   );
 }
+
+export default memo(AboutMe);

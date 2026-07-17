@@ -27,7 +27,7 @@ html[lang="en"] {
 }
 @font-face {
   font-family: "Morabba";
-  src: url("/fonts/Morabba/ttf/Morabba-Bold.ttf") format("woff2");
+  src: url("/fonts/Morabba/ttf/Morabba-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

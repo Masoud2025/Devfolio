@@ -119,6 +119,7 @@ export default function Hero() {
                   muted
                   loop
                   playsInline
+                  preload="metadata"
                   className="w-full h-full object-cover"
                 >
                   <source src="/videos/programmernobg.webm" type="video/mp4" />

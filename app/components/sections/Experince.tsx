@@ -2,6 +2,7 @@
 import { useLanguage } from "../../context/LanguageContext";
 import { Briefcase, Code, Wrench, Calendar, MapPin } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { useMemo, memo } from "react";
 
 interface TimelineItem {
   id: number;
@@ -14,7 +15,7 @@ interface TimelineItem {
   icon: React.ReactNode;
 }
 
-export default function Experience() {
+function Experience() {
   const { t } = useLanguage();
 
   const { ref: sectionRef, inView } = useInView({
@@ -22,7 +23,7 @@ export default function Experience() {
     threshold: 0.1,
   });
 
-  const timelineData: TimelineItem[] = [
+  const timelineData: TimelineItem[] = useMemo(() => [
     {
       id: 1,
       title: t.Experience?.internshipTitle || "IT Intern",
@@ -71,7 +72,7 @@ export default function Experience() {
       type: "education",
       icon: <Wrench size={18} />,
     },
-  ];
+  ], [t]);
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -149,6 +150,7 @@ export default function Experience() {
               `}
               style={{
                 transitionDelay: inView ? `${index * 150}ms` : '0ms',
+                willChange: 'transform, opacity',
               }}
             >
               {/* Timeline Dot */}
@@ -238,3 +240,5 @@ export default function Experience() {
     </section>
   );
 }
+
+export default memo(Experience);

@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import ImageModal from "../../components/ui/ImageModal";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 import { GraduationCap, Calendar, Building2, Maximize2, Award } from "lucide-react";
 
 interface EducationItem {
@@ -13,7 +14,7 @@ interface EducationItem {
   logo?: string;
 }
 
-export default function Education() {
+function Education() {
   const { t } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedAlt, setSelectedAlt] = useState<string>("");
@@ -24,7 +25,7 @@ export default function Education() {
     threshold: 0.1,
   });
 
-  const educationData: EducationItem[] = [
+  const educationData: EducationItem[] = useMemo(() => [
     {
       id: 1,
       title: t.Education?.degree1 || "Bachelor of Computer Science",
@@ -39,17 +40,17 @@ export default function Education() {
       year: "2022 - 2023",
       logo: "/pic/license.jpg",
     },
-  ];
+  ], [t]);
 
-  const handleImageClick = (src: string, alt: string) => {
+  const handleImageClick = useCallback((src: string, alt: string) => {
     setSelectedImage(src);
     setSelectedAlt(alt);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setSelectedImage(null);
     setSelectedAlt("");
-  };
+  }, []);
 
   return (
     <>
@@ -95,6 +96,7 @@ export default function Education() {
                 `}
                 style={{
                   transitionDelay: inView ? `${index * 150}ms` : '0ms',
+                  willChange: 'transform, opacity',
                 }}
               >
                 {/* Decorative gradient line on hover */}
@@ -115,10 +117,12 @@ export default function Education() {
                       "
                       onClick={() => handleImageClick(item.logo!, item.institution)}
                     >
-                      <img
-                        src={item.logo}
+                      <Image
+                        src={item.logo!}
                         alt={item.institution}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover/logo:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 96px, 96px"
+                        className="object-cover transition-transform duration-500 group-hover/logo:scale-110"
                         loading="lazy"
                       />
                       {/* Overlay with zoom icon */}
@@ -202,3 +206,5 @@ export default function Education() {
     </>
   );
 }
+
+export default memo(Education);

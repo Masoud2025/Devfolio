@@ -1,36 +1,40 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
+import { useMemo, memo } from "react";
 
 interface Skill {
   name: string;
   category: "frontend" | "backend" | "database" | "tools" | "design";
 }
 
-export default function Skills() {
+function Skills() {
   const { t } = useLanguage();
 
-  const skills: Skill[] = [
-    // Frontend
-    { name: "React / Next.js", category: "frontend" },
-    { name: "TypeScript", category: "frontend" },
-    { name: "JavaScript", category: "frontend" },
-    { name: "Tailwind CSS", category: "frontend" },
-    { name: "HTML / CSS", category: "frontend" },
-    // Backend
-    { name: "Node.js", category: "backend" },
-    { name: "Express.js", category: "backend" },
-    // Database
-    { name: "MongoDB", category: "database" },
-    { name: "PostgreSQL", category: "database" },
-    { name: "Prisma", category: "database" },
-    // Tools
-    { name: "Git / GitHub", category: "tools" },
-    { name: "Docker", category: "tools" },
-    { name: "Vercel / Netlify", category: "tools" },
-    // Design
-    { name: "UI/UX Design", category: "design" },
-    { name: "Figma", category: "design" },
-  ];
+  const skills: Skill[] = useMemo(
+    () => [
+      // Frontend
+      { name: "React / Next.js", category: "frontend" },
+      { name: "TypeScript", category: "frontend" },
+      { name: "JavaScript", category: "frontend" },
+      { name: "Tailwind CSS", category: "frontend" },
+      { name: "HTML / CSS", category: "frontend" },
+      // Backend
+      { name: "Node.js", category: "backend" },
+      { name: "Express.js", category: "backend" },
+      // Database
+      { name: "MongoDB", category: "database" },
+      { name: "PostgreSQL", category: "database" },
+      { name: "Prisma", category: "database" },
+      // Tools
+      { name: "Git / GitHub", category: "tools" },
+      { name: "Docker", category: "tools" },
+      { name: "Vercel / Netlify", category: "tools" },
+      // Design
+      { name: "UI/UX Design", category: "design" },
+      { name: "Figma", category: "design" },
+    ],
+    []
+  );
 
   const getCategoryLabel = (category: string) => {
     switch (category) {
@@ -54,11 +58,15 @@ export default function Skills() {
     }
   };
 
-  const groupedSkills = skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) acc[skill.category] = [];
-    acc[skill.category].push(skill);
-    return acc;
-  }, {} as Record<string, Skill[]>);
+  const groupedSkills = useMemo(
+    () =>
+      skills.reduce((acc, skill) => {
+        if (!acc[skill.category]) acc[skill.category] = [];
+        acc[skill.category].push(skill);
+        return acc;
+      }, {} as Record<string, Skill[]>),
+    [skills]
+  );
 
   return (
     <section id="skills" className="w-full py-8 px-4 scroll-mt-28">
@@ -105,3 +113,5 @@ export default function Skills() {
     </section>
   );
 }
+
+export default memo(Skills);

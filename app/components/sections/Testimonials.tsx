@@ -1,9 +1,10 @@
 'use client'
 import { useLanguage } from "../../context/LanguageContext";
+import { useMemo, memo } from "react";
 
-export default function Testimonials() {
+function Testimonials() {
   const { t } = useLanguage();
-  const testimonials = [
+  const testimonials = useMemo(() => [
     {
       name: t.Testimonials.customer_1_name,
       role: t.Testimonials.Role1,
@@ -19,7 +20,7 @@ export default function Testimonials() {
       role: t.Testimonials.Role3,
       text: t.Testimonials.Comment3,
     },
-  ];
+  ], [t]);
 
   return (
     <section className="w-full   py-20 px-6 md:px-20">
@@ -53,3 +54,5 @@ export default function Testimonials() {
     </section>
   );
 }
+
+export default memo(Testimonials);

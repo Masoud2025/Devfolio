@@ -1,7 +1,8 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
+import { memo } from "react";
 
-export default function ContactMe() {
+function ContactMe() {
   const { t } = useLanguage();
 
   return (
@@ -76,3 +77,5 @@ export default function ContactMe() {
     </section>
   );
 }
+
+export default memo(ContactMe);

@@ -122,7 +122,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={"h-full antialiased"}>
-      <body className="min-h-full flex flex-col">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/Morabba/ttf/Morabba-Bold.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LanguageProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </LanguageProvider>
