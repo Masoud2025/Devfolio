@@ -1,6 +1,9 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
-import { Briefcase, GraduationCap, Code, Wrench, Calendar, MapPin } from "lucide-react";
+import { Briefcase, Code, Wrench, Calendar, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface TimelineItem {
   id: number;
@@ -15,6 +18,8 @@ interface TimelineItem {
 
 export default function Experience() {
   const { t } = useLanguage();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const timelineData: TimelineItem[] = [
     {
@@ -31,7 +36,7 @@ export default function Experience() {
         t.Experience?.internshipDesc5 || "System optimization and user support",
       ],
       type: "internship",
-      icon: <Briefcase size={20} />,
+      icon: <Briefcase size={18} />,
     },
     {
       id: 2,
@@ -46,7 +51,7 @@ export default function Experience() {
         t.Experience?.freelanceDesc4 || "Delivered projects on time with client satisfaction",
       ],
       type: "freelance",
-      icon: <Code size={20} />,
+      icon: <Code size={18} />,
     },
     {
       id: 3,
@@ -63,7 +68,7 @@ export default function Experience() {
         t.Experience?.schoolDesc6 || "Printer and peripheral device management",
       ],
       type: "education",
-      icon: <Wrench size={20} />,
+      icon: <Wrench size={18} />,
     },
   ];
 
@@ -72,7 +77,7 @@ export default function Experience() {
       case "internship":
         return "border-blue-500 dark:border-blue-400";
       case "freelance":
-        return "border-green-500 dark:border-green-400";
+        return "border-emerald-500 dark:border-emerald-400";
       case "education":
         return "border-purple-500 dark:border-purple-400";
       default:
@@ -85,7 +90,7 @@ export default function Experience() {
       case "internship":
         return "bg-blue-500 dark:bg-blue-400";
       case "freelance":
-        return "bg-green-500 dark:bg-green-400";
+        return "bg-emerald-500 dark:bg-emerald-400";
       case "education":
         return "bg-purple-500 dark:bg-purple-400";
       default:
@@ -93,110 +98,169 @@ export default function Experience() {
     }
   };
 
+  const getTypeLabel = (type: string) => {
+    switch (type) {
+      case "internship":
+        return t.Experience?.internship || "Internship";
+      case "freelance":
+        return t.Experience?.freelance || "Freelance";
+      case "education":
+        return t.Experience?.education || "Education";
+      default:
+        return "";
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
-    <section id="experience" className="w-full py-20 px-6 md:px-20">
-      <div className="max-w-4xl mx-auto">
+    <section
+      id="experience"
+      ref={sectionRef}
+      className="w-full py-20 px-4 md:px-8 lg:px-20 overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white transition-colors duration-300">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-14 text-center"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent">
             {t.Experience?.title || "Experience"}
           </h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400 transition-colors duration-300">
+          <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
             {t.Experience?.subtitle || "My professional journey"}
           </p>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-zinc-300 dark:bg-zinc-700 -translate-x-1/2" />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="relative"
+        >
+          {/* Vertical Line - Always in center */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/30 via-blue-500/30 to-transparent -translate-x-1/2" />
 
           {timelineData.map((item, index) => (
-            <div
+            <motion.div
               key={item.id}
-              className={`relative flex flex-col md:flex-row items-start mb-12 last:mb-0 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              variants={itemVariants}
+              className={`
+                relative flex flex-col items-start mb-12 last:mb-0
+                ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+              `}
             >
-              {/* Timeline Dot */}
-              <div className="absolute left-4 md:left-1/2 top-1 -translate-x-1/2 z-10">
+              {/* Timeline Dot - Always in center */}
+              <div className="absolute left-1/2 top-1 -translate-x-1/2 z-10">
                 <div className={`
-                  w-8 h-8 rounded-full 
+                  w-10 h-10 md:w-12 md:h-12 rounded-full 
                   ${getTypeBg(item.type)}
                   flex items-center justify-center
                   text-white
                   border-4 border-white dark:border-zinc-900
-                  shadow-lg
+                  shadow-lg shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/30
+                  ring-4 ring-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/20
                 `}>
                   {item.icon}
                 </div>
               </div>
 
-              {/* Content */}
+              {/* Content - Alternating left/right on desktop, offset on mobile */}
               <div className={`
-                w-full md:w-[calc(50%-2rem)] 
-                ml-12 md:ml-0
-                ${index % 2 === 0 ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"}
+                w-full md:w-[calc(50%-2.5rem)] 
+                ${index % 2 === 0 
+                  ? "md:mr-auto md:pr-8 md:pl-0 pl-8" 
+                  : "md:ml-auto md:pl-8 md:pr-0 pr-8"
+                }
+                ${index % 2 === 0 ? "text-left" : "text-left md:text-right"}
               `}>
                 <div className={`
-                  p-6 
+                  p-5 md:p-6 
                   border-l-4 ${getTypeColor(item.type)}
                   border border-zinc-200 dark:border-zinc-800 
-                  rounded-r-2xl rounded-tl-2xl
-                  bg-white dark:bg-zinc-900/50
-                  hover:shadow-lg
+                  rounded-2xl
+                  bg-white/80 dark:bg-zinc-900/80
+                  backdrop-blur-sm
+                  hover:shadow-xl hover:shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/10
+                  hover:scale-[1.02]
                   transition-all duration-300
-                  hover:border-zinc-400 dark:hover:border-zinc-600
+                  group
+                  ${index % 2 === 0 ? "md:mr-0" : "md:ml-0"}
                 `}>
                   {/* Header */}
                   <div className="flex items-start justify-between flex-wrap gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-black dark:text-white transition-colors duration-300">
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
                         {item.title}
                       </h3>
-                      <p className="text-zinc-600 dark:text-zinc-400 font-medium">
+                      <p className="text-zinc-600 dark:text-zinc-400 font-medium text-sm md:text-base">
                         {item.company}
                       </p>
                     </div>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap">
-                      {item.date}
-                    </span>
+                    <div className="flex items-center gap-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full">
+                      <Calendar size={14} />
+                      <span>{item.date}</span>
+                    </div>
                   </div>
 
                   {/* Location */}
                   {item.location && (
-                    <div className="flex items-center gap-1 mt-1 text-sm text-zinc-500 dark:text-zinc-500">
+                    <div className="flex items-center gap-1.5 mt-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500">
                       <MapPin size={14} />
                       <span>{item.location}</span>
                     </div>
                   )}
 
                   {/* Description */}
-                  <ul className="mt-3 space-y-1">
+                  <ul className="mt-3 space-y-1.5">
                     {item.description.map((desc, i) => (
-                      <li key={i} className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2">
-                        <span className="text-zinc-400 dark:text-zinc-600 mt-1">•</span>
+                      <li key={i} className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2.5">
+                        <span className="text-purple-500 dark:text-purple-400 mt-0.5 flex-shrink-0">▸</span>
                         <span>{desc}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Type Badge */}
-                  <div className="mt-3">
+                  <div className="mt-4">
                     <span className={`
-                      text-xs font-medium px-3 py-1 rounded-full
+                      text-xs font-semibold px-3.5 py-1.5 rounded-full
                       ${getTypeBg(item.type)} text-white
+                      shadow-md
                     `}>
-                      {item.type === "internship" && (t.Experience?.internship || "Internship")}
-                      {item.type === "freelance" && (t.Experience?.freelance || "Freelance")}
-                      {item.type === "education" && (t.Experience?.education || "Education")}
+                      {getTypeLabel(item.type)}
                     </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
