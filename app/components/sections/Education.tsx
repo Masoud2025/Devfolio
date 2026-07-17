@@ -1,9 +1,8 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import ImageModal from "../../components/ui/ImageModal";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { GraduationCap, Calendar, Building2, Maximize2, Award } from "lucide-react";
 
 interface EducationItem {
@@ -18,8 +17,12 @@ export default function Education() {
   const { t } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedAlt, setSelectedAlt] = useState<string>("");
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  // استفاده از react-intersection-observer به جای framer-motion
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const educationData: EducationItem[] = [
     {
@@ -48,29 +51,6 @@ export default function Education() {
     setSelectedAlt("");
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
   return (
     <>
       <section
@@ -80,11 +60,11 @@ export default function Education() {
       >
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-14 text-center"
+          <div
+            className={`
+              mb-14 text-center transition-all duration-700 ease-out
+              ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}
+            `}
           >
             <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent">
               {t.Education?.title || "Education"}
@@ -92,32 +72,30 @@ export default function Education() {
             <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
               {t.Education?.subtitle || "My educational background"}
             </p>
-          </motion.div>
+          </div>
 
           {/* Education Cards */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {educationData.map((item) => (
-              <motion.article
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {educationData.map((item, index) => (
+              <article
                 key={item.id}
-                variants={itemVariants}
-                className="
+                className={`
                   group relative
                   flex flex-col sm:flex-row items-start sm:items-center gap-5
                   p-6 md:p-7
                   border border-zinc-200 dark:border-zinc-800 
                   rounded-2xl 
-                  
+                  bg-white/80 dark:bg-zinc-900/80
                   backdrop-blur-sm
                   hover:shadow-xl hover:shadow-purple-500/10
                   hover:scale-[1.02]
                   transition-all duration-300
                   hover:border-purple-300 dark:hover:border-purple-600
-                "
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+                `}
+                style={{
+                  transitionDelay: inView ? `${index * 150}ms` : '0ms',
+                }}
               >
                 {/* Decorative gradient line on hover */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/0 via-purple-500/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -208,9 +186,9 @@ export default function Education() {
                     {t.Education?.clickToZoom || "Click to zoom"}
                   </div>
                 )}
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
