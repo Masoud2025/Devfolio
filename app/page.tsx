@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import HeroCTA from "./components/sections/Hero";
 import LazySection from "./components/ui/LazySection";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import AIChat from "./components/sections/AIChat";
 
 const sectionSkeleton = (
   <div className="mx-auto max-w-7xl px-6 py-32 animate-pulse">
@@ -24,15 +25,16 @@ export default function Home() {
       <Navbar />
       {/* <HeroCTA /> */}
       <LazySection name="FeaturedProjects" skeleton={sectionSkeleton} />
-      <LazySection name="Experince" skeleton={sectionSkeleton} />
-      <LazySection name="Education" skeleton={sectionSkeleton} />
-      <LazySection name="Skills" skeleton={sectionSkeleton} />
-      <LazySection name="Services" skeleton={sectionSkeleton} />
-      <LazySection name="Aboutme" skeleton={sectionSkeleton} />
-      <LazySection name="Testimonials" skeleton={sectionSkeleton} />
-      <LazySection name="ContactMe" skeleton={sectionSkeleton} />
+      {/* <LazySection name="Experince" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="Education" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="Skills" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="Services" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="Aboutme" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="Testimonials" skeleton={sectionSkeleton} /> */}
+      {/* <LazySection name="ContactMe" skeleton={sectionSkeleton} /> */}
       <Footer />
       <ScrollToTop />
+      <AIChat />
     </main>
   );
 }

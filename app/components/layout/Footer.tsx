@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-2xl font-bold">{t.Footer.title}</h2>
-            <p className="text-gray-600 mt-3 leading-relaxed">
+            <p className=" mt-3 leading-relaxed">
               {t.Footer.paragraph}
             </p>
           </div>
@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Links */}
           <div>
             <h3 className="font-semibold text-lg mb-4">{t.Footer.quickLinks}</h3>
-            <ul className="space-y-2 text-gray-600">
+            <ul className="space-y-2 ">
               <li className="hover:text-black cursor-pointer">{t.Footer.Home}</li>
               <li className="hover:text-black cursor-pointer">{t.Footer.About}</li>
               <li className="hover:text-black cursor-pointer">{t.Footer.Project}</li>
@@ -32,20 +32,20 @@ export default function Footer() {
           {/* Contact / Social */}
           <div>
             <h3 className="font-semibold text-lg mb-4">{t.Footer.Contact}</h3>
-            <p className="text-gray-600">{t.Footer.Email}: masoud@example.com</p>
-            <p className="text-gray-600">{t.Footer.Location}: Azerbaijan</p>
+            <p className="">{t.Footer.Email}: masoud@example.com</p>
+            <p className="">{t.Footer.Location}: Azerbaijan</p>
 
             <div className="flex gap-4 mt-4">
-              <a className="text-gray-600 hover:text-black">{t.Footer.Github}</a>
-              <a className="text-gray-600 hover:text-black">{t.Footer.Linkedin}</a>
-              <a className="text-gray-600 hover:text-black">{t.Footer.Twitter}</a>
+              <a className=" hover:text-black">{t.Footer.Github}</a>
+              <a className=" hover:text-black">{t.Footer.Linkedin}</a>
+              <a className=" hover:text-black">{t.Footer.Twitter}</a>
             </div>
           </div>
 
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-black/10 text-center text-gray-500 text-sm">
+        <div className="mt-10 pt-6 border-t border-black/10 text-center text-sm">
           © {new Date().getFullYear()} {t.Footer.bottomText}
         </div>
 
