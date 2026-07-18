@@ -1,8 +1,8 @@
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import HeroCTA from "./components/sections/Hero";
-import ScrollToTop from "./components/ui/ScrollToTop";
 import LazySection from "./components/ui/LazySection";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 const sectionSkeleton = (
   <div className="mx-auto max-w-7xl px-6 py-32 animate-pulse">
@@ -22,12 +22,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden ">
       <Navbar />
-
-      <section className="flex flex-col items-center justify-center gap-8 md:flex-row">
-        <HeroCTA />
-        {/* <TechStack /> */}
-      </section>
-
+      {/* <HeroCTA /> */}
       <LazySection name="FeaturedProjects" skeleton={sectionSkeleton} />
       <LazySection name="Experince" skeleton={sectionSkeleton} />
       <LazySection name="Education" skeleton={sectionSkeleton} />
@@ -36,9 +31,7 @@ export default function Home() {
       <LazySection name="Aboutme" skeleton={sectionSkeleton} />
       <LazySection name="Testimonials" skeleton={sectionSkeleton} />
       <LazySection name="ContactMe" skeleton={sectionSkeleton} />
-
       <Footer />
-
       <ScrollToTop />
     </main>
   );

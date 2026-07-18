@@ -2,8 +2,8 @@
 
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useTheme } from "@/app/context/ThemeContext";
-import { Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { href: "#home", key: "Home" },
@@ -19,7 +19,7 @@ const locales = [
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
 ] as const;
 
-type Locale = typeof locales[number]["code"];
+type Locale = (typeof locales)[number]["code"];
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLanguage();
@@ -37,10 +37,12 @@ export default function Navbar() {
     setIsDropdownOpen(false);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     };
@@ -62,7 +64,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
     );
 
     navLinks.forEach((link) => {
@@ -100,22 +102,21 @@ export default function Navbar() {
   const getLabel = (key: string) =>
     (t.navbar?.[key as keyof typeof t.navbar] as string) || key;
 
-  // Helper function for theme-aware classes
   const getThemeClasses = () => {
     const isDark = theme === "dark";
     return {
-      navBg: isDark ? "bg-zinc-900/80" : "bg-white/80",
-      border: isDark ? "border-zinc-700/60" : "border-zinc-200/60",
+      navBg: isDark ? "bg-zinc-900" : "bg-white",
+      border: isDark ? "border-zinc-800" : "border-zinc-200",
       textPrimary: isDark ? "text-white" : "text-zinc-900",
       textSecondary: isDark ? "text-zinc-300" : "text-zinc-600",
       textMuted: isDark ? "text-zinc-500" : "text-zinc-400",
-      hoverBg: isDark ? "hover:bg-white/5" : "hover:bg-zinc-100/80",
-      activeBg: isDark ? "bg-white/10" : "bg-zinc-200/80",
-      buttonBg: isDark ? "bg-black/80" : "bg-white/80",
+      hoverBg: isDark ? "hover:bg-white/5" : "hover:bg-zinc-100",
+      activeBg: isDark ? "bg-white/10" : "bg-zinc-200",
+      buttonBg: isDark ? "bg-zinc-800" : "bg-white",
       shadow: isDark ? "shadow-black/20" : "shadow-zinc-200/50",
-      dropdownBg: isDark ? "bg-zinc-900/95" : "bg-white/95",
+      dropdownBg: isDark ? "bg-zinc-900" : "bg-white",
       overlay: isDark ? "bg-black/60" : "bg-black/30",
-      mobileBg: isDark ? "bg-zinc-900/95" : "bg-white/95",
+      mobileBg: isDark ? "bg-zinc-900" : "bg-white",
     };
   };
 
@@ -125,19 +126,28 @@ export default function Navbar() {
     <>
       <nav
         className={`
-          fixed top-5 left-5 right-5 z-[60]
+          fixed top-0 left-0 right-0 z-[60]
           flex items-center justify-between
           px-4 py-3 md:px-6
-          rounded-full
-          border ${themeClasses.border}
+          border-b ${themeClasses.border}
           ${themeClasses.navBg}
-          backdrop-blur-sm
-          transition-all duration-300 ease-out
-          ${scrolled ? `shadow-lg ${themeClasses.shadow} backdrop-blur-md` : ""}
+          transition-all duration-300
+          ${scrolled ? `shadow-lg ${themeClasses.shadow}` : ""}
         `}
       >
-        <div className={`rounded-lg border ${themeClasses.border} px-3 py-1 text-xl font-bold select-none ${themeClasses.textPrimary}`}>
-          M:D
+        <div
+          className={`border ${themeClasses.border} px-3 py-1 text-xl font-bold select-none ${themeClasses.textPrimary}`}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="w-[80px] h-[80px] object-cover"
+          >
+            <source src="/videos/programmernobg.webm" type="video/mp4" />
+          </video>
         </div>
 
         <div className="hidden md:flex items-center gap-1 lg:gap-2">
@@ -148,19 +158,22 @@ export default function Navbar() {
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className={`
-                  relative px-4 py-2 text-sm font-medium rounded-full
-                  transition-all duration-200 ease-out
+                  px-4 py-2 text-sm font-medium
+                  transition-all duration-200
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-${theme === "dark" ? "white" : "zinc-900"}/50
-                  ${isActive 
-                    ? `${themeClasses.textPrimary} ${themeClasses.activeBg}` 
-                    : `${themeClasses.textSecondary} ${themeClasses.textPrimary} ${themeClasses.hoverBg}`
+                  ${
+                    isActive
+                      ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
+                      : `${themeClasses.textSecondary} ${themeClasses.textPrimary} ${themeClasses.hoverBg}`
                   }
                 `}
                 aria-current={isActive ? "page" : undefined}
               >
                 {getLabel(link.key)}
                 {isActive && (
-                  <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${theme === "dark" ? "bg-white" : "bg-zinc-900"}`} />
+                  <span
+                    className={`block w-full h-0.5 mt-1 ${theme === "dark" ? "bg-white" : "bg-zinc-900"}`}
+                  />
                 )}
               </button>
             );
@@ -171,11 +184,11 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             className={`
-              flex items-center justify-center rounded-full 
+              flex items-center justify-center
               border ${themeClasses.border} ${themeClasses.buttonBg}
               w-10 h-10 ${themeClasses.textPrimary}
-              backdrop-blur-sm transition-all duration-300 
-              hover:scale-105 hover:border-${theme === "dark" ? "white" : "zinc-900"}
+              transition-all duration-300 
+              hover:scale-105
               active:scale-95 focus-visible:outline-none 
               focus-visible:ring-2 focus-visible:ring-${theme === "dark" ? "white" : "zinc-900"}/50
             `}
@@ -188,16 +201,15 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Dropdown Language Selector - Desktop */}
           <div className="hidden sm:block relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className={`
-                flex items-center gap-2 rounded-full 
+                flex items-center gap-2
                 border ${themeClasses.border} ${themeClasses.buttonBg}
                 px-4 py-2 text-sm font-medium ${themeClasses.textPrimary}
-                backdrop-blur-sm transition-all duration-300 
-                hover:scale-105 hover:border-${theme === "dark" ? "white" : "zinc-900"}
+                transition-all duration-300 
+                hover:scale-105
                 active:scale-95 focus-visible:outline-none 
                 focus-visible:ring-2 focus-visible:ring-${theme === "dark" ? "white" : "zinc-900"}/50
               `}
@@ -216,9 +228,9 @@ export default function Navbar() {
             {isDropdownOpen && (
               <div
                 className={`
-                  absolute right-0 mt-2 w-48 rounded-xl 
+                  absolute right-0 mt-2 w-48
                   border ${themeClasses.border} ${themeClasses.dropdownBg}
-                  backdrop-blur-md shadow-2xl py-1 overflow-hidden z-50
+                  shadow-2xl py-1 overflow-hidden z-50
                 `}
                 role="menu"
               >
@@ -231,9 +243,10 @@ export default function Navbar() {
                       className={`
                         w-full flex items-center gap-3 px-4 py-2.5 text-sm
                         transition-all duration-200
-                        ${isActive 
-                          ? `${themeClasses.textPrimary} ${themeClasses.activeBg}` 
-                          : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
+                        ${
+                          isActive
+                            ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
+                            : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
                         }
                       `}
                       role="menuitem"
@@ -241,7 +254,9 @@ export default function Navbar() {
                       <span>{loc.flag}</span>
                       <span>{loc.label}</span>
                       {isActive && (
-                        <span className={`ml-auto ${themeClasses.textPrimary}`}>✓</span>
+                        <span className={`ml-auto ${themeClasses.textPrimary}`}>
+                          ✓
+                        </span>
                       )}
                     </button>
                   );
@@ -253,11 +268,11 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`
-              md:hidden flex items-center justify-center rounded-full 
+              md:hidden flex items-center justify-center
               border ${themeClasses.border} ${themeClasses.buttonBg}
               w-10 h-10 ${themeClasses.textPrimary}
-              backdrop-blur-sm transition-all duration-300 
-              hover:scale-105 hover:border-${theme === "dark" ? "white" : "zinc-900"}
+              transition-all duration-300 
+              hover:scale-105
               active:scale-95 focus-visible:outline-none 
               focus-visible:ring-2 focus-visible:ring-${theme === "dark" ? "white" : "zinc-900"}/50
             `}
@@ -270,19 +285,18 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         id="mobile-menu"
         className={`
           fixed inset-0 z-[55] md:hidden
-          transition-opacity duration-300 ease-out
+          transition-opacity duration-300
           ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
         `}
         aria-hidden={!mobileOpen}
       >
-        <div 
-          className={`absolute inset-0 ${themeClasses.overlay} backdrop-blur-sm`} 
-          onClick={() => setMobileOpen(false)} 
+        <div
+          className={`absolute inset-0 ${themeClasses.overlay}`}
+          onClick={() => setMobileOpen(false)}
         />
 
         <div
@@ -290,7 +304,7 @@ export default function Navbar() {
             absolute right-0 top-0 h-full w-72
             ${themeClasses.mobileBg}
             border-l ${themeClasses.border} shadow-2xl
-            transition-transform duration-300 ease-out
+            transition-transform duration-300
             ${mobileOpen ? "translate-x-0" : "translate-x-full"}
           `}
         >
@@ -302,19 +316,22 @@ export default function Navbar() {
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
                   className={`
-                    w-full text-left px-4 py-3 rounded-xl text-base font-medium
-                    transition-all duration-200 ease-out
+                    w-full text-left px-4 py-3 text-base font-medium
+                    transition-all duration-200
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-${theme === "dark" ? "white" : "zinc-900"}/50
-                    ${isActive 
-                      ? `${themeClasses.textPrimary} ${themeClasses.activeBg}` 
-                      : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
+                    ${
+                      isActive
+                        ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
+                        : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
                     }
                   `}
                   aria-current={isActive ? "page" : undefined}
                 >
                   {getLabel(link.key)}
                   {isActive && (
-                    <span className={`inline-block w-1.5 h-1.5 rounded-full ml-2 ${theme === "dark" ? "bg-white" : "bg-zinc-900"}`} />
+                    <span
+                      className={`inline-block w-1.5 h-1.5 ml-2 ${theme === "dark" ? "bg-white" : "bg-zinc-900"}`}
+                    />
                   )}
                 </button>
               );
@@ -336,18 +353,21 @@ export default function Navbar() {
                       setMobileOpen(false);
                     }}
                     className={`
-                      w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+                      w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                       transition-all duration-200
-                      ${isActive 
-                        ? `${themeClasses.textPrimary} ${themeClasses.activeBg}` 
-                        : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
+                      ${
+                        isActive
+                          ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
+                          : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary} ${themeClasses.hoverBg}`
                       }
                     `}
                   >
                     <span>{loc.flag}</span>
                     <span>{loc.label}</span>
                     {isActive && (
-                      <span className={`ml-auto ${themeClasses.textPrimary}`}>✓</span>
+                      <span className={`ml-auto ${themeClasses.textPrimary}`}>
+                        ✓
+                      </span>
                     )}
                   </button>
                 );
