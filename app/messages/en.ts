@@ -12,6 +12,10 @@ export const en = {
     Email: " EMAIL",
     Dark: "Dark Mode",
     Light: "Light Mode",
+    selectLanguage: "Select Language",
+  },
+  common: {
+    backToTop: "Back to top",
   },
 
   hero: {
@@ -40,18 +44,124 @@ export const en = {
   subtitle: "A collection of projects focused on performance, scalability and modern user experience.",
   button1: "Live Demo",
   button2: "GitHub",
-  project_1_Name: "E-commerce website",
-  project_1_description: "A modern online shopping platform built with Next.js and TypeScript.",
-  project_2_Name: "Portfolio Website",
-  project_2_description: "personal portfolio focused on performance responsive design and clean UI",
-  project_3_Name: "Task Manager",
-  project_3_description: "Mange Tasks efficiently with authentications and real tim updates",
-  // اضافه کردن این مقادیر جدید:
   all: "All",
   web: "Web",
   backend: "Backend",
   mobile: "Mobile",
-  noProjects: "No projects found in this category"
+  noProjects: "No projects found in this category",
+  details: "Details",
+  demo: "Demo",
+  liveDemo: "Live Demo",
+  sourceCode: "Source Code",
+  techStack: "Tech Stack",
+  colorPalette: "Color Palette",
+  typography: "Typography",
+  projects: [
+    {
+      id: 1,
+      name: "E-commerce Platform",
+      description:
+        "Full-featured online store with payment integration and admin dashboard",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+      category: "web",
+      details: {
+        technical:
+          "Hybrid SSR/ISR rendering with the App Router for product pages, a Prisma data layer on PostgreSQL and query caching with React Query. Payments are processed through a secure webhook with an idempotency key to prevent duplicate charges.",
+        font: "Inter (UI) / JetBrains Mono (code & prices)",
+        colors: [
+          { name: "Primary Purple", hex: "#7C3AED" },
+          { name: "Accent Blue", hex: "#2563EB" },
+          { name: "Base Zinc", hex: "#18181B" },
+        ],
+      },
+    },
+    {
+      id: 2,
+      name: "Portfolio Website",
+      description:
+        "Modern portfolio with smooth animations and responsive design",
+      tech: ["React", "Tailwind", "Framer Motion"],
+      category: "web",
+      details: {
+        technical:
+          "Atomic components with a feature-based folder architecture, scroll-linked animations with Framer Motion and image optimization with next/image and an AVIF fallback. Lighthouse performance score above 95.",
+        font: "Poppins (headings) / Inter (body)",
+        colors: [
+          { name: "Ink Black", hex: "#0A0A0A" },
+          { name: "Signal Pink", hex: "#EC4899" },
+          { name: "Sky Blue", hex: "#3B82F6" },
+        ],
+      },
+    },
+    {
+      id: 3,
+      name: "Task Manager API",
+      description: "RESTful API for task management with authentication",
+      tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
+      category: "backend",
+      details: {
+        technical:
+          "Stateless authentication with JWT + refresh token rotation, input validation with Zod and rate limiting at the middleware layer. Data access via Prisma with versioned migrations.",
+        font: "JetBrains Mono (API docs)",
+        colors: [
+          { name: "Deep Navy", hex: "#1E293B" },
+          { name: "Cyan Accent", hex: "#06B6D4" },
+          { name: "Alert Red", hex: "#EF4444" },
+        ],
+      },
+    },
+    {
+      id: 4,
+      name: "Mobile App UI Kit",
+      description: "Beautiful mobile components with dark mode support",
+      tech: ["React Native", "TypeScript", "Tailwind"],
+      category: "mobile",
+      details: {
+        technical:
+          "Token-based design system with full light/dark theme support, composable components with forwardRef and RTL support. Schema-based dynamic form builder.",
+        font: "SF Pro / Roboto (platform-based)",
+        colors: [
+          { name: "Graphite", hex: "#27272A" },
+          { name: "Violet", hex: "#8B5CF6" },
+          { name: "Mint", hex: "#34D399" },
+        ],
+      },
+    },
+    {
+      id: 5,
+      name: "Real-time Chat App",
+      description: "Real-time messaging with WebSocket and Redis",
+      tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
+      category: "web",
+      details: {
+        technical:
+          "Bidirectional connections with Socket.io on a Redis-backed adapter for horizontal scaling, a message queue with presence tracking and ack-based delivery to guarantee delivery.",
+        font: "Inter (UI) / IBM Plex Mono (timestamps)",
+        colors: [
+          { name: "Charcoal", hex: "#111827" },
+          { name: "Live Green", hex: "#10B981" },
+          { name: "Bubble Blue", hex: "#3B82F6" },
+        ],
+      },
+    },
+    {
+      id: 6,
+      name: "Analytics Dashboard",
+      description: "Interactive dashboard with charts and data visualization",
+      tech: ["React", "D3.js", "Tailwind", "Recharts"],
+      category: "web",
+      details: {
+        technical:
+          "Interactive charts with D3.js for custom visualizations and Recharts for standard charts, data processing in a Web Worker to avoid blocking the UI on large datasets.",
+        font: "Space Grotesk (numbers) / Inter (body)",
+        colors: [
+          { name: "Slate Base", hex: "#0F172A" },
+          { name: "Data Orange", hex: "#F97316" },
+          { name: "Chart Teal", hex: "#14B8A6" },
+        ],
+      },
+    },
+  ],
 },
 Experience: {
   title: "Experience",
@@ -106,19 +216,32 @@ ImageModal: {
   zoomOut: "Zoom out",
   reset: "Reset",
 },
-Skills: {
-  title: "My Skills",
-  subtitle: "Technologies and tools I work with",
-  frontend: "Frontend",
-  backend: "Backend",
-  database: "Database",
-  tools: "Tools & DevOps",
-  design: "Design",
-  totalSkills: "Total Skills",
-  categories: "Categories",
-  average: "Average",
-  expert: "Expert Level",
-},
+ Skills: {
+   title: "My Skills",
+   subtitle: "Technologies and tools I work with",
+   frontend: "Frontend",
+   backend: "Backend",
+   database: "Database",
+   tools: "Tools & DevOps",
+   design: "Design",
+   totalSkills: "Total Skills",
+   categories: "Categories",
+   average: "Average",
+   expert: "Expert Level",
+   groups: {
+     frontend: [
+       "React / Next.js",
+       "TypeScript",
+       "JavaScript",
+       "Tailwind CSS",
+       "HTML / CSS",
+     ],
+     backend: ["Node.js", "Express.js"],
+     database: ["MongoDB", "PostgreSQL", "Prisma"],
+     tools: ["Git / GitHub", "Docker", "Vercel / Netlify"],
+     design: ["UI/UX Design", "Figma"],
+   },
+ },
 Services: {
   title: "Services",
   webDev: "Web Development",
@@ -167,19 +290,21 @@ Services: {
     namePlaceholder:"Enter you name",
     subjectPlaceholder:"Enter subject"
   },
-Footer:{
-title:"Masoud Jafari",
-paragraph:"Full-Stack Developer focused on building modern, fast and scalable web applications.",
-quickLinks:"QuickLinks",
-Home:"Home",
-About:"About",
-Project:"Project",
-Contact:"Contact",
-Email:"Email",
-Location:"Location",
-Github:"Github",
-Linkedin:"Linkedin",
-Twitter:"Twitter",
-bottomText:" Masoud Jafari. All rights reserved."
+ Footer:{
+ title:"Masoud Jafari",
+ paragraph:"Full-Stack Developer focused on building modern, fast and scalable web applications.",
+ quickLinks:"QuickLinks",
+ Home:"Home",
+ About:"About",
+ Project:"Project",
+ Contact:"Contact",
+ Email:"Email",
+ emailValue:"masoud@example.com",
+ Location:"Location",
+ locationValue:"Azerbaijan",
+ Github:"Github",
+ Linkedin:"Linkedin",
+ Twitter:"Twitter",
+ bottomText:" Masoud Jafari. All rights reserved."
 },
 };

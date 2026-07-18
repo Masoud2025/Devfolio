@@ -12,6 +12,10 @@ export const fa = {
     Email: " ایمیل",
     Dark: "حالت تاریک",
     Light: "حالت روشن",
+    selectLanguage: "انتخاب زبان",
+  },
+  common: {
+    backToTop: "بازگشت به بالا",
   },
 
   hero: {
@@ -33,24 +37,128 @@ export const fa = {
     Header1: "تکنولوژی هایی که باهاشون کار کردم",
     Subtitle: "جهت استفاده وب سایت فول استک ساده ، و فرانت اند ها",
   },
- Projects: {
+  Projects: {
   title: "پروژه ها",
   header: " مسعود جعفری برنامه نویس   ",
   subtitle: "مجموعه از نمونه کار های ، با تمرکز بر سرعت بالا ، کیفیت کد  تمیز و قابل استفاده در بلند مدت",
   button1: "دمو",
   button2: "سورس کد",
-  project_1_Name: "فروشگاه آنلاین محصولات دیجیتال همراه با پنل ادمین",
-  project_1_description: "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
-  project_2_Name: "سایت معرفی شخص محور پورتفولیو",
-  project_2_description: "طراحی تمیز رسپانسیو کامل",
-  project_3_Name: "برنامه مدیریت گیم نت",
-  project_3_description: "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
-  // اضافه کردن این مقادیر جدید:
   all: "همه",
   web: "وب",
   backend: "بک‌اند",
   mobile: "موبایل",
-  noProjects: "هیچ پروژه‌ای در این دسته‌بندی یافت نشد"
+  noProjects: "هیچ پروژه‌ای در این دسته‌بندی یافت نشد",
+  details: "جزئیات",
+  demo: "دمو",
+  liveDemo: "دمو زنده",
+  sourceCode: "سورس کد",
+  techStack: "تکنولوژی‌ها",
+  colorPalette: "پالت رنگی",
+  typography: "فونت‌بندی",
+  projects: [
+    {
+      id: 1,
+      name: "فروشگاه آنلاین محصولات دیجیتال همراه   ",
+      description: "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
+      tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+      category: "web",
+      details: {
+        technical:
+          "رندر ترکیبی SSR/ISR با App Router برای صفحات محصول، لایه دیتابیس با Prisma روی PostgreSQL و کش کوئری با React Query. تراکنش‌های پرداخت با webhook امن و idempotency key پیاده‌سازی شده تا از پرداخت تکراری جلوگیری شود.",
+        font: "Inter (UI) / JetBrains Mono (کد و قیمت‌ها)",
+        colors: [
+          { name: "Primary Purple", hex: "#7C3AED" },
+          { name: "Accent Blue", hex: "#2563EB" },
+          { name: "Base Zinc", hex: "#18181B" },
+        ],
+      },
+    },
+    {
+      id: 2,
+      name: "سایت معرفی شخص محور پورتفولیو",
+      description: "طراحی تمیز رسپانسیو کامل",
+      tech: ["React", "Tailwind", "Framer Motion"],
+      category: "web",
+      details: {
+        technical:
+          "کامپوننت‌های اتمیک با معماری فولدر Feature-based، انیمیشن‌های scroll-linked با Framer Motion و بهینه‌سازی تصاویر با next/image و AVIF fallback. امتیاز Lighthouse Performance بالای ۹۵.",
+        font: "Poppins (تیتر) / Inter (متن)",
+        colors: [
+          { name: "Ink Black", hex: "#0A0A0A" },
+          { name: "Signal Pink", hex: "#EC4899" },
+          { name: "Sky Blue", hex: "#3B82F6" },
+        ],
+      },
+    },
+    {
+      id: 3,
+      name: "برنامه مدیریت گیم نت",
+      description: "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
+      tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
+      category: "backend",
+      details: {
+        technical:
+          "احراز هویت stateless با JWT + refresh token rotation، اعتبارسنجی ورودی با Zod و rate limiting در سطح middleware. لایه‌ی دسترسی به داده با Prisma و migration نسخه‌بندی‌شده.",
+        font: "JetBrains Mono (مستندات API)",
+        colors: [
+          { name: "Deep Navy", hex: "#1E293B" },
+          { name: "Cyan Accent", hex: "#06B6D4" },
+          { name: "Alert Red", hex: "#EF4444" },
+        ],
+      },
+    },
+    {
+      id: 4,
+      name: "کیت رابط کاربری موبایل",
+      description: "کامپوننت‌های زیبای موبایل با پشتیبانی حالت تاریک",
+      tech: ["React Native", "TypeScript", "Tailwind"],
+      category: "mobile",
+      details: {
+        technical:
+          "سیستم طراحی توکن‌محور با پشتیبانی کامل از تم روشن/تاریک، کامپوننت‌های قابل ترکیب با forwardRef و پشتیبانی از RTL. فرم‌ساز داینامیک با اعتبارسنجی schema-based.",
+        font: "SF Pro / Roboto (پلتفرم‌محور)",
+        colors: [
+          { name: "Graphite", hex: "#27272A" },
+          { name: "Violet", hex: "#8B5CF6" },
+          { name: "Mint", hex: "#34D399" },
+        ],
+      },
+    },
+    {
+      id: 5,
+      name: "اپلیکیشن چت بلادرنگ",
+      description: "پیام‌رسانی بلادرنگ با WebSocket و Redis",
+      tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
+      category: "web",
+      details: {
+        technical:
+          "اتصال دوطرفه با Socket.io روی adapter مبتنی بر Redis برای مقیاس‌پذیری افقی، صف پیام با presence tracking و ack-based delivery برای تضمین رسیدن پیام‌ها.",
+        font: "Inter (UI) / IBM Plex Mono (تایم‌استمپ)",
+        colors: [
+          { name: "Charcoal", hex: "#111827" },
+          { name: "Live Green", hex: "#10B981" },
+          { name: "Bubble Blue", hex: "#3B82F6" },
+        ],
+      },
+    },
+    {
+      id: 6,
+      name: "داشبورد تحلیلی",
+      description: "داشبورد تعاملی با نمودار و تصویرسازی داده",
+      tech: ["React", "D3.js", "Tailwind", "Recharts"],
+      category: "web",
+      details: {
+        technical:
+          "نمودارهای تعاملی با D3.js برای ویژوالایزیشن سفارشی و Recharts برای نمودارهای استاندارد، پردازش داده در Web Worker برای جلوگیری از بلاک شدن UI روی دیتاست‌های بزرگ.",
+        font: "Space Grotesk (اعداد) / Inter (متن)",
+        colors: [
+          { name: "Slate Base", hex: "#0F172A" },
+          { name: "Data Orange", hex: "#F97316" },
+          { name: "Chart Teal", hex: "#14B8A6" },
+        ],
+      },
+    },
+  ],
 },
 Experience: {
   title: "سابقه کاری",
@@ -105,19 +213,32 @@ ImageModal: {
   zoomOut: "کوچکنمایی",
   reset: "بازنشانی",
 },
-Skills: {
-  title: "مهارت‌های من",
-  subtitle: "تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم",
-  frontend: "فرانت‌اند",
-  backend: "بک‌اند",
-  database: "پایگاه داده",
-  tools: "ابزارها و دواپس",
-  design: "طراحی",
-  totalSkills: "مجموع مهارت‌ها",
-  categories: "دسته‌بندی‌ها",
-  average: "میانگین",
-  expert: "مهارت حرفه‌ای",
-},
+ Skills: {
+   title: "مهارت‌های من",
+   subtitle: "تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم",
+   frontend: "فرانت‌اند",
+   backend: "بک‌اند",
+   database: "پایگاه داده",
+   tools: "ابزارها و دواپس",
+   design: "طراحی",
+   totalSkills: "مجموع مهارت‌ها",
+   categories: "دسته‌بندی‌ها",
+   average: "میانگین",
+   expert: "مهارت حرفه‌ای",
+   groups: {
+     frontend: [
+       "React / Next.js",
+       "TypeScript",
+       "JavaScript",
+       "Tailwind CSS",
+       "HTML / CSS",
+     ],
+     backend: ["Node.js", "Express.js"],
+     database: ["MongoDB", "PostgreSQL", "Prisma"],
+     tools: ["Git / GitHub", "Docker", "Vercel / Netlify"],
+     design: ["UI/UX Design", "Figma"],
+   },
+ },
 Services: {
   title: "خدمات",
   webDev: "توسعه وب",
@@ -174,10 +295,12 @@ Project:"پروژه ها",
 Contact:"ارتباط با من",
 Email:"ایمیل",
 Location:"موقعیت",
-Github:"گیتهاب",
-Linkedin:"لینکدین",
-Twitter:"توییتر",
-bottomText:"مسعود جعفری ساخته شده با."
+ Github:"گیتهاب",
+ Linkedin:"لینکدین",
+ Twitter:"توییتر",
+ emailValue:"masoud@example.com",
+ locationValue:"آذربایجان",
+ bottomText:"مسعود جعفری ساخته شده با."
 },
 
 

@@ -12,6 +12,10 @@ export const de = {
     Email: "EMAIL",
     Dark: "Dunkelmodus",
     Light: "Hellmodus",
+    selectLanguage: "Sprache auswählen",
+  },
+  common: {
+    backToTop: "Nach oben",
   },
 
   hero: {
@@ -40,17 +44,122 @@ export const de = {
     subtitle: "Eine Sammlung von Projekten, die sich auf Leistung, Skalierbarkeit und moderne Benutzererfahrung konzentrieren.",
     button1: "Live-Demo",
     button2: "GitHub",
-    project_1_Name: "E-Commerce-Website",
-    project_1_description: "Eine moderne Online-Shopping-Plattform, entwickelt mit Next.js und TypeScript.",
-    project_2_Name: "Portfolio-Website",
-    project_2_description: "Persönliches Portfolio, das sich auf Leistung, responsives Design und saubere UI konzentriert",
-    project_3_Name: "Aufgabenmanager",
-    project_3_description: "Effizientes Verwalten von Aufgaben mit Authentifizierung und Echtzeit-Updates",
     all: "Alle",
     web: "Web",
     backend: "Backend",
     mobile: "Mobile",
-    noProjects: "Keine Projekte in dieser Kategorie gefunden"
+    noProjects: "Keine Projekte in dieser Kategorie gefunden",
+    details: "Details",
+    demo: "Demo",
+    liveDemo: "Live-Demo",
+    sourceCode: "Quellcode",
+    techStack: "Tech-Stack",
+    colorPalette: "Farbpalette",
+    typography: "Typografie",
+    projects: [
+      {
+        id: 1,
+        name: "E-Commerce-Website",
+        description: "Eine moderne Online-Shopping-Plattform, entwickelt mit Next.js und TypeScript.",
+        tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+        category: "web",
+        details: {
+          technical:
+            "Hybrides SSR/ISR-Rendering mit dem App Router für Produktseiten, eine Prisma-Datenebene auf PostgreSQL und Abfrage-Caching mit React Query. Zahlungen werden über einen sicheren Webhook mit Idempotency-Key verarbeitet, um doppelte Belastungen zu vermeiden.",
+          font: "Inter (UI) / JetBrains Mono (Code & Preise)",
+          colors: [
+            { name: "Primary Purple", hex: "#7C3AED" },
+            { name: "Accent Blue", hex: "#2563EB" },
+            { name: "Base Zinc", hex: "#18181B" },
+          ],
+        },
+      },
+      {
+        id: 2,
+        name: "Portfolio-Website",
+        description: "Persönliches Portfolio, das sich auf Leistung, responsives Design und saubere UI konzentriert",
+        tech: ["React", "Tailwind", "Framer Motion"],
+        category: "web",
+        details: {
+          technical:
+            "Atomare Komponenten mit einer Feature-basierten Ordnerarchitektur, scroll-gebundene Animationen mit Framer Motion und Bildoptimierung mit next/image und AVIF-Fallback. Lighthouse-Leistungswert über 95.",
+          font: "Poppins (Überschriften) / Inter (Fließtext)",
+          colors: [
+            { name: "Ink Black", hex: "#0A0A0A" },
+            { name: "Signal Pink", hex: "#EC4899" },
+            { name: "Sky Blue", hex: "#3B82F6" },
+          ],
+        },
+      },
+      {
+        id: 3,
+        name: "Aufgabenmanager",
+        description: "Effizientes Verwalten von Aufgaben mit Authentifizierung und Echtzeit-Updates",
+        tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
+        category: "backend",
+        details: {
+          technical:
+            "Zustandslose Authentifizierung mit JWT + Refresh-Token-Rotation, Eingabevalidierung mit Zod und Rate Limiting auf Middleware-Ebene. Datenzugriff über Prisma mit versionierten Migrationen.",
+          font: "JetBrains Mono (API-Dokumentation)",
+          colors: [
+            { name: "Deep Navy", hex: "#1E293B" },
+            { name: "Cyan Accent", hex: "#06B6D4" },
+            { name: "Alert Red", hex: "#EF4444" },
+          ],
+        },
+      },
+      {
+        id: 4,
+        name: "Mobile UI-Kit",
+        description: "Schöne mobile Komponenten mit Dark-Mode-Unterstützung",
+        tech: ["React Native", "TypeScript", "Tailwind"],
+        category: "mobile",
+        details: {
+          technical:
+            "Token-basiertes Designsystem mit voller Hell-/Dunkel-Theme-Unterstützung, kombinierbare Komponenten mit forwardRef und RTL-Unterstützung. Schema-basiertes dynamisches Formular-Builder.",
+          font: "SF Pro / Roboto (plattformbasiert)",
+          colors: [
+            { name: "Graphite", hex: "#27272A" },
+            { name: "Violet", hex: "#8B5CF6" },
+            { name: "Mint", hex: "#34D399" },
+          ],
+        },
+      },
+      {
+        id: 5,
+        name: "Echtzeit-Chat-App",
+        description: "Echtzeit-Nachrichtenübermittlung mit WebSocket und Redis",
+        tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
+        category: "web",
+        details: {
+          technical:
+            "Bidirektionale Verbindungen mit Socket.io auf einem Redis-basierten Adapter für horizontale Skalierung, eine Nachrichtenwarteschlange mit Presence-Tracking und ack-basierter Zustellung zur Garantie der Zustellung.",
+          font: "Inter (UI) / IBM Plex Mono (Zeitstempel)",
+          colors: [
+            { name: "Charcoal", hex: "#111827" },
+            { name: "Live Green", hex: "#10B981" },
+            { name: "Bubble Blue", hex: "#3B82F6" },
+          ],
+        },
+      },
+      {
+        id: 6,
+        name: "Analyse-Dashboard",
+        description: "Interaktives Dashboard mit Diagrammen und Datenvisualisierung",
+        tech: ["React", "D3.js", "Tailwind", "Recharts"],
+        category: "web",
+        details: {
+          technical:
+            "Interaktive Diagramme mit D3.js für benutzerdefinierte Visualisierungen und Recharts für Standarddiagramme, Datenverarbeitung in einem Web Worker, um die UI bei großen Datensätzen nicht zu blockieren.",
+          font: "Space Grotesk (Zahlen) / Inter (Fließtext)",
+          colors: [
+            { name: "Slate Base", hex: "#0F172A" },
+            { name: "Data Orange", hex: "#F97316" },
+            { name: "Chart Teal", hex: "#14B8A6" },
+          ],
+        },
+      },
+    ],
   },
   Experience: {
     title: "Erfahrung",
@@ -101,19 +210,32 @@ export const de = {
     zoomOut: "Verkleinern",
     reset: "Zurücksetzen",
   },
-  Skills: {
-    title: "Meine Fähigkeiten",
-    subtitle: "Technologien und Tools, mit denen ich arbeite",
-    frontend: "Frontend",
-    backend: "Backend",
-    database: "Datenbank",
-    tools: "Tools & DevOps",
-    design: "Design",
-    totalSkills: "Gesamte Fähigkeiten",
-    categories: "Kategorien",
-    average: "Durchschnitt",
-    expert: "Expertenlevel",
-  },
+ Skills: {
+   title: "Meine Fähigkeiten",
+   subtitle: "Technologien und Tools, mit denen ich arbeite",
+   frontend: "Frontend",
+   backend: "Backend",
+   database: "Datenbank",
+   tools: "Tools & DevOps",
+   design: "Design",
+   totalSkills: "Gesamte Fähigkeiten",
+   categories: "Kategorien",
+   average: "Durchschnitt",
+   expert: "Expertenlevel",
+   groups: {
+     frontend: [
+       "React / Next.js",
+       "TypeScript",
+       "JavaScript",
+       "Tailwind CSS",
+       "HTML / CSS",
+     ],
+     backend: ["Node.js", "Express.js"],
+     database: ["MongoDB", "PostgreSQL", "Prisma"],
+     tools: ["Git / GitHub", "Docker", "Vercel / Netlify"],
+     design: ["UI/UX Design", "Figma"],
+   },
+ },
   Services: {
     title: "Dienstleistungen",
     webDev: "Webentwicklung",
@@ -175,6 +297,8 @@ export const de = {
     Github: "Github",
     Linkedin: "Linkedin",
     Twitter: "Twitter",
+    emailValue: "masoud@example.com",
+    locationValue: "Aserbaidschan",
     bottomText: "Masoud Jafari. Alle Rechte vorbehalten."
   },
 
