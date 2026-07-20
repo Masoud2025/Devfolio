@@ -111,7 +111,7 @@ function Skills() {
           {Object.entries(groupedSkills).map(([category, items]) => (
             <div
               key={category}
-              className={`border-l-4 ${getCategoryColor(category)} pl-6 py-4 bg-white/5 dark:bg-white/5 rounded-r-2xl`}
+              className={`border-l-4 ${getCategoryColor(category)} pl-6 py-6 bg-white/5 dark:bg-white/5 rounded-r-2xl backdrop-blur-sm border border-white/10 dark:border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">{getCategoryIcon(category)}</span>
@@ -133,6 +133,7 @@ function Skills() {
                       hover:border-zinc-400 dark:hover:border-zinc-500
                       hover:bg-zinc-50 dark:hover:bg-zinc-800
                       transition-all duration-200
+                      hover:scale-105
                     "
                   >
                     {skill.name}

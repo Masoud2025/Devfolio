@@ -38,7 +38,7 @@ export default function ScrollToTop() {
   return (
     <div
       className={`
-        fixed bottom-20 left-4 md:bottom-8 md:left-8 z-50 transition-all duration-300 ease-out
+        fixed bottom-24 left-4 md:bottom-8 md:left-8 z-50 transition-all duration-300 ease-out
         ${show ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-75 pointer-events-none'}
       `}
     >
@@ -62,7 +62,12 @@ export default function ScrollToTop() {
           className={`
             relative flex items-center justify-center rounded-full
             transition-transform duration-300 group-hover:scale-110
+            bg-white/90 dark:bg-zinc-900/90
+            backdrop-blur-sm
+            border ${isDark ? "border-white/10" : "border-black/5"}
+            shadow-lg
           `}
+          style={{ margin: stroke + 4 }}
         >
           {/* Progress Circle - Outer ring */}
           <svg width={size} height={size} className="rotate-[-90deg]">
@@ -106,14 +111,7 @@ export default function ScrollToTop() {
 
           {/* Inner circle with arrow */}
           <div
-            className={`
-              absolute inset-0 flex items-center justify-center rounded-full
-              ${isDark ? "bg-zinc-900/90" : "bg-white/90"}
-              backdrop-blur-sm border ${isDark ? "border-white/10" : "border-black/5"}
-              shadow-lg
-              transition-all duration-300
-              group-hover:shadow-xl
-            `}
+            className="absolute inset-0 flex items-center justify-center"
             style={{ margin: stroke + 4 }}
           >
             <ArrowUp
@@ -128,13 +126,15 @@ export default function ScrollToTop() {
           </div>
         </div>
 
-        {/* Tooltip on hover (optional) */}
+        {/* Tooltip on hover */}
         <span
           className={`
             absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap
             transition-all duration-300 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100
-            ${isDark ? "bg-zinc-800 text-white" : "bg-white text-zinc-800"}
-            shadow-lg border ${isDark ? "border-white/10" : "border-black/5"}
+            bg-white/90 dark:bg-zinc-900/90
+            text-zinc-800 dark:text-white
+            shadow-lg border border-white/20 dark:border-white/10
+            backdrop-blur-sm
           `}
         >
           Back to top

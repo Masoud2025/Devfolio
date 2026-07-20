@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import LazySection from "./components/ui/LazySection";
 import ScrollToTop from "./components/ui/ScrollToTop";
@@ -32,15 +31,14 @@ const tabComponents: Record<TabName, "Projects" | "Aboutme" | "Blog" | "Skills" 
 };
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabName>("blog");
+  const [activeTab, setActiveTab] = useState<TabName>("home");
 
   return (
-    <main className="min-h-screen overflow-x-hidden md:mr-16 pt-12 md:pt-0 pb-20 md:pb-0">
+    <main className="min-h-screen overflow-x-hidden md:mr-16 pt-12 md:pt-0 pb-28 md:pb-0">
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
       <div className="flex-1">
         <LazySection name={tabComponents[activeTab]} skeleton={sectionSkeleton} />
       </div>
-      <Footer />
       <ScrollToTop />
       <AIChat />
     </main>

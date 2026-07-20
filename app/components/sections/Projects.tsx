@@ -17,6 +17,7 @@ import Image, { StaticImageData } from "next/image";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../../context/LanguageContext";
+import Banner from "@/public/pic/Banner.png"
 
 interface ColorToken {
   name: string;
@@ -140,6 +141,18 @@ function Projects() {
           <div className="absolute bottom-20 left-10 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
         </div>
 
+        {/* Banner Image */}
+        <div className="relative w-full h-48 md:h-64 -mx-6 mb-12 overflow-hidden">
+          <Image
+            src={Banner}
+            alt="Projects Banner"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        </div>
+
         <div
           ref={headerRef}
           className={`mb-16 text-center transition-all duration-700 ${
@@ -158,7 +171,7 @@ function Projects() {
 
         <div
           ref={gridRef}
-          className="grid gap-6 md:grid-cols-3 transition-all duration-700"
+          className="grid gap-8 md:grid-cols-2 transition-all duration-700"
         >
           {filteredProjects.map((project, index) => {
             const isHovered = hoveredId === project.id;
@@ -166,16 +179,16 @@ function Projects() {
               <div
                 key={project.id}
                 className={`
-                  group relative overflow-hidden rounded-3xl 
+                  group relative overflow-hidden rounded-[2rem] 
                   transition-all duration-500 ease-out
-                  hover:scale-[1.03] hover:shadow-2xl hover:shadow-purple-500/10
+                  hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10
                   flex flex-col cursor-pointer
                   bg-white/5 dark:bg-white/5
                   backdrop-blur-xl
                   border border-white/10 dark:border-white/10
                   hover:border-purple-400/30 dark:hover:border-purple-400/30
-                  before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
-                  min-h-[440px]
+                  before:absolute before:inset-0 before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
+                  min-h-[560px]
                   ${
                     gridInView
                       ? "opacity-100 translate-y-0"
@@ -183,7 +196,7 @@ function Projects() {
                   }
                 `}
                 style={{
-                  transitionDelay: gridInView ? `${index * 80}ms` : "0ms",
+                  transitionDelay: gridInView ? `${index * 100}ms` : "0ms",
                 }}
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
@@ -191,7 +204,7 @@ function Projects() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100" />
 
-                <div className="relative aspect-[4/3] mt-4 overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex-shrink-0">
+                <div className="relative aspect-[16/10] mt-6 mx-6 overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex-shrink-0 rounded-2xl">
                   <div className="relative w-full h-full overflow-hidden">
                     <div
                       className="absolute top-0 left-0 w-full transition-all duration-[3000ms] ease-in-out"
@@ -217,13 +230,13 @@ function Projects() {
                     </div>
                   </div>
 
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-white text-xs font-mono z-20 border border-white/10">
+                  <div className="absolute top-4 right-4 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-white text-xs font-mono z-20 border border-white/10">
                     #{String(project.id).padStart(2, "0")}
                   </div>
                 </div>
 
-                <div className="p-4 flex flex-col flex-1 relative z-10">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-white dark:group-hover:text-white transition-colors duration-300">
+                <div className="p-6 flex flex-col flex-1 relative z-10">
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-white dark:group-hover:text-white transition-colors duration-300">
                     {project.title}
                   </h3>
 

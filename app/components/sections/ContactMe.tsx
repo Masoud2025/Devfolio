@@ -28,10 +28,10 @@ function ContactMe() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="p-6 border border-black/10 rounded-2xl hover:shadow-lg transition bg-white/5 dark:bg-white/5"
+                className="p-6 border border-black/10 rounded-2xl hover:shadow-lg transition bg-white/5 dark:bg-white/5 backdrop-blur-sm hover:border-purple-400/30 group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-black/5 dark:bg-white/10 rounded-xl">
+                  <div className="p-3 bg-black/5 dark:bg-white/10 rounded-xl group-hover:bg-purple-500/10 transition-colors">
                     <item.icon size={24} />
                   </div>
                   <div>
@@ -43,13 +43,13 @@ function ContactMe() {
             ))}
 
             {/* Social Links */}
-            <div className="p-6 border border-black/10 rounded-2xl bg-white/5 dark:bg-white/5">
+            <div className="p-6 border border-black/10 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-sm">
               <h3 className="font-semibold text-lg mb-4">Follow Me</h3>
               <div className="flex gap-3">
                 {["GitHub", "LinkedIn", "Twitter"].map((label) => (
                   <button
                     key={label}
-                    className="px-4 py-2 border border-black/10 rounded-xl hover:bg-black/5 transition text-sm font-medium"
+                    className="px-4 py-2 border border-black/10 rounded-xl hover:bg-black/5 transition text-sm font-medium hover:border-purple-400/30"
                   >
                     {label}
                   </button>
@@ -60,7 +60,7 @@ function ContactMe() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <form className="space-y-6 bg-white/5 dark:bg-white/5 p-8 md:p-10 rounded-3xl border border-black/10">
+            <form className="space-y-6 bg-white/5 dark:bg-white/5 p-8 md:p-10 rounded-3xl border border-black/10 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-3">
@@ -78,6 +78,7 @@ function ContactMe() {
                       focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white 
                       transition-all duration-300
                       text-lg
+                      bg-white/50 dark:bg-zinc-800/50
                     "
                   />
                 </div>
@@ -98,6 +99,7 @@ function ContactMe() {
                       focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white 
                       transition-all duration-300
                       text-lg
+                      bg-white/50 dark:bg-zinc-800/50
                     "
                   />
                 </div>
@@ -117,6 +119,7 @@ function ContactMe() {
                     focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white 
                     transition-all duration-300
                     text-lg
+                    bg-white/50 dark:bg-zinc-800/50
                   "
                 />
               </div>
@@ -136,6 +139,7 @@ function ContactMe() {
                     transition-all duration-300
                     text-lg
                     resize-none
+                    bg-white/50 dark:bg-zinc-800/50
                   "
                 />
               </div>
@@ -152,6 +156,7 @@ function ContactMe() {
                   hover:scale-[1.02]
                   active:scale-[0.98]
                   text-lg
+                  shadow-lg hover:shadow-xl hover:shadow-black/20
                 "
               >
                 <Send size={20} />

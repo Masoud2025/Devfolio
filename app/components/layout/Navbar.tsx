@@ -24,9 +24,9 @@ interface NavbarProps {
 }
 
 const navTabs: { id: TabName; key: string; icon: typeof Home }[] = [
-  { id: "home", key: "Home", icon: Home },
   { id: "about", key: "About", icon: User },
   { id: "blog", key: "Blog", icon: Briefcase },
+  { id: "home", key: "Home", icon: Home },
   { id: "skills", key: "Skills", icon: Code },
   { id: "contact", key: "contact", icon: Mail },
 ];
@@ -123,8 +123,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           fixed top-0 right-0 h-screen z-[60]
           hidden md:flex flex-col items-center
           w-16 py-4 gap-2
-          border-l ${themeClasses.border}
-          ${themeClasses.sidebarBg}
+          border-l border-white/10 dark:border-white/5
+          bg-white/80 dark:bg-zinc-900/80
+          backdrop-blur-xl
           transition-all duration-300
         `}
       >
@@ -162,8 +163,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
                     ${
                       isActive
-                        ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
-                        : `${themeClasses.textSecondary} ${themeClasses.hoverBg}`
+                        ? "bg-white/20 text-white dark:bg-white/20 dark:text-white shadow-lg shadow-black/10"
+                        : "text-zinc-400 hover:text-white hover:bg-white/10"
                     }
                   `}
                   aria-current={isActive ? "page" : undefined}
@@ -171,7 +172,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
                   {isActive && (
                     <span
-                      className={`absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-l-full ${theme === "dark" ? "bg-white" : "bg-zinc-900"}`}
+                      className={`absolute right-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-l-full bg-gradient-to-b from-purple-500 to-blue-500`}
                     />
                   )}
                 </button>
@@ -201,7 +202,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               className={`
                 w-10 h-10 flex items-center justify-center
                 rounded-xl transition-all duration-200
-                ${themeClasses.hoverBg} ${themeClasses.textSecondary}
+                text-zinc-400 hover:text-white hover:bg-white/10
                 hover:scale-105 active:scale-95
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
               `}
@@ -210,7 +211,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               {theme === "dark" ? (
                 <Sun size={18} className="text-yellow-400" />
               ) : (
-                <Moon size={18} className="text-indigo-500" />
+                <Moon size={18} className="text-indigo-400" />
               )}
             </button>
           </div>
@@ -222,7 +223,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               className={`
                 w-10 h-10 flex items-center justify-center
                 rounded-xl transition-all duration-200
-                ${themeClasses.hoverBg} ${themeClasses.textSecondary}
+                text-zinc-400 hover:text-white hover:bg-white/10
                 hover:scale-105 active:scale-95
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
               `}
@@ -233,44 +234,47 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               <span className="text-sm">{currentLocale.flag}</span>
             </button>
 
-            {isDropdownOpen && (
-              <div
-                className={`
-                  absolute right-full mr-3 bottom-0 w-40
-                  border ${themeClasses.border} ${themeClasses.dropdownBg}
-                  shadow-2xl py-1.5 overflow-hidden z-[70] rounded-xl
-                `}
-                role="menu"
-              >
-                {locales.map((loc) => {
-                  const isActive = locale === loc.code;
-                  return (
-                    <button
-                      key={loc.code}
-                      onClick={() => handleLocaleChange(loc.code)}
-                      className={`
-                        w-full flex items-center gap-2.5 px-3 py-2 text-sm
-                        transition-all duration-150
-                        ${
-                          isActive
-                            ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
-                            : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary}`
-                        }
-                      `}
-                      role="menuitem"
-                    >
-                      <span>{loc.flag}</span>
-                      <span>{loc.label}</span>
-                      {isActive && (
-                        <span className={`ml-auto ${themeClasses.textPrimary} text-xs`}>
-                          ✓
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+              {isDropdownOpen && (
+                <div
+                  className={`
+                    absolute right-full mr-3 bottom-0 w-40
+                    border border-white/10 dark:border-white/5
+                    bg-white/90 dark:bg-zinc-900/90
+                    backdrop-blur-xl
+                    shadow-2xl shadow-black/20 dark:shadow-black/40
+                    py-1.5 overflow-hidden z-[70] rounded-xl
+                  `}
+                  role="menu"
+                >
+                  {locales.map((loc) => {
+                    const isActive = locale === loc.code;
+                    return (
+                      <button
+                        key={loc.code}
+                        onClick={() => handleLocaleChange(loc.code)}
+                        className={`
+                          w-full flex items-center gap-2.5 px-3 py-2 text-sm
+                          transition-all duration-150
+                          ${
+                            isActive
+                              ? "text-white bg-white/15"
+                              : "text-zinc-400 hover:text-white hover:bg-white/10"
+                          }
+                        `}
+                        role="menuitem"
+                      >
+                        <span>{loc.flag}</span>
+                        <span>{loc.label}</span>
+                        {isActive && (
+                          <span className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}>
+                            ✓
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
           </div>
         </div>
       </aside>
@@ -281,10 +285,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           fixed top-0 left-0 right-0 z-[60]
           md:hidden flex items-center justify-between
           px-4 py-2.5
-          border-b ${themeClasses.border}
-          ${themeClasses.sidebarBg}
+          border-b border-white/10 dark:border-white/5
+          bg-white/80 dark:bg-zinc-900/80
+          backdrop-blur-xl
           transition-all duration-300
-          ${theme === "dark" ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : "shadow-[0_4px_20px_rgba(0,0,0,0.05)]"}
+          shadow-lg shadow-black/10 dark:shadow-black/20
         `}
       >
         <div className="flex items-center gap-2">
@@ -337,83 +342,108 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               <span className="text-base">{currentLocale.flag}</span>
             </button>
 
-             {isDropdownOpen && (
-               <div
-                 className={`
-                   absolute right-0 mt-2 w-40
-                   border ${themeClasses.border} ${themeClasses.dropdownBg}
-                   shadow-2xl py-1.5 overflow-hidden z-[70] rounded-xl
-                 `}
-                 role="menu"
-               >
-                {locales.map((loc) => {
-                  const isActive = locale === loc.code;
-                  return (
-                    <button
-                      key={loc.code}
-                      onClick={() => handleLocaleChange(loc.code)}
-                      className={`
-                        w-full flex items-center gap-2.5 px-3 py-2 text-sm
-                        transition-all duration-150
-                        ${
-                          isActive
-                            ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
-                            : `${themeClasses.textSecondary} hover:${themeClasses.textPrimary}`
-                        }
-                      `}
-                      role="menuitem"
-                    >
-                      <span>{loc.flag}</span>
-                      <span>{loc.label}</span>
-                      {isActive && (
-                        <span className={`ml-auto ${themeClasses.textPrimary} text-xs`}>
-                          ✓
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+              {isDropdownOpen && (
+                <div
+                  className={`
+                    absolute right-0 mt-2 w-40
+                    border border-white/10 dark:border-white/5
+                    bg-white/90 dark:bg-zinc-900/90
+                    backdrop-blur-xl
+                    shadow-2xl shadow-black/20 dark:shadow-black/40
+                    py-1.5 overflow-hidden z-[70] rounded-xl
+                  `}
+                  role="menu"
+                >
+                  {locales.map((loc) => {
+                    const isActive = locale === loc.code;
+                    return (
+                      <button
+                        key={loc.code}
+                        onClick={() => handleLocaleChange(loc.code)}
+                        className={`
+                          w-full flex items-center gap-2.5 px-3 py-2 text-sm
+                          transition-all duration-150
+                          ${
+                            isActive
+                              ? "text-white bg-white/15"
+                              : "text-zinc-400 hover:text-white hover:bg-white/10"
+                          }
+                        `}
+                        role="menuitem"
+                      >
+                        <span>{loc.flag}</span>
+                        <span>{loc.label}</span>
+                        {isActive && (
+                          <span className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}>
+                            ✓
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
           </div>
         </div>
       </div>
 
-      {/* Mobile Bottom Bar - Bigger */}
+      {/* Mobile Bottom Bar - Liquid Glass */}
       <nav
         className={`
-          fixed bottom-0 left-0 right-0 z-[60]
-          md:hidden flex items-center justify-around
-          px-2 py-3
-          border-t ${themeClasses.border}
-          ${themeClasses.sidebarBg}
+          fixed bottom-4 left-4 right-4 z-[60]
+          md:hidden
+          px-4 py-4
+          border border-white/20
+          bg-white/10 dark:bg-black/20
+          backdrop-blur-2xl
+          rounded-[2rem]
           transition-all duration-300
-          ${theme === "dark" ? "shadow-[0_-4px_20px_rgba(0,0,0,0.3)]" : "shadow-[0_-4px_20px_rgba(0,0,0,0.05)]"}
+          shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.1)]
+          dark:shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.2)]
         `}
       >
-        {navTabs.map((tab) => {
-          const isActive = activeTab === tab.id;
-          const Icon = tab.icon;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => handleTabClick(tab.id)}
-              className={`
-                flex flex-col items-center justify-center gap-1
-                w-16 h-16 rounded-2xl transition-all duration-200
-                ${
-                  isActive
-                    ? `${themeClasses.textPrimary} ${themeClasses.activeBg}`
-                    : `${themeClasses.textSecondary}`
-                }
-              `}
-              aria-current={isActive ? "page" : undefined}
-            >
-              <Icon size={26} strokeWidth={isActive ? 2.5 : 2} />
-              <span className="text-xs font-medium">{getLabel(tab.key)}</span>
-            </button>
-          );
-        })}
+        <div className="flex items-center justify-around">
+          {navTabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabClick(tab.id)}
+                className={`
+                  relative flex flex-col items-center justify-center gap-1
+                  transition-all duration-300 ease-out
+                  ${
+                    isActive
+                      ? "scale-110"
+                      : "scale-90 opacity-60"
+                  }
+                `}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <div
+                  className={`
+                    flex flex-col items-center justify-center gap-0.5
+                    w-14 h-14 rounded-2xl transition-all duration-300
+                    ${
+                      isActive
+                        ? "bg-white/90 dark:bg-white/90 text-black shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_2px_4px_rgba(255,255,255,0.8),inset_0_-2px_4px_rgba(0,0,0,0.1)]"
+                        : "text-zinc-400 hover:text-white shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"
+                    }
+                  `}
+                >
+                  {isActive && (
+                    <span className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
+                  )}
+                  <Icon size={22} strokeWidth={isActive ? 3 : 2} />
+                  <span className={`font-semibold text-[10px]`}>
+                    {getLabel(tab.key)}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </nav>
 
       {/* Mobile overlay */}
