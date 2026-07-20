@@ -411,7 +411,7 @@ function AIChat() {
               return "The E-commerce Platform was built with Next.js and includes: product catalog with search/filter, shopping cart with local storage, Stripe payment integration, admin dashboard for inventory management, and responsive design. It demonstrates Masoud's ability to build production-ready applications with real payment processing.";
             }
             if (projType.includes("portfolio") || projType.includes("this")) {
-              return "This portfolio showcases Masoud's skills in Next.js, Tailwind CSS, and modern React patterns. It features lazy loading, smooth animations, dark/light theme, multi-language support (English, Persian, German), and an AI chat assistant. Built with performance and user experience in mind.";
+              return "This portfolio showcases Masoud's skills in Next.js, Tailwind CSS, and modern React patterns. It features lazy loading, smooth animations, dark/light theme, multi-language support (English, Persian, Spanish, Portuguese, Japanese, Chinese, Swedish, Norwegian, Russian, Ukrainian, and German), and an AI chat assistant. Built with performance and user experience in mind.";
             }
             if (projType.includes("task") || projType.includes("api")) {
               return "The Task Manager API is a Node.js/Express REST API with JWT authentication, CRUD operations for tasks, user management, real-time updates via WebSockets, PostgreSQL database with Prisma ORM, and comprehensive error handling. It demonstrates backend architecture skills.";

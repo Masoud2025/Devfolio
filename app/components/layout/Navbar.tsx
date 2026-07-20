@@ -32,6 +32,14 @@ const locales = [
   { code: "en", label: "English", flag: "🇬🇧" },
   { code: "fa", label: "فارسی", flag: "🇮🇷" },
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "pt-BR", label: "Português (BR)", flag: "🇧🇷" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
+  { code: "zh", label: "中文", flag: "🇨🇳" },
+  { code: "sv", label: "Svenska", flag: "🇸🇪" },
+  { code: "no", label: "Norsk", flag: "🇳🇴" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "uk", label: "Українська", flag: "🇺🇦" },
 ] as const;
 
 type Locale = (typeof locales)[number]["code"];
