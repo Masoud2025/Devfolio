@@ -1,29 +1,25 @@
 @import "tailwindcss";
-html,
-body {
-  overflow-x: hidden;
-    font-size: clamp(14px, 1vw, 16px);
 
-  /* font-family: "Morabba"; */
-}
-::selection {
-  background: #000;
-  color: #fff;
-}
-
-::-moz-selection {
-  background: #000;
-  color: #fff;
-}
-html[lang="fa"] {
+@font-face {
   font-family: "Morabba";
-  text-align: right;
+  src: url("/fonts/Morabba/ttf/Morabba-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
-
-html[lang="en"] {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: left;
-
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/ttf/Morabba-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/ttf/Morabba-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Morabba";
@@ -31,6 +27,27 @@ html[lang="en"] {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/ttf/Morabba-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Morabba";
+  src: url("/fonts/Morabba/ttf/Morabba-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  font-size: clamp(14px, 1vw, 16px);
+  font-family: "Morabba", Verdana, Geneva, Tahoma, sans-serif;
 }
 /* Theme */
 
