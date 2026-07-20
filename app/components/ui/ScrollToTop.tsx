@@ -38,7 +38,7 @@ export default function ScrollToTop() {
   return (
     <div
       className={`
-        fixed bottom-8 left-8 z-50 transition-all duration-300 ease-out
+        fixed bottom-20 left-4 md:bottom-8 md:left-8 z-50 transition-all duration-300 ease-out
         ${show ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-75 pointer-events-none'}
       `}
     >

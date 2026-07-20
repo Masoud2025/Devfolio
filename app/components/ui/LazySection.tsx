@@ -5,7 +5,8 @@ import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
 type SectionName =
-  | "FeaturedProjects"
+  | "Projects"
+  | "Blog"
   | "Experince"
   | "Education"
   | "Skills"
@@ -15,7 +16,8 @@ type SectionName =
   | "ContactMe";
 
 const loaders: Record<SectionName, () => Promise<{ default: ComponentType }>> = {
-  FeaturedProjects: () => import("../sections/FeaturedProjects"),
+  Projects: () => import("../sections/Projects"),
+  Blog: () => import("../sections/Blog"),
   Experince: () => import("../sections/Experince"),
   Education: () => import("../sections/Education"),
   Skills: () => import("../sections/Skills"),

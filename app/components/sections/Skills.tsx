@@ -12,26 +12,27 @@ function Skills() {
 
   const skills: Skill[] = useMemo(
     () => [
-      // Frontend
       { name: "React / Next.js", category: "frontend" },
       { name: "TypeScript", category: "frontend" },
       { name: "JavaScript", category: "frontend" },
       { name: "Tailwind CSS", category: "frontend" },
       { name: "HTML / CSS", category: "frontend" },
-      // Backend
+      { name: "Redux / Zustand", category: "frontend" },
       { name: "Node.js", category: "backend" },
       { name: "Express.js", category: "backend" },
-      // Database
+      { name: "GraphQL", category: "backend" },
+      { name: "REST APIs", category: "backend" },
       { name: "MongoDB", category: "database" },
       { name: "PostgreSQL", category: "database" },
       { name: "Prisma", category: "database" },
-      // Tools
+      { name: "Redis", category: "database" },
       { name: "Git / GitHub", category: "tools" },
       { name: "Docker", category: "tools" },
       { name: "Vercel / Netlify", category: "tools" },
-      // Design
+      { name: "CI/CD", category: "tools" },
       { name: "UI/UX Design", category: "design" },
       { name: "Figma", category: "design" },
+      { name: "Responsive Design", category: "design" },
     ],
     []
   );
@@ -58,6 +59,17 @@ function Skills() {
     }
   };
 
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "frontend": return "🎨";
+      case "backend": return "⚙️";
+      case "database": return "🗄️";
+      case "tools": return "🛠️";
+      case "design": return "✨";
+      default: return "📌";
+    }
+  };
+
   const groupedSkills = useMemo(
     () =>
       skills.reduce((acc, skill) => {
@@ -68,33 +80,54 @@ function Skills() {
     [skills]
   );
 
-  return (
-    <section id="skills" className="w-full py-8 px-4 scroll-mt-28">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <h2 className="text-xl md:text-2xl font-bold text-center text-black dark:text-white mb-6">
-          {t.Skills?.title || "Skills"}
-        </h2>
+  const totalSkills = skills.length;
+  const categories = Object.keys(groupedSkills).length;
 
-        {/* Skills Grid - دسته‌بندی شده */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+  return (
+    <section id="skills" className="w-full py-24 px-6 md:px-20 scroll-mt-28">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-black">
+            {t.Skills?.title || "Skills"}
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground text-lg">
+            {t.Skills?.subtitle || "Technologies and tools I work with"}
+          </p>
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <div className="px-6 py-3 bg-white/5 dark:bg-white/5 rounded-full border border-white/10">
+              <span className="text-2xl font-bold">{totalSkills}</span>
+              <span className="text-sm text-muted-foreground ml-2">{t.Skills?.totalSkills || "Total Skills"}</span>
+            </div>
+            <div className="px-6 py-3 bg-white/5 dark:bg-white/5 rounded-full border border-white/10">
+              <span className="text-2xl font-bold">{categories}</span>
+              <span className="text-sm text-muted-foreground ml-2">{t.Skills?.categories || "Categories"}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(groupedSkills).map(([category, items]) => (
             <div
               key={category}
-              className={`border-l-4 ${getCategoryColor(category)} pl-3`}
+              className={`border-l-4 ${getCategoryColor(category)} pl-6 py-4 bg-white/5 dark:bg-white/5 rounded-r-2xl`}
             >
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
-                {getCategoryLabel(category)}
-              </h4>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl">{getCategoryIcon(category)}</span>
+                <h4 className="text-lg font-bold uppercase tracking-wider">
+                  {getCategoryLabel(category)}
+                </h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
                 {items.map((skill) => (
                   <span
                     key={skill.name}
                     className="
-                      px-2.5 py-1
-                      text-xs
+                      px-4 py-2
+                      text-sm font-medium
                       border border-zinc-200 dark:border-zinc-700
-                      rounded-full
+                      rounded-xl
                       bg-white dark:bg-zinc-900/50
                       text-black dark:text-white
                       hover:border-zinc-400 dark:hover:border-zinc-500

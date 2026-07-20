@@ -24,7 +24,7 @@ export default function Footer() {
             <ul className="space-y-2 ">
               <li className="hover:text-black cursor-pointer">{t.Footer.Home}</li>
               <li className="hover:text-black cursor-pointer">{t.Footer.About}</li>
-              <li className="hover:text-black cursor-pointer">{t.Footer.Project}</li>
+              <li className="hover:text-black cursor-pointer">{t.Footer.Blog}</li>
               <li className="hover:text-black cursor-pointer">{t.Footer.Contact}</li>
             </ul>
           </div>
