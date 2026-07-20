@@ -337,5 +337,20 @@ Services: {
   Linkedin:"Linkedin",
   Twitter:"Twitter",
   bottomText:" Masoud Jafari. All rights reserved."
-},
+  },
+  blogSection: {
+    title: "Blog",
+    subtitle: "Thoughts, tutorials, and insights about web development",
+    featured: "Featured Post",
+    readMore: "Read More",
+    searchPlaceholder: "Search articles...",
+    noPosts: "No articles found",
+    categories: ["All", "Technology", "Tutorial", "Design", "Career"],
+  },
+  blogPosts: [
+    { id: 1, title: "Building Modern UIs with Next.js and Tailwind CSS", excerpt: "Explore how Next.js and Tailwind CSS work together to create stunning, performant user interfaces.", date: "Dec 15, 2024", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "Mastering TypeScript: Advanced Patterns", excerpt: "Deep dive into TypeScript advanced types, generics, and patterns that will level up your development.", date: "Nov 28, 2024", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "The Future of Web Animations", excerpt: "Discover the latest trends in web animations and how to create delightful user experiences.", date: "Oct 10, 2024", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "From Junior to Senior Developer", excerpt: "My journey and lessons learned from progressing from a junior to a senior developer.", date: "Sep 5, 2024", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };

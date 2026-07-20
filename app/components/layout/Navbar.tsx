@@ -2,15 +2,7 @@
 
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useTheme } from "@/app/context/ThemeContext";
-import {
-  Briefcase,
-  Code,
-  Home,
-  Mail,
-  Moon,
-  Sun,
-  User,
-} from "lucide-react";
+import { Briefcase, Code, Home, Mail, Moon, Sun, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 type TabName = "home" | "about" | "blog" | "skills" | "contact";
@@ -239,7 +231,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                       <span>{loc.flag}</span>
                       <span>{loc.label}</span>
                       {isActive && (
-                        <span className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}>
+                        <span
+                          className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}
+                        >
                           ✓
                         </span>
                       )}
@@ -276,7 +270,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           >
             <source src="/videos/programmernobg.webm" type="video/mp4" />
           </video>
-          <span className={`text-base font-bold ${isDark ? "text-white" : "text-zinc-900"}`}>
+          <span
+            className={`text-base font-bold ${isDark ? "text-white" : "text-zinc-900"}`}
+          >
             Masoud
           </span>
         </div>
@@ -345,7 +341,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                       <span>{loc.flag}</span>
                       <span>{loc.label}</span>
                       {isActive && (
-                        <span className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}>
+                        <span
+                          className={`ml-auto text-xs bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent font-bold`}
+                        >
                           ✓
                         </span>
                       )}
@@ -364,13 +362,13 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           fixed bottom-4 left-4 right-4 z-[60]
           md:hidden
           flex items-center justify-around
-          px-3 py-3
-          bg-black/80 dark:bg-white/20
+          h-16
+          bg-white/70 dark:bg-zinc-900/70
           backdrop-blur-2xl
-          rounded-[2rem]
+          rounded-full
           transition-all duration-300
-          shadow-[0_8px_32px_rgba(0,0,0,0.4),0_1px_rgba(255,255,255,0.5)_inset,0_8px_32px_rgba(0,0,0,0.3)_inset]
-          dark:shadow-[0_8px_32px_rgba(0,0,0,0.4),0_1px_rgba(255,255,255,0.4)_inset,0_8px_32px_rgba(0,0,0,0.3)_inset]
+          shadow-[0_8px_32px_rgba(0,0,0,0.12),0_1px_rgba(255,255,255,0.6)_inset]
+          dark:shadow-[0_8px_32px_rgba(0,0,0,0.3),0_1px_rgba(255,255,255,0.1)_inset]
         `}
       >
         {navTabs.map((tab) => {
@@ -381,21 +379,23 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
               className={`
-                relative flex flex-col items-center justify-center gap-1
-                w-14 h-14 rounded-2xl transition-all duration-300 ease-out
+                relative flex flex-col items-center justify-center gap-0.5
+                flex-1 h-full rounded-full transition-all duration-300 ease-out
                 ${
                   isActive
-                    ? "bg-black text-white dark:bg-white dark:text-black shadow-[0_-1px_rgba(255,255,255,0.3)_inset,0_4px_12px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)_inset] scale-110"
-                    : "bg-black/70 text-white dark:bg-white/80 dark:text-black shadow-[0_-1px_rgba(255,255,255,0.1)_inset,0_2px_4px_rgba(0,0,0,0.3)]"
+                    ? "text-black dark:text-white scale-110"
+                    : "text-zinc-500 dark:text-zinc-400"
                 }
               `}
               aria-current={isActive ? "page" : undefined}
             >
               {isActive && (
-                <span className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/30 via-white/10 to-transparent pointer-events-none" />
+                <span className="absolute inset-1 rounded-full bg-white/40 dark:bg-white/10 pointer-events-none" />
               )}
-              <Icon size={24} strokeWidth={isActive ? 3 : 2} />
-              <span className={`font-semibold text-[10px] relative z-10`}>
+              <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+              <span
+                className={`font-semibold text-[10px] whitespace-nowrap relative z-10`}
+              >
                 {getLabel(tab.key)}
               </span>
             </button>

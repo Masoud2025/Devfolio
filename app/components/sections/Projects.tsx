@@ -48,6 +48,8 @@ function Projects() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 6;
 
   const { ref: headerRef, inView: headerInView } = useInView({
     triggerOnce: true,
@@ -72,6 +74,10 @@ function Projects() {
   );
 
   const filteredProjects = projects;
+
+  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / pageSize));
+  const startIndex = (currentPage - 1) * pageSize;
+  const paginatedProjects = filteredProjects.slice(startIndex, startIndex + pageSize);
 
   const labels = t.Blog ?? {
     header: "Featured Work",
@@ -173,7 +179,7 @@ function Projects() {
           ref={gridRef}
           className="grid gap-8 md:grid-cols-2 transition-all duration-700"
         >
-          {filteredProjects.map((project, index) => {
+          {paginatedProjects.map((project, index) => {
             const isHovered = hoveredId === project.id;
             return (
               <div
@@ -271,8 +277,46 @@ function Projects() {
                 />
               </div>
             );
-          })}
+          }          )}
         </div>
+
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-3 mt-12">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
+            >
+              <ChevronLeft size={16} />
+              Prev
+            </button>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                    currentPage === page
+                      ? "bg-white text-black shadow-lg shadow-black/10"
+                      : "bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10"
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
+            >
+              Next
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        )}
 
         {filteredProjects.length === 0 && (
           <div className="mt-20 text-center">

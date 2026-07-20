@@ -328,6 +328,21 @@ export const no = {
     Github: "Github",
     Linkedin: "Linkedin",
     Twitter: "Twitter",
-    bottomText: " Masoud Jafari. Alle rettigheter reservert.",
+    bottomText: " Masoud Jafari. Alle rettigheter reservert."
   },
+  blogSection: {
+    title: "Blogg",
+    subtitle: "Tanker, veiledninger og innsikt om webutvikling",
+    featured: "Fremhevet artikkel",
+    readMore: "Les mer",
+    searchPlaceholder: "Søk artikler...",
+    noPosts: "Ingen artikler funnet",
+    categories: ["Alle", "Teknologi", "Veiledning", "Design", "Karriere"],
+  },
+  blogPosts: [
+    { id: 1, title: "Bygge moderne grensesnitt med Next.js og Tailwind CSS", excerpt: "Utforsk hvordan Next.js og Tailwind CSS samarbeider for å lage fantastiske, høytpresterende brukergrensesnitt.", date: "15. Des, 2024", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "Å mestre TypeScript: Avanserte mønstre", excerpt: "Dyk dypt inn i avanserte TypeScript-typer, generics og mønstre som vil ta utviklingen din til neste nivå.", date: "28. Nov, 2024", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "Fremtiden for webanimasjoner", excerpt: "Oppdag de siste trendene innen webanimasjoner og hvordan du lager vidunderlige brukeropplevelser.", date: "10. Okt, 2024", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "Fra junior til senior-utvikler", excerpt: "Min reise og leksene jeg lærte under fremgangen fra junior til senior-utvikler.", date: "05. Sep, 2024", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };

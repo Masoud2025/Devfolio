@@ -329,8 +329,22 @@ export const de = {
       projects: "Er hat über 10 Projekte gebaut, darunter eine E-Commerce-Plattform, Portfolio-Website, Aufgaben-Manager-API, Mobile App UI-Kit, Echtzeit-Chat-App und Analyse-Dashboard.",
       education: "Masoud hat einen Bachelor-Abschluss in Informatik von der Technischen Universität und ein Full-Stack-Webentwicklung-Online-Bootcamp abgeschlossen.",
       contact: "Sie können Masoud per E-Mail unter masoud@example.com erreichen oder über GitHub und LinkedIn mit ihm verbinden.",
-      about: "Masoud Jafari ist ein leidenschaftlicher Full-Stack-Entwickler, der sich auf die Erstellung schneller, skalierbarer und sauberer Webanwendungen mit modernen Technologien wie React, Next.js, TypeScript und Tailwind CSS konzentriert.",
+    about: "Masoud Jafari ist ein leidenschaftlicher Full-Stack-Entwickler, der sich auf die Erstellung schneller, skalierbarer und sauberer Webanwendungen mit modernen Technologien wie React, Next.js, TypeScript und Tailwind CSS konzentriert.",
     },
   },
-
+  blogSection: {
+    title: "Blog",
+    subtitle: "Gedanken, Tutorials und Einblicke in die Webentwicklung",
+    featured: "Empfohlener Artikel",
+    readMore: "Weiterlesen",
+    searchPlaceholder: "Artikel suchen...",
+    noPosts: "Keine Artikel gefunden",
+    categories: ["Alle", "Technologie", "Tutorial", "Design", "Karriere"],
+  },
+  blogPosts: [
+    { id: 1, title: "Moderne UIs mit Next.js und Tailwind CSS erstellen", excerpt: "Entdecken Sie, wie Next.js und Tailwind CSS zusammenarbeiten, um atemberaubende, leistungsstarke Benutzeroberflächen zu erstellen.", date: "15. Dez. 2024", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "TypeScript beherrschen: Fortgeschrittene Muster", excerpt: "Tiefe Einblicke in fortgeschrittene TypeScript-Typen, Generics und Patterns, die Ihre Entwicklung auf die nächste Stufe heben.", date: "28. Nov. 2024", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "Die Zukunft von Web-Animationen", excerpt: "Entdecken Sie die neuesten Trends in Web-Animationen und wie Sie delightful Benutzererlebnisse schaffen.", date: "10. Okt. 2024", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "Vom Junior- zum Senior-Entwickler", excerpt: "Meine Reise und die Lektionen, die ich auf dem Weg vom Junior- zum Senior-Entwickler gelernt habe.", date: "05. Sep. 2024", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };

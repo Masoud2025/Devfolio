@@ -331,8 +331,21 @@ Services: {
   Twitter:"توییتر",
   emailValue:"masoud@example.com",
   locationValue:"آذربایجان",
-  bottomText:"مسعود جعفری ساخته شده با."
-},
-
-
+    bottomText:"مسعود جعفری ساخته شده با."
+  },
+  blogSection: {
+    title: "وبلاگ",
+    subtitle: "افکار، آموزش‌ها و بینش‌هایی در مورد توسعه وب",
+    featured: "مقاله ویژه",
+    readMore: "ادامه مطلب",
+    searchPlaceholder: "جستجوی مقالات...",
+    noPosts: "مقاله‌ای یافت نشد",
+    categories: ["همه", "تکنولوژی", "آموزشی", "طراحی", "مسیر شغلی"],
+  },
+  blogPosts: [
+    { id: 1, title: "ساخت رابط‌های کاربری مدرن با Next.js و Tailwind CSS", excerpt: "کشف کنید که Next.js و Tailwind CSS چگونه با هم همکاری می‌کنند تا رابط‌های کاربری خیره‌کننده و با عملکرد بالا ایجاد کنند.", date: "۱۵ دسامبر ۲۰۲۴", category: "technology", readTime: 5, author: "مسعود جعفری" },
+    { id: 2, title: "تسلط بر TypeScript: الگوهای پیشرفته", excerpt: "نگاهی عمیق به انواع پیشرفته، جنریک‌ها و الگوهای TypeScript که توسعه شما را ارتقا خواهند داد.", date: "۲۸ نوامبر ۲۰۲۴", category: "tutorial", readTime: 8, author: "مسعود جعفری" },
+    { id: 3, title: "آینده انیمیشن‌های وب", excerpt: "آخرین روندهای انیمیشن‌های وب را کشف کنید و چگونه تجربه‌های کاربری لذت‌بخش ایجاد کنید.", date: "۱۰ اکتبر ۲۰۲۴", category: "design", readTime: 4, author: "مسعود جعفری" },
+    { id: 4, title: "از توسعه‌دهنده júnior به senior", excerpt: "سفر من و درس‌های Learned از پیشرفت از یک توسعه‌دهنده júnior به senior.", date: "۵ سپتامبر ۲۰۲۴", category: "career", readTime: 6, author: "مسعود جعفری" },
+  ],
 };

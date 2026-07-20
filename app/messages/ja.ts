@@ -330,6 +330,21 @@ export const ja = {
     Github: "Github",
     Linkedin: "Linkedin",
     Twitter: "Twitter",
-    bottomText: " Masoud Jafari. All rights reserved.",
+    bottomText: " Masoud Jafari. All rights reserved."
   },
+  blogSection: {
+    title: "ブログ",
+    subtitle: "Web開発に関する考え方、チュートリアル、洞察",
+    featured: "注目の記事",
+    readMore: "続きを読む",
+    searchPlaceholder: "記事を検索...",
+    noPosts: "記事が見つかりません",
+    categories: ["すべて", "テクノロジー", "チュートリアル", "デザイン", "キャリア"],
+  },
+  blogPosts: [
+    { id: 1, title: "Next.jsとTailwind CSSでモダンなUIを構築", excerpt: "Next.jsとTailwind CSSがどのように連携して、驚くべきパフォーマンスの高いユーザーインターフェースを作成するかを探ります。", date: "2024年12月15日", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "TypeScriptをマスター：高度なパターン", excerpt: "TypeScriptの高度な型、ジェネリック、パターンを深く掘り下げ、開発を次のレベルに引き上げます。", date: "2024年11月28日", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "Webアニメーションの未来", excerpt: "Webアニメーションの最新トレンドを発見し、楽しいユーザー体験を作成する方法を学びます。", date: "2024年10月10日", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "ジュニアからシニア開発者へ", excerpt: "ジュニアからシニア開発者への成長過程での私の旅と学んだ教訓。", date: "2024年9月5日", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };

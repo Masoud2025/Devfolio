@@ -325,6 +325,21 @@ export const zh = {
     Github: "Github",
     Linkedin: "Linkedin",
     Twitter: "Twitter",
-    bottomText: " Masoud Jafari. 保留所有权利。",
+    bottomText: " Masoud Jafari. 保留所有权利。"
   },
+  blogSection: {
+    title: "博客",
+    subtitle: "关于Web开发的思考、教程和见解",
+    featured: "精选文章",
+    readMore: "阅读更多",
+    searchPlaceholder: "搜索文章...",
+    noPosts: "未找到文章",
+    categories: ["全部", "技术", "教程", "设计", "职业发展"],
+  },
+  blogPosts: [
+    { id: 1, title: "使用Next.js和Tailwind CSS构建现代UI", excerpt: "探索Next.js和Tailwind CSS如何协同工作，创建令人惊叹的高性能用户界面。", date: "2024年12月15日", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "掌握TypeScript：高级模式", excerpt: "深入了解TypeScript的高级类型、泛型和模式，将您的开发提升到新的水平。", date: "2024年11月28日", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "Web动画的未来", excerpt: "发现Web动画的最新趋势，以及如何创建令人愉悦的用户体验。", date: "2024年10月10日", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "从初级到高级开发者的成长之路", excerpt: "我从初级开发者成长到高级开发者的旅程和学到的经验教训。", date: "2024年9月5日", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };

@@ -328,6 +328,21 @@ export const ru = {
     Github: "Github",
     Linkedin: "Linkedin",
     Twitter: "Twitter",
-    bottomText: " Masoud Jafari. Все права защищены.",
+    bottomText: " Masoud Jafari. Все права защищены."
   },
+  blogSection: {
+    title: "Блог",
+    subtitle: "Мысли, руководства и идеи о веб-разработке",
+    featured: "Избранная статья",
+    readMore: "Читать далее",
+    searchPlaceholder: "Поиск статей...",
+    noPosts: "Статьи не найдены",
+    categories: ["Все", "Технологии", "Руководство", "Дизайн", "Карьера"],
+  },
+  blogPosts: [
+    { id: 1, title: "Создание современных UI с Next.js и Tailwind CSS", excerpt: "Узнайте, как Next.js и Tailwind CSS работают вместе для создания потрясающих высокопроизводительных пользовательских интерфейсов.", date: "15 дек. 2024", category: "technology", readTime: 5, author: "Masoud Jafari" },
+    { id: 2, title: "Освоение TypeScript: Продвинутые паттерны", excerpt: "Глубокое погружение в продвинутые типы, дженерики и паттерны TypeScript, которые поднимут вашу разработку на новый уровень.", date: "28 нояб. 2024", category: "tutorial", readTime: 8, author: "Masoud Jafari" },
+    { id: 3, title: "Будущее веб-анимаций", excerpt: "Откройте для себя последние тренды веб-анимаций и узнайте, как создавать восхитительный пользовательский опыт.", date: "10 окт. 2024", category: "design", readTime: 4, author: "Masoud Jafari" },
+    { id: 4, title: "От джуниора до сеньор-разработчика", excerpt: "Мой путь и уроки, усвоенные на пути от джуниора до сеньор-разработчика.", date: "05 сен. 2024", category: "career", readTime: 6, author: "Masoud Jafari" },
+  ],
 };
