@@ -194,7 +194,7 @@ function Projects() {
                   border border-white/10 dark:border-white/10
                   hover:border-purple-400/30 dark:hover:border-purple-400/30
                   before:absolute before:inset-0 before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
-                  min-h-[560px]
+                  min-h-[320px] md:min-h-[560px]
                   ${
                     gridInView
                       ? "opacity-100 translate-y-0"
@@ -210,7 +210,7 @@ function Projects() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100" />
 
-                <div className="relative aspect-[16/10] mt-6 mx-6 overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex-shrink-0 rounded-2xl">
+                <div className="relative aspect-[16/10] mt-4 sm:mt-6 mx-4 sm:mx-6 overflow-hidden bg-gradient-to-br from-white/10 to-white/5 flex-shrink-0 rounded-2xl">
                   <div className="relative w-full h-full overflow-hidden">
                     <div
                       className="absolute top-0 left-0 w-full transition-all duration-[3000ms] ease-in-out"
@@ -285,13 +285,13 @@ function Projects() {
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm md:text-sm font-medium"
             >
               <ChevronLeft size={16} />
               Prev
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 md:gap-2">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
@@ -310,7 +310,7 @@ function Projects() {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm md:text-sm font-medium"
             >
               Next
               <ChevronRight size={16} />

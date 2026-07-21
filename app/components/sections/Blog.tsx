@@ -82,34 +82,34 @@ export default function Blog() {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
-        <div className="relative w-full md:w-96">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={labels.searchPlaceholder}
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
-          />
-        </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
+          <div className="relative w-full md:w-96">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={labels.searchPlaceholder}
+              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
+            />
+          </div>
 
-        <div className="flex items-center gap-2 flex-wrap justify-center">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeCategory === cat
-                  ? "bg-white text-black shadow-lg shadow-black/10"
-                  : "bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10"
-              }`}
-            >
-              {labels.categories?.[categories.indexOf(cat)] || categoryLabels[cat] || cat}
-            </button>
-          ))}
+          <div className="flex items-center gap-2 flex-wrap justify-center">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
+                  activeCategory === cat
+                    ? "bg-white text-black shadow-lg shadow-black/10"
+                    : "bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10"
+                }`}
+              >
+                {labels.categories?.[categories.indexOf(cat)] || categoryLabels[cat] || cat}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
       {filteredPosts.length === 0 ? (
         <div className="text-center py-20">

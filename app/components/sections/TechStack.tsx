@@ -57,18 +57,18 @@ export default function TechStack() {
   return (
     <section
       id="tech"
-      className="mx-auto max-w-7xl px-1 py-29 md:-mt-40 md:mr-23"
+      className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:-mt-32"
     >
       <div className="text-center">
-        <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500">
+        <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500 dark:text-zinc-400">
           {t.TechStack.Header}
         </span>
 
-        <h2 className="mt-4 text-4xl font-black text-black md:text-5xl">
+        <h2 className="mt-4 text-4xl font-black text-zinc-900 dark:text-white md:text-5xl">
           {t.TechStack.Header1}
         </h2>
 
-        <p className="mx-auto mt-6 max-w-2xl text-zinc-600">
+        <p className="mx-auto mt-6 max-w-2xl text-zinc-600 dark:text-zinc-400">
         {t.TechStack.Subtitle}
         </p>
       </div>

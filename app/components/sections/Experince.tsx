@@ -137,13 +137,14 @@ function Experience() {
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/30 via-blue-500/30 to-transparent -translate-x-1/2" />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/30 via-blue-500/30 to-transparent md:-translate-x-1/2" />
 
           {timelineData.map((item: TimelineItem, index: number) => (
             <div
               key={item.id}
               className={`
-                relative flex flex-col items-start mb-12 last:mb-0
+                relative flex flex-col mb-10 md:mb-12 last:mb-0
+                md:flex-row md:items-center
                 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
                 transition-all duration-700 ease-out
                 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -154,7 +155,7 @@ function Experience() {
               }}
             >
               {/* Timeline Dot */}
-              <div className="absolute left-1/2 top-1 -translate-x-1/2 z-10">
+              <div className="absolute left-5 md:left-1/2 top-1 translate-x-0 md:-translate-x-1/2 z-10">
                 <div className={`
                   w-10 h-10 md:w-12 md:h-12 rounded-full 
                   ${getTypeBg(item.type)}
@@ -171,10 +172,10 @@ function Experience() {
 
               {/* Content */}
               <div className={`
-                w-full md:w-[calc(50%-2.5rem)] 
+                w-full pl-14 md:pl-0
                 ${index % 2 === 0 
-                  ? "md:mr-auto md:pr-8 md:pl-0 pl-8" 
-                  : "md:ml-auto md:pl-8 md:pr-0 pr-8"
+                  ? "md:w-[calc(50%-2.5rem)] md:mr-auto md:pr-8" 
+                  : "md:w-[calc(50%-2.5rem)] md:ml-auto md:pl-8"
                 }
                 ${index % 2 === 0 ? "text-left" : "text-left md:text-right"}
               `}>

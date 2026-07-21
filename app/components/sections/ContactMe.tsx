@@ -49,7 +49,7 @@ function ContactMe() {
                 {["GitHub", "LinkedIn", "Twitter"].map((label) => (
                   <button
                     key={label}
-                    className="px-4 py-2 border border-black/10 rounded-xl hover:bg-black/5 transition text-sm font-medium hover:border-purple-400/30"
+                    className="px-4 py-2.5 md:py-2 border border-black/10 rounded-xl hover:bg-black/5 transition text-sm font-medium hover:border-purple-400/30"
                   >
                     {label}
                   </button>

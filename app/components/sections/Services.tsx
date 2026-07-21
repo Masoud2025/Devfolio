@@ -53,50 +53,50 @@ function Services() {
   ], [t]);
 
   return (
-    <section id="services" className="w-full py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section id="services" className="w-full py-16 md:py-24 px-6 md:px-8">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <h2 className="text-xl md:text-2xl font-bold text-center text-black dark:text-white mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-8 md:mb-12">
           {t.Services?.title || "Services"}
         </h2>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {services.map((service) => (
             <div
               key={service.id}
               className="
-                p-4
+                p-5 md:p-6
                 border border-zinc-200 dark:border-zinc-800
-                rounded-xl
+                rounded-2xl
                 bg-white dark:bg-zinc-900/50
                 hover:border-zinc-400 dark:hover:border-zinc-600
-                hover:shadow-md
+                hover:shadow-lg
                 transition-all duration-300
                 group
               "
             >
               {/* Icon */}
               <div className="
-                w-10 h-10
-                rounded-full
+                w-12 h-12
+                rounded-xl
                 bg-zinc-100 dark:bg-zinc-800
                 flex items-center justify-center
                 text-black dark:text-white
                 group-hover:scale-110
                 transition-all duration-300
-                mb-2
+                mb-4
               ">
                 {service.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-sm font-semibold text-black dark:text-white">
+              <h3 className="text-base font-semibold text-black dark:text-white">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
                 {service.description}
               </p>
             </div>
