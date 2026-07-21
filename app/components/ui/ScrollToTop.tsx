@@ -47,40 +47,41 @@ export default function ScrollToTop() {
         className="group relative focus:outline-none"
         aria-label="Scroll to top"
       >
-        {/* Glow effect behind button */}
+        {/* Glow effect behind button - using theme-aware background with opacity */}
         <div
           className={`
             absolute inset-0 rounded-full blur-xl transition-opacity duration-500
-            ${isDark ? "bg-purple-500/30" : "bg-purple-400/30"}
+            bg-foreground/10
             group-hover:opacity-100 opacity-60
           `}
           style={{ transform: "scale(1.2)" }}
         />
 
-        {/* Main button container */}
+        {/* Main button container - fully dynamic theming */}
         <div
           className={`
             relative flex items-center justify-center rounded-full
             transition-transform duration-300 group-hover:scale-110
-            bg-white/90 dark:bg-zinc-900/90
+            bg-background/90
             backdrop-blur-sm
-            border ${isDark ? "border-white/10" : "border-black/5"}
+            border border-border/10
             shadow-lg
           `}
           style={{ margin: stroke + 4 }}
         >
           {/* Progress Circle - Outer ring */}
           <svg width={size} height={size} className="rotate-[-90deg]">
-            {/* Background circle */}
+            {/* Background circle - uses border color with low opacity */}
             <circle
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}
+              stroke="var(--border)"
+              strokeOpacity={0.15}
               strokeWidth={stroke}
               fill="none"
             />
-            {/* Progress circle with gradient */}
+            {/* Progress circle with gradient (static design accent) */}
             <circle
               cx={size / 2}
               cy={size / 2}
@@ -93,7 +94,7 @@ export default function ScrollToTop() {
               strokeLinecap="round"
               className="transition-[stroke-dashoffset] duration-200 ease-out"
             />
-            {/* Gradient definition */}
+            {/* Gradient definition - using accent colors (purple-pink-blue) */}
             <defs>
               <linearGradient
                 id="scrollGradient"
@@ -109,7 +110,7 @@ export default function ScrollToTop() {
             </defs>
           </svg>
 
-          {/* Inner circle with arrow */}
+          {/* Inner circle with arrow - dynamic text color */}
           <div
             className="absolute inset-0 flex items-center justify-center"
             style={{ margin: stroke + 4 }}
@@ -118,7 +119,7 @@ export default function ScrollToTop() {
               size={22}
               className={`
                 transition-all duration-300
-                ${isDark ? "text-white" : "text-zinc-800"}
+                text-foreground
                 group-hover:scale-110 group-hover:-translate-y-0.5
               `}
               strokeWidth={2.5}
@@ -126,14 +127,14 @@ export default function ScrollToTop() {
           </div>
         </div>
 
-        {/* Tooltip on hover */}
+        {/* Tooltip on hover - fully dynamic theming */}
         <span
           className={`
             absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap
             transition-all duration-300 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100
-            bg-white/90 dark:bg-zinc-900/90
-            text-zinc-800 dark:text-white
-            shadow-lg border border-white/20 dark:border-white/10
+            bg-background/90
+            text-foreground
+            shadow-lg border border-border/10
             backdrop-blur-sm
           `}
         >

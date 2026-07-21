@@ -12,6 +12,7 @@ interface NavbarProps {
   onTabChange: (tab: TabName) => void;
 }
 
+// Navigation tabs configuration
 const navTabs: { id: TabName; key: string; icon: typeof Home }[] = [
   { id: "about", key: "About", icon: User },
   { id: "blog", key: "Blog", icon: Briefcase },
@@ -20,6 +21,7 @@ const navTabs: { id: TabName; key: string; icon: typeof Home }[] = [
   { id: "contact", key: "contact", icon: Mail },
 ];
 
+// Supported locales with flags and labels
 const locales = [
   { code: "en", label: "English", flag: "🇬🇧" },
   { code: "fa", label: "فارسی", flag: "🇮🇷" },
@@ -53,6 +55,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
     setIsMobileDropdownOpen(false);
   };
 
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -84,14 +87,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
 
   return (
     <>
-      {/* Desktop Vertical Sidebar - Right Side */}
+      {/* ===== Desktop Vertical Sidebar - Right Side ===== */}
       <aside
         className={`
           fixed top-0 right-0 h-screen z-[60]
           hidden md:flex flex-col items-center
           w-20 py-5 gap-3
-          border-l border-white/10 dark:border-white/5
-          bg-white/80 dark:bg-zinc-900/80
+          border-l border-border/10
+          bg-background/80
           backdrop-blur-xl
           transition-all duration-300
         `}
@@ -104,13 +107,13 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             loop
             playsInline
             preload="metadata"
-            className="w-14 h-14 object-cover rounded-xl border border-white/10"
+            className="w-14 h-14 object-cover rounded-xl border border-border/10"
           >
             <source src="/videos/programmernobg.webm" type="video/mp4" />
           </video>
         </div>
 
-        {/* Nav Links */}
+        {/* Navigation Links */}
         <div className="flex flex-col items-center gap-2 flex-1">
           {navTabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -127,11 +130,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   className={`
                     relative w-12 h-12 flex items-center justify-center
                     rounded-xl transition-all duration-200
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50
                     ${
                       isActive
-                        ? "bg-white/20 text-white dark:bg-white/20 dark:text-white shadow-lg shadow-black/10"
-                        : "text-zinc-400 hover:text-white hover:bg-white/10"
+                        ? "bg-foreground/10 text-foreground shadow-lg shadow-black/10"
+                        : "text-foreground/40 hover:text-foreground hover:bg-foreground/10"
                     }
                   `}
                   aria-current={isActive ? "page" : undefined}
@@ -143,12 +146,13 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                     />
                   )}
                 </button>
+                {/* Tooltip */}
                 {tooltip === getLabel(tab.key) && (
                   <div
                     className={`
                       absolute right-full mr-3 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap
-                      bg-zinc-800 text-white dark:bg-zinc-900 dark:text-white
-                      shadow-lg border border-white/10 dark:border-white/5
+                      bg-background text-foreground
+                      shadow-lg border border-border/10
                       pointer-events-none z-50
                     `}
                   >
@@ -160,17 +164,17 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           })}
         </div>
 
-        {/* Bottom Actions */}
+        {/* Bottom Actions: Theme Toggle + Language Selector */}
         <div className="flex flex-col items-center gap-3 mt-auto">
-          {/* Theme Toggle */}
+          {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
             className={`
               w-12 h-12 flex items-center justify-center
               rounded-xl transition-all duration-200
-              text-zinc-400 hover:text-white hover:bg-white/10
+              text-foreground/40 hover:text-foreground hover:bg-foreground/10
               hover:scale-105 active:scale-95
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50
             `}
             aria-label="Toggle theme"
           >
@@ -181,16 +185,16 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             )}
           </button>
 
-          {/* Language Selector */}
+          {/* Language Selector Dropdown */}
           <div className="relative" ref={desktopDropdownRef}>
             <button
               onClick={() => setIsDesktopDropdownOpen(!isDesktopDropdownOpen)}
               className={`
                 w-12 h-12 flex items-center justify-center
                 rounded-xl transition-all duration-200
-                text-zinc-400 hover:text-white hover:bg-white/10
+                text-foreground/40 hover:text-foreground hover:bg-foreground/10
                 hover:scale-105 active:scale-95
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50
               `}
               aria-label="Select language"
               aria-expanded={isDesktopDropdownOpen}
@@ -203,8 +207,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               <div
                 className={`
                   absolute right-full mr-3 bottom-0 w-44
-                  border border-white/10 dark:border-white/5
-                  bg-white/90 dark:bg-zinc-900/90
+                  border border-border/10
+                  bg-background/90
                   backdrop-blur-xl
                   shadow-2xl shadow-black/20 dark:shadow-black/40
                   py-2 overflow-hidden z-[70] rounded-xl
@@ -222,8 +226,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         transition-all duration-150
                         ${
                           isActive
-                            ? "text-white bg-white/15"
-                            : "text-zinc-400 hover:text-white hover:bg-white/10"
+                            ? "text-foreground bg-foreground/15"
+                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/10"
                         }
                       `}
                       role="menuitem"
@@ -246,14 +250,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
         </div>
       </aside>
 
-      {/* Mobile Top Bar - Theme + Language */}
+      {/* ===== Mobile Top Bar ===== */}
       <div
         className={`
           fixed top-0 left-0 right-0 z-[60]
           md:hidden flex items-center justify-between
           px-4 py-2.5
-          border-b border-white/10 dark:border-white/5
-          bg-white/80 dark:bg-zinc-900/80
+          border-b border-border/10
+          bg-background/80
           backdrop-blur-xl
           transition-all duration-300
           shadow-lg shadow-black/10 dark:shadow-black/20
@@ -266,24 +270,21 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             loop
             playsInline
             preload="metadata"
-            className="w-10 h-10 object-cover rounded-lg border border-white/10"
+            className="w-10 h-10 object-cover rounded-lg border border-border/10"
           >
             <source src="/videos/programmernobg.webm" type="video/mp4" />
           </video>
-          <span
-            className={`text-base font-bold ${isDark ? "text-white" : "text-zinc-900"}`}
-          >
-            Masoud
-          </span>
+          <span className={`text-base font-bold text-foreground`}>Masoud</span>
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Mobile Theme Toggle */}
           <button
             onClick={toggleTheme}
             className={`
               w-9 h-9 flex items-center justify-center
               rounded-xl transition-all duration-200
-              text-zinc-500 hover:text-white hover:bg-white/10
+              text-foreground/40 hover:text-foreground hover:bg-foreground/10
             `}
             aria-label="Toggle theme"
           >
@@ -294,13 +295,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             )}
           </button>
 
+          {/* Mobile Language Selector */}
           <div className="relative" ref={mobileDropdownRef}>
             <button
               onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
               className={`
                 w-9 h-9 flex items-center justify-center
                 rounded-xl transition-all duration-200
-                text-zinc-500 hover:text-white hover:bg-white/10
+                text-foreground/40 hover:text-foreground hover:bg-foreground/10
               `}
               aria-label="Select language"
               aria-expanded={isMobileDropdownOpen}
@@ -313,8 +315,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               <div
                 className={`
                   absolute right-0 mt-2 w-44
-                  border border-white/10 dark:border-white/5
-                  bg-white/90 dark:bg-zinc-900/90
+                  border border-border/10
+                  bg-background/90
                   backdrop-blur-xl
                   shadow-2xl shadow-black/20 dark:shadow-black/40
                   py-2 overflow-hidden z-[70] rounded-xl
@@ -332,8 +334,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         transition-all duration-150
                         ${
                           isActive
-                            ? "text-white bg-white/15"
-                            : "text-zinc-400 hover:text-white hover:bg-white/10"
+                            ? "text-foreground bg-foreground/15"
+                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/10"
                         }
                       `}
                       role="menuitem"
@@ -356,14 +358,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Bottom Dock */}
+      {/* ===== Mobile Bottom Dock ===== */}
       <nav
         className={`
           fixed bottom-4 left-4 right-4 z-[60]
           md:hidden
           flex items-center justify-around
           h-16
-          bg-white/70 dark:bg-zinc-900/70
+          bg-background/70
           backdrop-blur-2xl
           rounded-full
           transition-all duration-300
@@ -383,14 +385,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                 flex-1 h-full rounded-full transition-all duration-300 ease-out
                 ${
                   isActive
-                    ? "text-black dark:text-white scale-110"
-                    : "text-zinc-500 dark:text-zinc-400"
+                    ? "text-foreground scale-110"
+                    : "text-foreground/40"
                 }
               `}
               aria-current={isActive ? "page" : undefined}
             >
               {isActive && (
-                <span className="absolute inset-1 rounded-full bg-white/40 dark:bg-white/10 pointer-events-none" />
+                <span className="absolute inset-1 rounded-full bg-foreground/10 pointer-events-none" />
               )}
               <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
               <span
