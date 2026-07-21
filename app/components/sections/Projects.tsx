@@ -142,7 +142,7 @@ function Projects() {
     <>
       <section
         id="projects"
-        className="mx-auto max-w-7xl px-6 py-32 scroll-mt-28 relative overflow-hidden mt-4"
+        className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-32 scroll-mt-28 relative overflow-hidden mt-4"
       >
         {/* Decorative background blobs */}
         <div className="absolute inset-0 -z-10">
@@ -150,8 +150,8 @@ function Projects() {
           <div className="absolute bottom-20 left-10 w-80 h-80 bg-foreground/5 rounded-full blur-3xl" />
         </div>
 
-        {/* Banner Image */}
-        <div className="relative w-full h-48 md:h-64 -mx-6 mb-12 overflow-hidden">
+        {/* Banner Image - Fully responsive */}
+        <div className="relative w-full h-40 sm:h-48 md:h-64 mb-8 sm:mb-12 overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl">
           <Image
             src={Banner}
             alt="Projects Banner"
@@ -165,16 +165,16 @@ function Projects() {
         {/* Header */}
         <div
           ref={headerRef}
-          className={`mb-16 text-center transition-all duration-700 ${
+          className={`mb-12 sm:mb-16 text-center transition-all duration-700 ${
             headerInView
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="mt-4 text-6xl font-black md:text-6xl text-foreground">
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-black text-foreground">
             {labels.header}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-muted-foreground text-sm sm:text-base">
             {labels.subtitle}
           </p>
         </div>
@@ -182,7 +182,7 @@ function Projects() {
         {/* Projects Grid */}
         <div
           ref={gridRef}
-          className="grid gap-8 md:grid-cols-2 transition-all duration-700"
+          className="grid gap-6 sm:gap-8 md:grid-cols-2 transition-all duration-700"
         >
           {paginatedProjects.map((project, index) => {
             const isHovered = hoveredId === project.id;
@@ -190,7 +190,7 @@ function Projects() {
               <div
                 key={project.id}
                 className={`
-                  group relative overflow-hidden rounded-[2rem] 
+                  group relative overflow-hidden rounded-2xl sm:rounded-[2rem] 
                   transition-all duration-500 ease-out
                   hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10
                   flex flex-col cursor-pointer
@@ -198,8 +198,8 @@ function Projects() {
                   backdrop-blur-xl
                   border border-border/20
                   hover:border-purple-400/30
-                  before:absolute before:inset-0 before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
-                  min-h-[320px] md:min-h-[560px]
+                  before:absolute before:inset-0 before:rounded-2xl sm:before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
+                  min-h-[280px] sm:min-h-[320px] md:min-h-[560px]
                   ${
                     gridInView
                       ? "opacity-100 translate-y-0"
@@ -217,7 +217,7 @@ function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-r from-foreground/5 to-transparent transition-opacity duration-500 pointer-events-none opacity-0 group-hover:opacity-100" />
 
                 {/* Image container */}
-                <div className="relative aspect-[16/10] mt-4 sm:mt-6 mx-4 sm:mx-6 overflow-hidden bg-card/30 flex-shrink-0 rounded-2xl">
+                <div className="relative aspect-[16/10] mt-3 sm:mt-4 md:mt-6 mx-3 sm:mx-4 md:mx-6 overflow-hidden bg-card/30 flex-shrink-0 rounded-xl sm:rounded-2xl">
                   <div className="relative w-full h-full overflow-hidden">
                     <div
                       className="absolute top-0 left-0 w-full transition-all duration-[3000ms] ease-in-out"
@@ -244,37 +244,39 @@ function Projects() {
                   </div>
 
                   {/* Badge */}
-                  <div className="absolute top-4 right-4 px-4 py-1.5 rounded-full bg-card/60 backdrop-blur-md text-foreground text-xs font-mono z-20 border border-border/20">
+                  <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-card/60 backdrop-blur-md text-foreground text-[10px] sm:text-xs font-mono z-20 border border-border/20">
                     #{String(project.id).padStart(2, "0")}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-1 relative z-10">
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-foreground transition-colors duration-300">
+                <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1 relative z-10">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-foreground transition-colors duration-300 line-clamp-1">
                     {project.title}
                   </h3>
 
-                  <div className="mt-4 relative z-30 flex gap-3">
+                  <div className="mt-3 sm:mt-4 relative z-30 flex gap-2 sm:gap-3">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleOpenDetails(project);
                       }}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold shadow-lg shadow-foreground/25 hover:shadow-xl hover:shadow-foreground/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-foreground text-background text-xs sm:text-sm font-semibold shadow-lg shadow-foreground/25 hover:shadow-xl hover:shadow-foreground/40 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                     >
-                      <Eye size={16} />
-                      {labels.details}
+                      <Eye size={14} className="sm:w-4 sm:h-4" />
+                      <span className="hidden xs:inline">{labels.details}</span>
+                      <span className="xs:hidden">{labels.details}</span>
                     </button>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         window.open("#", "_blank");
                       }}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-border/20 text-foreground bg-card/30 hover:bg-foreground/10 text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
+                      className="flex-1 flex items-center justify-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-border/20 text-foreground bg-card/30 hover:bg-foreground/10 text-xs sm:text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
                     >
-                      <ExternalLink size={16} />
-                      {labels.demo}
+                      <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                      <span className="hidden xs:inline">{labels.demo}</span>
+                      <span className="xs:hidden">{labels.demo}</span>
                     </button>
                   </div>
                 </div>
@@ -292,22 +294,22 @@ function Projects() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-3 mt-12">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-10 sm:mt-12">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2 rounded-xl bg-card/30 border border-border/20 text-foreground hover:bg-foreground/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm md:text-sm font-medium"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-card/30 border border-border/20 text-foreground hover:bg-foreground/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-xs sm:text-sm font-medium"
             >
-              <ChevronLeft size={16} />
-              Prev
+              <ChevronLeft size={14} className="sm:w-4 sm:h-4" />
+              <span className="hidden xs:inline">Prev</span>
             </button>
 
-            <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
                     currentPage === page
                       ? "bg-foreground text-background shadow-lg shadow-foreground/10"
                       : "bg-card/30 text-muted-foreground hover:text-foreground hover:bg-foreground/10 border border-border/20"
@@ -321,10 +323,10 @@ function Projects() {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 md:px-4 md:py-2 rounded-xl bg-card/30 border border-border/20 text-foreground hover:bg-foreground/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-sm md:text-sm font-medium"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-card/30 border border-border/20 text-foreground hover:bg-foreground/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 text-xs sm:text-sm font-medium"
             >
-              Next
-              <ChevronRight size={16} />
+              <span className="hidden xs:inline">Next</span>
+              <ChevronRight size={14} className="sm:w-4 sm:h-4" />
             </button>
           </div>
         )}
@@ -332,10 +334,10 @@ function Projects() {
         {/* Empty state */}
         {filteredProjects.length === 0 && (
           <div className="mt-20 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-card/50 mb-6">
-              <Sparkles size={32} className="text-muted-foreground" />
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-card/50 mb-4 sm:mb-6">
+              <Sparkles size={28} className="sm:w-8 sm:h-8 text-muted-foreground" />
             </div>
-            <p className="text-muted-foreground">{labels.noProjects}</p>
+            <p className="text-muted-foreground text-sm sm:text-base">{labels.noProjects}</p>
           </div>
         )}
       </section>
@@ -358,11 +360,11 @@ function Projects() {
               bg-card/90
               shadow-2xl shadow-black/30
               border border-border/20
-              rounded-t-[2rem] md:rounded-[2rem] overflow-hidden
+              rounded-t-2xl md:rounded-[2rem] overflow-hidden
               flex flex-col
               transition-all duration-500 ease-out
               backdrop-blur-2xl
-              before:absolute before:inset-0 before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:pointer-events-none
+              before:absolute before:inset-0 before:rounded-t-2xl md:before:rounded-[2rem] before:bg-gradient-to-br before:from-purple-500/5 before:to-blue-500/5 before:pointer-events-none
               ${
                 isMounted
                   ? "translate-y-0 md:scale-100 opacity-100"
@@ -371,25 +373,25 @@ function Projects() {
             `}
           >
             {/* Header */}
-            <div className="flex items-center justify-between gap-4 px-6 md:px-8 py-5 border-b border-border/10 bg-card/80 backdrop-blur-xl flex-shrink-0">
+            <div className="flex items-center justify-between gap-4 px-4 sm:px-6 md:px-8 py-4 sm:py-5 border-b border-border/10 bg-card/80 backdrop-blur-xl flex-shrink-0">
               <div className="min-w-0">
-                <h2 className="text-xl md:text-2xl font-bold text-foreground truncate bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground truncate bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                   {selectedProject.title}
                 </h2>
               </div>
               <button
                 onClick={handleCloseDetails}
-                className="p-2.5 rounded-full bg-muted/30 hover:bg-muted/60 transition-all duration-300 hover:scale-110 text-foreground flex-shrink-0"
+                className="p-2 rounded-full bg-muted/30 hover:bg-muted/60 transition-all duration-300 hover:scale-110 text-foreground flex-shrink-0"
                 aria-label="Close details"
               >
-                <X size={20} />
+                <X size={18} className="sm:w-5 sm:h-5" />
               </button>
             </div>
 
             {/* Body */}
             <div className="flex flex-col md:flex-row flex-1 min-h-0">
               {/* Image Slider */}
-              <div className="relative w-full md:w-1/2 h-64 md:h-full flex-shrink-0 bg-card/30">
+              <div className="relative w-full md:w-1/2 h-56 sm:h-64 md:h-full flex-shrink-0 bg-card/30">
                 <div className="relative w-full h-full">
                   <Image
                     src={selectedProject.images[slideIndex]}
@@ -406,28 +408,28 @@ function Projects() {
                   <>
                     <button
                       onClick={prevSlide}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-background/40 backdrop-blur-md text-foreground hover:bg-background/60 transition-all duration-300 hover:scale-110 border border-border/20"
+                      className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-background/40 backdrop-blur-md text-foreground hover:bg-background/60 transition-all duration-300 hover:scale-110 border border-border/20"
                       aria-label="Previous image"
                     >
-                      <ChevronLeft size={20} />
+                      <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
                     </button>
                     <button
                       onClick={nextSlide}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-background/40 backdrop-blur-md text-foreground hover:bg-background/60 transition-all duration-300 hover:scale-110 border border-border/20"
+                      className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-background/40 backdrop-blur-md text-foreground hover:bg-background/60 transition-all duration-300 hover:scale-110 border border-border/20"
                       aria-label="Next image"
                     >
-                      <ChevronRight size={20} />
+                      <ChevronRight size={18} className="sm:w-5 sm:h-5" />
                     </button>
 
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
                       {selectedProject.images.map((_, i) => (
                         <button
                           key={i}
                           onClick={() => setSlideIndex(i)}
-                          className={`h-2 rounded-full transition-all duration-300 ${
+                          className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                             i === slideIndex
-                              ? "w-6 bg-foreground"
-                              : "w-2 bg-foreground/40"
+                              ? "w-4 sm:w-6 bg-foreground"
+                              : "w-1.5 sm:w-2 bg-foreground/40"
                           }`}
                           aria-label={`Go to image ${i + 1}`}
                         />
@@ -439,23 +441,23 @@ function Projects() {
 
               {/* Details Panel */}
               <div className="w-full md:w-1/2 flex-1 min-h-0 overflow-y-auto">
-                <div className="p-6 md:p-8 flex flex-col gap-6">
+                <div className="p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6">
                   {selectedProject.details?.technical && (
-                    <p className="text-foreground/80 text-sm leading-relaxed">
+                    <p className="text-foreground/80 text-xs sm:text-sm leading-relaxed">
                       {selectedProject.details.technical}
                     </p>
                   )}
 
                   {selectedProject.tech.length > 0 && (
                     <div>
-                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      <h4 className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 sm:mb-3">
                         {labels.techStack}
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         {selectedProject.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3.5 py-1.5 rounded-xl bg-card/50 backdrop-blur-sm border border-border/20 text-foreground/80 text-xs font-mono shadow-sm"
+                            className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-card/50 backdrop-blur-sm border border-border/20 text-foreground/80 text-[10px] sm:text-xs font-mono shadow-sm"
                           >
                             {tech}
                           </span>
@@ -466,24 +468,24 @@ function Projects() {
 
                   {selectedProject.details?.colors && (
                     <div>
-                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      <h4 className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 sm:mb-3">
                         {labels.colorPalette}
                       </h4>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
                         {selectedProject.details.colors.map((c) => (
                           <div
                             key={c.hex}
-                            className="flex items-center gap-2 pr-3 pl-1.5 py-1.5 rounded-xl bg-card/50 border border-border/20 shadow-sm"
+                            className="flex items-center gap-1.5 sm:gap-2 pr-2 sm:pr-3 pl-1 sm:pl-1.5 py-1 sm:py-1.5 rounded-xl bg-card/50 border border-border/20 shadow-sm"
                           >
                             <span
-                              className="w-6 h-6 rounded-full border border-border/20 flex-shrink-0"
+                              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-border/20 flex-shrink-0"
                               style={{ backgroundColor: c.hex }}
                             />
                             <div className="leading-tight text-left">
-                              <div className="text-foreground text-xs font-medium">
+                              <div className="text-foreground text-[10px] sm:text-xs font-medium">
                                 {c.name}
                               </div>
-                              <div className="text-muted-foreground text-[11px] font-mono uppercase">
+                              <div className="text-muted-foreground text-[9px] sm:text-[11px] font-mono uppercase">
                                 {c.hex}
                               </div>
                             </div>
@@ -495,12 +497,12 @@ function Projects() {
 
                   {selectedProject.details?.font && (
                     <div>
-                      <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      <h4 className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5 sm:mb-2">
                         {labels.typography}
                       </h4>
-                      <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card/50 border border-border/20 w-fit shadow-sm">
-                        <TypeIcon size={14} className="text-muted-foreground" />
-                        <span className="text-foreground/80 text-xs">
+                      <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-card/50 border border-border/20 w-fit shadow-sm">
+                        <TypeIcon size={12} className="sm:w-3.5 sm:h-3.5 text-muted-foreground" />
+                        <span className="text-foreground/80 text-[10px] sm:text-xs">
                           {selectedProject.details.font}
                         </span>
                       </div>
@@ -511,20 +513,20 @@ function Projects() {
             </div>
 
             {/* Footer Actions */}
-            <div className="flex flex-wrap justify-center gap-3 px-6 py-4 border-t border-border/10 bg-card/80 backdrop-blur-xl flex-shrink-0">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-border/10 bg-card/80 backdrop-blur-xl flex-shrink-0">
               <button
                 onClick={() => window.open("#", "_blank")}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold shadow-lg shadow-foreground/20 hover:shadow-xl hover:shadow-foreground/30 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-foreground text-background text-xs sm:text-sm font-semibold shadow-lg shadow-foreground/20 hover:shadow-xl hover:shadow-foreground/30 transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                <ExternalLink size={16} />
+                <ExternalLink size={14} className="sm:w-4 sm:h-4" />
                 {labels.liveDemo}
               </button>
 
               <button
                 onClick={() => window.open("#", "_blank")}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-card/50 backdrop-blur-sm border border-border/20 text-foreground text-sm font-semibold hover:bg-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-card/50 backdrop-blur-sm border border-border/20 text-foreground text-xs sm:text-sm font-semibold hover:bg-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                <SquareCode size={16} />
+                <SquareCode size={14} className="sm:w-4 sm:h-4" />
                 {labels.sourceCode}
               </button>
             </div>

@@ -48,6 +48,7 @@ function Skills() {
     }
   };
 
+  // These accent colors are design constants, not theme-dependent
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "frontend": return "border-l-blue-500";
@@ -88,19 +89,20 @@ function Skills() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-black">
+          <h2 className="text-4xl md:text-6xl font-black text-foreground">
             {t.Skills?.title || "Skills"}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-muted-foreground text-lg">
             {t.Skills?.subtitle || "Technologies and tools I work with"}
           </p>
+          {/* Stats with dynamic theming */}
           <div className="flex items-center justify-center gap-6 mt-8">
-            <div className="px-6 py-3 bg-white/5 dark:bg-white/5 rounded-full border border-white/10">
-              <span className="text-2xl font-bold">{totalSkills}</span>
+            <div className="px-6 py-3 bg-card/50 rounded-full border border-border/10 backdrop-blur-sm">
+              <span className="text-2xl font-bold text-foreground">{totalSkills}</span>
               <span className="text-sm text-muted-foreground ml-2">{t.Skills?.totalSkills || "Total Skills"}</span>
             </div>
-            <div className="px-6 py-3 bg-white/5 dark:bg-white/5 rounded-full border border-white/10">
-              <span className="text-2xl font-bold">{categories}</span>
+            <div className="px-6 py-3 bg-card/50 rounded-full border border-border/10 backdrop-blur-sm">
+              <span className="text-2xl font-bold text-foreground">{categories}</span>
               <span className="text-sm text-muted-foreground ml-2">{t.Skills?.categories || "Categories"}</span>
             </div>
           </div>
@@ -111,11 +113,21 @@ function Skills() {
           {Object.entries(groupedSkills).map(([category, items]) => (
             <div
               key={category}
-              className={`border-l-4 ${getCategoryColor(category)} pl-6 py-6 bg-white/5 dark:bg-white/5 rounded-r-2xl backdrop-blur-sm border border-white/10 dark:border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5`}
+              className={`
+                border-l-4 ${getCategoryColor(category)} 
+                pl-6 py-6 
+                bg-card/30 
+                rounded-r-2xl 
+                backdrop-blur-sm 
+                border border-border/10 
+                hover:border-foreground/20 
+                transition-all duration-300 
+                hover:shadow-lg hover:shadow-foreground/5
+              `}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">{getCategoryIcon(category)}</span>
-                <h4 className="text-lg font-bold uppercase tracking-wider">
+                <h4 className="text-lg font-bold uppercase tracking-wider text-foreground">
                   {getCategoryLabel(category)}
                 </h4>
               </div>
@@ -126,12 +138,12 @@ function Skills() {
                     className="
                       px-4 py-2
                       text-sm font-medium
-                      border border-zinc-200 dark:border-zinc-700
+                      border border-border/20
                       rounded-xl
-                      bg-white dark:bg-zinc-900/50
-                      text-black dark:text-white
-                      hover:border-zinc-400 dark:hover:border-zinc-500
-                      hover:bg-zinc-50 dark:hover:bg-zinc-800
+                      bg-background/50
+                      text-foreground
+                      hover:border-foreground/30
+                      hover:bg-foreground/5
                       transition-all duration-200
                       hover:scale-105
                     "

@@ -206,12 +206,12 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             {isDesktopDropdownOpen && (
               <div
                 className={`
-                  absolute right-full mr-3 bottom-0 w-44
-                  border border-border/10
-                  bg-background/90
+                  absolute right-full mr-3 bottom-0 w-56
+                  border border-border/20
+                  bg-background/95
                   backdrop-blur-xl
-                  shadow-2xl shadow-black/20 dark:shadow-black/40
-                  py-2 overflow-hidden z-[70] rounded-xl
+                  shadow-2xl shadow-black/30 dark:shadow-black/50
+                  py-2 overflow-hidden z-[70] rounded-2xl
                 `}
                 role="menu"
               >
@@ -226,8 +226,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         transition-all duration-150
                         ${
                           isActive
-                            ? "text-foreground bg-foreground/15"
-                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/10"
+                            ? "text-foreground bg-foreground/10"
+                            : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
                         }
                       `}
                       role="menuitem"
@@ -295,7 +295,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             )}
           </button>
 
-          {/* Mobile Language Selector */}
+          {/* Mobile Language Selector - Fixed positioning */}
           <div className="relative" ref={mobileDropdownRef}>
             <button
               onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
@@ -314,13 +314,18 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             {isMobileDropdownOpen && (
               <div
                 className={`
-                  absolute right-0 mt-2 w-44
-                  border border-border/10
-                  bg-background/90
+                  absolute right-0 top-full mt-2
+                  min-w-[200px] w-screen max-w-[calc(100vw-2rem)]
+                  border border-border/20
+                  bg-background/95
                   backdrop-blur-xl
-                  shadow-2xl shadow-black/20 dark:shadow-black/40
-                  py-2 overflow-hidden z-[70] rounded-xl
+                  shadow-2xl shadow-black/30 dark:shadow-black/50
+                  py-2 overflow-hidden z-[70] rounded-2xl
                 `}
+                style={{
+                  right: '0',
+                  left: 'auto',
+                }}
                 role="menu"
               >
                 {locales.map((loc) => {
@@ -334,8 +339,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         transition-all duration-150
                         ${
                           isActive
-                            ? "text-foreground bg-foreground/15"
-                            : "text-foreground/40 hover:text-foreground hover:bg-foreground/10"
+                            ? "text-foreground bg-foreground/10"
+                            : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
                         }
                       `}
                       role="menuitem"
