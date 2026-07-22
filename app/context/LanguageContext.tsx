@@ -11,7 +11,7 @@ import {
 
 import { translations, type Locale } from "@/app/lib/translations";
 
-type Translation = (typeof translations)["en"];
+type Translation = (typeof translations)[Locale];
 
 type LanguageContextType = {
   locale: Locale;

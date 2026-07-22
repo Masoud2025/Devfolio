@@ -87,10 +87,11 @@ function Projects() {
   });
 
   const categoryLabels: Record<string, string> = (() => {
-    const blog = t.Blog ?? {};
+    const blog = t.Blog as Record<string, unknown> | undefined ?? {};
     const map: Record<string, string> = {};
     for (const key of CATEGORIES) {
-      map[key] = (blog as Record<string, string>)[key] || key;
+      const val = blog[key];
+      map[key] = typeof val === "string" ? val : key;
     }
     return map;
   })();
@@ -98,20 +99,23 @@ function Projects() {
   // Build projects from translation data
   const projects: Project[] = useMemo(
     () =>
-      (t.Blog?.projects ?? []).map((p: Record<string, unknown>, i: number) => ({
-        id: p.id as number,
-        title: p.name as string,
-        description: p.description as string,
-        tech: p.tech as string[],
-        category: (p.category as string) || "software",
-        images: [DEMO_IMAGES[i % DEMO_IMAGES.length], demo2, demo3],
-        details: {
-          ...p.details,
-          year: (p.details as Record<string, unknown>)?.year as string || "2024",
-          duration: (p.details as Record<string, unknown>)?.duration as string || "3 months",
-          role: (p.details as Record<string, unknown>)?.role as string || "Full Stack Developer",
-        },
-      })),
+      ((t.Blog as Record<string, unknown> | undefined)?.projects as Record<string, unknown>[] | undefined ?? []).map((p: Record<string, unknown>, i: number) => {
+        const details = (p.details ?? {}) as Record<string, unknown>;
+        return {
+          id: p.id as number,
+          title: p.name as string,
+          description: p.description as string,
+          tech: p.tech as string[],
+          category: (p.category as string) || "software",
+          images: [DEMO_IMAGES[i % DEMO_IMAGES.length], demo2, demo3],
+          details: {
+            ...details,
+            year: typeof details.year === "string" ? details.year : "2024",
+            duration: typeof details.duration === "string" ? details.duration : "3 months",
+            role: typeof details.role === "string" ? details.role : "Full Stack Developer",
+          },
+        };
+      }),
     [t],
   );
 
@@ -120,6 +124,14 @@ function Projects() {
   const totalPages = Math.max(1, Math.ceil(filteredProjects.length / pageSize));
   const startIndex = (currentPage - 1) * pageSize;
   const paginatedProjects = filteredProjects.slice(startIndex, startIndex + pageSize);
+
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: projects.length };
+    for (const p of projects) {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+    }
+    return counts;
+  }, [projects]);
 
   const labels = t.Blog ?? {
     header: "Featured Work",
@@ -202,22 +214,25 @@ function Projects() {
 
         {/* Category Filters */}
         <div className="flex items-center gap-2 flex-wrap justify-center mb-10">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => {
-                setActiveCategory(cat);
-                setCurrentPage(1);
-              }}
-              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
-                activeCategory === cat
-                  ? "bg-foreground text-background shadow-lg shadow-foreground/10"
-                  : "bg-card/30 text-muted-foreground hover:text-foreground hover:bg-foreground/10 border border-border/10"
-              }`}
-            >
-              {categoryLabels[cat] || cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const count = categoryCounts[cat] || 0;
+            return (
+              <button
+                key={cat}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
+                  activeCategory === cat
+                    ? "bg-foreground text-background shadow-lg shadow-foreground/10"
+                    : "bg-card/30 text-muted-foreground hover:text-foreground hover:bg-foreground/10 border border-border/10"
+                }`}
+              >
+                {categoryLabels[cat] || cat} {count > 0 && `(${count})`}
+              </button>
+            );
+          })}
         </div>
 
         {/* Projects Grid */}
@@ -301,10 +316,10 @@ function Projects() {
                       e.stopPropagation();
                       toggleMobileScroll(project.id);
                     }}
-                    className="md:hidden absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="md:hidden absolute inset-0 flex items-center justify-center"
                     aria-label="View project"
                   >
-                    <div className="p-4 rounded-full bg-white/20 backdrop-blur-xl border border-white/30">
+                    <div className="p-4 rounded-full bg-black backdrop-blur-xl border border-white/30">
                       <Play size={28} className="text-white" />
                     </div>
                   </button>
