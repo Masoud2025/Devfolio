@@ -759,7 +759,7 @@ function AIChat() {
   };
 
   return (
-    <div className="fixed top-20 right-4 md:bottom-12 md:right-20 md:left-auto z-[70] flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 md:bottom-12 md:right-20 md:left-auto z-[70] flex flex-col items-end gap-3">
       {isOpen && (
         <div
           className={`

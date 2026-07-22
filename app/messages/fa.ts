@@ -47,6 +47,18 @@ export const fa = {
     web: "وب",
     backend: "بک‌اند",
     mobile: "موبایل",
+    sass: "ساس",
+    software: "نرم‌افزار",
+    business: "کسب‌وکار",
+    landingpage: "صفحه فرود",
+    blog: "وبلاگ",
+    portfolio: "پورتفولیو",
+    ai: "هوش مصنوعی",
+    documentation: "مستندات",
+    boilerplate: "بوتی‌پلیت",
+    startup: "استارتاپ",
+    dashboard: "داشبورد",
+    ecommerce: "فروشگاه آنلاین",
     noProjects: "هیچ پروژه‌ای در این دسته‌بندی یافت نشد",
     search: "جستجو",
     searchPlaceholder: "جستجو بر اساس نام، توضیحات یا تکنولوژی...",
@@ -68,7 +80,7 @@ export const fa = {
       name: "فروشگاه آنلاین محصولات دیجیتال همراه   ",
       description: "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
       tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-      category: "web",
+      category: "ecommerce",
       details: {
         technical:
           "رندر ترکیبی SSR/ISR با App Router برای صفحات محصول، لایه دیتابیس با Prisma روی PostgreSQL و کش کوئری با React Query. تراکنش‌های پرداخت با webhook امن و idempotency key پیاده‌سازی شده تا از پرداخت تکراری جلوگیری شود.",
@@ -85,7 +97,7 @@ export const fa = {
       name: "سایت معرفی شخص محور پورتفولیو",
       description: "طراحی تمیز رسپانسیو کامل",
       tech: ["React", "Tailwind", "Framer Motion"],
-      category: "web",
+      category: "portfolio",
       details: {
         technical:
           "کامپوننت‌های اتمیک با معماری فولدر Feature-based، انیمیشن‌های scroll-linked با Framer Motion و بهینه‌سازی تصاویر با next/image و AVIF fallback. امتیاز Lighthouse Performance بالای ۹۵.",
@@ -102,7 +114,7 @@ export const fa = {
       name: "برنامه مدیریت گیم نت",
       description: "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
       tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
-      category: "backend",
+      category: "software",
       details: {
         technical:
           "احراز هویت stateless با JWT + refresh token rotation، اعتبارسنجی ورودی با Zod و rate limiting در سطح middleware. لایه‌ی دسترسی به داده با Prisma و migration نسخه‌بندی‌شده.",
@@ -119,7 +131,7 @@ export const fa = {
       name: "کیت رابط کاربری موبایل",
       description: "کامپوننت‌های زیبای موبایل با پشتیبانی حالت تاریک",
       tech: ["React Native", "TypeScript", "Tailwind"],
-      category: "mobile",
+      category: "software",
       details: {
         technical:
           "سیستم طراحی توکن‌محور با پشتیبانی کامل از تم روشن/تاریک، کامپوننت‌های قابل ترکیب با forwardRef و پشتیبانی از RTL. فرم‌ساز داینامیک با اعتبارسنجی schema-based.",
@@ -136,7 +148,7 @@ export const fa = {
       name: "اپلیکیشن چت بلادرنگ",
       description: "پیام‌رسانی بلادرنگ با WebSocket و Redis",
       tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
-      category: "web",
+      category: "ecommerce",
       details: {
         technical:
           "اتصال دوطرفه با Socket.io روی adapter مبتنی بر Redis برای مقیاس‌پذیری افقی، صف پیام با presence tracking و ack-based delivery برای تضمین رسیدن پیام‌ها.",
@@ -153,7 +165,7 @@ export const fa = {
       name: "داشبورد تحلیلی",
       description: "داشبورد تعاملی با نمودار و تصویرسازی داده",
       tech: ["React", "D3.js", "Tailwind", "Recharts"],
-      category: "web",
+      category: "dashboard",
       details: {
         technical:
           "نمودارهای تعاملی با D3.js برای ویژوالایزیشن سفارشی و Recharts برای نمودارهای استاندارد، پردازش داده در Web Worker برای جلوگیری از بلاک شدن UI روی دیتاست‌های بزرگ.",

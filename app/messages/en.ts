@@ -48,6 +48,18 @@ export const en = {
     web: "Web",
     backend: "Backend",
     mobile: "Mobile",
+    sass: "Sass",
+    software: "Software",
+    business: "Business",
+    landingpage: "Landing Page",
+    blog: "Blog",
+    portfolio: "Portfolio",
+    ai: "AI",
+    documentation: "Documentation",
+    boilerplate: "Boilerplate",
+    startup: "Startup",
+    dashboard: "Dashboard",
+    ecommerce: "E-commerce",
     noProjects: "No projects found in this category",
     search: "Search",
     searchPlaceholder: "Search projects by name, description or tech...",
@@ -70,7 +82,7 @@ export const en = {
       description:
         "Full-featured online store with payment integration and admin dashboard",
       tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-      category: "web",
+      category: "ecommerce",
       details: {
         technical:
           "Hybrid SSR/ISR rendering with the App Router for product pages, a Prisma data layer on PostgreSQL and query caching with React Query. Payments are processed through a secure webhook with an idempotency key to prevent duplicate charges.",
@@ -88,7 +100,7 @@ export const en = {
       description:
         "Modern portfolio with smooth animations and responsive design",
       tech: ["React", "Tailwind", "Framer Motion"],
-      category: "web",
+      category: "portfolio",
       details: {
         technical:
           "Atomic components with a feature-based folder architecture, scroll-linked animations with Framer Motion and image optimization with next/image and an AVIF fallback. Lighthouse performance score above 95.",
@@ -105,7 +117,7 @@ export const en = {
       name: "Task Manager API",
       description: "RESTful API for task management with authentication",
       tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
-      category: "backend",
+      category: "software",
       details: {
         technical:
           "Stateless authentication with JWT + refresh token rotation, input validation with Zod and rate limiting at the middleware layer. Data access via Prisma with versioned migrations.",
@@ -122,7 +134,7 @@ export const en = {
       name: "Mobile App UI Kit",
       description: "Beautiful mobile components with dark mode support",
       tech: ["React Native", "TypeScript", "Tailwind"],
-      category: "mobile",
+      category: "software",
       details: {
         technical:
           "Token-based design system with full light/dark theme support, composable components with forwardRef and RTL support. Schema-based dynamic form builder.",
@@ -139,7 +151,7 @@ export const en = {
       name: "Real-time Chat App",
       description: "Real-time messaging with WebSocket and Redis",
       tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
-      category: "web",
+      category: "ai",
       details: {
         technical:
           "Bidirectional connections with Socket.io on a Redis-backed adapter for horizontal scaling, a message queue with presence tracking and ack-based delivery to guarantee delivery.",
@@ -156,7 +168,7 @@ export const en = {
       name: "Analytics Dashboard",
       description: "Interactive dashboard with charts and data visualization",
       tech: ["React", "D3.js", "Tailwind", "Recharts"],
-      category: "web",
+      category: "dashboard",
       details: {
         technical:
           "Interactive charts with D3.js for custom visualizations and Recharts for standard charts, data processing in a Web Worker to avoid blocking the UI on large datasets.",
