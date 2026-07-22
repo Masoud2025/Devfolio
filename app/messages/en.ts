@@ -46,18 +46,8 @@ export const en = {
     button2: "GitHub",
     all: "All",
     web: "Web",
-    backend: "Backend",
-    mobile: "Mobile",
-    sass: "Sass",
     software: "Software",
-    business: "Business",
-    landingpage: "Landing Page",
-    blog: "Blog",
-    portfolio: "Portfolio",
     ai: "AI",
-    documentation: "Documentation",
-    boilerplate: "Boilerplate",
-    startup: "Startup",
     dashboard: "Dashboard",
     ecommerce: "E-commerce",
     noProjects: "No projects found in this category",
@@ -100,7 +90,7 @@ export const en = {
       description:
         "Modern portfolio with smooth animations and responsive design",
       tech: ["React", "Tailwind", "Framer Motion"],
-      category: "portfolio",
+      category: "web",
       details: {
         technical:
           "Atomic components with a feature-based folder architecture, scroll-linked animations with Framer Motion and image optimization with next/image and an AVIF fallback. Lighthouse performance score above 95.",

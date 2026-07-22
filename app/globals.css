@@ -91,6 +91,15 @@ body {
   .radius-xl { border-radius: 1.5rem; }
   .radius-2xl { border-radius: 2rem; }
   .radius-full { border-radius: 9999px; }
+  
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes floatCode {
