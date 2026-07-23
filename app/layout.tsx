@@ -1,9 +1,8 @@
-import { LanguageProvider } from "@/app/context/LanguageContext";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devfolio.vercel.app"), // ReplaceMain portfolio with this
+  metadataBase: new URL("https://devfolio.vercel.app"),
 
   title: {
     default: "مسعود جعفری | برنامه نویس",
@@ -11,36 +10,36 @@ export const metadata: Metadata = {
   },
 
   description:
-    "A modern, fast, and minimalist developer portfolio built with Next.js, TypeScript, and Tailwind CSS.",
+    "یک پورتفولیو مدرن، سریع و مینیمالیستی برای توسعه‌دهنده‌ها.",
 
   applicationName: "DevFolio",
 
   keywords: [
-    "Frontend Developer",
-    "Portfolio",
+    "برنامه نویس",
+    "پورتفولیو",
     "Next.js",
     "React",
     "TypeScript",
     "Tailwind CSS",
     "JavaScript",
-    "Web Developer",
-    "UI",
-    "UX",
-    "Responsive Design",
+    "توسعه وب",
+    "رابط کاربری",
+    "تجربه کاربری",
+    "طراحی واکنش‌گرا",
   ],
 
   authors: [
     {
-      name: "Masoud Jafari",
+      name: "مسعود جعفری",
       url: "https://devfolio.vercel.app",
     },
   ],
 
-  creator: "Masoud Jafari",
+  creator: "مسعود جعفری",
 
-  publisher: "Masoud Jafari",
+  publisher: "مسعود جعفری",
 
-  category: "Technology",
+  category: "تکنولوژی",
 
   robots: {
     index: true,
@@ -57,19 +56,6 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "/",
-    languages: {
-      en: "/en",
-      fa: "/fa",
-      de: "/de",
-      es: "/es",
-      "pt-BR": "/pt-BR",
-      ja: "/ja",
-      zh: "/zh",
-      sv: "/sv",
-      no: "/no",
-      ru: "/ru",
-      uk: "/uk",
-    },
   },
 
   icons: {
@@ -82,11 +68,11 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "fa_IR",
     url: "https://devfolio.vercel.app",
     siteName: "DevFolio",
-    title: "DevFolio",
-    description: "A modern, fast, and minimalist developer portfolio.",
+    title: "مسعود جعفری | برنامه نویس",
+    description: "یک پورتفولیو مدرن، سریع و مینیمالیستی.",
 
     images: [
       {
@@ -100,8 +86,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "DevFolio",
-    description: "A modern, fast, and minimalist developer portfolio.",
+    title: "مسعود جعفری | برنامه نویس",
+    description: "یک پورتفولیو مدرن، سریع و مینیمالیستی.",
 
     images: ["/og-image.png"],
 
@@ -128,7 +114,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={"h-full antialiased dark"}>
+    <html lang="fa" dir="rtl" className={"h-full antialiased dark"}>
       <head>
         <link
           rel="preload"
@@ -139,9 +125,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background" suppressHydrationWarning>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { X, ZoomIn, ZoomOut } from "lucide-react";
 import { useState } from "react";
-import { useLanguage } from "../../context/LanguageContext";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -12,7 +11,6 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModalProps) {
-  const { t } = useLanguage();
   const [scale, setScale] = useState(1);
 
   const handleZoomIn = () => {
@@ -27,7 +25,6 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
     setScale(1);
   };
 
-  // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -53,21 +50,19 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
         className="relative max-w-7xl w-full max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute -top-12 right-0 text-white hover:text-zinc-300 transition-colors p-2"
-          aria-label={t.ImageModal?.close || "Close"}
+          aria-label="بستن"
         >
           <X size={28} />
         </button>
 
-        {/* Zoom Controls */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-full px-4 py-2">
           <button
             onClick={handleZoomOut}
             className="text-white hover:text-zinc-300 transition-colors p-1"
-            aria-label={t.ImageModal?.zoomOut || "Zoom out"}
+            aria-label="کوچکنمایی"
           >
             <ZoomOut size={20} />
           </button>
@@ -77,7 +72,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
           <button
             onClick={handleZoomIn}
             className="text-white hover:text-zinc-300 transition-colors p-1"
-            aria-label={t.ImageModal?.zoomIn || "Zoom in"}
+            aria-label="بزرگنمایی"
           >
             <ZoomIn size={20} />
           </button>
@@ -85,11 +80,10 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
             onClick={handleReset}
             className="text-white text-sm hover:text-zinc-300 transition-colors px-2"
           >
-            {t.ImageModal?.reset || "Reset"}
+            بازنشانی
           </button>
         </div>
 
-        {/* Image */}
         <img
           src={imageSrc}
           alt={alt}
@@ -101,7 +95,6 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
           onClick={onClose}
         />
 
-        {/* Image Info */}
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white text-center bg-background/50 backdrop-blur-sm px-4 py-2 rounded-lg">
           <p className="text-sm">{alt}</p>
         </div>

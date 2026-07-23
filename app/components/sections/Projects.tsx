@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import Banner from "@/public/pic/Banner.png";
-import demo1 from "@/public/pic/demo1.webp";
-import demo2 from "@/public/pic/demo2.webp";
-import demo3 from "@/public/pic/demo3.webp";
+import { memo, useEffect, useMemo, useState, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 import {
   ArrowLeftRight,
   ArrowUpRight,
@@ -22,9 +20,11 @@ import {
   ArrowUp,
 } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import { memo, useEffect, useMemo, useState, useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import { useLanguage } from "../../context/LanguageContext";
+
+// ایمپورت عکس‌ها
+import demo1 from "@/public/pic/demo1.webp";
+import demo2 from "@/public/pic/demo2.webp";
+import demo3 from "@/public/pic/demo3.webp";
 
 interface ColorToken {
   name: string;
@@ -46,8 +46,8 @@ interface Project {
   description: string;
   tech: string[];
   images: StaticImageData[];
-  details?: ProjectDetails;
   category: string;
+  details?: ProjectDetails;
 }
 
 const DEMO_IMAGES: StaticImageData[] = [demo1, demo2, demo3];
@@ -79,7 +79,6 @@ function TypeWriter({ text, delay = 80 }: { text: string; delay?: number }) {
 }
 
 function Projects() {
-  const { t } = useLanguage();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [mobileScrollId, setMobileScrollId] = useState<number | null>(null);
   const [flippedId, setFlippedId] = useState<number | null>(null);
@@ -99,71 +98,146 @@ function Projects() {
   });
 
   const projects: Project[] = useMemo(
-    () =>
-      (
-        ((t.Blog as Record<string, unknown> | undefined)?.projects as
-          | Record<string, unknown>[]
-          | undefined) ?? []
-      ).map((p: Record<string, unknown>, i: number) => {
-        const details = (p.details ?? {}) as Record<string, unknown>;
-        const rawCategory = (p.category as string) || "software";
-        const categoryMap: Record<string, string> = {
-          web: "web",
-          portfolio: "web",
-          landingpage: "web",
-          blog: "web",
-          software: "software",
-          backend: "software",
-          mobile: "software",
-          sass: "software",
-          business: "software",
-          ai: "ai",
-          dashboard: "dashboard",
-          ecommerce: "ecommerce",
-          documentation: "software",
-          boilerplate: "software",
-          startup: "software",
-        };
-        return {
-          id: p.id as number,
-          title: p.name as string,
-          description: p.description as string,
-          tech: p.tech as string[],
-          category: categoryMap[rawCategory] || "software",
-          images: [DEMO_IMAGES[i % DEMO_IMAGES.length], demo2, demo3],
-          details: {
-            ...details,
-            year: typeof details.year === "string" ? details.year : "2024",
-            duration:
-              typeof details.duration === "string"
-                ? details.duration
-                : "3 months",
-            role:
-              typeof details.role === "string"
-                ? details.role
-                : "Full Stack Developer",
-          },
-        };
-      }),
-    [t],
+    () => [
+      {
+        id: 1,
+        title: "فروشگاه آنلاین محصولات دیجیتال همراه",
+        description: "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
+        tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+        category: "ecommerce",
+        images: [demo1, demo2, demo3],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۴ ماه",
+          role: "توسعه‌دهنده فول‌استک",
+          technical: "رندر ترکیبی SSR/ISR با App Router برای صفحات محصول، لایه دیتابیس با Prisma روی PostgreSQL و کش کوئری با React Query. تراکنش‌های پرداخت با webhook امن و idempotency key پیاده‌سازی شده تا از پرداخت تکراری جلوگیری شود.",
+          font: "Inter (UI) / JetBrains Mono (کد و قیمت‌ها)",
+          colors: [
+            { name: "Primary Slate", hex: "#52525B" },
+            { name: "Accent Blue", hex: "#2563EB" },
+            { name: "Base Zinc", hex: "#18181B" },
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "سایت معرفی شخص محور پورتفولیو",
+        description: "طراحی تمیز رسپانسیو کامل و سیستم مدرن کامل و درتسری پذیز",
+        tech: ["React", "Tailwind", "Framer Motion"],
+        category: "web",
+        images: [demo2, demo3, demo1],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۲ ماه",
+          role: "توسعه‌دهنده فرانت‌اند",
+          technical: "کامپوننت‌های اتمیک با معماری فولدر Feature-based، انیمیشن‌های scroll-linked با Framer Motion و بهینه‌سازی تصاویر با next/image و AVIF fallback. امتیاز Lighthouse Performance بالای ۹۵.",
+          font: "Poppins (تیتر) / Inter (متن)",
+          colors: [
+            { name: "Ink Black", hex: "#0A0A0A" },
+            { name: "Signal Slate", hex: "#71717A" },
+            { name: "Sky Blue", hex: "#3B82F6" },
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "برنامه مدیریت گیم نت",
+        description: "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
+        tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
+        category: "software",
+        images: [demo3, demo1, demo2],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۳ ماه",
+          role: "توسعه‌دهنده بک‌اند",
+          technical: "احراز هویت stateless با JWT + refresh token rotation، اعتبارسنجی ورودی با Zod و rate limiting در سطح middleware. لایه‌ی دسترسی به داده با Prisma و migration نسخه‌بندی‌شده.",
+          font: "JetBrains Mono (مستندات API)",
+          colors: [
+            { name: "Deep Navy", hex: "#1E293B" },
+            { name: "Cyan Accent", hex: "#06B6D4" },
+            { name: "Alert Red", hex: "#EF4444" },
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "کیت رابط کاربری موبایل",
+        description: "کامپوننت‌های زیبای موبایل با پشتیبانی حالت تاریک",
+        tech: ["React Native", "TypeScript", "Tailwind"],
+        category: "software",
+        images: [demo1, demo2, demo3],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۱٫۵ ماه",
+          role: "توسعه‌دهنده موبایل",
+          technical: "سیستم طراحی توکن‌محور با پشتیبانی کامل از تم روشن/تاریک، کامپوننت‌های قابل ترکیب با forwardRef و پشتیبانی از RTL. فرم‌ساز داینامیک با اعتبارسنجی schema-based.",
+          font: "SF Pro / Roboto (پلتفرم‌محور)",
+          colors: [
+            { name: "Graphite", hex: "#27272A" },
+            { name: "Violet", hex: "#8B5CF6" },
+            { name: "Mint", hex: "#34D399" },
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "اپلیکیشن چت بلادرنگ",
+        description: "پیام‌رسانی بلادرنگ با WebSocket و Redis",
+        tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
+        category: "ai",
+        images: [demo2, demo3, demo1],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۲ ماه",
+          role: "توسعه‌دهنده فول‌استک",
+          technical: "اتصال دوطرفه با Socket.io روی adapter مبتنی بر Redis برای مقیاس‌پذیری افقی، صف پیام با presence tracking و ack-based delivery برای تضمین رسیدن پیام‌ها.",
+          font: "Inter (UI) / IBM Plex Mono (تایم‌استمپ)",
+          colors: [
+            { name: "Charcoal", hex: "#111827" },
+            { name: "Live Green", hex: "#10B981" },
+            { name: "Bubble Blue", hex: "#3B82F6" },
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "داشبورد تحلیلی",
+        description: "داشبورد تعاملی با نمودار و تصویرسازی داده",
+        tech: ["React", "D3.js", "Tailwind", "Recharts"],
+        category: "dashboard",
+        images: [demo3, demo1, demo2],
+        details: {
+          year: "۱۴۰۳",
+          duration: "۱٫۵ ماه",
+          role: "توسعه‌دهنده فرانت‌اند",
+          technical: "نمودارهای تعاملی با D3.js برای ویژوالایزیشن سفارشی و Recharts برای نمودارهای استاندارد، پردازش داده در Web Worker برای جلوگیری از بلاک شدن UI روی دیتاست‌های بزرگ.",
+          font: "Space Grotesk (اعداد) / Inter (متن)",
+          colors: [
+            { name: "Slate Base", hex: "#0F172A" },
+            { name: "Data Orange", hex: "#F97316" },
+            { name: "Chart Teal", hex: "#14B8A6" },
+          ],
+        },
+      },
+    ],
+    []
   );
 
   const totalPages = Math.max(1, Math.ceil(projects.length / pageSize));
   const startIndex = (currentPage - 1) * pageSize;
   const paginatedProjects = projects.slice(startIndex, startIndex + pageSize);
 
-  const labels = t.Blog ?? {
-    header: "Featured Work",
-    subtitle:
-      "Here are some of my recent projects that showcase my skills and experience",
-    details: "Details",
-    demo: "Demo",
-    noProjects: "No projects found",
-    techStack: "Tech Stack",
-    colorPalette: "Color Palette",
-    typography: "Typography",
-    liveDemo: "Live Demo",
-    sourceCode: "Source Code",
+  const labels = {
+    header: "پروژه ها",
+    subtitle: "مسعود جعفری برنامه نویس",
+    details: "جزئیات",
+    demo: "دمو",
+    noProjects: "هیچ پروژه‌ای در این دسته‌بندی یافت نشد",
+    techStack: "تکنولوژی‌ها",
+    colorPalette: "پالت رنگی",
+    typography: "فونت‌بندی",
+    liveDemo: "دمو زنده",
+    sourceCode: "سورس کد",
   };
 
   const scrollToCardTop = (id: number) => {
@@ -272,55 +346,15 @@ function Projects() {
       id="projects"
       className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 scroll-mt-28"
     >
-      {/* Banner Image */}
-      <div className="relative w-full h-48 sm:h-56 md:h-72 mb-10 mt-20 sm:mb-14 overflow-hidden rounded-3xl shadow-2xl shadow-zinc-500/10">
-        <Image
-          src={Banner}
-          alt="Projects Banner"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-500/20 via-transparent to-blue-500/20" />
-        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12">
-          <div className="flex items-center gap-3">
-            <div className="px-3 py-1 bg-black/50 rounded-full border border-white/20">
-              <span className="text-white text-xs font-medium">✦ Portfolio</span>
-            </div>
-            <div className="px-3 py-1 bg-black/50 rounded-full border border-white/20">
-              <span className="text-white text-xs font-medium">
-                {projects.length} Projects
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Header */}
-      <div
-        ref={headerRef}
-        className="mb-12 sm:mb-16 text-center transition-all duration-700"
-        style={{
-          opacity: headerInView ? 1 : 0,
-          transform: headerInView ? "translateY(0)" : "translateY(10px)",
-        }}
-      >
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 mb-4">
-          <Zap size={14} className="text-zinc-600 dark:text-zinc-400" />
-          <span className="text-zinc-700 dark:text-zinc-300 text-xs font-medium uppercase tracking-wider">
-            Open to Work | full time
-          </span>
-        </div>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold min-h-[1.2em] text-zinc-900 dark:text-white">
-          {headerInView && <TypeWriter text={labels.header} delay={70} />}
+      <div className="mb-12 sm:mb-16 text-center">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground">
+          {labels.header}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400 text-sm sm:text-base">
+        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm sm:text-base">
           {labels.subtitle}
         </p>
       </div>
 
-      {/* Projects Grid */}
       <div
         ref={gridRef}
         className="grid gap-6 sm:gap-8 lg:grid-cols-2 xl:grid-cols-3 transition-all duration-700"
@@ -377,7 +411,6 @@ function Projects() {
                             className="object-cover object-top"
                             sizes="(max-width: 768px) 100vw, 33vw"
                             priority={project.id <= 3}
-                            loading={project.id <= 3 ? undefined : "lazy"}
                           />
                         </div>
                       </div>
@@ -453,7 +486,7 @@ function Projects() {
                         className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
                       >
                         <ExternalLink size={14} />
-                        <span>{labels.liveDemo || "Live Demo"}</span>
+                        <span>{labels.liveDemo}</span>
                       </button>
                       <button
                         onClick={() => toggleFlip(project.id)}
@@ -505,7 +538,7 @@ function Projects() {
                         <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
                           <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs">
                             <Calendar size={14} />
-                            <span>Year</span>
+                            <span>سال</span>
                           </div>
                           <p className="text-sm font-medium mt-1 text-zinc-900 dark:text-white">
                             {project.details.year}
@@ -516,7 +549,7 @@ function Projects() {
                         <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
                           <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs">
                             <Clock size={14} />
-                            <span>Duration</span>
+                            <span>مدت زمان</span>
                           </div>
                           <p className="text-sm font-medium mt-1 text-zinc-900 dark:text-white">
                             {project.details.duration}
@@ -590,7 +623,7 @@ function Projects() {
                     {project.details?.technical && (
                       <div>
                         <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
-                          Technical
+                          جزئیات فنی
                         </h4>
                         <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                           {project.details.technical}

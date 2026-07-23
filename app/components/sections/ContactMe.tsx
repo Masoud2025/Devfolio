@@ -1,11 +1,8 @@
 "use client";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { memo } from "react";
-import { useLanguage } from "../../context/LanguageContext";
 import { useInView } from "react-intersection-observer";
 
 function ContactMe() {
-  const { t } = useLanguage();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -14,23 +11,21 @@ function ContactMe() {
   return (
     <section ref={ref} className={`w-full py-24 px-6 md:px-20 scroll-mt-28 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-black text-foreground">
-            {t.ContactMe.Header}
+            ارتباط با من
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-muted-foreground text-lg">
-            {t.ContactMe.Name}
+            اسم
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Info Cards */}
           <div className="lg:col-span-1 space-y-6">
             {[
-              { icon: Mail, label: "Email", value: "masoud@example.com" },
-              { icon: Phone, label: "Phone", value: "+98 123 456 7890" },
-              { icon: MapPin, label: "Location", value: "Azerbaijan" },
+              { icon: "email", label: "ایمیل", value: "masoud@example.com" },
+              { icon: "phone", label: "تلفن", value: "+98 123 456 7890" },
+              { icon: "map", label: "موقعیت", value: "آذربایجان" },
             ].map((item) => (
               <div
                 key={item.label}
@@ -38,7 +33,6 @@ function ContactMe() {
               >
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-foreground/5 rounded-xl group-hover:bg-zinc-500/10 transition-colors">
-                    <item.icon size={24} className="text-foreground/70" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">
@@ -52,10 +46,9 @@ function ContactMe() {
               </div>
             ))}
 
-            {/* Social Links */}
             <div className="p-6 border border-border/20 rounded-2xl bg-background/30 backdrop-blur-sm">
               <h3 className="font-semibold text-lg text-foreground mb-4">
-                Follow Me
+                دنبال کنید
               </h3>
               <div className="flex gap-3">
                 {["GitHub", "LinkedIn", "Twitter"].map((label) => (
@@ -70,17 +63,16 @@ function ContactMe() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="lg:col-span-2">
             <form className="space-y-6 bg-background/30 p-8 md:p-10 rounded-3xl border border-border/20 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground/80 mb-3">
-                    {t.ContactMe.Name}
+                    اسم
                   </label>
                   <input
                     type="text"
-                    placeholder={t.ContactMe.namePlaceholder}
+                    placeholder="نام خود را وارد کیند  "
                     className="
                       w-full px-5 py-4 
                       border border-border/20
@@ -97,11 +89,11 @@ function ContactMe() {
 
                 <div>
                   <label className="block text-sm font-medium text-foreground/80 mb-3">
-                    {t.ContactMe.Subject}
+                    موضوع
                   </label>
                   <input
                     type="text"
-                    placeholder={t.ContactMe.subjectPlaceholder}
+                    placeholder="موضوع گفت وگو... "
                     className="
                       w-full px-5 py-4 
                       border border-border/20
@@ -119,7 +111,7 @@ function ContactMe() {
 
               <div>
                 <label className="block text-sm font-medium text-foreground/80 mb-3">
-                  Email
+                  ایمیل
                 </label>
                 <input
                   type="email"
@@ -140,11 +132,11 @@ function ContactMe() {
 
               <div>
                 <label className="block text-sm font-medium text-foreground/80 mb-3">
-                  Message
+                  پیام
                 </label>
                 <textarea
                   rows={6}
-                  placeholder="Tell me about your project..."
+                  placeholder="درباره پروژه خود بنویسید..."
                   className="
                     w-full px-5 py-4 
                     border border-border/20
@@ -175,8 +167,7 @@ function ContactMe() {
                   shadow-lg hover:shadow-xl hover:shadow-foreground/20
                 "
               >
-                <Send size={20} />
-                {t.ContactMe.Button}
+                ارسال 
               </button>
             </form>
           </div>

@@ -8,7 +8,6 @@ import {
   Globe,
   Server,
 } from "lucide-react";
-import { useLanguage } from "../../context/LanguageContext";
 
 const technologies = [
   {
@@ -54,7 +53,6 @@ const technologies = [
 ];
 
 export default function TechStack() {
-  const { t } = useLanguage();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -67,15 +65,15 @@ export default function TechStack() {
       >
       <div className="text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500 dark:text-zinc-400">
-          {t.TechStack.Header}
+          حوزه کاری
         </span>
 
         <h2 className="mt-4 text-4xl font-black text-zinc-900 dark:text-white md:text-5xl">
-          {t.TechStack.Header1}
+          تکنولوژی هایی که باهاشون کار کردم
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        {t.TechStack.Subtitle}
+          جهت استفاده وب سایت فول استک ساده ، و فرانت اند ها
         </p>
       </div>
 

@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Navbar from "./components/layout/Navbar";
+import AIChat from "./components/sections/AIChat";
+import TopBar from "./components/sections/Topbar";
 import LazySection from "./components/ui/LazySection";
 import ScrollToTop from "./components/ui/ScrollToTop";
-import AIChat from "./components/sections/AIChat";
-import { useState } from "react";
 
 const sectionSkeleton = (
   <div className="mx-auto max-w-7xl px-6 py-32 animate-pulse">
@@ -20,24 +21,19 @@ const sectionSkeleton = (
   </div>
 );
 
-type TabName = "home" | "about" | "blog" | "skills" | "contact";
-
-const tabComponents: Record<TabName, "Projects" | "Aboutme" | "Blog" | "Skills" | "ContactMe"> = {
-  home: "Projects",
-  about: "Aboutme",
-  blog: "Blog",
-  skills: "Skills",
-  contact: "ContactMe",
-};
-
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabName>("home");
+  const [activeTab, setActiveTab] = useState<"home" | "about" | "blog" | "skills" | "contact">("home");
 
   return (
     <main className="min-h-screen overflow-x-hidden md:mr-16 pt-12 md:pt-0 pb-20 md:pb-0 bg-background">
+      <TopBar name="مسعود جعفری" />
+
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
       <div className="flex-1">
-        <LazySection name={tabComponents[activeTab]} skeleton={sectionSkeleton} />
+        <LazySection
+          name={activeTab === "home" ? "Projects" : activeTab === "about" ? "Aboutme" : activeTab === "blog" ? "Blog" : activeTab === "skills" ? "Skills" : "ContactMe"}
+          skeleton={sectionSkeleton}
+        />
       </div>
       <ScrollToTop />
       <AIChat />

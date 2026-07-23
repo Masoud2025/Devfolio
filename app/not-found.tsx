@@ -12,7 +12,7 @@ export default function NotFound() {
 
       <div className="relative z-10 max-w-3xl text-center">
         <span className="inline-flex rounded-full border border-white/15 px-5 py-2 text-xs font-medium uppercase tracking-[0.4em] text-zinc-400">
-          Error 404
+          خطای 404
         </span>
 
         <h1 className="mt-8 text-[7rem] font-black leading-none text-white md:text-[12rem]">
@@ -22,12 +22,11 @@ export default function NotFound() {
         <div className="mx-auto mt-6 h-px w-40 bg-gradient-to-r from-transparent via-white to-transparent" />
 
         <h2 className="mt-8 text-3xl font-bold text-white md:text-5xl">
-          Lost in Space
+          گم شده در فضا
         </h2>
 
         <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-zinc-400">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved to another
-          location.
+          صفحه‌ای که به دنبال آن هستید وجود ندارد یا به یک مکان دیگر منتقل شده است.
         </p>
 
         <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
@@ -35,14 +34,14 @@ export default function NotFound() {
             href="/"
              className="rounded-2xl bg-background px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
-            Back to Home
+            بازگشت به خانه
           </Link>
 
           <button
             onClick={() => history.back()}
              className="rounded-2xl border border-white/15 px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:border-foreground hover:bg-background hover:text-foreground"
           >
-            Go Back
+            بازگشت
           </button>
         </div>
 
@@ -53,7 +52,7 @@ export default function NotFound() {
         </div>
 
         <p className="mt-8 text-xs uppercase tracking-[0.5em] text-zinc-600">
-          MASOUD JAFARI PORTFOLIO
+          پورتفولیو مسعود جعفری
         </p>
       </div>
     </main>

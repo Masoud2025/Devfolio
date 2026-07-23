@@ -1,5 +1,4 @@
 "use client";
-import { useLanguage } from "../../context/LanguageContext";
 import { useMemo, memo } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -9,7 +8,6 @@ interface Skill {
 }
 
 function Skills() {
-  const { t } = useLanguage();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -44,16 +42,15 @@ function Skills() {
 
   const getCategoryLabel = (category: string) => {
     switch (category) {
-      case "frontend": return t.Skills?.frontend || "Frontend";
-      case "backend": return t.Skills?.backend || "Backend";
-      case "database": return t.Skills?.database || "Database";
-      case "tools": return t.Skills?.tools || "Tools";
-      case "design": return t.Skills?.design || "Design";
+      case "frontend": return "فرانت‌اند";
+      case "backend": return "بک‌اند";
+      case "database": return "پایگاه داده";
+      case "tools": return "ابزارها و دواپس";
+      case "design": return "طراحی";
       default: return category;
     }
   };
 
-  // These accent colors are design constants, not theme-dependent
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "frontend": return "border-l-blue-500";
@@ -92,28 +89,25 @@ function Skills() {
   return (
     <section ref={ref} className={`w-full py-24 px-6 md:px-20 scroll-mt-28 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-black text-foreground">
-            {t.Skills?.title || "Skills"}
+            مهارت‌های من
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-muted-foreground text-lg">
-            {t.Skills?.subtitle || "Technologies and tools I work with"}
+            تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم
           </p>
-          {/* Stats with dynamic theming */}
           <div className="flex items-center justify-center gap-6 mt-8">
             <div className="px-6 py-3 bg-background/50 rounded-full border border-border/10 backdrop-blur-sm">
               <span className="text-2xl font-bold text-foreground">{totalSkills}</span>
-              <span className="text-sm text-muted-foreground ml-2">{t.Skills?.totalSkills || "Total Skills"}</span>
+              <span className="text-sm text-muted-foreground ml-2">مجموع مهارت‌ها</span>
             </div>
             <div className="px-6 py-3 bg-background/50 rounded-full border border-border/10 backdrop-blur-sm">
               <span className="text-2xl font-bold text-foreground">{categories}</span>
-              <span className="text-sm text-muted-foreground ml-2">{t.Skills?.categories || "Categories"}</span>
+              <span className="text-sm text-muted-foreground ml-2">دسته‌بندی‌ها</span>
             </div>
           </div>
         </div>
 
-        {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(groupedSkills).map(([category, items]) => (
             <div

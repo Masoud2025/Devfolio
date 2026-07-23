@@ -1,16 +1,14 @@
 "use client";
 
-import { useLanguage } from "@/app/context/LanguageContext";
 import {
+  Home,
+  User,
   Briefcase,
   Code,
-  Home,
   Mail,
-  User,
   Menu,
   X,
   ChevronDown,
-  Globe,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -29,35 +27,12 @@ const navTabs: { id: TabName; key: string; icon: typeof Home }[] = [
   { id: "contact", key: "contact", icon: Mail },
 ];
 
-const locales = [
-  { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "fa", label: "فارسی", flag: "🇮🇷" },
-] as const;
-
-type Locale = (typeof locales)[number]["code"];
-
 export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
-  const { locale, setLocale, t } = useLanguage();
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const languageRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const currentLocale = locales.find((l) => l.code === locale) || locales[0];
-
-  const handleLocaleChange = (code: Locale) => {
-    setLocale(code);
-    setIsLanguageOpen(false);
-  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        languageRef.current &&
-        !languageRef.current.contains(event.target as Node)
-      ) {
-        setIsLanguageOpen(false);
-      }
       if (
         mobileMenuRef.current &&
         !mobileMenuRef.current.contains(event.target as Node)
@@ -74,15 +49,22 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
     setIsMobileMenuOpen(false);
   };
 
-  const getLabel = (key: string) =>
-    (t.navbar?.[key as keyof typeof t.navbar] as string) || key;
+  const getLabel = (key: string) => {
+    const map: Record<string, string> = {
+      Home: "خانه",
+      About: "درباره",
+      Blog: "وبلاگ",
+      Skills: "مهارت‌ها",
+      contact: "ارتباط",
+    };
+    return map[key] || key;
+  };
 
   return (
     <>
       {/* ===== DESKTOP TASKBAR (Windows Style - Bottom) ===== */}
       <header className="hidden md:block fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-5xl min-w-[700px]">
         <div className="relative">
-          {/* Taskbar container - Windows 11 style */}
           <div
             className={`
               flex items-center justify-between
@@ -95,7 +77,6 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               transition-all duration-300
             `}
           >
-            {/* Left - Logo / Start Button */}
             <div className="flex items-center gap-3 flex-shrink-0">
               <button
                 onClick={() => handleTabClick("home")}
@@ -119,12 +100,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   </video>
                 </div>
                 <span className="text-sm font-bold text-[#1a1a1a] dark:text-[#e8e8e8]">
-                  Masoud
+                  مسعود
                 </span>
               </button>
             </div>
 
-            {/* Center - Navigation Tabs */}
             <nav className="flex items-center gap-1 px-3 flex-1 justify-center">
               {navTabs.map((tab) => {
                 const isActive = activeTab === tab.id;
@@ -146,8 +126,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                     `}
                     aria-current={isActive ? "page" : undefined}
                   >
-                    <Icon 
-                      size={20} 
+                    <Icon
+                      size={20}
                       strokeWidth={isActive ? 2.5 : 2}
                       className={isActive ? "text-[#0078d4] dark:text-[#60a5fa]" : ""}
                     />
@@ -160,80 +140,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               })}
             </nav>
 
-            {/* Right - System Tray */}
             <div className="flex items-center gap-2 flex-shrink-0">
-              <div className="relative" ref={languageRef}>
-                <button
-                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                  className={`
-                    flex items-center gap-2 px-3 py-1.5 rounded-xl
-                    text-[#4a4a4a] dark:text-[#a0a0a0]
-                    hover:text-[#1a1a1a] dark:hover:text-[#e8e8e8]
-                    hover:bg-[#e0e0e0]/40 dark:hover:bg-[#2a2a2a]/40
-                    transition-all duration-200
-                  `}
-                  aria-expanded={isLanguageOpen}
-                  aria-haspopup="true"
-                >
-                  <Globe size={18} />
-                  <span className="text-lg">{currentLocale.flag}</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-200 ${
-                      isLanguageOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-
-                {isLanguageOpen && (
-                  <div
-                    className={`
-                      absolute right-0 bottom-full mb-2
-                      w-60 max-h-80 overflow-y-auto
-                      p-1.5 rounded-xl
-                      bg-[#f3f3f3]/95 dark:bg-[#1a1a1a]/95
-                      backdrop-blur-xl
-                      border border-[#e0e0e0]/50 dark:border-[#2a2a2a]/50
-                      shadow-2xl shadow-black/30
-                      animate-in fade-in slide-in-from-bottom-2 duration-200
-                    `}
-                    role="menu"
-                  >
-                    {locales.map((loc) => {
-                      const isActive = locale === loc.code;
-                      return (
-                        <button
-                          key={loc.code}
-                          onClick={() => handleLocaleChange(loc.code)}
-                          className={`
-                            w-full flex items-center gap-3 px-3 py-2.5 rounded-lg
-                            text-sm transition-all duration-150
-                            ${
-                              isActive
-                                ? "bg-[#0078d4]/10 dark:bg-[#0078d4]/20 text-[#0078d4] dark:text-[#60a5fa]"
-                                : "text-[#4a4a4a] dark:text-[#a0a0a0] hover:bg-[#e0e0e0]/40 dark:hover:bg-[#2a2a2a]/40"
-                            }
-                          `}
-                          role="menuitem"
-                        >
-                          <span className="text-lg">{loc.flag}</span>
-                          <span>{loc.label}</span>
-                          {isActive && (
-                            <span className="ml-auto text-[#0078d4] dark:text-[#60a5fa]">✓</span>
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              <div className="w-px h-6 bg-[#e0e0e0]/50 dark:bg-[#2a2a2a]/50" />
-              
               <div className="flex items-center gap-1.5 px-2 py-1">
                 <span className="w-2 h-2 rounded-full bg-green-500 shadow-lg shadow-green-500/30"></span>
                 <span className="text-xs text-[#4a4a4a] dark:text-[#a0a0a0] font-medium">
-                  Online
+                  آنلاین
                 </span>
               </div>
             </div>
@@ -275,8 +186,8 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                     `}
                     aria-current={isActive ? "page" : undefined}
                   >
-                    <Icon 
-                      size={20} 
+                    <Icon
+                      size={20}
                       strokeWidth={isActive ? 2.5 : 2}
                       className="transition-all duration-200"
                     />
@@ -315,39 +226,10 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                 animate-in slide-in-from-bottom-2 duration-200
               `}
             >
-              <div className="border-b border-[#e0e0e0]/50 dark:border-[#2a2a2a]/50 pb-2 mb-2">
-                <p className="text-xs font-medium text-[#6a6a6a] dark:text-[#808080] px-2 mb-2">
-                  Language
-                </p>
-                <div className="grid grid-cols-2 gap-1">
-                  {locales.slice(0, 8).map((loc) => {
-                    const isActive = locale === loc.code;
-                    return (
-                      <button
-                        key={loc.code}
-                        onClick={() => handleLocaleChange(loc.code)}
-                        className={`
-                          flex items-center gap-2 px-3 py-2 rounded-lg
-                          text-sm transition-all duration-150
-                          ${
-                            isActive
-                              ? "bg-[#0078d4]/10 dark:bg-[#0078d4]/20 text-[#0078d4] dark:text-[#60a5fa]"
-                              : "text-[#4a4a4a] dark:text-[#a0a0a0] hover:bg-[#e0e0e0]/40 dark:hover:bg-[#2a2a2a]/40"
-                          }
-                        `}
-                      >
-                        <span className="text-lg">{loc.flag}</span>
-                        <span className="truncate text-xs">{loc.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
               <div className="flex items-center gap-2 px-3 py-1.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 shadow-lg shadow-green-500/30"></span>
                 <span className="text-xs text-[#4a4a4a] dark:text-[#a0a0a0] font-medium">
-                  Online
+                  آنلاین
                 </span>
               </div>
             </div>

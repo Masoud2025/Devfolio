@@ -1,5 +1,4 @@
 "use client";
-import { useLanguage } from "../../context/LanguageContext";
 import { Briefcase, Code, Wrench, Calendar, MapPin } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { useMemo, memo } from "react";
@@ -16,8 +15,6 @@ interface TimelineItem {
 }
 
 function Experience() {
-  const { t } = useLanguage();
-
   const { ref: sectionRef, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -26,53 +23,53 @@ function Experience() {
   const timelineData: TimelineItem[] = useMemo(() => [
     {
       id: 1,
-      title: t.Experience?.internshipTitle || "IT Intern",
-      company: t.Experience?.internshipCompany || "Kaveh Negar Company",
-      location: "Tehran, Iran",
-      date: "2024 - 3 Months",
+      title: "کارآموز IT",
+      company: "شرکت کاوه نگار",
+      location: "تهران، ایران",
+      date: "2024 - ۳ ماه",
       description: [
-        t.Experience?.internshipDesc1 || "Network configuration and maintenance",
-        t.Experience?.internshipDesc2 || "Hardware troubleshooting and repair",
-        t.Experience?.internshipDesc3 || "Deep Freeze installation and management",
-        t.Experience?.internshipDesc4 || "Printer setup and driver installation",
-        t.Experience?.internshipDesc5 || "System optimization and user support",
+        "پیکربندی و نگهداری شبکه",
+        "عیب‌یابی و تعمیر سخت‌افزار",
+        "نصب و مدیریت دیپ‌فریز",
+        "راه‌اندازی پرینتر و نصب درایور",
+        "بهینه‌سازی سیستم و پشتیبانی کاربران",
       ],
       type: "internship",
       icon: <Briefcase size={18} />,
     },
     {
       id: 2,
-      title: t.Experience?.freelanceTitle || "Freelance Projects",
-      company: t.Experience?.freelanceCompany || "Self-Employed",
-      location: "Remote",
+      title: "پروژه‌های فریلنسری",
+      company: "خوداشتغال",
+      location: "دورکاری",
       date: "2023 - 2024",
       description: [
-        t.Experience?.freelanceDesc1 || "Developed 3 full-stack web applications",
-        t.Experience?.freelanceDesc2 || "Built responsive websites with Next.js and Tailwind",
-        t.Experience?.freelanceDesc3 || "Implemented RESTful APIs and database integration",
-        t.Experience?.freelanceDesc4 || "Delivered projects on time with client satisfaction",
+        "توسعه ۳ اپلیکیشن وب فول‌استک",
+        "ساخت وب‌سایت‌های واکنش‌گرا با Next.js و Tailwind",
+        "پیاده‌سازی APIهای RESTful و دیتابیس",
+        "تحویل پروژه‌ها با کیفیت و در زمان مقرر",
       ],
       type: "freelance",
       icon: <Code size={18} />,
     },
     {
       id: 3,
-      title: t.Experience?.schoolTitle || "IT Department Head",
-      company: t.Experience?.schoolCompany || "Technical High School",
-      location: t.Experience?.schoolLocation || "Iran",
+      title: "رئیس بخش IT",
+      company: "هنرستان",
+      location: "ایران",
       date: "2022 - 2023",
       description: [
-        t.Experience?.schoolDesc1 || "Managed school's IT infrastructure",
-        t.Experience?.schoolDesc2 || "Network setup and maintenance",
-        t.Experience?.schoolDesc3 || "Installed and configured Deep Freeze",
-        t.Experience?.schoolDesc4 || "Hardware and software troubleshooting",
-        t.Experience?.schoolDesc5 || "Assisted teachers and students with technical issues",
-        t.Experience?.schoolDesc6 || "Printer and peripheral device management",
+        "مدیریت زیرساخت IT هنرستان",
+        "راه‌اندازی و نگهداری شبکه",
+        "نصب و پیکربندی دیپ‌فریز",
+        "عیب‌یابی سخت‌افزار و نرم‌افزار",
+        "کمک به معلمان و دانش‌آموزان در مشکلات فنی",
+        "مدیریت پرینتر و دستگاه‌های جانبی",
       ],
       type: "education",
       icon: <Wrench size={18} />,
     },
-  ], [t]);
+  ], []);
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -103,11 +100,11 @@ function Experience() {
   const getTypeLabel = (type: string) => {
     switch (type) {
       case "internship":
-        return t.Experience?.internship || "Internship";
+        return "کارآموزی";
       case "freelance":
-        return t.Experience?.freelance || "Freelance";
+        return "فریلنسر";
       case "education":
-        return t.Experience?.education || "Education";
+        return "آموزشی";
       default:
         return "";
     }
@@ -120,7 +117,6 @@ function Experience() {
       className="w-full py-20 px-4 md:px-8 lg:px-20 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div
           className={`
             mb-14 text-center transition-all duration-700 ease-out
@@ -128,14 +124,13 @@ function Experience() {
           `}
         >
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-            {t.Experience?.title || "Experience"}
+            سابقه کاری
           </h2>
           <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
-            {t.Experience?.subtitle || "My professional journey"}
+            مسیر حرفه‌ای من
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
           <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/20 dark:bg-border md:-translate-x-1/2" />
 
@@ -154,7 +149,6 @@ function Experience() {
                 willChange: 'transform, opacity',
               }}
             >
-              {/* Timeline Dot */}
               <div className="absolute left-5 md:left-1/2 top-1 translate-x-0 md:-translate-x-1/2 z-10">
                 <div className={`
                   w-10 h-10 md:w-12 md:h-12 rounded-full 
@@ -170,7 +164,6 @@ function Experience() {
                 </div>
               </div>
 
-              {/* Content */}
               <div className={`
                 w-full pl-14 md:pl-0
                 ${index % 2 === 0 

@@ -1,5 +1,4 @@
 "use client";
-import { useLanguage } from "../../context/LanguageContext";
 import { Code, Palette, Server, Smartphone, Wrench, Cloud } from "lucide-react";
 import { useMemo, memo } from "react";
 import { useInView } from "react-intersection-observer";
@@ -12,7 +11,6 @@ interface Service {
 }
 
 function Services() {
-  const { t } = useLanguage();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -22,50 +20,48 @@ function Services() {
     {
       id: 1,
       icon: <Code size={22} />,
-      title: t.Services?.webDev || "Web Development",
-      description: t.Services?.webDevDesc || "Building modern, responsive web applications",
+      title: "توسعه وب",
+      description: "ساخت اپلیکیشن‌های وب مدرن و واکنش‌گرا",
     },
     {
       id: 2,
       icon: <Palette size={22} />,
-      title: t.Services?.uiUx || "UI/UX Design",
-      description: t.Services?.uiUxDesc || "Creating beautiful and intuitive interfaces",
+      title: "طراحی UI/UX",
+      description: "ایجاد رابط‌های کاربری زیبا و شهودی",
     },
     {
       id: 3,
       icon: <Server size={22} />,
-      title: t.Services?.backend || "Backend Development",
-      description: t.Services?.backendDesc || "Developing scalable server-side solutions",
+      title: "توسعه بک‌اند",
+      description: "توسعه راه‌حل‌های مقیاس‌پذیر سمت سرور",
     },
     {
       id: 4,
       icon: <Smartphone size={22} />,
-      title: t.Services?.mobile || "Mobile Development",
-      description: t.Services?.mobileDesc || "Cross-platform mobile applications",
+      title: "توسعه موبایل",
+      description: "اپلیکیشن‌های موبایل چندسکویی",
     },
     {
       id: 5,
       icon: <Wrench size={22} />,
-      title: t.Services?.maintenance || "Maintenance & Support",
-      description: t.Services?.maintenanceDesc || "Ongoing support and maintenance",
+      title: "نگهداری و پشتیبانی",
+      description: "پشتیبانی و نگهداری مداوم",
     },
     {
       id: 6,
       icon: <Cloud size={22} />,
-      title: t.Services?.deployment || "Deployment & DevOps",
-      description: t.Services?.deploymentDesc || "CI/CD, hosting, and cloud services",
+      title: "استقرار و دواپس",
+      description: "CI/CD، هاستینگ و خدمات ابری",
     },
-  ], [t]);
+  ], []);
 
   return (
     <section ref={ref} className={`w-full py-16 md:py-24 px-6 md:px-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-8 md:mb-12">
-          {t.Services?.title || "Services"}
+          خدمات
         </h2>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {services.map((service) => (
             <div
@@ -82,7 +78,6 @@ function Services() {
                 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
               "
             >
-              {/* Icon */}
               <div className="
                 w-12 h-12
                 rounded-xl
@@ -96,12 +91,10 @@ function Services() {
                 {service.icon}
               </div>
 
-              {/* Title */}
               <h3 className="text-base font-semibold text-black dark:text-white">
                 {service.title}
               </h3>
 
-              {/* Description */}
               <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
                 {service.description}
               </p>

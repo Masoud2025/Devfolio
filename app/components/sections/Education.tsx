@@ -1,6 +1,5 @@
 "use client";
 import { useState, useMemo, useCallback, memo } from "react";
-import { useLanguage } from "../../context/LanguageContext";
 import ImageModal from "../../components/ui/ImageModal";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
@@ -15,11 +14,9 @@ interface EducationItem {
 }
 
 function Education() {
-  const { t } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedAlt, setSelectedAlt] = useState<string>("");
 
-  // استفاده از react-intersection-observer به جای framer-motion
   const { ref: sectionRef, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -28,19 +25,19 @@ function Education() {
   const educationData: EducationItem[] = useMemo(() => [
     {
       id: 1,
-      title: t.Education?.degree1 || "Bachelor of Computer Science",
-      institution: t.Education?.institution1 || "University of Technology",
+      title: "کارشناسی علوم کامپیوتر",
+      institution: "دانشگاه صنعتی",
       year: "2020 - 2024",
       logo: "/pic/license.jpg",
     },
     {
       id: 2,
-      title: t.Education?.degree2 || "Full-Stack Web Development",
-      institution: t.Education?.institution2 || "Online Bootcamp",
+      title: "توسعه وب فول‌استک",
+      institution: "دوره آنلاین",
       year: "2022 - 2023",
       logo: "/pic/license.jpg",
     },
-  ], [t]);
+  ], []);
 
   const handleImageClick = useCallback((src: string, alt: string) => {
     setSelectedImage(src);
@@ -60,7 +57,6 @@ function Education() {
         className="w-full py-20 px-4 md:px-8 lg:px-20 overflow-hidden"
       >
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <div
             className={`
               mb-14 text-center transition-all duration-700 ease-out
@@ -68,14 +64,13 @@ function Education() {
             `}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              {t.Education?.title || "Education"}
+              تحصیلات
             </h2>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
-              {t.Education?.subtitle || "My educational background"}
+              سوابق تحصیلی من
             </p>
           </div>
 
-          {/* Education Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {educationData.map((item, index) => (
               <article
@@ -99,10 +94,8 @@ function Education() {
                   willChange: 'transform, opacity',
                 }}
               >
-                {/* Decorative gradient line on hover */}
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-zinc-500/0 via-zinc-500/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-zinc-500/0 via-zinc-500/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Left side: Logo or Icon */}
                 <div className="flex-shrink-0">
                   {item.logo ? (
                     <div
@@ -125,7 +118,6 @@ function Education() {
                         className="object-cover transition-transform duration-500 group-hover/logo:scale-110"
                         loading="lazy"
                       />
-                      {/* Overlay with zoom icon */}
                       <div className="
                         absolute inset-0 
                         bg-gradient-to-br from-zinc-600/60 to-zinc-700/60
@@ -152,7 +144,6 @@ function Education() {
                   )}
                 </div>
 
-                {/* Right side: Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-zinc-600 dark:group-hover:text-zinc-400">
@@ -170,7 +161,6 @@ function Education() {
                     <span>{item.year}</span>
                   </div>
 
-                  {/* Badge: Education */}
                   <div className="mt-3">
                     <span className="
                       inline-flex items-center gap-1.5
@@ -179,15 +169,14 @@ function Education() {
                       shadow-md shadow-zinc-500/30
                     ">
                       <Award size={14} />
-                      {t.Experience?.education || "Education"}
+                      تحصیلات
                     </span>
                   </div>
                 </div>
 
-                {/* Click hint (visible on hover) */}
                 {item.logo && (
                   <div className="absolute bottom-3 right-4 text-[10px] text-zinc-400 dark:text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {t.Education?.clickToZoom || "Click to zoom"}
+                    برای بزرگنمایی  رو عکس کلیک کنید
                   </div>
                 )}
               </article>
@@ -196,7 +185,6 @@ function Education() {
         </div>
       </section>
 
-      {/* Image Modal */}
       <ImageModal
         isOpen={!!selectedImage}
         onClose={handleCloseModal}
