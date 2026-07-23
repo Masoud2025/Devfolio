@@ -1,14 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useTheme } from "@/app/context/ThemeContext";
 import {
   Briefcase,
   Code,
   Home,
   Mail,
-  Moon,
-  Sun,
   User,
   Menu,
   X,
@@ -50,7 +47,6 @@ type Locale = (typeof locales)[number]["code"];
 
 export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   const { locale, setLocale, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const languageRef = useRef<HTMLDivElement>(null);
@@ -93,8 +89,6 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   const getLabel = (key: string) =>
     (t.navbar?.[key as keyof typeof t.navbar] as string) || key;
 
-  const isDark = theme === "dark";
-
   return (
     <>
       {/* ===== DESKTOP NAVBAR ===== */}
@@ -106,17 +100,16 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               className={`
                 flex items-center justify-between
                 px-6 py-3 rounded-2xl
-                bg-white/70 dark:bg-gray-900/70
+                bg-zinc-900/70
                 backdrop-blur-xl backdrop-saturate-150
-                border border-white/20 dark:border-gray-700/30
-                shadow-[0_8px_32px_rgba(0,0,0,0.08)]
-                dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]
+                border border-white/10
+                shadow-[0_8px_32px_rgba(0,0,0,0.3)]
                 transition-all duration-300
               `}
             >
               {/* Logo */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl overflow-hidden ring-2 ring-purple-500/20 dark:ring-purple-400/20">
+                <div className="w-10 h-10 rounded-xl overflow-hidden ring-2 ring-purple-500/20">
                   <video
                     autoPlay
                     muted
@@ -130,10 +123,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                 </div>
                 <span
                   className={`
-                    text-lg font-bold tracking-tight
-                    bg-gradient-to-r from-purple-600 to-blue-600
-                    dark:from-purple-400 dark:to-blue-400
-                    bg-clip-text text-transparent
+                 text-lg font-bold tracking-tight
+                   bg-gradient-to-r from-purple-600 to-blue-600
+                   bg-clip-text text-transparent
                   `}
                 >
                   Masoud
@@ -154,11 +146,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         flex items-center gap-2
                         text-sm font-medium
                         transition-all duration-200
-                        ${
-                          isActive
-                            ? "text-purple-600 dark:text-purple-400 bg-purple-50/80 dark:bg-purple-900/30"
-                            : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
-                        }
+                         ${
+                           isActive
+                             ? "text-purple-400 bg-purple-500/10"
+                             : "text-gray-300 hover:text-white hover:bg-white/5"
+                         }
                       `}
                       aria-current={isActive ? "page" : undefined}
                     >
@@ -172,39 +164,19 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   }                )}
               </nav>
 
-              {/* Right Actions */}
-              <div className="flex items-center gap-2">
-                {/* Theme Toggle */}
-                <button
-                  onClick={toggleTheme}
-                  className={`
-                    p-2 rounded-xl
-                    text-gray-500 dark:text-gray-400
-                    hover:text-gray-900 dark:hover:text-white
-                    hover:bg-gray-100/60 dark:hover:bg-gray-800/60
-                    transition-all duration-200
-                    hover:scale-105 active:scale-95
-                  `}
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? (
-                    <Sun size={20} className="text-yellow-400" />
-                  ) : (
-                    <Moon size={20} className="text-indigo-500" />
-                  )}
-                </button>
-
-                {/* Language Selector */}
+               {/* Right Actions */}
+               <div className="flex items-center gap-2">
+                 {/* Language Selector */}
                 <div className="relative" ref={languageRef}>
                   <button
                     onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                    className={`
-                      flex items-center gap-2 px-3 py-2 rounded-xl
-                      text-gray-600 dark:text-gray-400
-                      hover:text-gray-900 dark:hover:text-white
-                      hover:bg-gray-100/60 dark:hover:bg-gray-800/60
-                      transition-all duration-200
-                    `}
+                        className={`
+                        flex items-center gap-2 px-3 py-2 rounded-xl
+                        text-gray-300
+                        hover:text-white
+                        hover:bg-white/5
+                        transition-all duration-200
+                      `}
                     aria-expanded={isLanguageOpen}
                     aria-haspopup="true"
                   >
@@ -219,19 +191,19 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   </button>
 
                   {isLanguageOpen && (
-                    <div
-                      className={`
+                      <div
+                        className={`
                         absolute right-0 top-full mt-2
                         w-56 max-h-80 overflow-y-auto
                         p-1 rounded-xl
-                        bg-white/95 dark:bg-gray-900/95
+                        bg-zinc-900/95
                         backdrop-blur-xl
-                        border border-gray-200/50 dark:border-gray-700/50
-                        shadow-2xl shadow-black/10 dark:shadow-black/40
+                        border border-white/10
+                        shadow-2xl shadow-black/40
                         animate-in fade-in slide-in-from-top-2 duration-200
                       `}
-                      role="menu"
-                    >
+                       role="menu"
+                     >
                       {locales.map((loc) => {
                         const isActive = locale === loc.code;
                         return (
@@ -241,11 +213,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                             className={`
                               w-full flex items-center gap-3 px-3 py-2.5 rounded-lg
                               text-sm transition-all duration-150
-                              ${
-                                isActive
-                                  ? "bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
-                                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
-                              }
+                          ${
+                            isActive
+                              ? "bg-purple-500/10 text-purple-400"
+                              : "text-gray-300 hover:bg-white/5"
+                          }
                             `}
                             role="menuitem"
                           >
@@ -270,15 +242,14 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
       <header className="md:hidden fixed top-0 left-0 right-0 z-50">
         <div className="px-4 pt-3">
           <div
-            className={`
-              flex items-center justify-between
-              px-4 py-2.5 rounded-2xl
-              bg-white/80 dark:bg-gray-900/80
-              backdrop-blur-xl backdrop-saturate-150
-              border border-white/20 dark:border-gray-700/30
-              shadow-[0_4px_20px_rgba(0,0,0,0.06)]
-              dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]
-            `}
+              className={`
+                flex items-center justify-between
+                px-4 py-2.5 rounded-2xl
+                bg-zinc-900/80
+                backdrop-blur-xl backdrop-saturate-150
+                border border-white/10
+                shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+              `}
           >
             {/* Logo */}
             <div className="flex items-center gap-2">
@@ -299,18 +270,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               </span>
             </div>
 
-            {/* Right Actions */}
+             {/* Right Actions */}
             <div className="flex items-center gap-1">
               <button
-                onClick={toggleTheme}
-                className="p-2 rounded-xl text-gray-500 dark:text-gray-400 hover:bg-gray-100/60 dark:hover:bg-gray-800/60 transition-all"
-              >
-                {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-
-              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-xl text-gray-500 dark:text-gray-400 hover:bg-gray-100/60 dark:hover:bg-gray-800/60 transition-all"
+                className="p-2 rounded-xl text-gray-300 hover:bg-white/5 transition-all"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -324,10 +288,10 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               ref={mobileMenuRef}
               className={`
                 mt-2 p-2 rounded-2xl
-                bg-white/95 dark:bg-gray-900/95
+                bg-zinc-900/95
                 backdrop-blur-xl
-                border border-gray-200/50 dark:border-gray-700/50
-                shadow-2xl shadow-black/10 dark:shadow-black/40
+                border border-white/10
+                shadow-2xl shadow-black/40
                 animate-in slide-in-from-top-2 duration-200
               `}
             >
@@ -343,11 +307,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         flex items-center gap-3 px-4 py-3 rounded-xl
                         text-sm font-medium
                         transition-all duration-200
-                        ${
-                          isActive
-                            ? "bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
-                            : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
-                        }
+                              ${
+                                isActive
+                                  ? "bg-purple-500/10 text-purple-400"
+                                  : "text-gray-300 hover:bg-white/5"
+                              }
                       `}
                     >
                       <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
@@ -359,11 +323,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   );
                 })}
 
-                <div className="border-t border-gray-200/50 dark:border-gray-700/50 my-1" />
+                <div className="border-t border-white/10 my-1" />
 
                 {/* Mobile Language Selector */}
                 <div className="p-2">
-                  <p className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 mb-2">
+                  <p className="text-xs font-medium text-gray-400 px-2 mb-2">
                     Language
                   </p>
                   <div className="grid grid-cols-2 gap-1">
@@ -376,11 +340,11 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                           className={`
                             flex items-center gap-2 px-3 py-2 rounded-lg
                             text-sm transition-all duration-150
-                            ${
-                              isActive
-                                ? "bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
-                                : "text-gray-700 dark:text-gray-300 hover:bg-gray-100/60 dark:hover:bg-gray-800/60"
-                            }
+                              ${
+                                isActive
+                                  ? "bg-purple-500/10 text-purple-400"
+                                  : "text-gray-300 hover:bg-white/5"
+                              }
                           `}
                         >
                           <span>{loc.flag}</span>

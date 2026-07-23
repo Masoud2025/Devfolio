@@ -42,10 +42,10 @@ function Testimonials() {
                 &quot;{item.text}&quot;
               </p>
 
-              <div className="mt-4 md:mt-6">
-                <h4 className="font-semibold text-sm md:text-base">{item.name}</h4>
-                <p className="text-xs md:text-sm text-gray-500">{item.role}</p>
-              </div>
+               <div className="mt-4 md:mt-6">
+                 <h4 className="font-semibold text-sm md:text-base dark:text-white">{item.name}</h4>
+                 <p className="text-xs md:text-sm text-gray-500 dark:text-zinc-400">{item.role}</p>
+               </div>
             </div>
           ))}
         </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "@/app/context/ThemeContext";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { MessageCircle, Minimize2, Send, X, Sparkles } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -38,7 +37,6 @@ interface ConversationContext {
 
 function AIChat() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -723,7 +721,16 @@ function AIChat() {
 
   const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
 
-  const isDark = theme === "dark";
+  const themeClasses = {
+    panel: "bg-zinc-900/80 border-zinc-700/50 text-white",
+    header: "bg-zinc-900/90 border-b border-zinc-800/50",
+    input: "bg-zinc-800/80 border-zinc-700/50 text-white placeholder:text-zinc-400",
+    userBubble: "bg-white text-black",
+    assistantBubble: "bg-zinc-800/80 text-white",
+    suggestion: "bg-zinc-800/60 border-zinc-700/50 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700/60",
+    icon: "text-zinc-400",
+    toggle: "bg-white text-black shadow-lg shadow-black/30",
+  };
 
   const currentSuggestions =
     messages.length <= 2 && !isTyping
@@ -732,31 +739,6 @@ function AIChat() {
           context.followUpCount
         )
       : [];
-
-  const themeClasses = {
-    panel: isDark
-      ? "bg-zinc-900/80 border-zinc-700/50 text-white"
-      : "bg-white/80 border-zinc-200/80 text-zinc-900",
-    header: isDark
-      ? "bg-zinc-900/90 border-b border-zinc-800/50"
-      : "bg-white/90 border-b border-zinc-100",
-    input: isDark
-      ? "bg-zinc-800/80 border-zinc-700/50 text-white placeholder:text-zinc-400"
-      : "bg-zinc-50/80 border-zinc-200 text-zinc-900 placeholder:text-zinc-400",
-    userBubble: isDark
-      ? "bg-white text-black"
-      : "bg-black text-white",
-    assistantBubble: isDark
-      ? "bg-zinc-800/80 text-white"
-      : "bg-zinc-100/80 text-zinc-900",
-    suggestion: isDark
-      ? "bg-zinc-800/60 border-zinc-700/50 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700/60"
-      : "bg-zinc-50/80 border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-100/80",
-    icon: isDark ? "text-zinc-400" : "text-zinc-500",
-    toggle: isDark
-      ? "bg-white text-black shadow-lg shadow-black/30"
-      : "bg-black text-white shadow-lg shadow-zinc-900/30",
-  };
 
   return (
     <div className="fixed bottom-4 right-4 md:bottom-12 md:right-20 md:left-auto z-[70] flex flex-col items-end gap-3">

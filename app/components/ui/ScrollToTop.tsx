@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
-import { useTheme } from "@/app/context/ThemeContext";
 
 export default function ScrollToTop() {
-  const { theme } = useTheme();
   const [scroll, setScroll] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -28,8 +26,6 @@ export default function ScrollToTop() {
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - scroll * circumference;
-
-  const isDark = theme === "dark";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

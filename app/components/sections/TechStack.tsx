@@ -77,17 +77,17 @@ export default function TechStack() {
         {technologies.map(({ title, description, icon: Icon }) => (
           <div
             key={title}
-            className="group rounded-3xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-black"
+            className="group rounded-3xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-black dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-white"
           >
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110">
               <Icon size={28} />
             </div>
 
-            <h3 className="mt-6 text-xl font-bold text-black">
+            <h3 className="mt-6 text-xl font-bold text-black dark:text-white">
               {title}
             </h3>
 
-            <p className="mt-2 text-sm text-zinc-500">
+            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
               {description}
             </p>
           </div>

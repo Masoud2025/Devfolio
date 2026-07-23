@@ -1,6 +1,5 @@
 import { LanguageProvider } from "@/app/context/LanguageContext";
 import type { Metadata, Viewport } from "next";
-import { ThemeProvider } from "./context/ThemeContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -119,8 +118,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -129,7 +128,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={"h-full antialiased"}>
+    <html lang="en" className={"h-full antialiased dark"}>
       <head>
         <link
           rel="preload"
@@ -141,7 +140,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LanguageProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          {children}
         </LanguageProvider>
       </body>
     </html>
