@@ -1,15 +1,19 @@
-// next.config.js
-/** @type {import('next').NextConfig} */
+// next.config.js -  
 const nextConfig = {
-  reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.example.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
-
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-module.exports = withBundleAnalyzer(nextConfig);
