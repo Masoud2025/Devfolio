@@ -236,7 +236,7 @@ function Projects() {
     techStack: "تکنولوژی‌ها",
     colorPalette: "پالت رنگی",
     typography: "فونت‌بندی",
-    liveDemo: "دمو زنده",
+    liveDemo: "دمو",
     sourceCode: "سورس کد",
   };
 
@@ -483,14 +483,14 @@ function Projects() {
                           e.stopPropagation();
                           window.open("#", "_blank");
                         }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+                        className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[11px] font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
                       >
-                        <ExternalLink size={14} />
+                        <ExternalLink size={12} />
                         <span>{labels.liveDemo}</span>
                       </button>
                       <button
                         onClick={() => toggleFlip(project.id)}
-                        className="px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 hover:scale-105 active:scale-95"
+                        className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 hover:scale-105 active:scale-95"
                         aria-label="Flip card"
                       >
                         <ArrowLeftRight size={14} />
