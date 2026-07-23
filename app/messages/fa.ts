@@ -1,11 +1,11 @@
 export const fa = {
   navbar: {
     Home: "خانه",
-    About: "درباره من",
+    About: "درباره ",
     Blog: "وبلاگ",
     Skills: "مهارت‌ها",
     tech: " مهارت ها   ",
-    contact: "ارتباط با من",
+    contact: "ارتباط  ",
     Github: "گیتهاب",
     Linkedin: "لینکدین",
     Telegram: " تلگرام",

@@ -43,31 +43,29 @@ export default function ScrollToTop() {
         className="group relative focus:outline-none"
         aria-label="Scroll to top"
       >
-        {/* Glow effect behind button - using theme-aware background with opacity */}
+        {/* Simple shadow background without blur */}
         <div
-          className={`
-            absolute inset-0 rounded-full blur-xl transition-opacity duration-500
-            bg-foreground/10
-            group-hover:opacity-100 opacity-60
-          `}
-          style={{ transform: "scale(1.2)" }}
+          className="absolute inset-0 rounded-full transition-opacity duration-500 opacity-30 group-hover:opacity-50"
+          style={{ 
+            transform: "scale(1.15)",
+            background: "radial-gradient(circle, rgba(0,0,0,0.15) 0%, transparent 70%)"
+          }}
         />
 
-        {/* Main button container - fully dynamic theming */}
+        {/* Main button container */}
         <div
           className={`
             relative flex items-center justify-center rounded-full
             transition-transform duration-300 group-hover:scale-110
-            bg-background/90
-            backdrop-blur-sm
-            border border-border/10
-            shadow-lg
+            bg-white dark:bg-zinc-900
+            border border-zinc-200 dark:border-zinc-700
+            shadow-lg shadow-zinc-500/10 dark:shadow-zinc-800/30
           `}
           style={{ margin: stroke + 4 }}
         >
           {/* Progress Circle - Outer ring */}
           <svg width={size} height={size} className="rotate-[-90deg]">
-            {/* Background circle - uses border color with low opacity */}
+            {/* Background circle */}
             <circle
               cx={size / 2}
               cy={size / 2}
@@ -77,7 +75,7 @@ export default function ScrollToTop() {
               strokeWidth={stroke}
               fill="none"
             />
-            {/* Progress circle with gradient (static design accent) */}
+            {/* Progress circle with gradient */}
             <circle
               cx={size / 2}
               cy={size / 2}
@@ -90,7 +88,7 @@ export default function ScrollToTop() {
               strokeLinecap="round"
               className="transition-[stroke-dashoffset] duration-200 ease-out"
             />
-            {/* Gradient definition - using neutral accent colors */}
+            {/* Gradient definition */}
             <defs>
               <linearGradient
                 id="scrollGradient"
@@ -99,14 +97,14 @@ export default function ScrollToTop() {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#71717a" /> {/* zinc-500 */}
-                <stop offset="50%" stopColor="#52525b" /> {/* zinc-600 */}
-                <stop offset="100%" stopColor="#3b82f6" /> {/* blue-500 */}
+                <stop offset="0%" stopColor="#71717a" />
+                <stop offset="50%" stopColor="#52525b" />
+                <stop offset="100%" stopColor="#3b82f6" />
               </linearGradient>
             </defs>
           </svg>
 
-          {/* Inner circle with arrow - dynamic text color */}
+          {/* Inner circle with arrow */}
           <div
             className="absolute inset-0 flex items-center justify-center"
             style={{ margin: stroke + 4 }}
@@ -115,7 +113,7 @@ export default function ScrollToTop() {
               size={22}
               className={`
                 transition-all duration-300
-                text-foreground
+                text-zinc-700 dark:text-zinc-300
                 group-hover:scale-110 group-hover:-translate-y-0.5
               `}
               strokeWidth={2.5}
@@ -123,15 +121,14 @@ export default function ScrollToTop() {
           </div>
         </div>
 
-        {/* Tooltip on hover - fully dynamic theming */}
+        {/* Tooltip on hover */}
         <span
           className={`
             absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap
             transition-all duration-300 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100
-            bg-background/90
-            text-foreground
-            shadow-lg border border-border/10
-            backdrop-blur-sm
+            bg-white dark:bg-zinc-900
+            text-zinc-700 dark:text-zinc-300
+            shadow-lg border border-zinc-200 dark:border-zinc-700
           `}
         >
           Back to top

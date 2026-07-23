@@ -721,15 +721,16 @@ function AIChat() {
 
   const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
 
+  // Simple theme without blur
   const themeClasses = {
-    panel: "bg-background/80 border-zinc-700/50 text-white",
-    header: "bg-background/90 border-b border-zinc-800/50",
-    input: "bg-zinc-800/80 border-zinc-700/50 text-white placeholder:text-zinc-400",
-    userBubble: "bg-background text-foreground",
-    assistantBubble: "bg-zinc-800/80 text-white",
-    suggestion: "bg-zinc-800/60 border-zinc-700/50 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700/60",
-    icon: "text-zinc-400",
-    toggle: "bg-background text-foreground shadow-lg shadow-black/30",
+    panel: "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white",
+    header: "bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700",
+    input: "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500",
+    userBubble: "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900",
+    assistantBubble: "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white",
+    suggestion: "bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-500 hover:bg-zinc-200 dark:hover:bg-zinc-700",
+    icon: "text-zinc-500 dark:text-zinc-400",
+    toggle: "bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-lg shadow-zinc-500/20 dark:shadow-zinc-800/30 border border-zinc-200 dark:border-zinc-700",
   };
 
   const currentSuggestions =
@@ -754,21 +755,21 @@ function AIChat() {
         >
           <div className={`flex items-center justify-between px-4 py-3 ${themeClasses.header}`}>
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-600 flex items-center justify-center text-white text-xs font-bold shadow-lg">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-zinc-600 to-zinc-500 dark:from-zinc-500 dark:to-zinc-400 flex items-center justify-center text-white text-xs font-bold">
                 <Sparkles size={16} />
               </div>
               <div>
                 <h3 className="text-sm font-semibold">
                   {labels.title}
                 </h3>
-                <p className="text-[11px] opacity-70">
+                <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
                   {labels.subtitle}
                 </p>
               </div>
             </div>
             <button
               onClick={toggleOpen}
-              className={`p-2 rounded-lg transition-all duration-200 hover:scale-110 ${themeClasses.icon}`}
+              className={`p-2 rounded-lg transition-all duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800 ${themeClasses.icon}`}
             >
               <Minimize2 size={16} />
             </button>
@@ -841,7 +842,7 @@ function AIChat() {
             </div>
           )}
 
-          <div className="p-3 border-t border-white/10">
+          <div className="p-3 border-t border-zinc-200 dark:border-zinc-700">
             <div className="flex items-center gap-2">
               <input
                 ref={inputRef}
@@ -853,14 +854,14 @@ function AIChat() {
                 className={`
                   flex-1 rounded-xl px-4 py-2.5 text-sm outline-none
                   border transition-all duration-200
-                  focus:ring-2 focus:ring-zinc-500/30
+                  focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600
                   ${themeClasses.input}
                 `}
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="p-2.5 rounded-xl bg-background text-foreground hover:scale-105 active:scale-95 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                className="p-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 flex-shrink-0 shadow-lg"
               >
                 <Send size={16} />
               </button>
