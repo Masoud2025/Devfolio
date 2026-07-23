@@ -22,7 +22,7 @@ const sectionSkeleton = (
 );
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<"home" | "about" | "blog" | "skills" | "contact">("home");
+  const [activeTab, setActiveTab] = useState<"home" | "about" | "blog"  | "contact">("home");
 
   return (
     <main className="min-h-screen overflow-x-hidden md:mr-16 pt-12 md:pt-0 pb-20 md:pb-0 bg-background">
@@ -31,12 +31,12 @@ export default function Home() {
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
       <div className="flex-1">
         <LazySection
-          name={activeTab === "home" ? "Projects" : activeTab === "about" ? "Aboutme" : activeTab === "blog" ? "Blog" : activeTab === "skills" ? "Skills" : "ContactMe"}
+          name={activeTab === "home" ? "Projects" : activeTab === "about" ? "Aboutme" : activeTab === "blog" ? "Blog" :  "ContactMe"}
           skeleton={sectionSkeleton}
         />
       </div>
       <ScrollToTop />
-      <AIChat />
+      {/* <AIChat /> */}
     </main>
   );
 }

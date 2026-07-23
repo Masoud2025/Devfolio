@@ -4,15 +4,13 @@ import {
   Home,
   User,
   Briefcase,
-  Code,
   Mail,
   Menu,
   X,
-  ChevronDown,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-type TabName = "home" | "about" | "blog" | "skills" | "contact";
+type TabName = "home" | "about" | "blog" | "contact";
 
 interface NavbarProps {
   activeTab: TabName;
@@ -23,7 +21,6 @@ const navTabs: { id: TabName; key: string; icon: typeof Home }[] = [
   { id: "home", key: "Home", icon: Home },
   { id: "about", key: "About", icon: User },
   { id: "blog", key: "Blog", icon: Briefcase },
-  { id: "skills", key: "Skills", icon: Code },
   { id: "contact", key: "contact", icon: Mail },
 ];
 
@@ -54,7 +51,6 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
       Home: "خانه",
       About: "درباره",
       Blog: "وبلاگ",
-      Skills: "مهارت‌ها",
       contact: "ارتباط",
     };
     return map[key] || key;
@@ -63,7 +59,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
   return (
     <>
       {/* ===== DESKTOP TASKBAR (Windows Style - Bottom) ===== */}
-      <header className="hidden md:block fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-5xl min-w-[700px]">
+      <header className="hidden md:block fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-4xl min-w-[600px]">
         <div className="relative">
           <div
             className={`

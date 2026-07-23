@@ -21,8 +21,8 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const size = 64;
-  const stroke = 4;
+  const size = 44; // از 64 به 44 کاهش یافت
+  const stroke = 3.5; // از 4 به 3.5 کاهش یافت
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - scroll * circumference;
@@ -43,12 +43,12 @@ export default function ScrollToTop() {
         className="group relative focus:outline-none"
         aria-label="Scroll to top"
       >
-        {/* Simple shadow background without blur */}
+        {/* Simple shadow background */}
         <div
-          className="absolute inset-0 rounded-full transition-opacity duration-500 opacity-30 group-hover:opacity-50"
+          className="absolute inset-0 rounded-full transition-opacity duration-500 opacity-20 group-hover:opacity-40"
           style={{ 
-            transform: "scale(1.15)",
-            background: "radial-gradient(circle, rgba(0,0,0,0.15) 0%, transparent 70%)"
+            transform: "scale(1.2)",
+            background: "radial-gradient(circle, rgba(0,0,0,0.12) 0%, transparent 70%)"
           }}
         />
 
@@ -61,9 +61,9 @@ export default function ScrollToTop() {
             border border-zinc-200 dark:border-zinc-700
             shadow-lg shadow-zinc-500/10 dark:shadow-zinc-800/30
           `}
-          style={{ margin: stroke + 4 }}
+          style={{ margin: stroke + 3 }}
         >
-          {/* Progress Circle - Outer ring */}
+          {/* Progress Circle */}
           <svg width={size} height={size} className="rotate-[-90deg]">
             {/* Background circle */}
             <circle
@@ -75,7 +75,7 @@ export default function ScrollToTop() {
               strokeWidth={stroke}
               fill="none"
             />
-            {/* Progress circle with gradient */}
+            {/* Progress circle */}
             <circle
               cx={size / 2}
               cy={size / 2}
@@ -107,10 +107,10 @@ export default function ScrollToTop() {
           {/* Inner circle with arrow */}
           <div
             className="absolute inset-0 flex items-center justify-center"
-            style={{ margin: stroke + 4 }}
+            style={{ margin: stroke + 3 }}
           >
             <ArrowUp
-              size={22}
+              size={16} // از 22 به 16 کاهش یافت
               className={`
                 transition-all duration-300
                 text-zinc-700 dark:text-zinc-300
@@ -121,17 +121,17 @@ export default function ScrollToTop() {
           </div>
         </div>
 
-        {/* Tooltip on hover */}
+        {/* Tooltip on hover - کوچک‌تر */}
         <span
           className={`
-            absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap
+            absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md text-[10px] font-medium whitespace-nowrap
             transition-all duration-300 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100
             bg-white dark:bg-zinc-900
             text-zinc-700 dark:text-zinc-300
             shadow-lg border border-zinc-200 dark:border-zinc-700
           `}
         >
-          Back to top
+          بازگشت به بالا
         </span>
       </button>
     </div>
