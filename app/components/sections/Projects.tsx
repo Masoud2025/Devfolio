@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import Banner from "@/public/pic/Banner.png";
@@ -18,9 +19,10 @@ import {
   Type as TypeIcon,
   X,
   Zap,
+  ArrowUp,
 } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -55,7 +57,6 @@ function TypeWriter({ text, delay = 80 }: { text: string; delay?: number }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayed("");
     setIndex(0);
   }, [text]);
@@ -83,7 +84,10 @@ function Projects() {
   const [mobileScrollId, setMobileScrollId] = useState<number | null>(null);
   const [flippedId, setFlippedId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showUpButton, setShowUpButton] = useState<number | null>(null);
   const pageSize = 6;
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const { ref: headerRef, inView: headerInView } = useInView({
     triggerOnce: true,
@@ -162,8 +166,101 @@ function Projects() {
     sourceCode: "Source Code",
   };
 
+  const scrollToCardTop = (id: number) => {
+    const cardElement = cardRefs.current[id];
+    if (cardElement) {
+      const cardTop = cardElement.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: cardTop,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const startAutoScroll = (id: number) => {
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = null;
+    }
+
+    scrollToCardTop(id);
+    setShowUpButton(id);
+
+    let scrollPosition = 0;
+    const maxScroll = 500;
+    const step = 2;
+    const interval = 16;
+
+    scrollTimeoutRef.current = setInterval(() => {
+      scrollPosition += step;
+      if (scrollPosition >= maxScroll) {
+        if (scrollTimeoutRef.current) {
+          clearInterval(scrollTimeoutRef.current);
+          scrollTimeoutRef.current = null;
+        }
+        setShowUpButton(id);
+        return;
+      }
+      window.scrollBy({
+        top: step,
+        behavior: "smooth"
+      });
+    }, interval);
+
+    const handleScrollStop = () => {
+      if (scrollTimeoutRef.current) {
+        clearInterval(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+        setShowUpButton(id);
+      }
+      document.removeEventListener("click", handleScrollStop);
+    };
+
+    setTimeout(() => {
+      if (scrollTimeoutRef.current) {
+        clearInterval(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+        setShowUpButton(id);
+      }
+      document.removeEventListener("click", handleScrollStop);
+    }, 8000);
+
+    document.addEventListener("click", handleScrollStop);
+  };
+
+  const scrollToTop = (id: number) => {
+    if (scrollTimeoutRef.current) {
+      clearInterval(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = null;
+    }
+    scrollToCardTop(id);
+    setTimeout(() => {
+      setShowUpButton(null);
+      setMobileScrollId(null);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearInterval(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+      }
+    };
+  }, []);
+
   const toggleMobileScroll = (id: number) => {
-    setMobileScrollId((prev) => (prev === id ? null : id));
+    if (mobileScrollId === id) {
+      setMobileScrollId(null);
+      setShowUpButton(null);
+      if (scrollTimeoutRef.current) {
+        clearInterval(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+      }
+    } else {
+      setMobileScrollId(id);
+      startAutoScroll(id);
+    }
   };
 
   const toggleFlip = (id: number) => {
@@ -171,397 +268,392 @@ function Projects() {
   };
 
   return (
-    <>
-      <section
-        id="projects"
-        className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 scroll-mt-28 relative"
-      >
-
-        {/* Banner Image */}
-        <div className="relative w-full h-48 sm:h-56 md:h-72 mb-10 mt-20 sm:mb-14 overflow-hidden rounded-3xl shadow-2xl shadow-zinc-500/10">
-          <Image
-            src={Banner}
-            alt="Projects Banner"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-zinc-500/20 via-transparent to-blue-500/20" />
-
-          {/* Banner text overlay */}
-          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12">
-            <div className="flex items-center gap-3">
-              <div className="px-3 py-1 bg-background/10 backdrop-blur-md rounded-full border border-white/20">
-                <span className=" text-xs font-medium">✦ Portfolio</span>
-              </div>
-              <div className="px-3 py-1 bg-background/10 backdrop-blur-md rounded-full border border-white/20">
-                <span className=" text-xs font-medium">
-                  {projects.length} Projects
-                </span>
-              </div>
+    <section
+      id="projects"
+      className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 scroll-mt-28"
+    >
+      {/* Banner Image */}
+      <div className="relative w-full h-48 sm:h-56 md:h-72 mb-10 mt-20 sm:mb-14 overflow-hidden rounded-3xl shadow-2xl shadow-zinc-500/10">
+        <Image
+          src={Banner}
+          alt="Projects Banner"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-500/20 via-transparent to-blue-500/20" />
+        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12">
+          <div className="flex items-center gap-3">
+            <div className="px-3 py-1 bg-black/50 rounded-full border border-white/20">
+              <span className="text-white text-xs font-medium">✦ Portfolio</span>
+            </div>
+            <div className="px-3 py-1 bg-black/50 rounded-full border border-white/20">
+              <span className="text-white text-xs font-medium">
+                {projects.length} Projects
+              </span>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Header */}
-        <div
-          ref={headerRef}
-          className={`mb-12 sm:mb-16 text-center transition-all duration-700 ${
-            headerInView
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-500/10 dark:bg-zinc-400/10 border border-zinc-500/20 dark:border-zinc-400/20 mb-4">
-            <Zap size={14} className="text-zinc-400" />
-            <span className="text-zinc-600 dark:text-zinc-400 text-xs font-medium uppercase tracking-wider">
-              Open to Work | full time
-            </span>
-          </div>
-          <h2 className="Moraba_font text-4xl sm:text-5xl md:text-6xl font-bold  min-h-[1.2em] ">
-            {headerInView && <TypeWriter text={labels.header} delay={70} />}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground text-sm sm:text-base">
-            {labels.subtitle}
-          </p>
+      {/* Header */}
+      <div
+        ref={headerRef}
+        className="mb-12 sm:mb-16 text-center transition-all duration-700"
+        style={{
+          opacity: headerInView ? 1 : 0,
+          transform: headerInView ? "translateY(0)" : "translateY(10px)",
+        }}
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 mb-4">
+          <Zap size={14} className="text-zinc-600 dark:text-zinc-400" />
+          <span className="text-zinc-700 dark:text-zinc-300 text-xs font-medium uppercase tracking-wider">
+            Open to Work | full time
+          </span>
         </div>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold min-h-[1.2em] text-zinc-900 dark:text-white">
+          {headerInView && <TypeWriter text={labels.header} delay={70} />}
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400 text-sm sm:text-base">
+          {labels.subtitle}
+        </p>
+      </div>
 
-
-        {/* Projects Grid */}
-        <div
-          ref={gridRef}
-          className={`grid gap-6 sm:gap-8 lg:grid-cols-2 xl:grid-cols-3 transition-all duration-700 ${
-            gridInView
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          {paginatedProjects.map((project, index) => {
-            const isHovered = hoveredId === project.id;
-            const isMobileScrolled = mobileScrollId === project.id;
-            const isScrolled = isHovered || isMobileScrolled;
-            const isFlipped = flippedId === project.id;
-            return (
+      {/* Projects Grid */}
+      <div
+        ref={gridRef}
+        className="grid gap-6 sm:gap-8 lg:grid-cols-2 xl:grid-cols-3 transition-all duration-700"
+        style={{
+          opacity: gridInView ? 1 : 0,
+          transform: gridInView ? "translateY(0)" : "translateY(10px)",
+        }}
+      >
+        {paginatedProjects.map((project, index) => {
+          const isHovered = hoveredId === project.id;
+          const isMobileScrolled = mobileScrollId === project.id;
+          const isScrolled = isHovered || isMobileScrolled;
+          const isFlipped = flippedId === project.id;
+          const showUp = showUpButton === project.id;
+          
+          return (
+            <div
+              key={project.id}
+              ref={(el) => {
+                cardRefs.current[project.id] = el;
+              }}
+              className="group relative overflow-hidden rounded-3xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-zinc-500/20 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+              style={{
+                transitionDelay: gridInView ? `${index * 100}ms` : "0ms",
+              }}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
               <div
-                key={project.id}
-                className={`
-                      group relative overflow-hidden rounded-3xl
-                      transition-all duration-500 ease-out
-                      hover:-translate-y-2 hover:shadow-2xl hover:shadow-zinc-500/20
-                      border  dark:border-gray-400/30
-                      hover:border-zinc-400/30 
-                      before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-zinc-500/10 before:to-blue-500/10 before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100
-                      ${
-                        gridInView
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-10"
-                      }
-                    `}
+                className="relative w-full transition-transform duration-700"
                 style={{
-                  transitionDelay: gridInView ? `${index * 100}ms` : "0ms",
+                  transformStyle: "preserve-3d",
+                  transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
                 }}
-                onMouseEnter={() => setHoveredId(project.id)}
-                onMouseLeave={() => setHoveredId(null)}
               >
-                <div
-                  className="relative w-full transition-transform duration-700 [transform-style:preserve-3d]"
-                  style={{
-                    transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                  }}
-                >
-                  {/* Front Face */}
-                  <div className="relative [backface-visibility:hidden] flex flex-col">
-                    {/* Image Container */}
-                    <div className="relative h-80 sm:h-96 md:h-[28rem] overflow-hidden bg-background/30 flex-shrink-0">
-                      <div className="relative w-full h-full overflow-hidden">
-                        <div
-                          className="absolute top-0 left-0 w-full transition-all duration-[9000ms] ease-in-out"
-                          style={{
-                            height: "500%",
-                            willChange: "transform",
-                            transform: isScrolled
-                              ? "translateY(-80%)"
-                              : "translateY(0%)",
-                          }}
-                        >
-                          <div className="relative w-full h-full">
-                            <Image
-                              src={project.images[0]}
-                              alt={project.title}
-                              fill
-                              className="object-cover object-top"
-                              sizes="(max-width: 768px) 100vw, 33vw"
-                              priority={project.id <= 3}
-                              loading={project.id <= 3 ? undefined : "lazy"}
-                            />
-                          </div>
+                <div className="relative" style={{ backfaceVisibility: "hidden" }}>
+                  <div className="relative h-80 sm:h-96 md:h-[28rem] overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
+                    <div className="relative w-full h-full overflow-hidden">
+                      <div
+                        className="absolute top-0 left-0 w-full transition-all duration-[9000ms] ease-in-out"
+                        style={{
+                          height: "500%",
+                          willChange: "transform",
+                          transform: isScrolled
+                            ? "translateY(-80%)"
+                            : "translateY(0%)",
+                        }}
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={project.images[0]}
+                            alt={project.title}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            priority={project.id <= 3}
+                            loading={project.id <= 3 ? undefined : "lazy"}
+                          />
                         </div>
                       </div>
+                    </div>
 
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0  group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent group-hover:opacity-100 transition-opacity duration-500" />
 
-                      {/* Badges */}
-                      <div className="absolute top-3 left-3 flex gap-2">
-                        <div className="px-3 py-1 rounded-full  backdrop-blur-md  text-[10px] font-mono border border-white/10">
-                          #{String(project.id).padStart(2, "0")}
-                        </div>
-                        {project.details?.year && (
-                          <div className="px-3 py-1 rounded-full backdrop-blur-md  text-[10px] font-mono border border-white/10">
-                            {project.details.year}
-                          </div>
-                        )}
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      <div className="px-3 py-1 rounded-full bg-black/60 border border-white/10 text-white/70 text-[10px] font-mono">
+                        #{String(project.id).padStart(2, "0")}
                       </div>
+                      {project.details?.year && (
+                        <div className="px-3 py-1 rounded-full bg-black/60 border border-white/10 text-white/70 text-[10px] font-mono">
+                          {project.details.year}
+                        </div>
+                      )}
+                    </div>
 
-                      {/* Mobile play button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMobileScroll(project.id);
+                      }}
+                      className="md:hidden absolute inset-0 flex items-center justify-center"
+                      aria-label="View project"
+                    >
+                      <div
+                        className="p-4 rounded-full bg-white/20 border border-white/30 shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95"
+                        style={{
+                          opacity: isMobileScrolled ? 0 : 1,
+                          transform: isMobileScrolled ? "scale(0.75)" : "scale(1)",
+                        }}
+                      >
+                        <Play size={28} className="text-white drop-shadow-lg" />
+                      </div>
+                    </button>
+
+                    {showUp && (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          toggleMobileScroll(project.id);
+                          scrollToTop(project.id);
                         }}
-                        className="md:hidden absolute inset-0 flex items-center justify-center"
-                        aria-label="View project"
+                        className="absolute bottom-4 right-4 md:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-medium hover:bg-zinc-100 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
                       >
-                        <div className="p-4 rounded-full bg-background backdrop-blur-xl border border-foreground/30">
-                          <Play size={28} className="text-white" />
-                        </div>
+                        <ArrowUp size={18} />
+                        <span>UP</span>
                       </button>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5 flex flex-col">
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="text-lg font-bold 0 transition-colors duration-300 line-clamp-1">
-                          {project.title}
-                        </h3>
-                        <ArrowUpRight
-                          size={16}
-                          className="text-muted-foreground group-hover:text-zinc-400 transition-colors shrink-0 mt-1"
-                        />
-                      </div>
-
-                      <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                        {project.description}
-                      </p>
-                      {/* Action buttons */}
-                      <div className="mt-4 flex gap-2">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open("#", "_blank");
-                          }}
-                          className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-white text-xs font-semibold shadow-lg shadow-zinc-500/25 hover:shadow-xl hover:shadow-zinc-500/40 transition-all duration-300 hover:scale-105 active:scale-95"
-                        >
-                          <ExternalLink size={14} />
-                          <span>{labels.liveDemo || "Live Demo"}</span>
-                        </button>
-                        <button
-                          onClick={() => toggleFlip(project.id)}
-                          className="px-4 py-2 rounded-xl border border-gray-200text-foreground bg-background/50 dark:bg-background/50 hover:bg-background dark:hover:bg-background transition-all duration-300 hover:scale-105 active:scale-95"
-                          aria-label="Flip card"
-                        >
-                          <ArrowLeftRight size={14} />
-                        </button>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Back Face */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-background/95 dark:bg-background/95 rounded-3xl flex flex-col">
-                    <div className="flex items-center justify-between px-5 py-4 border-b border-border/50 dark:border-border/50 bg-background/80 dark:bg-background/80 backdrop-blur-xl flex-shrink-0">
-                      <div className="min-w-0">
-                        <h3 className="text-base font-bold text-foreground truncate bg-gradient-to-r from-zinc-700 to-blue-600 bg-clip-text text-transparent">
-                          {project.title}
-                        </h3>
-                        {project.details?.role && (
-                          <p className="text-xs text-muted-foreground mt-0.5 truncate">
-                            {project.details.role}
-                          </p>
-                        )}
-                      </div>
-                      <button
-                        onClick={() => toggleFlip(project.id)}
-                        className="p-2 rounded-full bg-background dark:bg-background hover:bg-background dark:hover:bg-background transition-all duration-300 hover:scale-110 text-foreground flex-shrink-0"
-                        aria-label="Flip back"
-                      >
-                        <X size={16} />
-                      </button>
+                  <div className="p-5 flex flex-col bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-lg font-bold text-zinc-900 dark:text-white transition-colors duration-300 line-clamp-1">
+                        {project.title}
+                      </h3>
+                      <ArrowUpRight
+                        size={16}
+                        className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors shrink-0 mt-1"
+                      />
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-5 space-y-5">
-                      {/* Description */}
-                      {project.description && (
-                        <p className="text-sm text-foreground/80 leading-relaxed">
-                          {project.description}
-                        </p>
-                      )}
+                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                      {project.description}
+                    </p>
 
-                      {/* Project metadata */}
-                      <div className="grid grid-cols-2 gap-3">
-                        {project.details?.year && (
-                          <div className="p-3 rounded-xl bg-background/60 dark:bg-background/60">
-                            <div className="flex items-center gap-2 text-muted-foreground text-xs">
-                              <Calendar size={14} />
-                              <span>Year</span>
-                            </div>
-                            <p className="text-sm font-medium mt-1">
-                              {project.details.year}
-                            </p>
-                          </div>
-                        )}
-                        {project.details?.duration && (
-                          <div className="p-3 rounded-xl bg-background/60 dark:bg-background/60">
-                            <div className="flex items-center gap-2 text-muted-foreground text-xs">
-                              <Clock size={14} />
-                              <span>Duration</span>
-                            </div>
-                            <p className="text-sm font-medium mt-1">
-                              {project.details.duration}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Tech Stack */}
-                      {project.tech.length > 0 && (
-                        <div>
-                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <Layers size={14} />
-                            {labels.techStack}
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.tech.map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1.5 rounded-xl bg-zinc-500/10 dark:bg-zinc-400/10 text-zinc-600 dark:text-zinc-400 text-xs font-medium"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Color Palette */}
-                      {project.details?.colors && (
-                        <div>
-                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                            {labels.colorPalette}
-                          </h4>
-                          <div className="flex flex-wrap gap-3">
-                            {project.details.colors.map((c) => (
-                              <div
-                                key={c.hex}
-                                className="flex items-center gap-2 pr-3 pl-1.5 py-1.5 rounded-xl bg-background/60 dark:bg-background/60 border border-border/50 dark:border-border/50"
-                              >
-                                <span
-                                  className="w-6 h-6 rounded-full border border-gray-200 dark:border-gray-700 flex-shrink-0"
-                                  style={{ backgroundColor: c.hex }}
-                                />
-                                <div className="leading-tight">
-                                  <div className="text-xs font-medium text-foreground">
-                                    {c.name}
-                                  </div>
-                                  <div className="text-[10px] text-muted-foreground font-mono uppercase">
-                                    {c.hex}
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Typography */}
-                      {project.details?.font && (
-                        <div>
-                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                            {labels.typography}
-                          </h4>
-                          <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-background/60 dark:bg-background/60 border border-border/50 dark:border-border/50 w-fit">
-                            <TypeIcon
-                              size={16}
-                              className="text-muted-foreground"
-                            />
-                            <span className="text-sm text-foreground/80">
-                              {project.details.font}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Technical */}
-                      {project.details?.technical && (
-                        <div>
-                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                            Technical
-                          </h4>
-                          <p className="text-sm text-foreground/80 leading-relaxed">
-                            {project.details.technical}
-                          </p>
-                        </div>
-                      )}
+                    <div className="mt-4 flex gap-2">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open("#", "_blank");
+                        }}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+                      >
+                        <ExternalLink size={14} />
+                        <span>{labels.liveDemo || "Live Demo"}</span>
+                      </button>
+                      <button
+                        onClick={() => toggleFlip(project.id)}
+                        className="px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 hover:scale-105 active:scale-95"
+                        aria-label="Flip card"
+                      >
+                        <ArrowLeftRight size={14} />
+                      </button>
                     </div>
                   </div>
                 </div>
+
+                <div
+                  className="absolute inset-0 bg-white dark:bg-zinc-900 rounded-3xl flex flex-col border border-zinc-200 dark:border-zinc-700 shadow-2xl"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 flex-shrink-0">
+                    <div className="min-w-0">
+                      <h3 className="text-base font-bold text-zinc-900 dark:text-white truncate">
+                        {project.title}
+                      </h3>
+                      {project.details?.role && (
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 truncate">
+                          {project.details.role}
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => toggleFlip(project.id)}
+                      className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 hover:scale-110 text-zinc-900 dark:text-white flex-shrink-0"
+                      aria-label="Flip back"
+                    >
+                      <X size={16} />
+                    </button>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto p-5 space-y-5">
+                    {project.description && (
+                      <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        {project.description}
+                      </p>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {project.details?.year && (
+                        <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+                          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs">
+                            <Calendar size={14} />
+                            <span>Year</span>
+                          </div>
+                          <p className="text-sm font-medium mt-1 text-zinc-900 dark:text-white">
+                            {project.details.year}
+                          </p>
+                        </div>
+                      )}
+                      {project.details?.duration && (
+                        <div className="p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+                          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs">
+                            <Clock size={14} />
+                            <span>Duration</span>
+                          </div>
+                          <p className="text-sm font-medium mt-1 text-zinc-900 dark:text-white">
+                            {project.details.duration}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {project.tech.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                          <Layers size={14} />
+                          {labels.techStack}
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium border border-zinc-200 dark:border-zinc-700"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {project.details?.colors && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
+                          {labels.colorPalette}
+                        </h4>
+                        <div className="flex flex-wrap gap-3">
+                          {project.details.colors.map((c) => (
+                            <div
+                              key={c.hex}
+                              className="flex items-center gap-2 pr-3 pl-1.5 py-1.5 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
+                            >
+                              <span
+                                className="w-6 h-6 rounded-full border border-zinc-300 dark:border-zinc-600 flex-shrink-0"
+                                style={{ backgroundColor: c.hex }}
+                              />
+                              <div className="leading-tight">
+                                <div className="text-xs font-medium text-zinc-900 dark:text-white">
+                                  {c.name}
+                                </div>
+                                <div className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono uppercase">
+                                  {c.hex}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {project.details?.font && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
+                          {labels.typography}
+                        </h4>
+                        <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 w-fit">
+                          <TypeIcon size={16} className="text-zinc-500 dark:text-zinc-400" />
+                          <span className="text-sm text-zinc-700 dark:text-zinc-300">
+                            {project.details.font}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    {project.details?.technical && (
+                      <div>
+                        <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-2">
+                          Technical
+                        </h4>
+                        <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                          {project.details.technical}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
+      </div>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-12">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="p-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <div className="flex items-center gap-1">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+              (page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                    currentPage === page
+                      ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-lg"
+                      : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700"
+                  }`}
+                >
+                  {page}
+                </button>
+              ),
+            )}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="p-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
+      )}
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-12">
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="p-2 rounded-xl bg-background/60 dark:bg-background/60 backdrop-blur-sm border border-border/50 dark:border-border/50 text-foreground hover:bg-background dark:hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <div className="flex items-center gap-1">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                      currentPage === page
-                        ? "bg-gradient-to-r from-zinc-700 to-blue-600 text-white shadow-lg shadow-zinc-500/25"
-                        : "bg-background/60 dark:bg-background/60 backdrop-blur-sm border border-border/50 dark:border-border/50 text-foreground hover:bg-background dark:hover:bg-background"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ),
-              )}
-            </div>
-
-            <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              className="p-2 rounded-xl bg-background/60 dark:bg-background/60 backdrop-blur-sm border border-border/50 dark:border-border/50 text-foreground hover:bg-background dark:hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-            >
-              <ChevronRight size={20} />
-            </button>
+      {projects.length === 0 && (
+        <div className="mt-20 text-center">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 mb-6">
+            <Sparkles size={32} className="text-zinc-400 dark:text-zinc-500" />
           </div>
-        )}
-
-        {/* Empty state */}
-        {projects.length === 0 && (
-          <div className="mt-20 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-background/60 dark:bg-background/60 backdrop-blur-sm border border-border/50 dark:border-border/50 mb-6">
-              <Sparkles size={32} className="text-muted-foreground" />
-            </div>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              {labels.noProjects}
-            </p>
-          </div>
-        )}
-      </section>
-    </>
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base">
+            {labels.noProjects}
+          </p>
+        </div>
+      )}
+    </section>
   );
 }
 
