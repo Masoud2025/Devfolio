@@ -1,17 +1,17 @@
 'use client'
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-background">
       <div className="flex flex-col items-center gap-10">
         {/* Code Icon */}
-        <h1 className="text-6xl font-bold text-white tracking-tight select-none">
+        <h1 className="text-6xl font-bold text-foreground tracking-tight select-none">
           {"< />"}
           <br />
           Loading........
         </h1>
 
         {/* Loading Line */}
-        <div className="relative h-[2px] w-64 overflow-hidden bg-white/10 rounded-full">
+        <div className="relative h-[2px] w-64 overflow-hidden bg-background/10 rounded-full">
           <span className="loader-dot" />
         </div>
       </div>
@@ -24,10 +24,10 @@ export default function Loading() {
           width: 12px;
           height: 12px;
           border-radius: 9999px;
-          background: white;
+          background: #71717a;
           transform: translateY(-50%);
           animation: move 1.6s ease-in-out infinite;
-          box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 18px rgba(113, 113, 122, 0.8);
         }
 
         @keyframes move {

@@ -46,7 +46,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
 
   return (
     <div
-      className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 bg-background/90 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
@@ -63,7 +63,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
         </button>
 
         {/* Zoom Controls */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-black/60 backdrop-blur-sm rounded-full px-4 py-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-full px-4 py-2">
           <button
             onClick={handleZoomOut}
             className="text-white hover:text-zinc-300 transition-colors p-1"
@@ -102,7 +102,7 @@ export default function ImageModal({ isOpen, onClose, imageSrc, alt }: ImageModa
         />
 
         {/* Image Info */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white text-center bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white text-center bg-background/50 backdrop-blur-sm px-4 py-2 rounded-lg">
           <p className="text-sm">{alt}</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
 import { useMemo, memo } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface Skill {
   name: string;
@@ -9,6 +10,10 @@ interface Skill {
 
 function Skills() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const skills: Skill[] = useMemo(
     () => [
@@ -54,8 +59,8 @@ function Skills() {
       case "frontend": return "border-l-blue-500";
       case "backend": return "border-l-green-500";
       case "database": return "border-l-yellow-500";
-      case "tools": return "border-l-purple-500";
-      case "design": return "border-l-pink-500";
+      case "tools": return "border-l-zinc-500";
+      case "design": return "border-l-zinc-500";
       default: return "border-l-zinc-500";
     }
   };
@@ -85,7 +90,7 @@ function Skills() {
   const categories = Object.keys(groupedSkills).length;
 
   return (
-    <section id="skills" className="w-full py-24 px-6 md:px-20 scroll-mt-28">
+    <section ref={ref} className={`w-full py-24 px-6 md:px-20 scroll-mt-28 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -97,11 +102,11 @@ function Skills() {
           </p>
           {/* Stats with dynamic theming */}
           <div className="flex items-center justify-center gap-6 mt-8">
-            <div className="px-6 py-3 bg-card/50 rounded-full border border-border/10 backdrop-blur-sm">
+            <div className="px-6 py-3 bg-background/50 rounded-full border border-border/10 backdrop-blur-sm">
               <span className="text-2xl font-bold text-foreground">{totalSkills}</span>
               <span className="text-sm text-muted-foreground ml-2">{t.Skills?.totalSkills || "Total Skills"}</span>
             </div>
-            <div className="px-6 py-3 bg-card/50 rounded-full border border-border/10 backdrop-blur-sm">
+            <div className="px-6 py-3 bg-background/50 rounded-full border border-border/10 backdrop-blur-sm">
               <span className="text-2xl font-bold text-foreground">{categories}</span>
               <span className="text-sm text-muted-foreground ml-2">{t.Skills?.categories || "Categories"}</span>
             </div>
@@ -116,13 +121,14 @@ function Skills() {
               className={`
                 border-l-4 ${getCategoryColor(category)} 
                 pl-6 py-6 
-                bg-card/30 
+                bg-background 
                 rounded-r-2xl 
                 backdrop-blur-sm 
                 border border-border/10 
                 hover:border-foreground/20 
                 transition-all duration-300 
                 hover:shadow-lg hover:shadow-foreground/5
+                ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
               `}
             >
               <div className="flex items-center gap-3 mb-4">

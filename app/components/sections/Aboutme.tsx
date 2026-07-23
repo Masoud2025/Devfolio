@@ -1,22 +1,28 @@
 "use client";
 import { useLanguage } from "../../context/LanguageContext";
 import { memo } from "react";
+import { useInView } from "react-intersection-observer";
 import { Download, Mail, MapPin } from "lucide-react";
 
 function AboutMe() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <section
       id="about"
+      ref={ref}
       className="w-full py-20 md:py-24 px-6 md:px-8 lg:px-20 scroll-mt-28"
     >
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
+      <div className={`max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 md:gap-16 items-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Left Side - Image/Visual */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-border/20 shadow-2xl shadow-purple-500/10">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-border/20 shadow-2xl">
             {/* Gradient overlay using theme-aware background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
+             <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-6xl md:text-8xl font-black text-foreground/10">MJ</div>
             </div>
@@ -26,7 +32,7 @@ function AboutMe() {
 
         {/* Right Side - Content */}
         <div className="flex-1">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+           <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground">
             {t.About.Title}
           </h2>
 
@@ -71,7 +77,7 @@ function AboutMe() {
       </div>
 
       {/* Stats Grid - dynamic theming */}
-      <div className="max-w-6xl mx-auto mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className={`max-w-6xl mx-auto mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {[
           { value: "2+", label: t.About.Years },
           { value: "10+", label: t.About.ProjectCount },
@@ -80,9 +86,9 @@ function AboutMe() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="p-6 md:p-8 border border-border/10 rounded-3xl hover:shadow-xl transition text-center bg-card/50 backdrop-blur-sm hover:border-purple-400/30"
+            className="p-6 md:p-8 border border-border/10 rounded-3xl hover:shadow-xl transition text-center bg-background backdrop-blur-sm hover:border-zinc-400/30"
           >
-            <h3 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+             <h3 className="text-4xl md:text-5xl font-black text-foreground">
               {stat.value}
             </h3>
             <p className="text-muted-foreground mt-2 md:mt-3 text-base md:text-lg">

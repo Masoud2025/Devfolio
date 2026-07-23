@@ -2,6 +2,7 @@
 import { useLanguage } from "../../context/LanguageContext";
 import { Code, Palette, Server, Smartphone, Wrench, Cloud } from "lucide-react";
 import { useMemo, memo } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface Service {
   id: number;
@@ -12,6 +13,10 @@ interface Service {
 
 function Services() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const services: Service[] = useMemo(() => [
     {
@@ -53,7 +58,7 @@ function Services() {
   ], [t]);
 
   return (
-    <section id="services" className="w-full py-16 md:py-24 px-6 md:px-8">
+    <section ref={ref} className={`w-full py-16 md:py-24 px-6 md:px-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-black dark:text-white mb-8 md:mb-12">
@@ -69,18 +74,19 @@ function Services() {
                 p-5 md:p-6
                 border border-zinc-200 dark:border-zinc-800
                 rounded-2xl
-                bg-white dark:bg-zinc-900/50
+                bg-background
                 hover:border-zinc-400 dark:hover:border-zinc-600
                 hover:shadow-lg
                 transition-all duration-300
                 group
+                ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
               "
             >
               {/* Icon */}
               <div className="
                 w-12 h-12
                 rounded-xl
-                bg-zinc-100 dark:bg-zinc-800
+                bg-background
                 flex items-center justify-center
                 text-black dark:text-white
                 group-hover:scale-110

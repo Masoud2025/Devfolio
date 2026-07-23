@@ -78,7 +78,7 @@ export const en = {
           "Hybrid SSR/ISR rendering with the App Router for product pages, a Prisma data layer on PostgreSQL and query caching with React Query. Payments are processed through a secure webhook with an idempotency key to prevent duplicate charges.",
         font: "Inter (UI) / JetBrains Mono (code & prices)",
         colors: [
-          { name: "Primary Purple", hex: "#7C3AED" },
+          { name: "Primary Slate", hex: "#52525B" },
           { name: "Accent Blue", hex: "#2563EB" },
           { name: "Base Zinc", hex: "#18181B" },
         ],
@@ -97,7 +97,7 @@ export const en = {
         font: "Poppins (headings) / Inter (body)",
         colors: [
           { name: "Ink Black", hex: "#0A0A0A" },
-          { name: "Signal Pink", hex: "#EC4899" },
+          { name: "Signal Slate", hex: "#71717A" },
           { name: "Sky Blue", hex: "#3B82F6" },
         ],
       },

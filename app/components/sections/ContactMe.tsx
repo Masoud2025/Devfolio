@@ -2,12 +2,17 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { memo } from "react";
 import { useLanguage } from "../../context/LanguageContext";
+import { useInView } from "react-intersection-observer";
 
 function ContactMe() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <section id="contact" className="w-full py-24 px-6 md:px-20 scroll-mt-28">
+    <section ref={ref} className={`w-full py-24 px-6 md:px-20 scroll-mt-28 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -29,10 +34,10 @@ function ContactMe() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="p-6 border border-border/20 rounded-2xl hover:shadow-lg transition bg-card/30 backdrop-blur-sm hover:border-purple-400/30 group"
+                className="p-6 border border-border/20 rounded-2xl hover:shadow-lg transition bg-background backdrop-blur-sm hover:border-zinc-400/30 group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-foreground/5 rounded-xl group-hover:bg-purple-500/10 transition-colors">
+                  <div className="p-3 bg-foreground/5 rounded-xl group-hover:bg-zinc-500/10 transition-colors">
                     <item.icon size={24} className="text-foreground/70" />
                   </div>
                   <div>
@@ -48,7 +53,7 @@ function ContactMe() {
             ))}
 
             {/* Social Links */}
-            <div className="p-6 border border-border/20 rounded-2xl bg-card/30 backdrop-blur-sm">
+            <div className="p-6 border border-border/20 rounded-2xl bg-background/30 backdrop-blur-sm">
               <h3 className="font-semibold text-lg text-foreground mb-4">
                 Follow Me
               </h3>
@@ -56,7 +61,7 @@ function ContactMe() {
                 {["GitHub", "LinkedIn", "Twitter"].map((label) => (
                   <button
                     key={label}
-                    className="px-4 py-2.5 md:py-2 border border-border/20 rounded-xl hover:bg-foreground/5 transition text-sm font-medium text-foreground/70 hover:text-foreground hover:border-purple-400/30"
+                    className="px-4 py-2.5 md:py-2 border border-border/20 rounded-xl hover:bg-foreground/5 transition text-sm font-medium text-foreground/70 hover:text-foreground hover:border-zinc-400/30"
                   >
                     {label}
                   </button>
@@ -67,7 +72,7 @@ function ContactMe() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <form className="space-y-6 bg-card/30 p-8 md:p-10 rounded-3xl border border-border/20 backdrop-blur-sm">
+            <form className="space-y-6 bg-background/30 p-8 md:p-10 rounded-3xl border border-border/20 backdrop-blur-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground/80 mb-3">

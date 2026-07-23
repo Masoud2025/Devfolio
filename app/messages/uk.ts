@@ -74,7 +74,7 @@ export const uk = {
             "Гібридний SSR/ISR-рендеринг з App Router для сторінок товарів, шар даних Prisma на PostgreSQL та кешування запитів з React Query. Платежі обробляються через безпечний webhook з ключем ідемпотентності.",
           font: "Inter (UI) / JetBrains Mono (код та ціни)",
           colors: [
-            { name: "Primary Purple", hex: "#7C3AED" },
+            { name: "Primary Slate", hex: "#52525B" },
             { name: "Accent Blue", hex: "#2563EB" },
             { name: "Base Zinc", hex: "#18181B" },
           ],
@@ -92,7 +92,7 @@ export const uk = {
           font: "Poppins (заголовки) / Inter (текст)",
           colors: [
             { name: "Ink Black", hex: "#0A0A0A" },
-            { name: "Signal Pink", hex: "#EC4899" },
+            { name: "Signal Slate", hex: "#71717A" },
             { name: "Sky Blue", hex: "#3B82F6" },
           ],
         },

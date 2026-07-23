@@ -1,4 +1,5 @@
 'use client'
+import { useInView } from "react-intersection-observer";
 import {
   Code2,
   Database,
@@ -54,11 +55,16 @@ const technologies = [
 
 export default function TechStack() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
   return (
-    <section
-      id="tech"
-      className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:-mt-32"
-    >
+      <section
+        id="tech"
+        ref={ref}
+        className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:-mt-32 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      >
       <div className="text-center">
         <span className="text-sm font-semibold uppercase tracking-[0.4em] text-zinc-500 dark:text-zinc-400">
           {t.TechStack.Header}
@@ -77,9 +83,9 @@ export default function TechStack() {
         {technologies.map(({ title, description, icon: Icon }) => (
           <div
             key={title}
-            className="group rounded-3xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-black dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-white"
+            className="group rounded-3xl border border-zinc-200 bg-background p-6 transition-all duration-300 hover:-translate-y-2 hover:border-black dark:border-zinc-800 dark:hover:border-white dark:text-white"
           >
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 group-hover:scale-110">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-background text-foreground transition-transform duration-300 group-hover:scale-110">
               <Icon size={28} />
             </div>
 

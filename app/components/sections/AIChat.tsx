@@ -722,14 +722,14 @@ function AIChat() {
   const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), []);
 
   const themeClasses = {
-    panel: "bg-zinc-900/80 border-zinc-700/50 text-white",
-    header: "bg-zinc-900/90 border-b border-zinc-800/50",
+    panel: "bg-background/80 border-zinc-700/50 text-white",
+    header: "bg-background/90 border-b border-zinc-800/50",
     input: "bg-zinc-800/80 border-zinc-700/50 text-white placeholder:text-zinc-400",
-    userBubble: "bg-white text-black",
+    userBubble: "bg-background text-foreground",
     assistantBubble: "bg-zinc-800/80 text-white",
     suggestion: "bg-zinc-800/60 border-zinc-700/50 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700/60",
     icon: "text-zinc-400",
-    toggle: "bg-white text-black shadow-lg shadow-black/30",
+    toggle: "bg-background text-foreground shadow-lg shadow-black/30",
   };
 
   const currentSuggestions =
@@ -754,7 +754,7 @@ function AIChat() {
         >
           <div className={`flex items-center justify-between px-4 py-3 ${themeClasses.header}`}>
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white text-xs font-bold shadow-lg">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-600 flex items-center justify-center text-white text-xs font-bold shadow-lg">
                 <Sparkles size={16} />
               </div>
               <div>
@@ -853,14 +853,14 @@ function AIChat() {
                 className={`
                   flex-1 rounded-xl px-4 py-2.5 text-sm outline-none
                   border transition-all duration-200
-                  focus:ring-2 focus:ring-purple-500/30
+                  focus:ring-2 focus:ring-zinc-500/30
                   ${themeClasses.input}
                 `}
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="p-2.5 rounded-xl bg-white text-black hover:scale-105 active:scale-95 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                className="p-2.5 rounded-xl bg-background text-foreground hover:scale-105 active:scale-95 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
               >
                 <Send size={16} />
               </button>

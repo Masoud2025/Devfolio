@@ -74,7 +74,7 @@ export const ru = {
             "Гибридная SSR/ISR-рендеринг с App Router для страниц товаров, слой данных Prisma на PostgreSQL и кэширование запросов с React Query. Платежи обрабатываются через безопасный webhook с ключом идемпотентности.",
           font: "Inter (UI) / JetBrains Mono (код и цены)",
           colors: [
-            { name: "Primary Purple", hex: "#7C3AED" },
+            { name: "Primary Slate", hex: "#52525B" },
             { name: "Accent Blue", hex: "#2563EB" },
             { name: "Base Zinc", hex: "#18181B" },
           ],
@@ -92,7 +92,7 @@ export const ru = {
           font: "Poppins (заголовки) / Inter (текст)",
           colors: [
             { name: "Ink Black", hex: "#0A0A0A" },
-            { name: "Signal Pink", hex: "#EC4899" },
+            { name: "Signal Slate", hex: "#71717A" },
             { name: "Sky Blue", hex: "#3B82F6" },
           ],
         },

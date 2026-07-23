@@ -67,7 +67,7 @@ function Education() {
               ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}
             `}
           >
-            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground">
               {t.Education?.title || "Education"}
             </h2>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
@@ -86,12 +86,12 @@ function Education() {
                   p-6 md:p-7
                   border border-zinc-200 dark:border-zinc-800 
                   rounded-2xl 
-                  bg-white/80 dark:bg-zinc-900/80
+                  bg-background
                   backdrop-blur-sm
-                  hover:shadow-xl hover:shadow-purple-500/10
+                  hover:shadow-xl hover:shadow-zinc-500/10
                   hover:scale-[1.02]
                   transition-all duration-300
-                  hover:border-purple-300 dark:hover:border-purple-600
+                  hover:border-zinc-300 dark:hover:border-zinc-700
                   ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                 `}
                 style={{
@@ -100,7 +100,7 @@ function Education() {
                 }}
               >
                 {/* Decorative gradient line on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/0 via-purple-500/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-zinc-500/0 via-zinc-500/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Left side: Logo or Icon */}
                 <div className="flex-shrink-0">
@@ -109,7 +109,7 @@ function Education() {
                       className="
                         relative w-20 h-20 md:w-24 md:h-24 
                         rounded-full overflow-hidden 
-                        bg-zinc-100 dark:bg-zinc-800 
+                        bg-zinc-100 dark:bg-background
                         border-2 border-zinc-200 dark:border-zinc-700
                         cursor-pointer
                         group/logo
@@ -128,7 +128,7 @@ function Education() {
                       {/* Overlay with zoom icon */}
                       <div className="
                         absolute inset-0 
-                        bg-gradient-to-br from-purple-600/60 to-blue-600/60
+                        bg-gradient-to-br from-zinc-600/60 to-zinc-700/60
                         opacity-0 group-hover/logo:opacity-100 
                         transition-opacity duration-300
                         flex items-center justify-center
@@ -138,16 +138,16 @@ function Education() {
                       </div>
                     </div>
                   ) : (
-                    <div className="
-                      w-20 h-20 md:w-24 md:h-24 
-                      rounded-full 
-                      bg-gradient-to-br from-purple-100 to-blue-100 
-                      dark:from-purple-900/50 dark:to-blue-900/50
-                      flex items-center justify-center
-                      border-2 border-purple-200 dark:border-purple-800
-                      shadow-md
-                    ">
-                      <GraduationCap size={28} className="text-purple-600 dark:text-purple-400" />
+                      <div className="
+                        w-20 h-20 md:w-24 md:h-24 
+                        rounded-full 
+                        bg-gradient-to-br from-zinc-100 to-zinc-200 
+                        dark:from-zinc-800/50 dark:to-zinc-700/50
+                        flex items-center justify-center
+                        border-2 border-zinc-200 dark:border-zinc-700
+                        shadow-md
+                      ">
+                        <GraduationCap size={28} className="text-zinc-600 dark:text-zinc-400" />
                     </div>
                   )}
                 </div>
@@ -155,7 +155,7 @@ function Education() {
                 {/* Right side: Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                    <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-zinc-600 dark:group-hover:text-zinc-400">
                       {item.title}
                     </h3>
                   </div>
@@ -175,8 +175,8 @@ function Education() {
                     <span className="
                       inline-flex items-center gap-1.5
                       text-xs font-semibold px-3.5 py-1.5 rounded-full
-                      bg-purple-500 text-white
-                      shadow-md shadow-purple-500/30
+                      bg-zinc-500 text-white
+                      shadow-md shadow-zinc-500/30
                     ">
                       <Award size={14} />
                       {t.Experience?.education || "Education"}

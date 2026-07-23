@@ -74,7 +74,7 @@ export const zh = {
             "使用App Router进行产品页面的混合SSR/ISR渲染，PostgreSQL上的Prisma数据层，以及React Query进行查询缓存。支付通过带幂等密钥的安全webhook处理。",
           font: "Inter (UI) / JetBrains Mono (代码和价格)",
           colors: [
-            { name: "Primary Purple", hex: "#7C3AED" },
+            { name: "Primary Slate", hex: "#52525B" },
             { name: "Accent Blue", hex: "#2563EB" },
             { name: "Base Zinc", hex: "#18181B" },
           ],
@@ -92,7 +92,7 @@ export const zh = {
           font: "Poppins (标题) / Inter (正文)",
           colors: [
             { name: "Ink Black", hex: "#0A0A0A" },
-            { name: "Signal Pink", hex: "#EC4899" },
+            { name: "Signal Slate", hex: "#71717A" },
             { name: "Sky Blue", hex: "#3B82F6" },
           ],
         },

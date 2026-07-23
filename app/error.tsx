@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-6">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6">
       <div className="absolute inset-0 opacity-[0.04]">
         <div className="h-full w-full bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[size:28px_28px]" />
       </div>
@@ -43,14 +43,14 @@ export default function Error({
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <button
             onClick={() => reset()}
-            className="rounded-2xl bg-white px-8 py-4 font-semibold text-black transition-all duration-300 hover:scale-105 active:scale-95"
+             className="rounded-2xl bg-background px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Try Again
           </button>
 
           <a
             href="/"
-            className="rounded-2xl border border-white/20 px-8 py-4 font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+             className="rounded-2xl border border-white/20 px-8 py-4 font-semibold text-foreground transition-all duration-300 hover:border-foreground hover:bg-background hover:text-foreground"
           >
             Go Home
           </a>
@@ -61,8 +61,8 @@ export default function Error({
         </p>
       </div>
 
-      <div className="pointer-events-none absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-white/5 blur-[140px]" />
-      <div className="pointer-events-none absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-white/5 blur-[140px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-background/5 blur-[140px]" />
+      <div className="pointer-events-none absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-background/5 blur-[140px]" />
     </main>
   );
 }

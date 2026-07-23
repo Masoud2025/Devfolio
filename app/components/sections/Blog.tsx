@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { Calendar, Clock, Search, Tag, User } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 interface BlogPost {
   id: number;
@@ -27,6 +28,10 @@ const categoryLabels: Record<string, string> = {
 
 export default function Blog() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<TabName>("all");
 
@@ -67,7 +72,7 @@ export default function Blog() {
   });
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-32 scroll-mt-28 relative overflow-hidden mt-4">
+    <section ref={ref} className={`mx-auto max-w-7xl px-6 py-32 scroll-mt-28 relative overflow-hidden mt-4 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Decorative background blobs - using foreground with opacity */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-40 right-20 w-96 h-96 bg-foreground/5 rounded-full blur-3xl" />
@@ -76,7 +81,7 @@ export default function Blog() {
 
       {/* Header */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
           {labels.title}
         </h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -93,7 +98,7 @@ export default function Blog() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={labels.searchPlaceholder}
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-card/50 border border-border/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-all backdrop-blur-sm"
+            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-background/50 border border-border/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-all backdrop-blur-sm"
           />
         </div>
 
@@ -105,7 +110,7 @@ export default function Blog() {
               className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat
                   ? "bg-foreground text-background shadow-lg shadow-foreground/10"
-                  : "bg-card/30 text-muted-foreground hover:text-foreground hover:bg-foreground/10 border border-border/10"
+                  : "bg-background/30 text-muted-foreground hover:text-foreground hover:bg-foreground/10 border border-border/10"
               }`}
             >
               {labels.categories?.[categories.indexOf(cat)] || categoryLabels[cat] || cat}
@@ -124,7 +129,7 @@ export default function Blog() {
           {filteredPosts.map((post) => (
             <article
               key={post.id}
-              className="group relative rounded-3xl border border-border/10 bg-card/30 p-6 hover:bg-card/60 hover:border-border/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-foreground/5"
+              className="group relative rounded-3xl border border-border/10 bg-background/30 p-6 hover:bg-background/60 hover:border-border/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-foreground/5"
             >
               {/* Category badge */}
               <div className="flex items-center gap-2 mb-4">

@@ -81,7 +81,7 @@ function Experience() {
       case "freelance":
         return "border-emerald-500 dark:border-emerald-400";
       case "education":
-        return "border-purple-500 dark:border-purple-400";
+        return "border-zinc-500 dark:border-zinc-400";
       default:
         return "border-zinc-500 dark:border-zinc-400";
     }
@@ -94,7 +94,7 @@ function Experience() {
       case "freelance":
         return "bg-emerald-500 dark:bg-emerald-400";
       case "education":
-        return "bg-purple-500 dark:bg-purple-400";
+        return "bg-zinc-500 dark:bg-zinc-400";
       default:
         return "bg-zinc-500 dark:bg-zinc-400";
     }
@@ -127,7 +127,7 @@ function Experience() {
             ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}
           `}
         >
-          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground">
             {t.Experience?.title || "Experience"}
           </h2>
           <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-2xl mx-auto">
@@ -137,7 +137,7 @@ function Experience() {
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/30 via-blue-500/30 to-transparent md:-translate-x-1/2" />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/20 dark:bg-border md:-translate-x-1/2" />
 
           {timelineData.map((item: TimelineItem, index: number) => (
             <div
@@ -162,8 +162,8 @@ function Experience() {
                   flex items-center justify-center
                   text-white
                   border-4 border-white dark:border-zinc-900
-                  shadow-lg shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/30
-                  ring-4 ring-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/20
+                  shadow-lg shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'zinc'}-500/30
+                  ring-4 ring-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'zinc'}-500/20
                   transition-all duration-300 hover:scale-110
                 `}>
                   {item.icon}
@@ -184,9 +184,9 @@ function Experience() {
                   border-l-4 ${getTypeColor(item.type)}
                   border border-zinc-200 dark:border-zinc-800
                   rounded-2xl
-                  bg-white/80 dark:bg-zinc-900/80
+                  bg-background
                   backdrop-blur-sm
-                  hover:shadow-xl hover:shadow-${item.type === 'internship' ? 'blue' : item.type === 'freelance' ? 'emerald' : 'purple'}-500/10
+                  hover:shadow-xl hover:shadow-zinc-500/10
                   hover:scale-[1.02]
                   transition-all duration-300
                   group
@@ -194,14 +194,14 @@ function Experience() {
                 `}>
                   <div className="flex items-start justify-between flex-wrap gap-2">
                     <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                       <h3 className="text-lg md:text-xl font-bold text-black dark:text-white transition-colors duration-300 group-hover:text-zinc-600 dark:group-hover:text-zinc-400">
                         {item.title}
                       </h3>
                       <p className="text-zinc-600 dark:text-zinc-400 font-medium text-sm md:text-base">
                         {item.company}
                       </p>
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full">
+                    <div className="flex items-center gap-1.5 text-xs md:text-sm text-zinc-500 dark:text-zinc-500 whitespace-nowrap bg-background dark:bg-background px-3 py-1 rounded-full">
                       <Calendar size={14} />
                       <span>{item.date}</span>
                     </div>
@@ -217,7 +217,7 @@ function Experience() {
                   <ul className="mt-3 space-y-1.5">
                     {item.description.map((desc: string, i: number) => (
                       <li key={i} className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2.5">
-                        <span className="text-purple-500 dark:text-purple-400 mt-0.5 flex-shrink-0">▸</span>
+                         <span className="text-zinc-500 dark:text-zinc-400 mt-0.5 flex-shrink-0">▸</span>
                         <span>{desc}</span>
                       </li>
                     ))}

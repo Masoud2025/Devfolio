@@ -1,9 +1,14 @@
 'use client'
 import { useLanguage } from "../../context/LanguageContext";
-import { useMemo, memo } from "react";
+import { useMemo, memo, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 function Testimonials() {
   const { t } = useLanguage();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
   const testimonials = useMemo(() => [
     {
       name: t.Testimonials.customer_1_name,
@@ -23,7 +28,7 @@ function Testimonials() {
   ], [t]);
 
   return (
-    <section className="w-full py-16 md:py-20 px-6 md:px-8 lg:px-20">
+    <section ref={ref} className={`w-full py-16 md:py-20 px-6 md:px-8 lg:px-20 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="max-w-5xl mx-auto">
 
         {/* Title */}
@@ -36,7 +41,7 @@ function Testimonials() {
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className="border border-black/10 rounded-2xl p-5 md:p-6 hover:shadow-md transition"
+              className="border border-zinc-200 rounded-2xl p-5 md:p-6 hover:shadow-md transition"
             >
               <p className=" leading-relaxed text-sm md:text-base">
                 &quot;{item.text}&quot;

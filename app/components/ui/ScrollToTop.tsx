@@ -90,7 +90,7 @@ export default function ScrollToTop() {
               strokeLinecap="round"
               className="transition-[stroke-dashoffset] duration-200 ease-out"
             />
-            {/* Gradient definition - using accent colors (purple-pink-blue) */}
+            {/* Gradient definition - using neutral accent colors */}
             <defs>
               <linearGradient
                 id="scrollGradient"
@@ -99,8 +99,8 @@ export default function ScrollToTop() {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#a855f7" /> {/* purple-500 */}
-                <stop offset="50%" stopColor="#ec4899" /> {/* pink-500 */}
+                <stop offset="0%" stopColor="#71717a" /> {/* zinc-500 */}
+                <stop offset="50%" stopColor="#52525b" /> {/* zinc-600 */}
                 <stop offset="100%" stopColor="#3b82f6" /> {/* blue-500 */}
               </linearGradient>
             </defs>

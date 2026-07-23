@@ -35,7 +35,7 @@ export default function Hero() {
         >
           {/* Title - inline flex for side by side */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            <span className="bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="text-foreground">
               {t.hero?.head1 || "Hi, I'm"}
             </span>
             <span className="text-foreground">

@@ -100,7 +100,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               className={`
                 flex items-center justify-between
                 px-6 py-3 rounded-2xl
-                bg-zinc-900/70
+                bg-background/70
                 backdrop-blur-xl backdrop-saturate-150
                 border border-white/10
                 shadow-[0_8px_32px_rgba(0,0,0,0.3)]
@@ -109,7 +109,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             >
               {/* Logo */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl overflow-hidden ring-2 ring-purple-500/20">
+                <div className="w-10 h-10 rounded-xl overflow-hidden ring-2 ring-zinc-500/20">
                   <video
                     autoPlay
                     muted
@@ -121,11 +121,10 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                     <source src="/videos/programmernobg.webm" type="video/mp4" />
                   </video>
                 </div>
-                <span
+                 <span
                   className={`
                  text-lg font-bold tracking-tight
-                   bg-gradient-to-r from-purple-600 to-blue-600
-                   bg-clip-text text-transparent
+                   text-foreground
                   `}
                 >
                   Masoud
@@ -147,9 +146,9 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         text-sm font-medium
                         transition-all duration-200
                          ${
-                           isActive
-                             ? "text-purple-400 bg-purple-500/10"
-                             : "text-gray-300 hover:text-white hover:bg-white/5"
+                            isActive
+                              ? "text-zinc-400 bg-zinc-500/10"
+                              : "text-gray-300 hover:text-white hover:bg-background/5"
                          }
                       `}
                       aria-current={isActive ? "page" : undefined}
@@ -157,7 +156,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                       <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
                       <span>{getLabel(tab.key)}</span>
                       {isActive && (
-                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" />
+                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-border rounded-full" />
                       )}
                     </button>
     );
@@ -174,7 +173,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         flex items-center gap-2 px-3 py-2 rounded-xl
                         text-gray-300
                         hover:text-white
-                        hover:bg-white/5
+                        hover:bg-background/5
                         transition-all duration-200
                       `}
                     aria-expanded={isLanguageOpen}
@@ -196,7 +195,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         absolute right-0 top-full mt-2
                         w-56 max-h-80 overflow-y-auto
                         p-1 rounded-xl
-                        bg-zinc-900/95
+                        bg-background/95
                         backdrop-blur-xl
                         border border-white/10
                         shadow-2xl shadow-black/40
@@ -215,16 +214,16 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                               text-sm transition-all duration-150
                           ${
                             isActive
-                              ? "bg-purple-500/10 text-purple-400"
-                              : "text-gray-300 hover:bg-white/5"
-                          }
+                               ? "bg-zinc-500/10 text-zinc-400"
+                               : "text-gray-300 hover:bg-background/5"
+                           }
                             `}
                             role="menuitem"
                           >
                             <span>{loc.flag}</span>
                             <span>{loc.label}</span>
                             {isActive && (
-                              <span className="ml-auto text-purple-500">✓</span>
+                              <span className="ml-auto text-zinc-400">✓</span>
                             )}
                           </button>
                         );
@@ -245,7 +244,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               className={`
                 flex items-center justify-between
                 px-4 py-2.5 rounded-2xl
-                bg-zinc-900/80
+                bg-background/80
                 backdrop-blur-xl backdrop-saturate-150
                 border border-white/10
                 shadow-[0_4px_20px_rgba(0,0,0,0.3)]
@@ -253,7 +252,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
           >
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg overflow-hidden ring-2 ring-purple-500/20">
+              <div className="w-8 h-8 rounded-lg overflow-hidden ring-2 ring-zinc-500/20">
                 <video
                   autoPlay
                   muted
@@ -265,7 +264,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                   <source src="/videos/programmernobg.webm" type="video/mp4" />
                 </video>
               </div>
-              <span className="text-base font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+               <span className="text-base font-bold text-foreground">
                 Masoud
               </span>
             </div>
@@ -274,7 +273,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-xl text-gray-300 hover:bg-white/5 transition-all"
+                className="p-2 rounded-xl text-gray-300 hover:bg-background/5 transition-all"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -288,7 +287,7 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
               ref={mobileMenuRef}
               className={`
                 mt-2 p-2 rounded-2xl
-                bg-zinc-900/95
+                bg-background/95
                 backdrop-blur-xl
                 border border-white/10
                 shadow-2xl shadow-black/40
@@ -307,17 +306,17 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         flex items-center gap-3 px-4 py-3 rounded-xl
                         text-sm font-medium
                         transition-all duration-200
-                              ${
-                                isActive
-                                  ? "bg-purple-500/10 text-purple-400"
-                                  : "text-gray-300 hover:bg-white/5"
-                              }
-                      `}
-                    >
-                      <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
-                      <span>{getLabel(tab.key)}</span>
-                      {isActive && (
-                        <span className="ml-auto text-purple-500">✓</span>
+                               ${
+                                 isActive
+                                   ? "bg-zinc-500/10 text-zinc-400"
+                                   : "text-gray-300 hover:bg-background/5"
+                               }
+                       `}
+                     >
+                       <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+                       <span>{getLabel(tab.key)}</span>
+                       {isActive && (
+                         <span className="ml-auto text-zinc-400">✓</span>
                       )}
                     </button>
                   );
@@ -340,15 +339,15 @@ export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
                           className={`
                             flex items-center gap-2 px-3 py-2 rounded-lg
                             text-sm transition-all duration-150
-                              ${
-                                isActive
-                                  ? "bg-purple-500/10 text-purple-400"
-                                  : "text-gray-300 hover:bg-white/5"
-                              }
-                          `}
-                        >
-                          <span>{loc.flag}</span>
-                          <span className="truncate">{loc.label}</span>
+                               ${
+                                 isActive
+                                   ? "bg-zinc-500/10 text-zinc-400"
+                                   : "text-gray-300 hover:bg-background/5"
+                               }
+                           `}
+                         >
+                           <span>{loc.flag}</span>
+                           <span className="truncate">{loc.label}</span>
                         </button>
                       );
                     })}

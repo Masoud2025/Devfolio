@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://devfolio.vercel.app"), // ReplaceMain portfolio with this
 
   title: {
-    default: "DevFolio",
+    default: "مسعود جعفری | برنامه نویس",
     template: "%s | DevFolio",
   },
 
@@ -138,7 +138,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background" suppressHydrationWarning>
         <LanguageProvider>
           {children}
         </LanguageProvider>
