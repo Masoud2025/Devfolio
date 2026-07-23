@@ -131,52 +131,82 @@ export default function TopBar({ name = "مسعود جعفری" }: TopBarProps) 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 pointer-events-none">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 mt-2 sm:mt-4 pointer-events-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4">
+        {/* Glass container with blur and gradient border */}
+        <div className="relative">
+          {/* Gradient border glow */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0078d4]/20 via-[#60a5fa]/20 to-[#0078d4]/20 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="flex-shrink-0 order-1 sm:order-none">
-            <span className="text-base sm:text-lg md:text-xl font-medium text-[#1a1a1a] dark:text-[#e8e8e8] tracking-tight">
-              {name}
-            </span>
-          </div>
+          {/* Main glass container */}
+          <div className="relative flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl backdrop-saturate-150 border border-white/30 dark:border-zinc-700/30 shadow-lg shadow-[#0078d4]/5 dark:shadow-[#60a5fa]/5 hover:shadow-[#0078d4]/10 dark:hover:shadow-[#60a5fa]/10 transition-all duration-300">
+            
+            {/* Glass shimmer effect */}
+            <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+              <div className="absolute -inset-[200%] bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-45 translate-x-[-100%] animate-[shimmer_4s_ease-in-out_infinite]" />
+            </div>
 
-          <div className="flex-1 flex flex-wrap items-center justify-center gap-2 sm:gap-4 md:gap-6 order-3 sm:order-none">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="text-base sm:text-lg md:text-xl font-mono font-bold text-[#1a1a1a] dark:text-[#e8e8e8] tabular-nums">
-                {dateTime.time}
-              </span>
-              <span className="text-[10px] sm:text-xs md:text-sm font-mono text-[#0078d4] dark:text-[#60a5fa] font-semibold">
-                {dateTime.seconds}
+            {/* Name */}
+            <div className="flex-shrink-0 order-1 sm:order-none relative z-10">
+              <span className="text-base sm:text-lg md:text-xl font-medium text-[#1a1a1a] dark:text-[#e8e8e8] tracking-tight">
+                {name}
               </span>
             </div>
 
-            <div className="w-px h-6 sm:h-7 md:h-8 bg-[#e0e0e0]/30 dark:bg-[#2a2a2a]/30 hidden sm:block" />
+            {/* Center - Time, Date */}
+            <div className="flex-1 flex flex-wrap items-center justify-center gap-2 sm:gap-4 md:gap-6 order-3 sm:order-none relative z-10">
+              {/* Time with seconds */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-base sm:text-lg md:text-xl font-mono font-bold text-[#1a1a1a] dark:text-[#e8e8e8] tabular-nums">
+                  {dateTime.time}
+                </span>
+                <span className="text-[10px] sm:text-xs md:text-sm font-mono text-[#0078d4] dark:text-[#60a5fa] font-semibold">
+                  {dateTime.seconds}
+                </span>
+              </div>
 
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="text-sm sm:text-base md:text-lg font-medium text-[#1a1a1a] dark:text-[#e8e8e8]">
-                {dateTime.persianDay}
-              </span>
-              <span className="text-xs sm:text-sm md:text-base text-[#6a6a6a] dark:text-[#808080]">
-                {dateTime.persianDate}
-              </span>
+              <div className="w-px h-6 sm:h-7 md:h-8 bg-[#e0e0e0]/30 dark:bg-[#2a2a2a]/30 hidden sm:block" />
+
+              {/* Persian Date */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-sm sm:text-base md:text-lg font-medium text-[#1a1a1a] dark:text-[#e8e8e8]">
+                  {dateTime.persianDay}
+                </span>
+                <span className="text-xs sm:text-sm md:text-base text-[#6a6a6a] dark:text-[#808080]">
+                  {dateTime.persianDate}
+                </span>
+              </div>
+
+              <div className="w-px h-6 sm:h-7 md:h-8 bg-[#e0e0e0]/30 dark:bg-[#2a2a2a]/30 hidden md:block" />
+
+              {/* Quote - Desktop */}
+              <div className="flex-1 max-w-sm hidden md:block">
+                <p className="text-xs sm:text-sm md:text-base text-[#6a6a6a] dark:text-[#808080] italic leading-relaxed text-center truncate">
+                  &quot;{quote}&quot;
+                </p>
+              </div>
             </div>
 
-            <div className="w-px h-6 sm:h-7 md:h-8 bg-[#e0e0e0]/30 dark:bg-[#2a2a2a]/30 hidden md:block" />
-
-            <div className="flex-1 max-w-sm hidden md:block">
-              <p className="text-xs sm:text-sm md:text-base text-[#6a6a6a] dark:text-[#808080] italic leading-relaxed text-center truncate">
-                &quot;{quote}&ldquo;
+            {/* Quote - Mobile */}
+            <div className="w-full sm:hidden order-4 relative z-10">
+              <p className="text-xs text-[#6a6a6a] dark:text-[#808080] italic leading-relaxed text-center truncate max-w-full">
+                &quot;{quote}&quot;
               </p>
             </div>
-          </div>
 
-          <div className="w-full sm:hidden order-4">
-            <p className="text-xs text-[#6a6a6a] dark:text-[#808080] italic leading-relaxed text-center truncate max-w-full">
-              &ldquo;{quote}&ldquo;
-            </p>
           </div>
-
         </div>
       </div>
+
+      {/* Add shimmer animation */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) rotate(45deg);
+          }
+          100% {
+            transform: translateX(200%) rotate(45deg);
+          }
+        }
+      `}</style>
     </header>
   );
 }
