@@ -40,7 +40,7 @@ export const fa = {
   Blog: {
     title: "پروژه ها",
     header: " مسعود جعفری برنامه نویس   ",
-    subtitle: "مجموعه از نمونه کار های ، با تمرکز بر سرعت بالا ، کیفیت کد  تمیز و قابل استفاده در بلند مدت",
+    subtitle: "پروژه ها ",
     button1: "دمو",
     button2: "سورس کد",
     all: "همه",
@@ -65,156 +65,159 @@ export const fa = {
     colorPalette: "پالت رنگی",
     typography: "فونت‌بندی",
     projects: [
-    {
-      id: 1,
-      name: "فروشگاه آنلاین محصولات دیجیتال همراه   ",
-      description: "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
-      tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-      category: "ecommerce",
-      details: {
-        technical:
-          "رندر ترکیبی SSR/ISR با App Router برای صفحات محصول، لایه دیتابیس با Prisma روی PostgreSQL و کش کوئری با React Query. تراکنش‌های پرداخت با webhook امن و idempotency key پیاده‌سازی شده تا از پرداخت تکراری جلوگیری شود.",
-        font: "Inter (UI) / JetBrains Mono (کد و قیمت‌ها)",
-        colors: [
-          { name: "Primary Purple", hex: "#7C3AED" },
-          { name: "Accent Blue", hex: "#2563EB" },
-          { name: "Base Zinc", hex: "#18181B" },
-        ],
+      {
+        id: 1,
+        name: "فروشگاه آنلاین محصولات دیجیتال همراه   ",
+        description:
+          "سیستم کامل فروش محصول قابلیت درگاه پرداخت ، نمایش موجودی ، پنل کنرتل ادمین کامل",
+        tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+        category: "ecommerce",
+        details: {
+          technical:
+            "رندر ترکیبی SSR/ISR با App Router برای صفحات محصول، لایه دیتابیس با Prisma روی PostgreSQL و کش کوئری با React Query. تراکنش‌های پرداخت با webhook امن و idempotency key پیاده‌سازی شده تا از پرداخت تکراری جلوگیری شود.",
+          font: "Inter (UI) / JetBrains Mono (کد و قیمت‌ها)",
+          colors: [
+            { name: "Primary Purple", hex: "#7C3AED" },
+            { name: "Accent Blue", hex: "#2563EB" },
+            { name: "Base Zinc", hex: "#18181B" },
+          ],
+        },
       },
-    },
-    {
-      id: 2,
-      name: "سایت معرفی شخص محور پورتفولیو",
-      description: "طراحی تمیز رسپانسیو کامل",
-      tech: ["React", "Tailwind", "Framer Motion"],
-      category: "web",
-      details: {
-        technical:
-          "کامپوننت‌های اتمیک با معماری فولدر Feature-based، انیمیشن‌های scroll-linked با Framer Motion و بهینه‌سازی تصاویر با next/image و AVIF fallback. امتیاز Lighthouse Performance بالای ۹۵.",
-        font: "Poppins (تیتر) / Inter (متن)",
-        colors: [
-          { name: "Ink Black", hex: "#0A0A0A" },
-          { name: "Signal Pink", hex: "#EC4899" },
-          { name: "Sky Blue", hex: "#3B82F6" },
-        ],
+      {
+        id: 2,
+        name: "سایت معرفی شخص محور پورتفولیو",
+        description:
+          "طراحی تمیز رسپانسیو کامل و  سیستم مدرن کامل و درتسری پذیز",
+        tech: ["React", "Tailwind", "Framer Motion"],
+        category: "web",
+        details: {
+          technical:
+            "کامپوننت‌های اتمیک با معماری فولدر Feature-based، انیمیشن‌های scroll-linked با Framer Motion و بهینه‌سازی تصاویر با next/image و AVIF fallback. امتیاز Lighthouse Performance بالای ۹۵.",
+          font: "Poppins (تیتر) / Inter (متن)",
+          colors: [
+            { name: "Ink Black", hex: "#0A0A0A" },
+            { name: "Signal Pink", hex: "#EC4899" },
+            { name: "Sky Blue", hex: "#3B82F6" },
+          ],
+        },
       },
-    },
-    {
-      id: 3,
-      name: "برنامه مدیریت گیم نت",
-      description: "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
-      tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
-      category: "software",
-      details: {
-        technical:
-          "احراز هویت stateless با JWT + refresh token rotation، اعتبارسنجی ورودی با Zod و rate limiting در سطح middleware. لایه‌ی دسترسی به داده با Prisma و migration نسخه‌بندی‌شده.",
-        font: "JetBrains Mono (مستندات API)",
-        colors: [
-          { name: "Deep Navy", hex: "#1E293B" },
-          { name: "Cyan Accent", hex: "#06B6D4" },
-          { name: "Alert Red", hex: "#EF4444" },
-        ],
+      {
+        id: 3,
+        name: "برنامه مدیریت گیم نت",
+        description:
+          "محاسبه دقیق هزینه و زمان بازی برای هر دستگاه با قابلیت تعیین قیمت و متوفق کردن زمان قابلیت نسیه دادن الارم برای دستگاه که زمان تمام شده",
+        tech: ["Next.js", "Prisma", "PostgreSQL", "JWT"],
+        category: "software",
+        details: {
+          technical:
+            "احراز هویت stateless با JWT + refresh token rotation، اعتبارسنجی ورودی با Zod و rate limiting در سطح middleware. لایه‌ی دسترسی به داده با Prisma و migration نسخه‌بندی‌شده.",
+          font: "JetBrains Mono (مستندات API)",
+          colors: [
+            { name: "Deep Navy", hex: "#1E293B" },
+            { name: "Cyan Accent", hex: "#06B6D4" },
+            { name: "Alert Red", hex: "#EF4444" },
+          ],
+        },
       },
-    },
-    {
-      id: 4,
-      name: "کیت رابط کاربری موبایل",
-      description: "کامپوننت‌های زیبای موبایل با پشتیبانی حالت تاریک",
-      tech: ["React Native", "TypeScript", "Tailwind"],
-      category: "software",
-      details: {
-        technical:
-          "سیستم طراحی توکن‌محور با پشتیبانی کامل از تم روشن/تاریک، کامپوننت‌های قابل ترکیب با forwardRef و پشتیبانی از RTL. فرم‌ساز داینامیک با اعتبارسنجی schema-based.",
-        font: "SF Pro / Roboto (پلتفرم‌محور)",
-        colors: [
-          { name: "Graphite", hex: "#27272A" },
-          { name: "Violet", hex: "#8B5CF6" },
-          { name: "Mint", hex: "#34D399" },
-        ],
+      {
+        id: 4,
+        name: "کیت رابط کاربری موبایل",
+        description: "کامپوننت‌های زیبای موبایل با پشتیبانی حالت تاریک",
+        tech: ["React Native", "TypeScript", "Tailwind"],
+        category: "software",
+        details: {
+          technical:
+            "سیستم طراحی توکن‌محور با پشتیبانی کامل از تم روشن/تاریک، کامپوننت‌های قابل ترکیب با forwardRef و پشتیبانی از RTL. فرم‌ساز داینامیک با اعتبارسنجی schema-based.",
+          font: "SF Pro / Roboto (پلتفرم‌محور)",
+          colors: [
+            { name: "Graphite", hex: "#27272A" },
+            { name: "Violet", hex: "#8B5CF6" },
+            { name: "Mint", hex: "#34D399" },
+          ],
+        },
       },
-    },
-    {
-      id: 5,
-      name: "اپلیکیشن چت بلادرنگ",
-      description: "پیام‌رسانی بلادرنگ با WebSocket و Redis",
-      tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
-      category: "ecommerce",
-      details: {
-        technical:
-          "اتصال دوطرفه با Socket.io روی adapter مبتنی بر Redis برای مقیاس‌پذیری افقی، صف پیام با presence tracking و ack-based delivery برای تضمین رسیدن پیام‌ها.",
-        font: "Inter (UI) / IBM Plex Mono (تایم‌استمپ)",
-        colors: [
-          { name: "Charcoal", hex: "#111827" },
-          { name: "Live Green", hex: "#10B981" },
-          { name: "Bubble Blue", hex: "#3B82F6" },
-        ],
+      {
+        id: 5,
+        name: "اپلیکیشن چت بلادرنگ",
+        description: "پیام‌رسانی بلادرنگ با WebSocket و Redis",
+        tech: ["Next.js", "Socket.io", "Redis", "Tailwind"],
+        category: "ecommerce",
+        details: {
+          technical:
+            "اتصال دوطرفه با Socket.io روی adapter مبتنی بر Redis برای مقیاس‌پذیری افقی، صف پیام با presence tracking و ack-based delivery برای تضمین رسیدن پیام‌ها.",
+          font: "Inter (UI) / IBM Plex Mono (تایم‌استمپ)",
+          colors: [
+            { name: "Charcoal", hex: "#111827" },
+            { name: "Live Green", hex: "#10B981" },
+            { name: "Bubble Blue", hex: "#3B82F6" },
+          ],
+        },
       },
-    },
-    {
-      id: 6,
-      name: "داشبورد تحلیلی",
-      description: "داشبورد تعاملی با نمودار و تصویرسازی داده",
-      tech: ["React", "D3.js", "Tailwind", "Recharts"],
-      category: "dashboard",
-      details: {
-        technical:
-          "نمودارهای تعاملی با D3.js برای ویژوالایزیشن سفارشی و Recharts برای نمودارهای استاندارد، پردازش داده در Web Worker برای جلوگیری از بلاک شدن UI روی دیتاست‌های بزرگ.",
-        font: "Space Grotesk (اعداد) / Inter (متن)",
-        colors: [
-          { name: "Slate Base", hex: "#0F172A" },
-          { name: "Data Orange", hex: "#F97316" },
-          { name: "Chart Teal", hex: "#14B8A6" },
-        ],
+      {
+        id: 6,
+        name: "داشبورد تحلیلی",
+        description: "داشبورد تعاملی با نمودار و تصویرسازی داده",
+        tech: ["React", "D3.js", "Tailwind", "Recharts"],
+        category: "dashboard",
+        details: {
+          technical:
+            "نمودارهای تعاملی با D3.js برای ویژوالایزیشن سفارشی و Recharts برای نمودارهای استاندارد، پردازش داده در Web Worker برای جلوگیری از بلاک شدن UI روی دیتاست‌های بزرگ.",
+          font: "Space Grotesk (اعداد) / Inter (متن)",
+          colors: [
+            { name: "Slate Base", hex: "#0F172A" },
+            { name: "Data Orange", hex: "#F97316" },
+            { name: "Chart Teal", hex: "#14B8A6" },
+          ],
+        },
       },
-    },
-  ],
-},
-Experience: {
-  title: "سابقه کاری",
-  subtitle: "مسیر حرفه‌ای من",
-  
-  // Internship
-  internshipTitle: "کارآموز IT",
-  internshipCompany: "شرکت کاوه نگار",
-  internshipDesc1: "پیکربندی و نگهداری شبکه",
-  internshipDesc2: "عیب‌یابی و تعمیر سخت‌افزار",
-  internshipDesc3: "نصب و مدیریت دیپ‌فریز",
-  internshipDesc4: "راه‌اندازی پرینتر و نصب درایور",
-  internshipDesc5: "بهینه‌سازی سیستم و پشتیبانی کاربران",
-  
-  // Freelance
-  freelanceTitle: "پروژه‌های فریلنسری",
-  freelanceCompany: "خوداشتغال",
-  freelanceDesc1: "توسعه ۳ اپلیکیشن وب فول‌استک",
-  freelanceDesc2: "ساخت وب‌سایت‌های واکنش‌گرا با Next.js و Tailwind",
-  freelanceDesc3: "پیاده‌سازی APIهای RESTful و دیتابیس",
-  freelanceDesc4: "تحویل پروژه‌ها با کیفیت و در زمان مقرر",
-  
-  // School
-  schoolTitle: "رئیس بخش IT",
-  schoolCompany: "هنرستان",
-  schoolLocation: "ایران",
-  schoolDesc1: "مدیریت زیرساخت IT هنرستان",
-  schoolDesc2: "راه‌اندازی و نگهداری شبکه",
-  schoolDesc3: "نصب و پیکربندی دیپ‌فریز",
-  schoolDesc4: "عیب‌یابی سخت‌افزار و نرم‌افزار",
-  schoolDesc5: "کمک به معلمان و دانش‌آموزان در مشکلات فنی",
-  schoolDesc6: "مدیریت پرینتر و دستگاه‌های جانبی",
-  
-  // Badges
-  internship: "کارآموزی",
-  freelance: "فریلنسر",
-  education: "آموزشی",
-},
-Education: {
-  title: "تحصیلات",
-  subtitle: "سوابق تحصیلی من",
-  degree1: "کارشناسی علوم کامپیوتر",
-  institution1: "دانشگاه صنعتی",
-  degree2: "توسعه وب فول‌استک",
-  institution2: "دوره آنلاین",
-  clickToZoom: "برای بزرگنمایی  رو عکس کلیک کنید",
-},
+    ],
+  },
+  Experience: {
+    title: "سابقه کاری",
+    subtitle: "مسیر حرفه‌ای من",
+
+    // Internship
+    internshipTitle: "کارآموز IT",
+    internshipCompany: "شرکت کاوه نگار",
+    internshipDesc1: "پیکربندی و نگهداری شبکه",
+    internshipDesc2: "عیب‌یابی و تعمیر سخت‌افزار",
+    internshipDesc3: "نصب و مدیریت دیپ‌فریز",
+    internshipDesc4: "راه‌اندازی پرینتر و نصب درایور",
+    internshipDesc5: "بهینه‌سازی سیستم و پشتیبانی کاربران",
+
+    // Freelance
+    freelanceTitle: "پروژه‌های فریلنسری",
+    freelanceCompany: "خوداشتغال",
+    freelanceDesc1: "توسعه ۳ اپلیکیشن وب فول‌استک",
+    freelanceDesc2: "ساخت وب‌سایت‌های واکنش‌گرا با Next.js و Tailwind",
+    freelanceDesc3: "پیاده‌سازی APIهای RESTful و دیتابیس",
+    freelanceDesc4: "تحویل پروژه‌ها با کیفیت و در زمان مقرر",
+
+    // School
+    schoolTitle: "رئیس بخش IT",
+    schoolCompany: "هنرستان",
+    schoolLocation: "ایران",
+    schoolDesc1: "مدیریت زیرساخت IT هنرستان",
+    schoolDesc2: "راه‌اندازی و نگهداری شبکه",
+    schoolDesc3: "نصب و پیکربندی دیپ‌فریز",
+    schoolDesc4: "عیب‌یابی سخت‌افزار و نرم‌افزار",
+    schoolDesc5: "کمک به معلمان و دانش‌آموزان در مشکلات فنی",
+    schoolDesc6: "مدیریت پرینتر و دستگاه‌های جانبی",
+
+    // Badges
+    internship: "کارآموزی",
+    freelance: "فریلنسر",
+    education: "آموزشی",
+  },
+  Education: {
+    title: "تحصیلات",
+    subtitle: "سوابق تحصیلی من",
+    degree1: "کارشناسی علوم کامپیوتر",
+    institution1: "دانشگاه صنعتی",
+    degree2: "توسعه وب فول‌استک",
+    institution2: "دوره آنلاین",
+    clickToZoom: "برای بزرگنمایی  رو عکس کلیک کنید",
+  },
 
   ImageModal: {
     close: "بستن",
@@ -228,7 +231,8 @@ Education: {
     placeholder: "سوال خود را بنویسید...",
     send: "ارسال",
     typing: "در حال تایپ...",
-    welcome: "سلام! من دستیار هوش مصنوعی هستم. هر سوالی درباره مسعود جعفری — مهارت‌ها، سابقه کاری، پروژه‌ها یا پیشینه بپرسید.",
+    welcome:
+      "سلام! من دستیار هوش مصنوعی هستم. هر سوالی درباره مسعود جعفری — مهارت‌ها، سابقه کاری، پروژه‌ها یا پیشینه بپرسید.",
     suggestions: [
       "مهارت‌های اصلی مسعود چیست؟",
       "درباره سابقه کاریش بگو",
@@ -236,60 +240,68 @@ Education: {
       "سوابق تحصیلی چیست؟",
       "چطور می‌تونم با او تماس بگیرم؟",
     ],
-    fallback: "اطلاعات خاصی در این مورد ندارم، اما می‌توانید درباره مهارت‌ها، سابقه کاری، پروژه‌ها یا تحصیلات مسعود بپرسید.",
+    fallback:
+      "اطلاعات خاصی در این مورد ندارم، اما می‌توانید درباره مهارت‌ها، سابقه کاری، پروژه‌ها یا تحصیلات مسعود بپرسید.",
     answers: {
-      skills: "مسعود جعفری یک توسعه‌دهنده فول‌استک است که در React، Next.js، TypeScript و Tailwind CSS تخصص دارد. همچنین با Node.js، Express.js، MongoDB، PostgreSQL، Prisma، Docker و Git کار می‌کند. در زمینه طراحی هم تجربه‌ای در UI/UX Design و Figma دارد.",
-      experience: "مسعود بیش از ۲ سال تجربه دارد. او به عنوان کارآموز IT در شرکت کاوه نگار کار کرده، پروژه‌های فریلنسری فول‌استک انجام داده و به عنوان رئیس بخش IT در یک هنرستان در ایران خدمت کرده است.",
-      projects: "او بیش از ۱۰ پروژه شامل فروشگاه آنلاین، پورتفولیو، API مدیریت وظایف، کیت UI موبایل، اپلیکیشن چت بلادرنگ و داشبورد تحلیلی ساخته است.",
-      education: "مسعود holder کارشناسی علوم کامپیوتر از دانشگاه صنعتی است و دوره توسعه وب فول‌استک آنلاین را نیز به اتمام رسانده است.",
-      contact: "می‌توانید با مسعود از طریق ایمیل masoud@example.com یا از طریق GitHub و LinkedIn ارتباط برقرار کنید.",
-      about: "مسعود جعفری یک برنامه‌نویس فول‌استک پرشور است که در ساخت وب‌اپلیکیشن‌های سریع، مقیاس‌پذیر و تمیز با فناوری‌های مدرن مانند React، Next.js، TypeScript و Tailwind CSS تخصص دارد.",
+      skills:
+        "مسعود جعفری یک توسعه‌دهنده فول‌استک است که در React، Next.js، TypeScript و Tailwind CSS تخصص دارد. همچنین با Node.js، Express.js، MongoDB، PostgreSQL، Prisma، Docker و Git کار می‌کند. در زمینه طراحی هم تجربه‌ای در UI/UX Design و Figma دارد.",
+      experience:
+        "مسعود بیش از ۲ سال تجربه دارد. او به عنوان کارآموز IT در شرکت کاوه نگار کار کرده، پروژه‌های فریلنسری فول‌استک انجام داده و به عنوان رئیس بخش IT در یک هنرستان در ایران خدمت کرده است.",
+      projects:
+        "او بیش از ۱۰ پروژه شامل فروشگاه آنلاین، پورتفولیو، API مدیریت وظایف، کیت UI موبایل، اپلیکیشن چت بلادرنگ و داشبورد تحلیلی ساخته است.",
+      education:
+        "مسعود holder کارشناسی علوم کامپیوتر از دانشگاه صنعتی است و دوره توسعه وب فول‌استک آنلاین را نیز به اتمام رسانده است.",
+      contact:
+        "می‌توانید با مسعود از طریق ایمیل masoud@example.com یا از طریق GitHub و LinkedIn ارتباط برقرار کنید.",
+      about:
+        "مسعود جعفری یک برنامه‌نویس فول‌استک پرشور است که در ساخت وب‌اپلیکیشن‌های سریع، مقیاس‌پذیر و تمیز با فناوری‌های مدرن مانند React، Next.js، TypeScript و Tailwind CSS تخصص دارد.",
     },
   },
- Skills: {
-   title: "مهارت‌های من",
-   subtitle: "تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم",
-   frontend: "فرانت‌اند",
-   backend: "بک‌اند",
-   database: "پایگاه داده",
-   tools: "ابزارها و دواپس",
-   design: "طراحی",
-   totalSkills: "مجموع مهارت‌ها",
-   categories: "دسته‌بندی‌ها",
-   average: "میانگین",
-   expert: "مهارت حرفه‌ای",
-   groups: {
-     frontend: [
-       "React / Next.js",
-       "TypeScript",
-       "JavaScript",
-       "Tailwind CSS",
-       "HTML / CSS",
-     ],
-     backend: ["Node.js", "Express.js"],
-     database: ["MongoDB", "PostgreSQL", "Prisma"],
-     tools: ["Git / GitHub", "Docker", "Vercel / Netlify"],
-     design: ["UI/UX Design", "Figma"],
-   },
- },
-Services: {
-  title: "خدمات",
-  webDev: "توسعه وب",
-  webDevDesc: "ساخت اپلیکیشن‌های وب مدرن و واکنش‌گرا",
-  uiUx: "طراحی UI/UX",
-  uiUxDesc: "ایجاد رابط‌های کاربری زیبا و شهودی",
-  backend: "توسعه بک‌اند",
-  backendDesc: "توسعه راه‌حل‌های مقیاس‌پذیر سمت سرور",
-  mobile: "توسعه موبایل",
-  mobileDesc: "اپلیکیشن‌های موبایل چندسکویی",
-  maintenance: "نگهداری و پشتیبانی",
-  maintenanceDesc: "پشتیبانی و نگهداری مداوم",
-  deployment: "استقرار و دواپس",
-  deploymentDesc: "CI/CD، هاستینگ و خدمات ابری",
-},
+  Skills: {
+    title: "مهارت‌های من",
+    subtitle: "تکنولوژی‌ها و ابزارهایی که با آنها کار می‌کنم",
+    frontend: "فرانت‌اند",
+    backend: "بک‌اند",
+    database: "پایگاه داده",
+    tools: "ابزارها و دواپس",
+    design: "طراحی",
+    totalSkills: "مجموع مهارت‌ها",
+    categories: "دسته‌بندی‌ها",
+    average: "میانگین",
+    expert: "مهارت حرفه‌ای",
+    groups: {
+      frontend: [
+        "React / Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+        "HTML / CSS",
+      ],
+      backend: ["Node.js", "Express.js"],
+      database: ["MongoDB", "PostgreSQL", "Prisma"],
+      tools: ["Git / GitHub", "Docker", "Vercel / Netlify"],
+      design: ["UI/UX Design", "Figma"],
+    },
+  },
+  Services: {
+    title: "خدمات",
+    webDev: "توسعه وب",
+    webDevDesc: "ساخت اپلیکیشن‌های وب مدرن و واکنش‌گرا",
+    uiUx: "طراحی UI/UX",
+    uiUxDesc: "ایجاد رابط‌های کاربری زیبا و شهودی",
+    backend: "توسعه بک‌اند",
+    backendDesc: "توسعه راه‌حل‌های مقیاس‌پذیر سمت سرور",
+    mobile: "توسعه موبایل",
+    mobileDesc: "اپلیکیشن‌های موبایل چندسکویی",
+    maintenance: "نگهداری و پشتیبانی",
+    maintenanceDesc: "پشتیبانی و نگهداری مداوم",
+    deployment: "استقرار و دواپس",
+    deploymentDesc: "CI/CD، هاستینگ و خدمات ابری",
+  },
   About: {
     Title: "درباره من",
-    description: " برنامه‌نویس فول‌استک با بیش از ۴ سال تجربه عملی در توسعه وب. تخصص من در Next.js، React، TypeScript و Tailwind CSS است. من راه‌حل‌های کامل از طراحی رابط کاربری تا توسعه سمت سرور و پایگاه داده را ارائه می‌دهم. کیفیت کد، عملکرد بالا و تجربه کاربری عزیز، اولویت‌های اصلی من در هر پروژه‌ای هستند.",
+    description:
+      " برنامه‌نویس فول‌استک با بیش از ۴ سال تجربه عملی در توسعه وب. تخصص من در Next.js، React، TypeScript و Tailwind CSS است. من راه‌حل‌های کامل از طراحی رابط کاربری تا توسعه سمت سرور و پایگاه داده را ارائه می‌دهم. کیفیت کد، عملکرد بالا و تجربه کاربری عزیز، اولویت‌های اصلی من در هر پروژه‌ای هستند.",
     button1: "دانلود رزومه",
     button2: "ارتباط با من",
     Years: "تجربه کاری ",
@@ -318,22 +330,22 @@ Services: {
     namePlaceholder: "نام خود را وارد کیند  ",
     subjectPlaceholder: "موضوع گفت وگو... ",
   },
- Footer:{
- title:"مسعود جعفری",
- paragraph:"برنامه نویس و محقق هوش مصنوعی",
- quickLinks:"دسترسی سریع",
- Home:"خانه",
- About:"درباره من",
- Blog:"وبلاگ",
- Contact:"ارتباط با من",
- Email:"ایمیل",
- Location:"موقعیت",
-  Github:"گیتهاب",
-  Linkedin:"لینکدین",
-  Twitter:"توییتر",
-  emailValue:"masoud@example.com",
-  locationValue:"آذربایجان",
-    bottomText:"مسعود جعفری ساخته شده با."
+  Footer: {
+    title: "مسعود جعفری",
+    paragraph: "برنامه نویس و محقق هوش مصنوعی",
+    quickLinks: "دسترسی سریع",
+    Home: "خانه",
+    About: "درباره من",
+    Blog: "وبلاگ",
+    Contact: "ارتباط با من",
+    Email: "ایمیل",
+    Location: "موقعیت",
+    Github: "گیتهاب",
+    Linkedin: "لینکدین",
+    Twitter: "توییتر",
+    emailValue: "masoud@example.com",
+    locationValue: "آذربایجان",
+    bottomText: "مسعود جعفری ساخته شده با.",
   },
   blogSection: {
     title: "وبلاگ",
@@ -345,9 +357,45 @@ Services: {
     categories: ["همه", "تکنولوژی", "آموزشی", "طراحی", "مسیر شغلی"],
   },
   blogPosts: [
-    { id: 1, title: "ساخت رابط‌های کاربری مدرن با Next.js و Tailwind CSS", excerpt: "کشف کنید که Next.js و Tailwind CSS چگونه با هم همکاری می‌کنند تا رابط‌های کاربری خیره‌کننده و با عملکرد بالا ایجاد کنند.", date: "۱۵ دسامبر ۲۰۲۴", category: "technology", readTime: 5, author: "مسعود جعفری" },
-    { id: 2, title: "تسلط بر TypeScript: الگوهای پیشرفته", excerpt: "نگاهی عمیق به انواع پیشرفته، جنریک‌ها و الگوهای TypeScript که توسعه شما را ارتقا خواهند داد.", date: "۲۸ نوامبر ۲۰۲۴", category: "tutorial", readTime: 8, author: "مسعود جعفری" },
-    { id: 3, title: "آینده انیمیشن‌های وب", excerpt: "آخرین روندهای انیمیشن‌های وب را کشف کنید و چگونه تجربه‌های کاربری لذت‌بخش ایجاد کنید.", date: "۱۰ اکتبر ۲۰۲۴", category: "design", readTime: 4, author: "مسعود جعفری" },
-    { id: 4, title: "از توسعه‌دهنده júnior به senior", excerpt: "سفر من و درس‌های Learned از پیشرفت از یک توسعه‌دهنده júnior به senior.", date: "۵ سپتامبر ۲۰۲۴", category: "career", readTime: 6, author: "مسعود جعفری" },
+    {
+      id: 1,
+      title: "ساخت رابط‌های کاربری مدرن با Next.js و Tailwind CSS",
+      excerpt:
+        "کشف کنید که Next.js و Tailwind CSS چگونه با هم همکاری می‌کنند تا رابط‌های کاربری خیره‌کننده و با عملکرد بالا ایجاد کنند.",
+      date: "۱۵ دسامبر ۲۰۲۴",
+      category: "technology",
+      readTime: 5,
+      author: "مسعود جعفری",
+    },
+    {
+      id: 2,
+      title: "تسلط بر TypeScript: الگوهای پیشرفته",
+      excerpt:
+        "نگاهی عمیق به انواع پیشرفته، جنریک‌ها و الگوهای TypeScript که توسعه شما را ارتقا خواهند داد.",
+      date: "۲۸ نوامبر ۲۰۲۴",
+      category: "tutorial",
+      readTime: 8,
+      author: "مسعود جعفری",
+    },
+    {
+      id: 3,
+      title: "آینده انیمیشن‌های وب",
+      excerpt:
+        "آخرین روندهای انیمیشن‌های وب را کشف کنید و چگونه تجربه‌های کاربری لذت‌بخش ایجاد کنید.",
+      date: "۱۰ اکتبر ۲۰۲۴",
+      category: "design",
+      readTime: 4,
+      author: "مسعود جعفری",
+    },
+    {
+      id: 4,
+      title: "از توسعه‌دهنده júnior به senior",
+      excerpt:
+        "سفر من و درس‌های Learned از پیشرفت از یک توسعه‌دهنده júnior به senior.",
+      date: "۵ سپتامبر ۲۰۲۴",
+      category: "career",
+      readTime: 6,
+      author: "مسعود جعفری",
+    },
   ],
 };
