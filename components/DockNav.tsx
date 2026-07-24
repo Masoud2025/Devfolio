@@ -22,7 +22,6 @@ import { useState } from "react";
 import type { Theme } from "@/context/LangContext";
 import { GitHubIcon } from "./GitHubIcon";
 import { LinkedinIcon } from "./LinkedinIcon";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function DockNav({
@@ -84,7 +83,7 @@ export default function DockNav({
       // باز کردن در تب جدید برای لینک‌های خارجی
       window.open(item.href, "_blank", "noopener,noreferrer");
     } else {
-      // ریدایرکت داخلی با Next.js router
+      // ریدایرکت داخلی با Next.js router - بدون رفرش صفحه
       router.push(item.href);
     }
   };
@@ -104,6 +103,7 @@ export default function DockNav({
           theme === "dark"
             ? "0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.05)"
             : "0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 2px rgba(255,255,255,0.8)",
+        direction: "ltr", // ← مهم: جهت داک همیشه چپ‌چین بمونه
       }}
     >
       {/* Navigation items */}
@@ -192,6 +192,8 @@ export default function DockNav({
         className="relative"
         whileHover={{ scale: 1.15 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
+        onMouseEnter={() => setHovered("lang")}
+        onMouseLeave={() => setHovered(null)}
       >
         <motion.button
           onClick={toggleLang}
