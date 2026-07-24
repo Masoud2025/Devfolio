@@ -1,148 +1,36 @@
-<div align="center">
-
-# Pofilo
-
-**A modern portfolio crafted with simplicity, performance, and attention to detail.**
-
-Designed and developed from scratch using modern web technologies.
-
----
-
-![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript\&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss\&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer\&logoColor=white)
-
-</div>
-
----
-
-## Philosophy
-
-Pofilo is built around a simple idea:
-
-> **Less noise. More focus.**
-
-Instead of overwhelming visitors with unnecessary effects and complex layouts, the goal is to create a fast, clean, and enjoyable browsing experience where the work speaks for itself.
-
----
-
-## Features
-
-* Responsive on every screen size
-* Minimal and clean interface
-* Modern typography
-* Smooth and subtle animations
-* Multilingual support
-* Optimized performance
-* Accessible UI
-* Reusable component architecture
-* SEO friendly
-* Built entirely from scratch
-
----
-
-## Tech Stack
-
-| Technology    | Purpose              |
-| ------------- | -------------------- |
-| Next.js       | React Framework      |
-| TypeScript    | Type Safety          |
-| Tailwind CSS  | Styling              |
-| Framer Motion | Animations           |
-| next-intl     | Internationalization |
-
----
-
-## Project Structure
-
-```text
-app/
-components/
-public/
-messages/
-lib/
-hooks/
-styles/
-```
-
----
-
-## Performance Goals
-
-* Fast page load
-* Lightweight bundle
-* Responsive interactions
-* Minimal dependencies
-* Optimized images
-* Clean architecture
-
----
-
-## Design Principles
-
-* White-first interface
-* Strong visual hierarchy
-* Plenty of whitespace
-* One accent color
-* Consistent spacing
-* Pixel-perfect alignment
-* Subtle motion only where it improves UX
-
----
-
-## Why Pofilo?
-
-This project is not a template.
-
-It is an opportunity to practice writing maintainable code, designing thoughtful interfaces, and building user experiences from the ground up.
-
-Every section is intentionally designed with simplicity, readability, and performance in mind.
-
----
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
+First, run the development server:
+
 ```bash
-git clone https://github.com/yourusername/pofilo.git
-
-cd pofilo
-
-npm install
-
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Roadmap
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-* [ ] Dark Mode
-* [ ] Blog
-* [ ] CMS Integration
-* [ ] Project Search
-* [ ] Command Palette
-* [ ] View Transitions
-* [ ] More Languages
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## Contributing
+To learn more about Next.js, take a look at the following resources:
 
-Suggestions, issues, and pull requests are always welcome.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## License
+## Deploy on Vercel
 
-MIT License
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-<div align="center">
-
-### Built with care, curiosity, and countless cups of coffee.
-
-If you like this project, consider giving it a ⭐.
-
-</div>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
