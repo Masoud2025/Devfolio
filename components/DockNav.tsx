@@ -10,6 +10,7 @@ import {
   MoonIcon,
   SunIcon,
   UserIcon,
+  BookOpenIcon
 } from "@heroicons/react/24/outline";
 import {
   HeartIcon as HeartSolid,
@@ -19,6 +20,10 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import type { Theme } from "@/context/LangContext";
+// import GitHubIcon from "@/public/Github.svg";
+import { GitHubIcon } from "./GitHubIcon";
+import { LinkedinIcon } from "./LinkedinIcon";
+
 
 export default function DockNav({
   toggleTheme,
@@ -40,25 +45,25 @@ export default function DockNav({
     },
     {
       id: "search",
-      icon: MagnifyingGlassIcon,
-      label: lang === "fa" ? "Search" : "Search",
+      icon: BookOpenIcon,
+      label: lang === "fa" ? "وبلاگ" : "Blog",
     },
     {
-      id: "heart",
-      icon: HeartIcon,
+      id: "GitHub",
+      icon: GitHubIcon,
       solid: HeartSolid,
-      label: lang === "fa" ? "Favorites" : "Favorites",
+      label: lang === "fa" ? "گیتهاب" : "GitHub",
     },
     {
       id: "chat",
-      icon: ChatBubbleLeftIcon,
-      label: lang === "fa" ? "Messages" : "Messages",
+      icon: LinkedinIcon,
+      label: lang === "fa" ? "لینکدین" : "Linkedin",
     },
     {
       id: "user",
       icon: UserIcon,
       solid: UserSolid,
-      label: lang === "fa" ? "Profile" : "Profile",
+      label: lang === "fa" ? "پروفایل" : "Profile",
     },
   ];
 
@@ -176,7 +181,7 @@ export default function DockNav({
           animate={{ opacity: 1, y: -5 }}
           className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none"
         >
-          {lang === "fa" ? "Switch to English" : "Switch to فارسی"}
+          {lang === "fa" ? "Switch to English" : "فارسی سازی"}
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
         </motion.div>
       </motion.div>
@@ -194,15 +199,8 @@ export default function DockNav({
           <MoonIcon className="w-6 h-6" />
         )}
 
-        {/* Tooltip for theme toggle */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: -5 }}
-          className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none"
-        >
-          {theme === "dark" ? "Switch to Light" : "Switch to Dark"}
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-        </motion.div>
+       
+     
       </motion.button>
 
       {/* Mouse follower glow effect (optional) */}
