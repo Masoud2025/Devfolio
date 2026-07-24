@@ -20,10 +20,10 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import type { Theme } from "@/context/LangContext";
-// import GitHubIcon from "@/public/Github.svg";
 import { GitHubIcon } from "./GitHubIcon";
 import { LinkedinIcon } from "./LinkedinIcon";
-
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function DockNav({
   toggleTheme,
@@ -33,6 +33,7 @@ export default function DockNav({
   theme: Theme;
 }) {
   const { lang, toggleLang } = useLang();
+  const router = useRouter();
   const [active, setActive] = useState("home");
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -41,45 +42,72 @@ export default function DockNav({
       id: "home",
       icon: HomeIcon,
       solid: HomeSolid,
-      label: lang === "fa" ? "Home" : "Home",
+      label: lang === "fa" ? "خانه" : "Home",
+      href: "/",
+      isExternal: false,
     },
     {
-      id: "search",
+      id: "blog",
       icon: BookOpenIcon,
       label: lang === "fa" ? "وبلاگ" : "Blog",
+      href: "/blog",
+      isExternal: false,
     },
     {
-      id: "GitHub",
+      id: "github",
       icon: GitHubIcon,
-      solid: HeartSolid,
       label: lang === "fa" ? "گیتهاب" : "GitHub",
+      href: "https://github.com",
+      isExternal: true,
     },
     {
-      id: "chat",
+      id: "linkedin",
       icon: LinkedinIcon,
       label: lang === "fa" ? "لینکدین" : "Linkedin",
+      href: "https://linkedin.com",
+      isExternal: true,
     },
     {
       id: "user",
       icon: UserIcon,
       solid: UserSolid,
       label: lang === "fa" ? "پروفایل" : "Profile",
+      href: "/profile",
+      isExternal: false,
     },
   ];
+
+  const handleItemClick = (item: typeof items[0]) => {
+    setActive(item.id);
+    
+    if (item.isExternal) {
+      // باز کردن در تب جدید برای لینک‌های خارجی
+      window.open(item.href, "_blank", "noopener,noreferrer");
+    } else {
+      // ریدایرکت داخلی با Next.js router
+      router.push(item.href);
+    }
+  };
 
   return (
     <motion.nav
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-2xl shadow-2xl rounded-3xl px-3 py-2 flex items-center gap-1 border border-white/30"
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 backdrop-blur-2xl shadow-2xl rounded-3xl px-3 py-2 flex items-center gap-1 border transition-colors duration-300 ${
+        theme === "dark"
+          ? "bg-gray-900/70 border-gray-700/30"
+          : "bg-white/70 border-white/30"
+      }`}
       style={{
         boxShadow:
-          "0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 2px rgba(255,255,255,0.8)",
+          theme === "dark"
+            ? "0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.05)"
+            : "0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 2px rgba(255,255,255,0.8)",
       }}
     >
       {/* Navigation items */}
-      {items.map((item, index) => {
+      {items.map((item) => {
         const isActive = active === item.id;
         const isHovered = hovered === item.id;
         const scale = isHovered ? 1.35 : isActive ? 1.2 : 1;
@@ -87,10 +115,10 @@ export default function DockNav({
         return (
           <motion.div
             key={item.id}
-            className="relative"
+            className="relative cursor-pointer"
             onMouseEnter={() => setHovered(item.id)}
             onMouseLeave={() => setHovered(null)}
-            onClick={() => setActive(item.id)}
+            onClick={() => handleItemClick(item)}
             animate={{ scale }}
             transition={{
               type: "spring",
@@ -105,6 +133,8 @@ export default function DockNav({
                 ${
                   isActive
                     ? "bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/30"
+                    : theme === "dark"
+                    ? "text-gray-400 hover:text-white hover:bg-gray-800/80"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
                 }
               `}
@@ -135,10 +165,16 @@ export default function DockNav({
                   animate={{ opacity: 1, y: -5, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg"
+                  className={`absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap shadow-lg ${
+                    theme === "dark"
+                      ? "bg-gray-800 text-white"
+                      : "bg-gray-900 text-white"
+                  }`}
                 >
                   {item.label}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                  <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 ${
+                    theme === "dark" ? "bg-gray-800" : "bg-gray-900"
+                  }`}></div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -147,7 +183,9 @@ export default function DockNav({
       })}
 
       {/* Separator line */}
-      <div className="w-px h-10 bg-gray-200/60 mx-1"></div>
+      <div className={`w-px h-10 mx-1 ${
+        theme === "dark" ? "bg-gray-700/60" : "bg-gray-200/60"
+      }`}></div>
 
       {/* Language toggle button with animation */}
       <motion.div
@@ -157,7 +195,11 @@ export default function DockNav({
       >
         <motion.button
           onClick={toggleLang}
-          className="relative p-3 rounded-2xl hover:bg-gradient-to-br hover:from-green-500 hover:to-emerald-600 hover:text-white transition-colors duration-200 text-gray-600"
+          className={`relative p-3 rounded-2xl transition-colors duration-200 ${
+            theme === "dark"
+              ? "text-gray-400 hover:text-white hover:bg-gray-800/80"
+              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
+          }`}
           whileTap={{ scale: 0.85 }}
           animate={{ rotate: lang === "fa" ? 0 : 360 }}
           transition={{ duration: 0.5, type: "spring" }}
@@ -176,22 +218,37 @@ export default function DockNav({
         </motion.button>
 
         {/* Tooltip for language toggle */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: -5 }}
-          className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none"
-        >
-          {lang === "fa" ? "Switch to English" : "فارسی سازی"}
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-        </motion.div>
+        <AnimatePresence>
+          {hovered === "lang" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: -5 }}
+              exit={{ opacity: 0, y: -10 }}
+              className={`absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none ${
+                theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-900 text-white"
+              }`}
+            >
+              {lang === "fa" ? "Switch to English" : "تغییر به فارسی"}
+              <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-900"
+              }`}></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Theme toggle button */}
       <motion.button
         onClick={toggleTheme}
-        className="relative p-3 rounded-2xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 hover:text-white transition-colors duration-200 text-gray-600"
+        className={`relative p-3 rounded-2xl transition-colors duration-200 ${
+          theme === "dark"
+            ? "text-gray-400 hover:text-white hover:bg-gray-800/80"
+            : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
+        }`}
         whileTap={{ scale: 0.85 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
+        onMouseEnter={() => setHovered("theme")}
+        onMouseLeave={() => setHovered(null)}
       >
         {theme === "dark" ? (
           <SunIcon className="w-6 h-6" />
@@ -199,18 +256,25 @@ export default function DockNav({
           <MoonIcon className="w-6 h-6" />
         )}
 
-       
-     
+        {/* Tooltip for theme toggle */}
+        <AnimatePresence>
+          {hovered === "theme" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: -5 }}
+              exit={{ opacity: 0, y: -10 }}
+              className={`absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none ${
+                theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-900 text-white"
+              }`}
+            >
+              {theme === "dark" ? "حالت روشن" : "حالت تاریک"}
+              <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-900"
+              }`}></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.button>
-
-      {/* Mouse follower glow effect (optional) */}
-      <motion.div
-        className="absolute -inset-1 rounded-3xl pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59,130,246,0.1) 0%, transparent 50%)",
-        }}
-      />
     </motion.nav>
   );
 }
