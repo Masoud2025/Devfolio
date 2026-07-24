@@ -78,7 +78,7 @@ export default function Education() {
                           {edu.title}
                         </h3>
                         <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500 truncate hidden sm:inline">
+                        <span className="text-xs  truncate hidden sm:inline">
                           {edu.school}
                         </span>
                       </div>
@@ -127,7 +127,7 @@ export default function Education() {
                       className="overflow-hidden"
                     >
                       <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-gray-200">
-                        <p className="text-sm text-gray-600 leading-relaxed">
+                        <p className="text-sm  leading-relaxed">
                           {edu.description}
                         </p>
                       </div>

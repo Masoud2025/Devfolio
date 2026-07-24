@@ -56,8 +56,8 @@ export default function Experience() {
                       <h3 className="font-semibold text-sm md:text-base truncate">
                         {exp.company}
                       </h3>
-                      <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500 truncate hidden sm:inline">
+                      <span className="text-xs ">•</span>
+                      <span className="text-xs  truncate hidden sm:inline">
                         {exp.role}
                       </span>
                     </div>
@@ -74,7 +74,7 @@ export default function Experience() {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0 ml-1 md:ml-2"
                 >
-                  <ChevronDownIcon className="w-4 h-4 text-gray-400" />
+                  <ChevronDownIcon className="w-4 h-4 " />
                 </motion.div>
               </button>
 
@@ -88,13 +88,13 @@ export default function Experience() {
                     className="overflow-hidden"
                   >
                     <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-gray-200">
-                      <p className="text-sm text-gray-600 leading-relaxed mb-2">
+                      <p className="text-sm  leading-relaxed mb-2">
                         {exp.description}
                       </p>
                       
                       {exp.achievements && exp.achievements.length > 0 && (
                         <div>
-                          <h4 className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                          <h4 className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">
                             {data.achievementsLabel}
                           </h4>
                           <ul className={`space-y-0.5 ${isRTL ? 'pr-3' : 'pl-3'}`}>
@@ -104,7 +104,7 @@ export default function Experience() {
                                 initial={{ opacity: 0, x: isRTL ? 5 : -5 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.05 }}
-                                className="text-sm text-gray-600 list-disc"
+                                className="text-sm  list-disc"
                               >
                                 {item}
                               </motion.li>
