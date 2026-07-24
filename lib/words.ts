@@ -16,8 +16,23 @@ export interface EducationItem {
   school: string;
   period: string;
   location: string;
-  image: string; // مسیر عکس
+  image: string;
   description: string;
+}
+
+export interface SkillItem {
+  name: string;
+  icon: string;
+}
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  demoUrl: string;
+  sourceUrl: string;
 }
 
 export const words = {
@@ -30,7 +45,7 @@ export const words = {
 
 در گذشته، مدرک دوگانه در علوم کامپیوتر و بازرگانی گرفتم، در شرکت‌های بزرگ فناوری در سیلیکون ولی کارآموزی کردم، و برای تفریح در بیش از ۲۱ هکاتون شرکت کردم. 
 
-همچنین افتخار داشتم که بخشی از اولین دوره حضوری buildspace به نام buildspace sf1 باشم.`
+همچنین افتخار داشتم که بخشی از اولین دوره حضوری buildspace به نام buildspace sf1 باشم.`,
     },
     experience: {
       title: "تجربه‌های کاری",
@@ -43,10 +58,7 @@ export const words = {
           period: "۲۰۲۲ - اکنون",
           location: "تهران، ایران",
           description: "ساخت و مقیاس‌سازی محصولات SaaS از صفر تا صد.",
-          achievements: [
-            "راه‌اندازی ۳ محصول موفق",
-            "رشد ۲۰۰٪ کاربران"
-          ]
+          achievements: ["راه‌اندازی ۳ محصول موفق", "رشد ۲۰۰٪ کاربران"],
         },
         {
           id: "exp2",
@@ -58,11 +70,11 @@ export const words = {
           description: "توسعه سیستم‌های مقیاس‌پذیر با جدیدترین تکنولوژی‌ها.",
           achievements: [
             "بهبود عملکرد سیستم تا ۵۰٪",
-            "همکاری با تیم‌های بین‌المللی"
-          ]
-        }
+            "همکاری با تیم‌های بین‌المللی",
+          ],
+        },
       ],
-      achievementsLabel: "دستاوردها"
+      achievementsLabel: "دستاوردها",
     },
     education: {
       title: "تحصیلات",
@@ -74,7 +86,8 @@ export const words = {
           period: "۲۰۱۶ - ۲۰۱۸",
           location: "تهران، ایران",
           image: "/images/sharif.jpg",
-          description: "گرایش هوش مصنوعی و یادگیری ماشین. پایان‌نامه با موضوع پردازش زبان طبیعی."
+          description:
+            "گرایش هوش مصنوعی و یادگیری ماشین. پایان‌نامه با موضوع پردازش زبان طبیعی.",
         },
         {
           id: "edu2",
@@ -83,10 +96,78 @@ export const words = {
           period: "۲۰۱۲ - ۲۰۱۶",
           location: "تهران، ایران",
           image: "/images/tehran.jpg",
-          description: "گرایش بازاریابی و کارآفرینی. پروژه‌های متعدد در حوزه استارتاپ‌ها."
-        }
-      ]
-    }
+          description:
+            "گرایش بازاریابی و کارآفرینی. پروژه‌های متعدد در حوزه استارتاپ‌ها.",
+        },
+      ],
+    },
+    skills: {
+      title: "مهارت‌ها",
+      items: [
+        { name: "React", icon: "⚛️" },
+        { name: "Next.js", icon: "▲" },
+        { name: "TypeScript", icon: "📘" },
+        { name: "JavaScript", icon: "💛" },
+        { name: "Node.js", icon: "🟢" },
+        { name: "Python", icon: "🐍" },
+        { name: "Docker", icon: "🐳" },
+        { name: "AWS", icon: "☁️" },
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "MongoDB", icon: "🍃" },
+        { name: "Git", icon: "📚" },
+        { name: "Figma", icon: "🎨" },
+      ],
+    },
+    projects: {
+      title: "پروژه‌ها",
+      items: [
+        {
+          id: "prj1",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/automatic-chat.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj2",
+          title: "داشبورد مدیریت",
+          description:
+            "داشبورد تحلیل داده با نمودارهای تعاملی و مدیریت کاربران",
+          image: "/video/bento-grid.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Chart.js", "Tailwind CSS"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/dashboard",
+        },
+        {
+          id: "prj3",
+          title: "اپلیکیشن چت",
+          description:
+            "اپلیکیشن چت آنلاین با قابلیت پیام‌رسانی لحظه‌ای و گروه‌ها",
+          image: "/video/chat-collect.mp4",
+          tech: ["React", "Node.js", "Socket.io", "MongoDB", "Tailwind CSS"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/chat",
+        },
+        {
+          id: "prj4",
+          title: "سیستم مدیریت محتوا",
+          description: "سیستم مدیریت محتوای کامل با ویرایشگر و مدیریت کاربران",
+          image: "/video/openai-demo.mp4",
+          tech: [
+            "Next.js",
+            "TypeScript",
+            "Prisma",
+            "PostgreSQL",
+            "Tailwind CSS",
+          ],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/cms",
+        },
+      ],
+    },
   },
   en: {
     about: {
@@ -97,7 +178,7 @@ export const words = {
 
 In the past, I pursued a double degree in computer science and business, interned at big tech companies in Silicon Valley, and competed in over 21 hackathons for fun. 
 
-I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.`
+I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.`,
     },
     experience: {
       title: "Work Experience",
@@ -112,8 +193,8 @@ I also had the pleasure of being a part of the first ever in-person cohort of bu
           description: "Building and scaling SaaS products from zero to one.",
           achievements: [
             "Launched 3 successful products",
-            "200% user growth in 6 months"
-          ]
+            "200% user growth in 6 months",
+          ],
         },
         {
           id: "exp2",
@@ -122,14 +203,15 @@ I also had the pleasure of being a part of the first ever in-person cohort of bu
           role: "Software Engineer",
           period: "2018 - 2022",
           location: "Silicon Valley, USA",
-          description: "Developed scalable systems using cutting-edge technologies.",
+          description:
+            "Developed scalable systems using cutting-edge technologies.",
           achievements: [
             "Improved system performance by 50%",
-            "Collaborated with international teams"
-          ]
-        }
+            "Collaborated with international teams",
+          ],
+        },
       ],
-      achievementsLabel: "Achievements"
+      achievementsLabel: "Achievements",
     },
     education: {
       title: "Education",
@@ -141,7 +223,8 @@ I also had the pleasure of being a part of the first ever in-person cohort of bu
           period: "2016 - 2018",
           location: "Tehran, Iran",
           image: "/images/sharif.jpg",
-          description: "Specialized in AI and Machine Learning. Thesis on Natural Language Processing."
+          description:
+            "Specialized in AI and Machine Learning. Thesis on Natural Language Processing.",
         },
         {
           id: "edu2",
@@ -150,9 +233,78 @@ I also had the pleasure of being a part of the first ever in-person cohort of bu
           period: "2012 - 2016",
           location: "Tehran, Iran",
           image: "/images/tehran.jpg",
-          description: "Specialized in Marketing and Entrepreneurship. Multiple projects in startups."
-        }
-      ]
-    }
-  }
-}
+          description:
+            "Specialized in Marketing and Entrepreneurship. Multiple projects in startups.",
+        },
+      ],
+    },
+    skills: {
+      title: "Skills",
+      items: [
+        { name: "React", icon: "⚛️" },
+        { name: "Next.js", icon: "▲" },
+        { name: "TypeScript", icon: "📘" },
+        { name: "JavaScript", icon: "💛" },
+        { name: "Node.js", icon: "🟢" },
+        { name: "Python", icon: "🐍" },
+        { name: "Docker", icon: "🐳" },
+        { name: "AWS", icon: "☁️" },
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "MongoDB", icon: "🍃" },
+        { name: "Git", icon: "📚" },
+        { name: "Figma", icon: "🎨" },
+      ],
+    },
+    projects: {
+      title: "Projects",
+      items: [
+        {
+          id: "prj1",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/automatic-chat.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj2",
+          title: "Admin Dashboard",
+          description:
+            "Data analytics dashboard with interactive charts and user management",
+          image: "/video/bento-grid.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Chart.js", "Tailwind CSS"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/dashboard",
+        },
+        {
+          id: "prj3",
+          title: "Chat App",
+          description:
+            "Online chat app with real-time messaging and group features",
+          image: "/video/chat-collect.mp4",
+          tech: ["React", "Node.js", "Socket.io", "MongoDB", "Tailwind CSS"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/chat",
+        },
+        {
+          id: "prj4",
+          title: "CMS",
+          description:
+            "Complete content management system with editor and user management",
+          image: "/video/openai-demo.mp4",
+          tech: [
+            "Next.js",
+            "TypeScript",
+            "Prisma",
+            "PostgreSQL",
+            "Tailwind CSS",
+          ],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/cms",
+        },
+      ],
+    },
+  },
+};

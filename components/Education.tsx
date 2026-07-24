@@ -7,11 +7,9 @@ import { ChevronDownIcon, CalendarIcon, MapPinIcon, ArrowsPointingOutIcon } from
 import { words, type EducationItem } from "@/lib/words";
 import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/styles.css";
 
 export default function Education() {
   const { lang } = useLang();
@@ -65,7 +63,6 @@ export default function Education() {
                   className="w-full px-3 md:px-4 py-2 md:py-3 flex items-center justify-between text-left cursor-pointer"
                 >
                   <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
-                    {/* عکس کوچک به عنوان آیکون */}
                     <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden bg-gray-200 relative">
                       <Image
                         src={edu.image}
@@ -100,13 +97,13 @@ export default function Education() {
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    {/* دکمه بزرگنمایی عکس */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         openLightbox(edu.image);
                       }}
                       className="p-1 rounded hover:bg-gray-100 transition-colors"
+                      type="button"
                     >
                       <ArrowsPointingOutIcon className="w-4 h-4 text-gray-400" />
                     </button>
@@ -143,39 +140,15 @@ export default function Education() {
         </div>
       </motion.div>
 
-      {/* Lightbox برای نمایش تمام صفحه */}
-      <Lightbox
-        open={lightboxOpen}
-        close={() => setLightboxOpen(false)}
-        slides={[{ src: selectedImage }]}
-        plugins={[Zoom, Fullscreen, Thumbnails]}
-        zoom={{
-          maxZoomPixelRatio: 3,
-          zoomInMultiplier: 2,
-        }}
-        fullscreen={{
-          auto: false,
-        }}
-        thumbnails={{
-          position: "bottom",
-          width: 120,
-          height: 80,
-          border: 1,
-          borderRadius: 4,
-          padding: 4,
-          gap: 4,
-          imageFit: "cover",
-        }}
-        controller={{
-          closeOnPullDown: true,
-          closeOnBackdropClick: true,
-        }}
-        styles={{
-          container: {
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-          },
-        }}
-      />
+      {/* Lightbox with Zoom and Fullscreen */}
+      {typeof window !== 'undefined' && (
+        <Lightbox
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          slides={[{ src: selectedImage }]}
+          plugins={[Zoom, Fullscreen]}
+        />
+      )}
     </>
   );
 }
