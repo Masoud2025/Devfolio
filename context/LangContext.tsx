@@ -4,13 +4,14 @@ import { createContext, useContext, useState, ReactNode } from 'react'
 import { words } from '@/lib/words'
 
 type Lang = 'fa' | 'en'
-export type Theme = 'dark' | 'light'  // ← Add 'export' here
+export type Theme = 'dark' | 'light'
 type Key = keyof typeof words.fa
 
 interface LangContextType {
   lang: Lang
   theme: Theme
-  t: (key: Key) => string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: (key: Key) => any
   toggleLang: () => void
   toggleTheme: () => void
 }
