@@ -1,21 +1,25 @@
+// context/LangContext.tsx
 'use client'
 import { createContext, useContext, useState, ReactNode } from 'react'
 import { words } from '@/lib/words'
 
 type Lang = 'fa' | 'en'
+export type Theme = 'dark' | 'light'  // ← Add 'export' here
 type Key = keyof typeof words.fa
 
 interface LangContextType {
   lang: Lang
+  theme: Theme
   t: (key: Key) => string
   toggleLang: () => void
-  
+  toggleTheme: () => void
 }
 
 const LangContext = createContext<LangContextType | undefined>(undefined)
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>('fa')
+  const [theme, setTheme] = useState<Theme>('dark')
 
   const toggleLang = () => {
     const newLang = lang === 'fa' ? 'en' : 'fa'
@@ -24,10 +28,17 @@ export function LangProvider({ children }: { children: ReactNode }) {
     document.documentElement.dir = newLang === 'fa' ? 'rtl' : 'ltr'
   }
 
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+    document.documentElement.classList.toggle('dark', newTheme === 'dark')
+  }
+
   const t = (key: Key) => words[lang][key]
 
   return (
-    <LangContext.Provider value={{ lang, t, toggleLang }}>
+    <LangContext.Provider value={{ lang, theme, t, toggleLang, toggleTheme }}>
       {children}
     </LangContext.Provider>
   )
