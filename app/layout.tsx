@@ -1,5 +1,5 @@
+// app/layout.tsx
 import type { Metadata } from "next";
-
 import { LangProvider } from "@/context/LangContext";
 import "./globals.css";
 
@@ -14,8 +14,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={` h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col">
+    <html lang="fa" dir="rtl" className={`h-full antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Vazirmatn Font - Persian */}
+        <link
+          href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+          rel="stylesheet"
+          type="text/css"
+        />
+        {/* Inter Font - English */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body 
+        className="min-h-full flex flex-col"
+        style={{ fontFamily: "Vazirmatn, Inter, sans-serif" }}
+      >
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
