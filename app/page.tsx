@@ -3,6 +3,8 @@
 import DockNav from "@/components/DockNav";
 import { useLang } from "@/context/LangContext";
 import AboutMe from "../components/AboutMe";
+import Experience from "../components/Experience";
+import Education from "../components/Education";
 
 export default function Home() {
   const { t, theme, toggleTheme } = useLang();
@@ -16,6 +18,8 @@ export default function Home() {
       }`}
     >
       <AboutMe />
+      <Experience />
+      <Education/>
       <DockNav toggleTheme={toggleTheme} theme={theme} />
     </main>
   );

@@ -1,8 +1,27 @@
 // lib/words.ts
+export interface ExperienceItem {
+  id: string;
+  company: string;
+  logo: string;
+  role: string;
+  period: string;
+  location: string;
+  description: string;
+  achievements: string[];
+}
+
+export interface EducationItem {
+  id: string;
+  title: string;
+  school: string;
+  period: string;
+  location: string;
+  image: string; // مسیر عکس
+  description: string;
+}
+
 export const words = {
   fa: {
-    title: 'سلام دنیا!',
-    subtitle: 'به سایت من خوش آمدید',
     about: {
       name: "مسعود جعفری",
       title: "توسعه‌دهنده نرم‌افزار | کارآفرین",
@@ -13,14 +32,63 @@ export const words = {
 
 همچنین افتخار داشتم که بخشی از اولین دوره حضوری buildspace به نام buildspace sf1 باشم.`
     },
-    contact: 'تماس با ما',
-    products: 'محصولات',
-    services: 'خدمات',
-    footer: 'تمامی حقوق محفوظ است'
+    experience: {
+      title: "تجربه‌های کاری",
+      items: [
+        {
+          id: "exp1",
+          company: "SaaS استارتاپ",
+          logo: "🚀",
+          role: "بنیان‌گذار و توسعه‌دهنده",
+          period: "۲۰۲۲ - اکنون",
+          location: "تهران، ایران",
+          description: "ساخت و مقیاس‌سازی محصولات SaaS از صفر تا صد.",
+          achievements: [
+            "راه‌اندازی ۳ محصول موفق",
+            "رشد ۲۰۰٪ کاربران"
+          ]
+        },
+        {
+          id: "exp2",
+          company: "شرکت‌های بزرگ فناوری",
+          logo: "💻",
+          role: "توسعه‌دهنده نرم‌افزار",
+          period: "۲۰۱۸ - ۲۰۲۲",
+          location: "سیلیکون ولی، آمریکا",
+          description: "توسعه سیستم‌های مقیاس‌پذیر با جدیدترین تکنولوژی‌ها.",
+          achievements: [
+            "بهبود عملکرد سیستم تا ۵۰٪",
+            "همکاری با تیم‌های بین‌المللی"
+          ]
+        }
+      ],
+      achievementsLabel: "دستاوردها"
+    },
+    education: {
+      title: "تحصیلات",
+      items: [
+        {
+          id: "edu1",
+          title: "کارشناسی ارشد علوم کامپیوتر",
+          school: "دانشگاه صنعتی شریف",
+          period: "۲۰۱۶ - ۲۰۱۸",
+          location: "تهران، ایران",
+          image: "/images/sharif.jpg",
+          description: "گرایش هوش مصنوعی و یادگیری ماشین. پایان‌نامه با موضوع پردازش زبان طبیعی."
+        },
+        {
+          id: "edu2",
+          title: "کارشناسی مدیریت بازرگانی",
+          school: "دانشگاه تهران",
+          period: "۲۰۱۲ - ۲۰۱۶",
+          location: "تهران، ایران",
+          image: "/images/tehran.jpg",
+          description: "گرایش بازاریابی و کارآفرینی. پروژه‌های متعدد در حوزه استارتاپ‌ها."
+        }
+      ]
+    }
   },
   en: {
-    title: 'Hello World!',
-    subtitle: 'Welcome to my site',
     about: {
       name: "Masoud Jafari",
       title: "Software Engineer | Entrepreneur",
@@ -31,9 +99,60 @@ In the past, I pursued a double degree in computer science and business, interne
 
 I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.`
     },
-    contact: 'Contact Us',
-    products: 'Products',
-    services: 'Services',
-    footer: 'All rights reserved'
+    experience: {
+      title: "Work Experience",
+      items: [
+        {
+          id: "exp1",
+          company: "SaaS Startup",
+          logo: "🚀",
+          role: "Founder & Developer",
+          period: "2022 - Present",
+          location: "Tehran, Iran",
+          description: "Building and scaling SaaS products from zero to one.",
+          achievements: [
+            "Launched 3 successful products",
+            "200% user growth in 6 months"
+          ]
+        },
+        {
+          id: "exp2",
+          company: "Big Tech Companies",
+          logo: "💻",
+          role: "Software Engineer",
+          period: "2018 - 2022",
+          location: "Silicon Valley, USA",
+          description: "Developed scalable systems using cutting-edge technologies.",
+          achievements: [
+            "Improved system performance by 50%",
+            "Collaborated with international teams"
+          ]
+        }
+      ],
+      achievementsLabel: "Achievements"
+    },
+    education: {
+      title: "Education",
+      items: [
+        {
+          id: "edu1",
+          title: "M.Sc. in Computer Science",
+          school: "Sharif University of Technology",
+          period: "2016 - 2018",
+          location: "Tehran, Iran",
+          image: "/images/sharif.jpg",
+          description: "Specialized in AI and Machine Learning. Thesis on Natural Language Processing."
+        },
+        {
+          id: "edu2",
+          title: "B.Sc. in Business Administration",
+          school: "University of Tehran",
+          period: "2012 - 2016",
+          location: "Tehran, Iran",
+          image: "/images/tehran.jpg",
+          description: "Specialized in Marketing and Entrepreneurship. Multiple projects in startups."
+        }
+      ]
+    }
   }
 }
