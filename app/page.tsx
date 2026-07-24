@@ -2,11 +2,13 @@
 "use client";
 import DockNav from "@/components/DockNav";
 import { useLang } from "@/context/LangContext";
-import AboutMe from "../components/AboutMe";
-import Experience from "../components/Experience";
-import Education from "../components/Education";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
+import AboutMe from "@/components/AboutMe";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   const { t, theme, toggleTheme } = useLang();
@@ -24,6 +26,8 @@ export default function Home() {
       <Education/>
       <Skills/>
       <Projects/>
+      {/* <Footer/> */}
+      <Contact/>
       <DockNav toggleTheme={toggleTheme} theme={theme} />
     </main>
   );

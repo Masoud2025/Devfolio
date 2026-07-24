@@ -35,6 +35,12 @@ export interface ProjectItem {
   sourceUrl: string;
 }
 
+export interface ContactItem {
+  title: string;
+  description: string;
+  telegramId: string;
+}
+
 export const words = {
   fa: {
     about: {
@@ -167,6 +173,11 @@ export const words = {
           sourceUrl: "https://github.com/masoudjafari/cms",
         },
       ],
+    },
+    contact: {
+      title: "تماس با من",
+      description: "برای ارتباط سریع‌تر، از طریق تلگرام با من در تماس باشید.",
+      telegramId: "masoudjafari",
     },
   },
   en: {
@@ -305,6 +316,11 @@ I also had the pleasure of being a part of the first ever in-person cohort of bu
           sourceUrl: "https://github.com/masoudjafari/cms",
         },
       ],
+    },
+    contact: {
+      title: "Contact Me",
+      description: "For faster communication, reach out to me on Telegram.",
+      telegramId: "masoudjafari",
     },
   },
 };
