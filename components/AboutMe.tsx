@@ -50,7 +50,7 @@ export default function AboutMe() {
           }}
           className="flex-shrink-0"
         >
-          <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full overflow-hidden ">
             <Image
               src={ProfilePicture}
               alt={data.name}
@@ -67,7 +67,7 @@ export default function AboutMe() {
             initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-base sm:text-2xl md:text-4xl font-bold break-words text-gray-900 dark:text-white"
+            className="text-base sm:text-2xl md:text-4xl font-bold break-words "
           >
             {data.name}
           </motion.h1>
@@ -76,7 +76,7 @@ export default function AboutMe() {
             initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-xs sm:text-base md:text-lg mt-0.5 sm:mt-1 break-words text-gray-700 dark:text-gray-300"
+            className="text-xs sm:text-base md:text-lg mt-0.5 sm:mt-1 break-words "
           >
             {data.title}
           </motion.p>
@@ -85,7 +85,7 @@ export default function AboutMe() {
             initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-[10px] sm:text-sm mt-0.5 sm:mt-1 break-words text-gray-500 dark:text-gray-400"
+            className="text-[10px] sm:text-sm mt-0.5 sm:mt-1 break-words "
           >
             {data.bio}
           </motion.p>
@@ -102,36 +102,36 @@ export default function AboutMe() {
           href={`mailto:${contactInfo.email}`}
           className="flex items-center gap-3 px-3 py-2 sm:px-4 sm:py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-200 cursor-pointer group"
         >
-          <EnvelopeIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-200 flex-shrink-0" />
+          <EnvelopeIcon className="w-4 h-4 sm:w-5 sm:h-5  group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-200 flex-shrink-0" />
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-[10px] sm:text-xs ">
               {lang === "fa" ? "ایمیل" : "Email"}
             </p>
-            <p className="text-xs sm:text-sm font-medium truncate text-gray-700 dark:text-gray-300">
+            <p className="text-xs sm:text-sm font-medium truncate ">
               {contactInfo.email}
             </p>
           </div>
         </a>
 
         <div className="flex items-center gap-3 px-3 py-2 sm:px-4 sm:py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-200">
-          <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+          <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5  flex-shrink-0" />
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-[10px] sm:text-xs">
               {lang === "fa" ? "موقعیت" : "Location"}
             </p>
-            <p className="text-xs sm:text-sm font-medium truncate text-gray-700 dark:text-gray-300">
+            <p className="text-xs sm:text-sm font-medium truncate">
               {contactInfo.location}
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3 px-3 py-2 sm:px-4 sm:py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all duration-200">
-          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+          <CalendarIcon className="w-4 h-4 sm:w-5 sm:h-5  flex-shrink-0" />
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-[10px] sm:text-xs ">
               {lang === "fa" ? "سن" : "Age"}
             </p>
-            <p className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+            <p className="text-xs sm:text-sm font-medium ">
               {contactInfo.age}
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function AboutMe() {
         transition={{ delay: 0.65 }}
         className="mb-2 sm:mb-4"
       >
-        <h2 className="text-base sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-base sm:text-2xl md:text-3xl font-bold ">
           {lang === "fa" ? "درباره من" : "About Me"}
         </h2>
       </motion.div>
@@ -154,7 +154,7 @@ export default function AboutMe() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
       >
-        <p className="leading-relaxed text-xs sm:text-sm md:text-base whitespace-pre-line break-words text-gray-700 dark:text-gray-300">
+        <p className="leading-relaxed text-xs sm:text-sm md:text-base whitespace-pre-line break-words ">
           {data.description}
         </p>
       </motion.div>

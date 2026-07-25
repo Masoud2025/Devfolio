@@ -45,7 +45,7 @@ export default function Skills() {
           transition={{ delay: 0.1 }}
           className="text-sm md:text-base font-bold mb-2"
         >
-          {lang === "fa" ? "مهارت‌های نرم" : "Soft Skills"}
+          {lang === "fa" ? "مهارت‌های نرم" : "Skills"}
         </motion.h3>
 
         <div className="flex flex-wrap gap-1">
