@@ -3,16 +3,13 @@
 import type { Theme } from "@/context/LangContext";
 import { useLang } from "@/context/LangContext";
 import {
-  BookOpenIcon,
   GlobeAltIcon,
   HomeIcon,
   MoonIcon,
   SunIcon,
-  UserIcon,
 } from "@heroicons/react/24/outline";
 import {
   HomeIcon as HomeSolid,
-  UserIcon as UserSolid,
 } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -42,13 +39,6 @@ export default function DockNav({
       isExternal: false,
     },
     {
-      id: "blog",
-      icon: BookOpenIcon,
-      label: lang === "fa" ? "وبلاگ" : "Blog",
-      href: "/blog",
-      isExternal: false,
-    },
-    {
       id: "github",
       icon: GitHubIcon,
       label: lang === "fa" ? "گیتهاب" : "GitHub",
@@ -61,14 +51,6 @@ export default function DockNav({
       label: lang === "fa" ? "لینکدین" : "Linkedin",
       href: "https://linkedin.com",
       isExternal: true,
-    },
-    {
-      id: "user",
-      icon: UserIcon,
-      solid: UserSolid,
-      label: lang === "fa" ? "پروفایل" : "Profile",
-      href: "/profile",
-      isExternal: false,
     },
   ];
 
@@ -87,7 +69,7 @@ export default function DockNav({
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 backdrop-blur-2xl shadow-2xl rounded-2xl sm:rounded-3xl px-1.5 sm:px-2 md:px-3 py-1.5 sm:py-2 flex items-center gap-0.5 sm:gap-1 md:gap-1.5 border transition-colors duration-300 max-w-[calc(100vw-16px)] sm:max-w-[calc(100vw-32px)] md:max-w-full ${
+      className={`fixed bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 backdrop-blur-2xl shadow-2xl rounded-2xl sm:rounded-3xl px-2 sm:px-2 md:px-3 py-2 sm:py-2 flex items-center gap-1 sm:gap-1 md:gap-1.5 border transition-colors duration-300 max-w-[calc(100vw-16px)] sm:max-w-[calc(100vw-32px)] md:max-w-full ${
         theme === "dark"
           ? "bg-gray-900/70 border-gray-700/30"
           : "bg-white/70 border-white/30"
@@ -123,7 +105,7 @@ export default function DockNav({
           >
             <motion.button
               className={`
-                relative p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200
+                relative p-2 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200
                 ${
                   isActive
                     ? "bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/30"
@@ -136,9 +118,9 @@ export default function DockNav({
             >
               {/* Icon display */}
               {isActive && item.solid ? (
-                <item.solid className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                <item.solid className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               ) : (
-                <item.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                <item.icon className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               )}
 
               {/* Active indicator dot */}
@@ -180,7 +162,7 @@ export default function DockNav({
 
       {/* Separator line */}
       <div
-        className={`w-px h-5 sm:h-7 md:h-10 mx-0.5 sm:mx-1 flex-shrink-0 ${
+        className={`w-px h-6 sm:h-7 md:h-10 mx-0.5 sm:mx-1 flex-shrink-0 ${
           theme === "dark" ? "bg-gray-700/60" : "bg-gray-200/60"
         }`}
       ></div>
@@ -195,7 +177,7 @@ export default function DockNav({
       >
         <motion.button
           onClick={toggleLang}
-          className={`relative p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200 ${
+          className={`relative p-2 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200 ${
             theme === "dark"
               ? "text-gray-400 hover:text-white hover:bg-gray-800/80"
               : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
@@ -204,11 +186,11 @@ export default function DockNav({
           animate={{ rotate: lang === "fa" ? 0 : 360 }}
           transition={{ duration: 0.5, type: "spring" }}
         >
-          <GlobeAltIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          <GlobeAltIcon className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
 
           {/* Language indicator badge */}
           <motion.span
-            className="absolute -top-1 -right-1 text-[6px] sm:text-[8px] md:text-[10px] bg-gradient-to-br from-blue-500 to-purple-600 text-white w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center shadow-lg"
+            className="absolute -top-1 -right-1 text-[6px] sm:text-[8px] md:text-[10px] bg-gradient-to-br from-blue-500 to-purple-600 text-white w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center shadow-lg"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
@@ -244,7 +226,7 @@ export default function DockNav({
       {/* Theme toggle button */}
       <motion.button
         onClick={toggleTheme}
-        className={`relative p-1.5 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200 flex-shrink-0 ${
+        className={`relative p-2 sm:p-2 md:p-2.5 lg:p-3 rounded-xl sm:rounded-2xl transition-colors duration-200 flex-shrink-0 ${
           theme === "dark"
             ? "text-gray-400 hover:text-white hover:bg-gray-800/80"
             : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/80"
@@ -255,12 +237,12 @@ export default function DockNav({
         onMouseLeave={() => setHovered(null)}
       >
         {theme === "dark" ? (
-          <SunIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          <SunIcon className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         ) : (
-          <MoonIcon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          <MoonIcon className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         )}
 
-        {/* Tooltip for theme toggle - فقط در تبلت و دسکتاپ */}
+        {/* Tooltip for theme toggle -only in tablet and mobile */}
         <AnimatePresence>
           {hovered === "theme" && (
             <motion.div

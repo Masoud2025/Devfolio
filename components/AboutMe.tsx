@@ -53,12 +53,12 @@ export default function AboutMe() {
           }}
           className="flex-shrink-0"
         >
-          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200">
+          <div className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full overflow-hidden bg-gray-200">
             <Image
               src={ProfilePicture}
               alt={data.name}
-              width={160}
-              height={160}
+              width={120}
+              height={120}
               className="w-full h-full object-cover"
               priority
             />

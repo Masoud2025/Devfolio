@@ -26,7 +26,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
-      <DockNav toggleTheme={toggleTheme} theme={theme} />
+      {/* <DockNav toggleTheme={toggleTheme} theme={theme} /> */}
     </main>
   );
 }
