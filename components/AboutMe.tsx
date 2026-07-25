@@ -13,14 +13,14 @@ export default function AboutMe() {
   const isRTL = lang === "fa";
 
   const contactInfo = lang === "fa" ? {
-    email: "masoud@example.com",
+    email: "Masoud.jafary@outlook.com",
     location: "تهران، ایران",
-    age: "۳۰ سال",
+    age: "21 سال",
     maritalStatus: "مجرد"
   } : {
-    email: "masoud@example.com",
+    email: "Masoud.jafary@outlook.com",
     location: "Tehran, Iran",
-    age: "30 years old",
+    age: "21 years old",
     maritalStatus: "Single"
   };
 
@@ -31,10 +31,8 @@ export default function AboutMe() {
       transition={{ duration: 0.5 }}
       className="max-w-4xl mx-auto px-4 py-4 sm:p-6 md:p-10"
     >
-      {/* Profile Section - ساختار ثابت در تمام سایزها */}
       <div className={`flex flex-row items-center gap-4 sm:gap-6 md:gap-8 pb-4 sm:pb-6 md:pb-8 mb-4 sm:mb-6 md:mb-8 border-b border-gray-300`}>
         
-        {/* Profile Image */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -53,7 +51,6 @@ export default function AboutMe() {
           </div>
         </motion.div>
 
-        {/* Info - در کنار عکس */}
         <div className={`flex-1 ${isRTL ? 'text-right' : 'text-left'} min-w-0`}>
           <motion.h1
             initial={{ opacity: 0, x: isRTL ? 10 : -10 }}
@@ -84,20 +81,22 @@ export default function AboutMe() {
         </div>
       </div>
 
-      {/* Contact Information - ساختار ثابت */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
         className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-4 sm:mb-6 md:mb-8"
       >
-        <div className="flex items-center gap-2 sm:gap-3 px-1 sm:px-0">
+        <a
+          href={`mailto:${contactInfo.email}`}
+          className="flex items-center gap-2 sm:gap-3 px-1 sm:px-0 cursor-pointer hover:opacity-70 transition-opacity"
+        >
           <EnvelopeIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0" />
           <div className="min-w-0">
             <p className="text-[8px] sm:text-xs text-gray-500">{lang === "fa" ? "ایمیل" : "Email"}</p>
-            <p className="text-[8px] sm:text-sm font-medium truncate">{contactInfo.email}</p>
+            <p className="text-[8px] sm:text-sm font-medium break-all">{contactInfo.email}</p>
           </div>
-        </div>
+        </a>
         
         <div className="flex items-center gap-2 sm:gap-3 px-1 sm:px-0">
           <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0" />
@@ -124,7 +123,6 @@ export default function AboutMe() {
         </div>
       </motion.div>
 
-      {/* About Me Title */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -136,7 +134,6 @@ export default function AboutMe() {
         </h2>
       </motion.div>
 
-      {/* Description */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

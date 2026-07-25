@@ -7,6 +7,7 @@ export function useLang() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
     const saved = localStorage.getItem('lang') as 'fa'|'en'
     if (saved) setLang(saved)
