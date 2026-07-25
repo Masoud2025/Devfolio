@@ -56,7 +56,7 @@ export default function Education() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + index * 0.1 }}
-                className="border border-gray-300 rounded-lg overflow-hidden"
+                className=" overflow-hidden"
               >
                 <button
                   onClick={() => toggleOpen(edu.id)}
@@ -126,7 +126,7 @@ export default function Education() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 border-t border-gray-200">
+                      <div className="px-3 md:px-4 pb-3 md:pb-4 pt-2 ">
                         <p className="text-sm  leading-relaxed">
                           {edu.description}
                         </p>

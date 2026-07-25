@@ -47,12 +47,7 @@ export const words = {
       name: "مسعود جعفری",
       title: "توسعه‌دهنده نرم‌افزار | کارآموز - کارآفرین",
       bio: "سلام! من مسعود هستم. عاشق ساختن چیزهای جدید و کمک به مردم هستم.",
-      description: `
-در حال حاضر به‌عنوان توسعه‌دهنده فرانت‌اند فعالیت می‌کنم و هم‌زمان دانشجوی مهندسی نرم‌افزار هستم. بیشتر زمانم را صرف ساخت پروژه‌های واقعی، یادگیری عمیق و بهتر کردن مهارت‌هایم می‌کنم.
-به جای دنبال کردن هر فناوری یا ترند جدید، ترجیح می‌دهم روی ساخت محصولاتی تمرکز کنم که ساده، سریع و واقعاً مشکل کاربران را حل کنند. باور دارم بهترین راهکار، لزوماً پیچیده‌ترین راهکار نیست و همیشه می‌توان نسخه بعدی را بهتر از نسخه قبل ساخت.
-این فقط شروع مسیر حرفه‌ای من است و مشتاقم در کنار تیم‌های حرفه‌ای، محصولات باکیفیتی بسازم و هر روز چیزهای بیشتری یاد بگیرم.
-
-      `,
+      description: `توسعه‌دهنده فرانت‌اند با تمرکز بر React، Next.js و TypeScript.علاقه‌مند به ساخت رابط‌های کاربری سریع، مدرن و باکیفیت.`,
     },
     experience: {
       title: "تجربه‌های کاری",
@@ -186,8 +181,7 @@ export const words = {
       name: "Masoud Jafari",
       title: "Software Engineer | Entrepreneur",
       bio: "Hi, I'm Masoud. I love building things and helping people.",
-      description: `At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, I pursued a double degree in computer science and business, interned at big tech companies in Silicon Valley, and competed in over 21 hackathons for fun. 
-I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.`,
+      description: `Frontend Developer focused on React, Next.js, and TypeScript.Building fast, modern, and user-friendly web experiences.`,
     },
     experience: {
       title: "Work Experience",
