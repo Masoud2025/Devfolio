@@ -54,8 +54,8 @@ export const words = {
       items: [
         {
           id: "exp1",
-          company: "SaaS استارتاپ",
-          logo: "🚀",
+          company: "کاوه نگار",
+          logo: "/Experience.svg",
           role: "بنیان‌گذار و توسعه‌دهنده",
           period: "۲۰۲۲ - اکنون",
           location: "تهران، ایران",
@@ -188,8 +188,8 @@ export const words = {
       items: [
         {
           id: "exp1",
-          company: "SaaS Startup",
-          logo: "🚀",
+          company: "Kavenegar",
+          logo: "/Experience.svg",
           role: "Founder & Developer",
           period: "2022 - Present",
           location: "Tehran, Iran",
