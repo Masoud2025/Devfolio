@@ -1,6 +1,6 @@
 // components/Projects.tsx
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LangContext";
 import { words, type ProjectItem } from "@/lib/words";
@@ -62,66 +62,7 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         {currentItems.map((project: ProjectItem, index: number) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 + index * 0.1 }}
-            className="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300"
-          >
-            <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
-              <video
-                src={project.image}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="p-3 md:p-4">
-              <h3 className="text-sm md:text-base font-semibold mb-0.5">
-                {project.title}
-              </h3>
-
-              <p className="text-xs md:text-sm mb-2 line-clamp-2">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1 mb-2">
-                {project.tech.map((tech: string) => (
-                  <span
-                    key={tech}
-                    className="text-[8px] md:text-[10px] px-1.5 py-0.5 rounded-full border border-gray-300 dark:border-gray-600"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-3">
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs md:text-sm hover:underline transition-colors duration-200"
-                >
-                  <GlobeAltIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                  {lang === "fa" ? "دمو" : "Demo"}
-                </a>
-                <a
-                  href={project.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs md:text-sm hover:underline transition-colors duration-200"
-                >
-                  <CodeBracketIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                  {lang === "fa" ? "سورس" : "Source"}
-                </a>
-              </div>
-            </div>
-          </motion.div>
+          <VideoCard key={project.id} project={project} index={index} lang={lang} />
         ))}
       </div>
 
@@ -172,6 +113,135 @@ export default function Projects() {
           </button>
         </div>
       )}
+    </motion.div>
+  );
+}
+
+// VideoCard component with loading state and optimization
+function VideoCard({ project, index, lang }: { project: ProjectItem; index: number; lang: string }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" } // Start loading 200px before it comes into view
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Handle video load
+  const handleVideoLoad = () => {
+    setIsLoading(false);
+  };
+
+  // Handle video error
+  const handleVideoError = () => {
+    setIsLoading(false);
+  };
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 + index * 0.1 }}
+      className="border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300"
+    >
+      <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
+        {/* Loading placeholder */}
+        {isLoading && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 z-10">
+            <div className="w-12 h-12 border-4 border-gray-300 dark:border-gray-600 border-t-blue-500 dark:border-t-blue-400 rounded-full animate-spin mb-3"></div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              {lang === "fa" ? "در حال بارگذاری..." : "Loading..."}
+            </p>
+          </div>
+        )}
+
+        {/* Video element */}
+        {isInView && (
+          <video
+            ref={videoRef}
+            src={project.image}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            onLoadedData={handleVideoLoad}
+            onError={handleVideoError}
+            className="w-full h-full object-cover"
+            poster={project.image.replace('.mp4', '-poster.jpg')} // Optional: add poster images
+          />
+        )}
+
+        {/* Play button overlay (optional) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-3 md:p-4">
+        <h3 className="text-sm md:text-base font-semibold mb-0.5">
+          {project.title}
+        </h3>
+
+        <p className="text-xs md:text-sm mb-2 line-clamp-2">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1 mb-2">
+          {project.tech.map((tech: string) => (
+            <span
+              key={tech}
+              className="text-[8px] md:text-[10px] px-1.5 py-0.5 rounded-full border border-gray-300 dark:border-gray-600"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs md:text-sm hover:underline transition-colors duration-200"
+          >
+            <GlobeAltIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            {lang === "fa" ? "دمو" : "Demo"}
+          </a>
+          <a
+            href={project.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs md:text-sm hover:underline transition-colors duration-200"
+          >
+            <CodeBracketIcon className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            {lang === "fa" ? "سورس" : "Source"}
+          </a>
+        </div>
+      </div>
     </motion.div>
   );
 }
