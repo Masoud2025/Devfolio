@@ -104,7 +104,7 @@ export const words = {
       ],
     },
     skills: {
-      title: "مهارت‌ها",
+      title: "ابزار هایی که باهاشون کار کردم",
       items: [
         { name: "React", icon: "⚛️" },
         { name: "Next.js", icon: "▲" },
@@ -167,6 +167,96 @@ export const words = {
           ],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/cms",
+        },
+        {
+          id: "prj5",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/ketaback.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj6",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/khodrology.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj7",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/divar-copy.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj8",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/portfolio.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj9",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/hashtiva.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj10",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/YTC.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj11",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/windows-portfolio.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj12",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/portfolio2.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj13",
+          title: "فروشگاه آنلاین",
+          description:
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+          image: "/video/flywitmasoud.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
         },
       ],
     },
@@ -306,6 +396,96 @@ export const words = {
           ],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/cms",
+        },
+        {
+          id: "prj5",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/ketaback.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj6",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/khodrology.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj7",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/divar-copy.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj8",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/portfolio.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj9",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/hashtiva.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj10",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/YTC.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj11",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/windows-portfolio.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj12",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/portfolio2.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
+        },
+        {
+          id: "prj13",
+          title: "Online Store",
+          description:
+            "A complete online store with payment and product management",
+          image: "/video/flywitmasoud.mp4",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          demoUrl: "https://example.com/demo",
+          sourceUrl: "https://github.com/masoudjafari/shop",
         },
       ],
     },
