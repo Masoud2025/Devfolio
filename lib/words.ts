@@ -88,7 +88,7 @@ export const words = {
       achievementsLabel: "دستاوردها",
     },
     education: {
-      title: "تحصیلات",
+      title: "تحصیلات و مدارک علمی",
       items: [
         {
           id: "edu1",
@@ -112,6 +112,17 @@ export const words = {
           cover: "/images/Diplom.jpg",
           description:
             "یادگیری مفاهیم ، شبکه ، دیتابیس ، وردپرس و....",
+        },
+            {
+          id: "edu3",
+          title: "جاواسکریپت مستری",
+          school: "مکتب خونه",
+          period: "1403 - 1403",
+          location: "تهران، ایران",
+          image: "/images/maktabkhone.png",
+          cover: "/images/maktabkhone.png",
+          description:
+            "دوره 45 ساعته مدرس احسان گازار",
         },
       ],
     },
@@ -257,9 +268,9 @@ export const words = {
         },
         {
           id: "prj13",
-          title: "فروشگاه آنلاین",
+          title: "پرواز با مسعود",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "یک صفحه ساده یک هواپیما در آسمان که اسکرول شما میاد پرواز میکنه تو صفحه و یه سری فیلد نوبت گیری و رزور",
           image: "/video/flywitmasoud.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -487,11 +498,11 @@ My technical background started with a computer vocational high school and 3 yea
         },
         {
           id: "prj13",
-          title: "Online E-Commerce Store",
+          title: "Fly with Masoud",
           description:
-            "A fully completed online store with payment processing integration and product management features.",
+            "The top part of the Mojjark aircraft site has scrolling and appointment fields.",
           image: "/video/flywitmasoud.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
