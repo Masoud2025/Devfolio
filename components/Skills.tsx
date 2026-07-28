@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/context/LangContext";
 import { words, type SkillItem } from "@/lib/words";
+import Image from "next/image";
 
 export default function Skills() {
   const { lang } = useLang();
@@ -104,7 +105,8 @@ export default function Skills() {
               }}
               className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-gray-300 dark:border-gray-600 text-xs md:text-sm"
             >
-              <span className="text-xs md:text-sm">{skill.icon}</span>
+              <span >{}</span>
+              <Image className="text-xs md:text-sm" alt="not found!" src={skill.icon} width={ 15} height={15}/>
               <span className="text-[10px] md:text-xs font-medium">
                 {skill.name}
               </span>

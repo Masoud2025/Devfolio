@@ -100,7 +100,7 @@ export default function Education() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        openLightbox(edu.image);
+                        openLightbox(edu.cover);
                       }}
                       className="p-1 rounded hover:bg-gray-100 transition-colors"
                       type="button"

@@ -17,6 +17,7 @@ export interface EducationItem {
   period: string;
   location: string;
   image: string;
+  cover: string;
   description: string;
 }
 
@@ -45,9 +46,10 @@ export const words = {
   fa: {
     about: {
       name: "مسعود جعفری",
-      title: "توسعه‌دهنده نرم‌افزار | کارآموز - کارآفرین",
-      bio: "سلام! من مسعود هستم. عاشق ساختن چیزهای جدید و کمک به مردم هستم.",
-      description: `توسعه دهنده وب ، نیاز ها و مشکلات رو  حل میکنم و تو این مسیر از هر ابزاری که کمک  کنه استفاده میکنم. به نظرم بهترین راه ساده ترین و سریع ترین راهی هست که نیاز اون لحظه رو برطرف کنه و پروژه دچار بدهی فنی نکنه. فارق از موج های ترند بازی .`,
+      title: "توسعه‌دهنده نرم‌افزار | کارآموز امروز - کار آفرین فردا",
+      bio: "درود! من مسعود هستم. عاشق ساختن چیزهای جدید و کمک به مردم .",
+      description: `برنامه‌نویس ام و کارم تبدیل مشکل به محصوله؛ با استفاده از ابزارهای مناسب. به نظرم ابزار مناسب ابزاری عه که اول تو اون لحظه مشکل رو حل کنه، ساده باشه و بعداً هم بشه توسعه‌ش داد. برای همین مهارت اصلی من، یادگیری سریع و استفاده درست از ابزارهاست.
+بک‌گراند فنی من از هنرستان کامپیوتر و ۳ سال مسئولیت اتاق کامپیوتر شروع شد، با کارورزی تو کاوه‌نگار ادامه پیدا کرد و تا الان ۳ تا پروژه‌ی محصول‌محور واقعی رو جمع کردم. کارهای محول شده رو کامل و تو حداقل زمان تحویل میدم؛ مهارتم کار تو فضای پرفشار و ادامه دادن تو شرایط سخته و صبر و سرچ کردن قوی، برگ‌های برنده‌ام هستن. الانم دنبال کارآموزی تو یه شرکت خوبم تا این مسیر رو حرفه‌ای‌تر ادامه بدم. `,
     },
     experience: {
       title: "تجربه‌های کاری",
@@ -56,23 +58,30 @@ export const words = {
           id: "exp1",
           company: "کاوه نگار",
           logo: "/Experience.svg",
-          role: "بنیان‌گذار و توسعه‌دهنده",
-          period: "۲۰۲۲ - اکنون",
+          role: "کارآموز فرانت اند ",
+          period: "1403| 3 ماه",
           location: "تهران، ایران",
-          description: "ساخت و مقیاس‌سازی محصولات SaaS از صفر تا صد.",
-          achievements: ["راه‌اندازی ۳ محصول موفق", "رشد ۲۰۰٪ کاربران"],
+          description:
+            "تکمیل دفترچه کارورزی مدرسه به مدت سه ماه ، حضور در جلسات فنی آشنایی با محیط و انجام تسک های کوچک",
+          achievements: [
+            "شرکت در جلسات روزانه دیدن مشکلات واقعی محصول با کاربران بالا ، استفاده آشنایی با محیط اولیه چالش ها ",
+            "تست قسمت های مختلف سایت واسه رسپانسیو بودن نوشتن گزارش و تحویل به سرپرست تیم",
+            "دلیل ترک ام به خاطر همزمانی سال کنکور و عمل جراحی بود و البته پر شدن تمام صفحات دفترچه کارورزی ام",
+          ],
         },
         {
           id: "exp2",
-          company: "شرکت‌های بزرگ فناوری",
-          logo: "💻",
-          role: "توسعه‌دهنده نرم‌افزار",
+          company: "هنرستان باهنر",
+          logo: "/images/Bahonar.jpg",
+          role: "مسئول اتاق سایت کامپیوتری و توسعه دهنده وردپرس",
           period: "۲۰۱۸ - ۲۰۲۲",
-          location: "سیلیکون ولی، آمریکا",
-          description: "توسعه سیستم‌های مقیاس‌پذیر با جدیدترین تکنولوژی‌ها.",
+          location: "تهران",
+          description:
+            "تکمیل سایت های وردپرسی و نگهداری از سیتم های اتاق کامپیوتر ، شبکه کردن تمام سیتم استفاده از یه پرینتر  و.....",
           achievements: [
-            "بهبود عملکرد سیستم تا ۵۰٪",
-            "همکاری با تیم‌های بین‌المللی",
+            "مدیریت کامل چرخه استقرار وب‌سایت (Deployment) شامل خرید دامنه، پیکربندی هاستینگ و اتصال DNS",
+            "توسعه، سفارشی‌سازی و راه‌اندازی وب‌سایت‌های مبتنی بر وردپرس (WordPress)",
+            "بهینه‌سازی و مدیریت پایگاه داده از طریق نوشتن و اجرای کوئری‌های SQL جهت استخراج و تحلیل داده‌ها",
           ],
         },
       ],
@@ -83,41 +92,39 @@ export const words = {
       items: [
         {
           id: "edu1",
-          title: "کارشناسی ارشد علوم کامپیوتر",
-          school: "دانشگاه صنعتی شریف",
-          period: "۲۰۱۶ - ۲۰۱۸",
+          title: "کارشناسی  مهندسی کامپیوتر",
+          school: "دانشگاه  ایرانیان",
+          period:
+            "2023 - ادرحال تحصیل مجازی دنبال کار تمام وقت ام ترم 5 ام هستم",
           location: "تهران، ایران",
-          image: "/images/sharif.jpg",
+          image: "/images/Iranian.jpg",
+          cover: "/images/StudentCard.jpg",
           description:
-            "گرایش هوش مصنوعی و یادگیری ماشین. پایان‌نامه با موضوع پردازش زبان طبیعی.",
+            "تلفیق دانش آکادمیک کامپیوتر با تجربه‌ی عملیِ توسعه‌ی محصول و استقرار سیستم‌ها",
         },
         {
           id: "edu2",
-          title: "کارشناسی مدیریت بازرگانی",
-          school: "دانشگاه تهران",
-          period: "۲۰۱۲ - ۲۰۱۶",
+          title: "دیپلم تولید و توسعه پایگاه",
+          school: "هنرستان شهید باهنر",
+          period: "1400 - 1403",
           location: "تهران، ایران",
-          image: "/images/tehran.jpg",
+          image: "/images/Bahonar.jpg",
+          cover: "/images/Diplom.jpg",
           description:
-            "گرایش بازاریابی و کارآفرینی. پروژه‌های متعدد در حوزه استارتاپ‌ها.",
+            "یادگیری مفاهیم ، شبکه ، دیتابیس ، وردپرس و....",
         },
       ],
     },
     skills: {
       title: "ابزار هایی که باهاشون کار کردم",
       items: [
-        { name: "React", icon: "⚛️" },
-        { name: "Next.js", icon: "▲" },
-        { name: "TypeScript", icon: "📘" },
-        { name: "JavaScript", icon: "💛" },
-        { name: "Node.js", icon: "🟢" },
-        { name: "Python", icon: "🐍" },
-        { name: "Docker", icon: "🐳" },
-        { name: "AWS", icon: "☁️" },
-        { name: "PostgreSQL", icon: "🐘" },
-        { name: "MongoDB", icon: "🍃" },
-        { name: "Git", icon: "📚" },
-        { name: "Figma", icon: "🎨" },
+        { name: "React", icon: "/images/react.png" },
+        { name: "Next.js", icon: "/images/next.js.png" },
+        { name: "TypeScript", icon: "/images/typescript.png" },
+        { name: "JavaScript", icon: "/images/javascript.png" },
+        { name: "Node.js", icon: "/images/nodejs.png" },
+        { name: "Git", icon: "/images/git.png" },
+        { name: "Figma", icon: "/images/figma.png" },
       ],
     },
     projects: {
@@ -125,29 +132,29 @@ export const words = {
       items: [
         {
           id: "prj1",
-          title: "فروشگاه آنلاین",
+          title: "اتاق فرار",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "سایت اتاق فرار با قابلیت رزور اتاق در تاریخ رو روز مشخص به همراه پنل ادمین جهت مشاهده افراد که بلیط گرفتن و تعیین وضعیت",
           image: "/video/automatic-chat.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-          demoUrl: "https://example.com/demo",
-          sourceUrl: "https://github.com/masoudjafari/shop",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "lucida-react-icons", "lottie-animations"],
+          demoUrl: "https://template-collection-kappa.vercel.app/Templates/escape-rooms",
+          sourceUrl: "https://github.com/Masoud2025/Template-Collection/tree/main/app/Templates/escape-rooms",
         },
         {
           id: "prj2",
-          title: "داشبورد مدیریت",
+          title: "فیلم شو",
           description:
-            "داشبورد تحلیل داده با نمودارهای تعاملی و مدیریت کاربران",
+            "وب سایت تماشای فیلم ، صفحه خرید اشتراک ، صفحه ورود ، صفحه اختصاصی هر فیلم",
           image: "/video/bento-grid.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Chart.js", "Tailwind CSS"],
-          demoUrl: "https://example.com/demo",
-          sourceUrl: "https://github.com/masoudjafari/dashboard",
+          tech: ["React", "Next.js", "TypeScript",  "Tailwind CSS","Swiper","PWA"],
+          demoUrl: "https://template-collection-kappa.vercel.app/Templates/FilmShow",
+          sourceUrl: "https://github.com/Masoud2025/Template-Collection/tree/main/app/Templates/FilmShow",
         },
         {
           id: "prj3",
-          title: "اپلیکیشن چت",
+          title: "سایت مشابه پیج ایستاگرام",
           description:
-            "اپلیکیشن چت آنلاین با قابلیت پیام‌رسانی لحظه‌ای و گروه‌ها",
+            "    دارای قابلیت هایلایت پیج، و ذخیره کردن پست ،دیسکریپیشن ، پنجره های استوری،3 زبانه اس ، و دکمه تغییر تم اش با یه انمیشین خوشگل دایره ای تغییر میده تم رو مشابه اش تو تلگرام هست",
           image: "/video/chat-collect.mp4",
           tech: ["React", "Node.js", "Socket.io", "MongoDB", "Tailwind CSS"],
           demoUrl: "https://example.com/demo",
@@ -155,7 +162,7 @@ export const words = {
         },
         {
           id: "prj4",
-          title: "سیستم مدیریت محتوا",
+          title: "وب سایت 3 بعدی مکعبی مخصوص خاص پسندا",
           description: "سیستم مدیریت محتوای کامل با ویرایشگر و مدیریت کاربران",
           image: "/video/openai-demo.mp4",
           tech: [
@@ -170,39 +177,39 @@ export const words = {
         },
         {
           id: "prj5",
-          title: "فروشگاه آنلاین",
+          title: "فروشگاه کتاب آنلاین",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            " صفحه اول یه کتاب فروشی انلاین کاملا رسپانسیو   ",
           image: "/video/ketaback.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "MAterial UI MUI"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
         {
           id: "prj6",
-          title: "فروشگاه آنلاین",
+          title: "رسانه خبری خودرولوژی",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "  یه سایت خبری کامل ، نمایش قیمت لحظه ای ماشین ها و قابلیت تب بندی اخبار ، 2 تم داره ،و رسپانسیو و خیلی سریع قسمت تبلیغات شما در اینجا قرار میگرد داره",
           image: "/video/khodrology.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
         {
           id: "prj7",
-          title: "فروشگاه آنلاین",
+          title: "اپ نیازمندی های هویج جان",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "یه سیستم خرید فروش جنس دست دوم ، دارای چت و فیل تقیمت ارازن ترین و گران ترین و صفحه پروفایل ",
           image: "/video/divar-copy.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
-        {
+         {
           id: "prj8",
-          title: "فروشگاه آنلاین",
+          title: "لندینگ سایت شخصی",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "قالب پورتفولیو شخصی جهت تمرین  ساخت طرح و حس گیرایی سایت بدون طراح ",
           image: "/video/portfolio.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -210,9 +217,9 @@ export const words = {
         },
         {
           id: "prj9",
-          title: "فروشگاه آنلاین",
+          title: "هشتیوا",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "  سایت دستیار مدیریت اکانت های فضای مجازی شما ، ایسنتاگرام ، با قابلیت یخ شکن دایرکت و پنل  و داشبورد صفحه وردو فراموشی رمز و..",
           image: "/video/hashtiva.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -220,9 +227,9 @@ export const words = {
         },
         {
           id: "prj10",
-          title: "فروشگاه آنلاین",
+          title: "یوتوب کلاب",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات و صفحه ادمین و سیستم ثبت آگهی و گردونه شانس اختصاصی که تخفیف اش رو سبد اعمال میشه",
           image: "/video/YTC.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -230,9 +237,9 @@ export const words = {
         },
         {
           id: "prj11",
-          title: "فروشگاه آنلاین",
+          title: "پورتفولیو مشابه ویندوز 11",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "یه بازی مار داره توش یه مینی اپ تو دو لیست داره داخلش و قرار بود پوتفولیو کامل  ویندزو 11 بشه اما نصفه ول شد اون قابلیت پنجره و درگ و و داره",
           image: "/video/windows-portfolio.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -240,9 +247,9 @@ export const words = {
         },
         {
           id: "prj12",
-          title: "فروشگاه آنلاین",
+          title: "قالب سایت شخصی",
           description:
-            "یک فروشگاه آنلاین کامل با قابلیت پرداخت و مدیریت محصولات",
+            "رو قسمت عکس هیرو بری ماوس هاور بشه میخنده یارو و اینه که 2 زبانه و 2 تم هم هستش ",
           image: "/video/portfolio2.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -269,9 +276,10 @@ export const words = {
   en: {
     about: {
       name: "Masoud Jafari",
-      title: "Software Engineer | Entrepreneur",
-      bio: "Hi, I'm Masoud. I love building things and helping people.",
-      description: `Frontend Developer focused on React, Next.js, and TypeScript.Building fast, modern, and user-friendly web experiences.`,
+      title: "Software Developer | Intern Today - Entrepreneur Tomorrow",
+      bio: "Hi! I'm Masoud. I love building new things and helping people.",
+      description: `I'm a developer, and my job is turning problems into products using the right tools. In my opinion, a proper tool is one that solves the immediate problem simply and remains scalable for the future. That's why my core skill is fast learning and the right utilization of tools.
+My technical background started with a computer vocational high school and 3 years of managing the computer lab, followed by an internship at Kavenegar, and so far, I have delivered 3 real product-oriented projects. I deliver assigned tasks completely and in minimum time; my skill lies in working under high-pressure environments and persevering through tough conditions, backed by patience and strong searching skills. I am currently looking for an internship at a great company to continue this path more professionally.`,
     },
     experience: {
       title: "Work Experience",
@@ -280,27 +288,30 @@ export const words = {
           id: "exp1",
           company: "Kavenegar",
           logo: "/Experience.svg",
-          role: "Founder & Developer",
-          period: "2022 - Present",
+          role: "Frontend Intern",
+          period: "2024 | 3 Months",
           location: "Tehran, Iran",
-          description: "Building and scaling SaaS products from zero to one.",
+          description:
+            "Completed the high school internship logbook for three months, participated in technical meetings, got familiar with the environment, and completed minor tasks.",
           achievements: [
-            "Launched 3 successful products",
-            "200% user growth in 6 months",
+            "Participated in daily meetings to witness real product issues with high user traffic, gaining primary familiarity with environment challenges.",
+            "Tested various parts of the website for responsiveness, wrote reports, and delivered them to the team lead.",
+            "Reason for leaving was the overlap with the university entrance exam (Konkur) year and a surgical operation, along with fully completing my internship logbook.",
           ],
         },
         {
           id: "exp2",
-          company: "Big Tech Companies",
-          logo: "💻",
-          role: "Software Engineer",
+          company: "Bahonar Vocational School",
+          logo: "/images/Bahonar.jpg",
+          role: "Computer Lab Manager & WordPress Developer",
           period: "2018 - 2022",
-          location: "Silicon Valley, USA",
+          location: "Tehran, Iran",
           description:
-            "Developed scalable systems using cutting-edge technologies.",
+            "Developed WordPress websites and maintained computer lab systems, networking all systems to share a single printer, etc.",
           achievements: [
-            "Improved system performance by 50%",
-            "Collaborated with international teams",
+            "Full management of the website deployment lifecycle, including domain purchasing, hosting configuration, and DNS connection.",
+            "Development, customization, and launching of WordPress-based websites.",
+            "Database optimization and management by writing and executing SQL queries for data extraction and analysis.",
           ],
         },
       ],
@@ -311,41 +322,39 @@ export const words = {
       items: [
         {
           id: "edu1",
-          title: "M.Sc. in Computer Science",
-          school: "Sharif University of Technology",
-          period: "2016 - 2018",
+          title: "B.Sc. in Computer Engineering",
+          school: "Iranian University",
+          period:
+            "2023 - Present (Virtual Education, Looking for full-time work, 5th Semester)",
           location: "Tehran, Iran",
-          image: "/images/sharif.jpg",
+          image: "/images/Iranian.jpg",
+          cover: "/images/StudentCard.jpg",
           description:
-            "Specialized in AI and Machine Learning. Thesis on Natural Language Processing.",
+            "Integrating academic computer science knowledge with practical experience in product development and system deployment.",
         },
         {
           id: "edu2",
-          title: "B.Sc. in Business Administration",
-          school: "University of Tehran",
-          period: "2012 - 2016",
+          title: "Diploma in Database Production and Development",
+          school: "Shahid Bahonar Vocational High School",
+          period: "2021 - 2024",
           location: "Tehran, Iran",
-          image: "/images/tehran.jpg",
+          image: "/images/Bahonar.jpg",
+          cover: "/images/Diplom.jpg",
           description:
-            "Specialized in Marketing and Entrepreneurship. Multiple projects in startups.",
+            "Learning core concepts of networks, databases, WordPress, etc.",
         },
       ],
     },
     skills: {
-      title: "Tools I worked with it",
+      title: "Tools I Worked With",
       items: [
-        { name: "React", icon: "⚛️" },
-        { name: "Next.js", icon: "▲" },
-        { name: "TypeScript", icon: "📘" },
-        { name: "JavaScript", icon: "💛" },
-        { name: "Node.js", icon: "🟢" },
-        { name: "Python", icon: "🐍" },
-        { name: "Docker", icon: "🐳" },
-        { name: "AWS", icon: "☁️" },
-        { name: "PostgreSQL", icon: "🐘" },
-        { name: "MongoDB", icon: "🍃" },
-        { name: "Git", icon: "📚" },
-        { name: "Figma", icon: "🎨" },
+        { name: "React", icon: "/images/react.png" },
+        { name: "Next.js", icon: "/images/next.js.png" },
+        { name: "TypeScript", icon: "/images/typescript.png" },
+        { name: "JavaScript", icon: "/images/javascript.png" },
+        { name: "Node.js", icon: "/images/nodejs.png" },
+        { name: "Git", icon: "/images/git.png" },
+        { name: "Figma", icon: "/images/figma.png" },
       ],
     },
     projects: {
@@ -353,29 +362,29 @@ export const words = {
       items: [
         {
           id: "prj1",
-          title: "Online Store",
+          title: "Escape Room",
           description:
-            "A complete online store with payment and product management",
+            "An escape room website featuring booking capabilities for specific dates and days, along with an admin panel to view ticket holders and manage booking statuses.",
           image: "/video/automatic-chat.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-          demoUrl: "https://example.com/demo",
-          sourceUrl: "https://github.com/masoudjafari/shop",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "lucida-react-icons", "lottie-animations"],
+          demoUrl: "https://template-collection-kappa.vercel.app/Templates/escape-rooms",
+          sourceUrl: "https://github.com/Masoud2025/Template-Collection/tree/main/app/Templates/escape-rooms",
         },
         {
           id: "prj2",
-          title: "Admin Dashboard",
+          title: "FilmShow",
           description:
-            "Data analytics dashboard with interactive charts and user management",
+            "A movie streaming website including a subscription purchase page, login page, and exclusive pages for each movie.",
           image: "/video/bento-grid.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Chart.js", "Tailwind CSS"],
-          demoUrl: "https://example.com/demo",
-          sourceUrl: "https://github.com/masoudjafari/dashboard",
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Swiper", "PWA"],
+          demoUrl: "https://template-collection-kappa.vercel.app/Templates/FilmShow",
+          sourceUrl: "https://github.com/Masoud2025/Template-Collection/tree/main/app/Templates/FilmShow",
         },
         {
           id: "prj3",
-          title: "Chat App",
+          title: "Instagram-like Web App",
           description:
-            "Online chat app with real-time messaging and group features",
+            "Features page highlights, post saving, descriptions, story modals, 3-language support, and a smooth circular animation theme-toggle switch similar to Telegram.",
           image: "/video/chat-collect.mp4",
           tech: ["React", "Node.js", "Socket.io", "MongoDB", "Tailwind CSS"],
           demoUrl: "https://example.com/demo",
@@ -383,9 +392,8 @@ export const words = {
         },
         {
           id: "prj4",
-          title: "CMS",
-          description:
-            "Complete content management system with editor and user management",
+          title: "3D Cube Website for Elite Taste",
+          description: "A complete content management system with a rich text editor and user management.",
           image: "/video/openai-demo.mp4",
           tech: [
             "Next.js",
@@ -399,29 +407,29 @@ export const words = {
         },
         {
           id: "prj5",
-          title: "Online Store",
+          title: "Online Book Store",
           description:
-            "A complete online store with payment and product management",
+            "A fully responsive landing page for an online bookstore.",
           image: "/video/ketaback.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Material UI MUI"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
         {
           id: "prj6",
-          title: "Online Store",
+          title: "Khodrology News Media",
           description:
-            "A complete online store with payment and product management",
+            "A complete news platform featuring real-time car price tracking, tabbed news feeds, dual themes, responsive design, and a dedicated rapid 'Your Ad Here' banner placement section.",
           image: "/video/khodrology.mp4",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://example.com/demo",
           sourceUrl: "https://github.com/masoudjafari/shop",
         },
         {
           id: "prj7",
-          title: "Online Store",
+          title: "Havij Jan Classified Ads App",
           description:
-            "A complete online store with payment and product management",
+            "A second-hand goods trading platform equipped with live chat, lowest/highest price filters, and personal user profile pages.",
           image: "/video/divar-copy.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -429,9 +437,9 @@ export const words = {
         },
         {
           id: "prj8",
-          title: "Online Store",
+          title: "Personal Landing Portfolio",
           description:
-            "A complete online store with payment and product management",
+            "A personal portfolio template aimed at practicing custom layout creation and capturing visual aesthetics without a dedicated UI designer.",
           image: "/video/portfolio.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -439,9 +447,9 @@ export const words = {
         },
         {
           id: "prj9",
-          title: "Online Store",
+          title: "Hashtiva",
           description:
-            "A complete online store with payment and product management",
+            "A social media account assistant platform for Instagram featuring a direct message proxy tool, management panel, comprehensive dashboard, login page, and password recovery flow.",
           image: "/video/hashtiva.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -449,9 +457,9 @@ export const words = {
         },
         {
           id: "prj10",
-          title: "Online Store",
+          title: "YouTube Club",
           description:
-            "A complete online store with payment and product management",
+            "A comprehensive online store featuring payment gateways, product administration, an admin portal, ad submission flows, and a custom wheel of fortune that applies discounts directly to the cart.",
           image: "/video/YTC.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -459,9 +467,9 @@ export const words = {
         },
         {
           id: "prj11",
-          title: "Online Store",
+          title: "Windows 11 Inspired Portfolio",
           description:
-            "A complete online store with payment and product management",
+            "Includes a playable snake game and a mini todo-list app inside. Originally intended to mimic a full Windows 11 interface, it features functional modal window components and draggable behaviors.",
           image: "/video/windows-portfolio.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -469,9 +477,9 @@ export const words = {
         },
         {
           id: "prj12",
-          title: "Online Store",
+          title: "Personal Site Template",
           description:
-            "A complete online store with payment and product management",
+            "Features a mouse-hover interaction on the hero image where the character smiles, supporting bilingual translation and dual themes.",
           image: "/video/portfolio2.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",
@@ -479,9 +487,9 @@ export const words = {
         },
         {
           id: "prj13",
-          title: "Online Store",
+          title: "Online E-Commerce Store",
           description:
-            "A complete online store with payment and product management",
+            "A fully completed online store with payment processing integration and product management features.",
           image: "/video/flywitmasoud.mp4",
           tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           demoUrl: "https://example.com/demo",

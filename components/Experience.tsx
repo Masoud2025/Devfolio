@@ -79,8 +79,8 @@ export default function Experience() {
                       <h3 className="font-semibold text-sm md:text-base truncate ">
                         {exp.company}
                       </h3>
-                      <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 truncate hidden sm:inline">
+                      <span className="text-xs ">•</span>
+                      <span className="text-xs  truncate ">
                         {exp.role}
                       </span>
                     </div>
