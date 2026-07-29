@@ -42,14 +42,14 @@ export default function DockNav({
       id: "github",
       icon: GitHubIcon,
       label: lang === "fa" ? "گیتهاب" : "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/Masoud2025",
       isExternal: true,
     },
     {
       id: "linkedin",
       icon: LinkedinIcon,
       label: lang === "fa" ? "لینکدین" : "Linkedin",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/masoudjafaridev",
       isExternal: true,
     },
   ];
